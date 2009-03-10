@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>{$aField.title}－{$aField.catName}－{$__WEBNAME}</title>
+<link href="/css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<center>
+<script src="/js/top.htm"></script>
+{* 点击率计数 *}
+<script src="/js/count.php?act={$sTbl}&id={$aField.id}"></script>
+  <table width="900" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td width="200" valign="top"> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td height="24" align="center" background="/images/nav-bg.jpg"> 
+              <table width="95%" border="0" cellspacing="0" cellpadding="0">
+                <tr> 
+                  <td width="42%"><span class="f14px">焦点关注</span></td>
+                  <td width="58%" align="right">&nbsp;</td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr> 
+            <td bgcolor="#FFFFFF" class="border-F9"><script src="/js/news_focus.htm"></script></td>
+          </tr>
+          <tr> 
+            <td height="24" align="center" background="/images/nav-bg.jpg"> 
+              <table width="95%" border="0" cellspacing="0" cellpadding="0">
+                <tr> 
+                  <td width="42%"><span class="f14px">热门商机</span></td>
+                  <td width="58%" align="right"></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr> 
+            <td bgcolor="#FFFFFF" class="border-F9"><table width="100%" border="0" cellspacing="0" cellpadding="0">            
+                <tr> 
+                  <td style=padding:4px><script src="/js/sj_hot.htm"></script></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr> 
+            <td height="24" align="center" background="/images/nav-bg.jpg"> 
+              <table width="95%" border="0" cellspacing="0" cellpadding="0">
+                <tr> 
+                  <td width="53%"><span class="f14px">热门资讯排行</span></td>
+                  <td width="47%" align="right"></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr> 
+            <td bgcolor="#FFFFFF" class="border-F9"><script src="/js/news_hot.htm"></script></td>
+          </tr>
+          <tr> 
+            <td height="24" align="center" background="/images/nav-bg.jpg"> 
+              <table width="95%" border="0" cellspacing="0" cellpadding="0">
+                <tr> 
+                  <td width="42%"><span class="f14px">特别推荐</span></td>
+                  <td width="58%" align="right"></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr> 
+            <td bgcolor="#FFFFFF" class="border-F9"><table width="100%" border="0" cellspacing="0" cellpadding="3">
+                <tr bgcolor="#FFF7EC"> 
+                  <td width="100%" colspan="2"><script src="/js/news_recommend.htm"></script></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr> 
+            <td height="24" align="center" background="/images/nav-bg.jpg"> 
+              <table width="95%" border="0" cellspacing="0" cellpadding="0">
+                <tr> 
+                  <td width="53%"><span class="f14px">论坛招贴</span></td>
+                  <td width="47%" align="right"></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr> 
+            <td bgcolor="#FFFFFF" class="border-F9"><script src="/js/bbs_zhaotie.htm"></script></td>
+          </tr>
+          <tr> 
+            <td height="24" align="center" background="/images/nav-bg.jpg"> 
+              <table width="95%" border="0" cellspacing="0" cellpadding="0">
+                <tr> 
+                  <td width="53%"><span class="f14px">精品项目</span></td>
+                  <td width="47%" align="right"></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr> 
+            <td bgcolor="#FFFFFF" class="border-F9"><script src="/js/jingpin.htm"></script></td>
+          </tr>
+        </table></td>
+      <td width="15">&nbsp;</td>
+      <td valign="top">
+      	<div align="left" style="padding:5px">
+      		当前位置：<a href="/" class="000">首页</a> → <a href="#" class="000">{$aField.catName}</a> → {$aField.title}
+      	</div>
+      <table width="100%" border="0" cellpadding="10" cellspacing="1" bgcolor="#CCCCCC">
+          <tr>
+            <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+              </table>
+			  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr> 
+                  <td colspan="2" class="ncont-tit">{$aField.title}</td>
+                </tr>
+                <tr> 
+                  <td width="83%" height="22" bgcolor="#e7e7e7" style=padding-left:20px>
+                    　日期：{$aField.addDate} 　来源：{$aField.source} 　作者：{$aField.author} </td>
+                  <td width="17%" align="right" bgcolor="#e7e7e7">
+                  	<a href="/comment.php?act={$sTbl}&id={$aField.id}" target="_blank" class="000">【评论】</a> 
+                    <a href="/recommend.php?act={$sTbl}&id={$aField.id}" target="_blank" class="000">【推荐】</a>
+				  </td>
+                </tr>
+                <tr> 
+                  <td colspan="2" class="font14a" style=padding-top:20px>{$aField.content}</td>
+                </tr>
+				{if $aField.file}
+				 <tr> 
+                  <td colspan="2" class="font14a"><a href='/download/tooldown/{$aField.file}' target='_blank'>下载</a></td>
+                </tr>
+				{/if}
+              </table>
+			  
+			  
+
+			  </td>
+  </tr>
+</table>
+	   
+		
+</center>
+</body>
+</html>

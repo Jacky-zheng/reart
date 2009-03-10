@@ -1,0 +1,95 @@
+{include file=admin/header.tpl.htm}
+<form name="form1" method="POST" >
+	<table width='100%' border='1' cellspacing='0' cellpadding='0' align='center' bordercolordark='#FFFFFF' bordercolorlight='#000000'  bgcolor='#efefef'> 	
+			<tr>
+			<td align="center">						
+				<input type="radio" name="status" onclick="location.href='?act=listAll&status=0'" value="0" {if $iStatus == 0} checked {/if}  >未审核&nbsp;
+				<input type="radio" name="status" onclick="location.href='?act=listAll&status=1'" value="1" {if $iStatus == 1} checked {/if} >已审核
+				<input type="radio" name="status" onclick="location.href='?act=listAll&status=2'" value="2" {if $iStatus == 2} checked {/if} >停用
+			 	<input type="radio" name="status" onclick="location.href='?act=listAll&status=-1'" value="-1" {if $iStatus == -1} checked {/if}>全部&nbsp;&nbsp;
+				<input type="text" name="q" value="{$q}">
+				<input type="submit" name="Submit" value="提交">              
+	      	</td>         	 	
+			</tr>
+	</table>		 
+			 
+	<table width="100%" border="0" cellpadding="0" cellspacing="0"  class="tableborder">
+	
+		<tr class="header">
+			<td></td>
+			<td>用户名</td>
+			<td>注册时间</td>
+		  <td>操作</td>
+		</tr>
+	{ section name=list loop=$aList } 
+		<tr>
+			<td><input type="checkbox" name="id[]" value="{$aList[list].id}"></td> 			
+			<td>{$aList[list].userName}&nbsp;&nbsp;</td>
+			<td>{$aList[list].addDate}</td>
+		  <td>
+           	  <a  href="?act=edit&id={$aList[list].id}&pageNo={$iPageNo}&userType={$aList[list].userType}">编辑</a><br>
+           	  {*
+           	  {if $aList[list].status == 1}
+           	  <a href="../member/lawyer.php?act=doMakeLawyer_index&id={$aList[list].id}" target="_blank">生成首页</a>	
+           	  {/if}	
+           	  *}			</td>
+		</tr>
+	{/section}	
+		<tr bgcolor="#FFFFFF">
+		 <td colspan=4>	
+			<input type='checkbox' onclick="CheckAll(this.form.elements['id[]'], this.checked)">全选/反选
+			
+		 	{if $iStatus == 0} {* 未审核 *}
+		 		<input type="button" name="check" value="审核" onclick="SubmitForm('check');">		 			
+		 	{elseif $iStatus == 1}{* 已审核 *}
+		 		<input type="button" name="uncheck" value="设为未审核" onclick="SubmitForm('uncheck');">		 				 			 	
+		 	{elseif $iStatus == 2}{* 停用 *}
+		 		<input type="button" name="check" value="启用" onclick="SubmitForm('check');">		 				 			 			 	
+		 	{/if}
+		 	
+		 	<input type="button" name="stop" value="停用" onclick="SubmitForm('stop');">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		 </td></tr>
+    </table>		
+</form>		  
+		
+{include file=admin/pager_bar.tpl.htm}			
+
+{include file=admin/footer.tpl.htm}
+
+{literal}
+<script language="javascript">
+function CheckAll(srcElem, do_check){
+        if(typeof(srcElem)=='undefined') return;
+        var cnt = (typeof(srcElem.length)!='undefined')? srcElem.length : 0;
+        if(cnt){
+                for(var i=0;i<cnt; i++)
+                        srcElem[i].checked = do_check;
+        }else
+                srcElem.checked = do_check;
+}
+function SubmitForm()
+{	
+    if (arguments.length<=0) return false;
+    FormObject = document.getElementsByTagName("FORM")[0];
+    if ((FormObject==null)||(FormObject==undefined)) return false;
+   // alert(arguments[0]);
+    switch(arguments[0])
+    {
+    	case "stop": var str = "停用"; break;
+    	case "check": var str = "审核"; break;
+    	case "uncheck": var str = "设为未审核"; break;
+    	default: break;    	
+    }
+    
+    if(confirm("您真的要将选中的"+str+"吗?") == true)
+    {
+{/literal}    	
+    	FormObject.action = "?act="+arguments[0]+"&status={$iStatus}";
+{literal}    	
+    	FormObject.submit();
+    }    
+  }  
+ 
+</script>
+{/literal}
+

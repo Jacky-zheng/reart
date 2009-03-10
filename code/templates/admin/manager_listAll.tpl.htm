@@ -1,0 +1,43 @@
+{include file=admin/header.tpl.htm}
+
+
+
+	{include file=admin/pager_bar.tpl.htm}
+	<br />
+		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">	
+		<tr  class="header">
+			<td width="5" height="20">ID</td>
+			<td width="80">用户名</td>
+			<td width="80">真实姓名</td>
+			<td width="80">E-mail</td>
+			<td width="80">角色</td>
+			<td width="80">最后登陆IP</td>
+			<td width="80">最后登陆时间</td>
+			<td width="50" colspan="3" align="right">动作</td>
+		</tr>
+		
+		{section name=a_list loop=$aList}
+		<tr bgcolor="#FFFFFF">
+			<td height="20">{$aList[a_list].id}</td>
+			<td>{$aList[a_list].userName}</td>
+			<td>{$aList[a_list].trueName}</td>
+			<td>{$aList[a_list].email}</td>
+			<td>{$aList[a_list].roleName}</td>
+			<td>{$aList[a_list].lastIP}</td>
+			<td>{$aList[a_list].lastTime}</td>
+			<td><a href="manager.php?act=detail&id={$aList[a_list].id}">查看</a></td>
+			<td><a href="manager.php?act=modify&id={$aList[a_list].id}">编辑</a></td>
+			<td>
+			{if $aList[a_list].status == '0'}
+			<a href="manager.php?act=open&id={$aList[a_list].id}" onclick="return confirm('确认开启[{$aList[a_list].trueName}]的帐号');">开启</a>
+			{else}
+			<a href="manager.php?act=closed&id={$aList[a_list].id}" onclick="return confirm('确认关闭[{$aList[a_list].trueName}]的帐号');">关闭</a>
+			{/if}
+			</td>
+		</tr>
+		{/section}	
+		</table>
+		<br />
+		{include file=admin/pager_bar.tpl.htm}
+
+{include file=admin/footer.tpl.htm}

@@ -1,0 +1,36 @@
+{include file=admin/header.tpl.htm}
+{include file=admin/common.tpl.htm}
+<p> </p>
+<table bgcolor="#FFFFFF" width="98%" cellpadding="8" cellspacing="0" border="0" align="center">
+<tr><td>
+	<table cellspacing="1" cellpadding="4" width="100%" align="center" class="tableborder">
+	<tr class="header">
+		<td colspan="8">越权操作日志</td>
+	</tr>
+	<tr class="altbg1">
+		<td align="center" nowrap>日志ID</td>
+		<td align="center" nowrap>操作用户</td>
+		<td align="center" nowrap>操作内容</td>
+		<td align="center" nowrap>操作时间</td>
+		<td align="center" nowrap>操作文件</td>
+		<td align="center" nowrap>执行动作</td>
+		<td align="center" nowrap>操作状态</td>
+		<td align="center" nowrap>操作</td>
+	</tr>
+{section name=operateLogOver loop=$a_operateOver}
+    <tr class="altbg2">
+    	<td align="center" nowrap>{$a_operateOver[operateLogOver].id}</td>
+    	<td align="center" nowrap>{$a_operateOver[operateLogOver].userID}</td>
+    	<td align="center" nowrap>{$a_operateOver[operateLogOver].content}</td>
+    	<td align="center" nowrap>{$a_operateOver[operateLogOver].operateTime}</td>
+    	<td align="center" nowrap>{$a_operateOver[operateLogOver].fileName}</td>
+    	<td align="center" nowrap>{$a_operateOver[operateLogOver].action}</td>
+    	<td align="center" nowrap>{if ($a_operateOver[operateLogOver].status == "0")}<font color=red>操作错误</font>{elseif ($a_operateOver[operateLogOver].status == "1" )}<font color=green>操作成功</font>{else}<font color=red>越权操作</font>{/if}</td>
+    	<td align="center" nowrap>删除</td>
+    </tr>
+{/section}
+	</table><br>
+	{include file="admin/pager_bar.tpl.htm"}
+</td></tr>
+</table>
+{include file=admin/footer.tpl.htm}

@@ -1,0 +1,121 @@
+{include file=admin/header.tpl.htm}
+
+{literal}
+<script language="javascript">
+function checkForm()
+{
+	if($('perPage').value > 50)
+	{
+		alert('每页显示不要超过50条！');
+		return false;
+	}
+}
+</SCRIPT>
+{/literal}
+
+<table width='100%' border='1' cellspacing='0' cellpadding='0' align='center' bordercolordark='#FFFFFF' bordercolorlight='#000000'  bgcolor='#efefef'> 
+           <tr bgcolor="#FFFFFF"> 
+            <form name="form1" method="post" action="message.php?act={$sAction}">
+           	<td align="center">
+           		<input type="radio" name="isReply" {if $iIsReply == 0} checked {/if} value="0">未回复
+           		<input type="radio" name="isReply" {if $iIsReply == 1} checked {/if} value="1">已回复
+           		
+           		{if $sTbl == "agent"} <input type="radio" name="isReply" {if $iIsReply == 2} checked {/if} value="2">总部给代理的信{/if}
+           		
+           		<input type="radio" name="isReply" {if $iIsReply == -1} checked {/if} value="-1">全部
+       			<input type="text" name="q" value="{$q}">
+        		<input type="submit" name="Submit" value="提交">
+           	</td>          	
+           	</form>
+          </tr>         
+</table>
+{include file=admin/pager_bar.tpl.htm} {* 分页 *}
+
+
+<table class="tableborder" width="100%" cellpadding="0" cellspacing="0" align="center">	
+		<tr class="header">
+			<td>{$PAGE_FUNC_SMALL_NAME}</td>	
+		</tr>				
+        <tr bgcolor="#ffffff"><td>
+		
+		<form name="form2" method="POST">            						
+		{section name=list loop=$aList }  
+		<table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#666666" style="display:" id="s_{$smarty.section.list.index}" align="center">
+                            <tr bgcolor="#FFFFFF">
+                              <td width="5%" rowspan="4" align="center">
+                              {* $aList[list].id *}
+                              {if $aList[list].isReply < 2}
+                              	<input type='checkbox' name="id[]" value="{$aList[list].id}">
+                              {else}
+                                <font color="Blue">总部给代理的信</font>
+                              {/if}
+                              </td> 
+		                      <td width="8%">标题：</td>
+                              <td width="38%">{$aList[list].title}</td>
+                              <td width="8%">客户：</td>
+                              <td>{$aList[list].userName}</td>
+                            </tr>
+                            <tr bgcolor="#FFFFFF"> 
+							  <td><font color="#666666">留言内容：</font></td>
+							  <td colspan="3">
+									<font color="#CC0000">留言时间：{$aList[list].addDate}</font><br>
+                                	<font color="#666666">{$aList[list].content}</font>
+							  </td>
+							  
+                            </tr>
+                            
+                            {if $aList[list].isReply < 2}
+                            
+							 <tr bgcolor="#FFFFFF"> 
+                              <td>【<font color="#0000ff">回复</font>】</td>
+                              <td colspan="3">                              
+                               {if $aList[list].isReply}
+                              	<font color="#CC0000">回复时间：{$aList[list].replyDate}</font><br>
+                              	<textarea name="content[]" cols="100" rows="5">{$aList[list].replyContent}</textarea>
+                              {else}
+                              	<textarea name="content[]" cols="100" rows="5">您好！</textarea>                             
+                              {/if}
+                              
+                              
+                              <input type="hidden" name="haveReply[]" value="{$aList[list].isReply}">
+                              
+                              </td>
+                            </tr>
+                            
+                            {/if}						
+                            
+                          </table>
+		<br>
+		{/section}	
+		
+		<center>
+           		<input type="button" onClick="chkall()" value="全选/反选"> 
+           		<input type="button" value="删 除" onclick="delORreply(1,'{$sTbl}');"> 
+           		<input type="button" value="回 复" onclick="delORreply(2,'{$sTbl}');">
+        </center>	
+		</form>	
+				
+		  </td></tr>		
+		</table>
+		
+{include file=admin/pager_bar.tpl.htm}
+{include file=admin/footer.tpl.htm}
+
+{literal}
+<script language="javascript">
+function delORreply(flag,sTbl)
+{
+	//alert(flag);
+	if(judge())
+	{
+		//alert(flag);
+		if(flag == 1)	
+			form2.action="message.php?act=del_"+sTbl;
+		else
+			form2.action="message.php?act=reply_"+sTbl;			
+	
+		form2.submit();
+	}
+}
+</script>	
+{/literal}

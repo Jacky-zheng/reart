@@ -1,0 +1,62 @@
+{include file=agent/header.tpl.htm}
+
+{literal}
+<script language="javascript">
+function checkInput()
+{	
+	if($F('userName') == "")
+	{
+		alert ("请选择代理商！");	  		
+	  	$('userName').focus();
+	  	return false;
+	}
+	
+	if($F('title') == "")
+	{
+		alert ("请输入标题！");	  		
+	  	$('title').focus();
+	  	return false;
+	}
+	
+	if($F('content') == "")
+	{
+		alert ("请输入内容！");	  		
+	  	$('content').focus();
+	  	return false;
+	}
+}
+</script>
+{/literal}
+			
+<table cellspacing="0" cellpadding="0" width="100%" align="center" class="tableborder">
+		<tr class="header">
+			<td colspan="2">{$PAGE_FUNC_SMALL_NAME}</td>
+		</tr>		
+		<form method="POST" name="form1" onsubmit="return checkInput();"  action="message.php?act=addSave">		
+        <tr>
+          <td width="100" class="altbg1">代理商</td>
+          <td class="altbg2">
+          <select name="userName">
+          	<option value="">请选择</option>
+          	{html_options options=$aList}
+          </select>
+          </td>
+        </tr>
+        <tr>
+          <td width="100" class="altbg1">标题</td>
+          <td class="altbg2"><input type="text" name="title"  size="80" maxlength="50" class="input_text"></td>
+        </tr>       
+        <tr>
+          <td class="altbg1" >正文 </td>
+          <td class="altbg2"><textarea rows="15" cols="80" name="content"></textarea></td>
+        </tr>           
+		<tr>
+			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="返回"></td>
+			<td align="right" class="altbg2">
+				<input type="reset"  value=" 重 置 ">
+				<input type="submit" name="submit" value=" 提 交">			</td>
+		</tr>
+		</form>
+</table>
+
+{include file=agent/footer.tpl.htm}

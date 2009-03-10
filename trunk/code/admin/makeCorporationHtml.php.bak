@@ -1,0 +1,704 @@
+<?php
+/**
+ * 企业在线下的所有静态页面生成模块
+ * @author lentim chen (chenlqin@126.com) 07-08-21 modify
+ **/
+//define("OPEN_DEBUG",true);
+$sAction = (isset($_GET["act"])) ? $_GET["act"] : "listAll";
+require_once("../class/common.inc.php");
+$aNotCheckAction = array("showIndex","showQuestion","show80hou","showXiehui","showComment","showHuDong","showLead","showTV");
+if(!in_array($sAction,$aNotCheckAction)) checkExecPower("makeCorporationHtml", $sAction);		//权限检查
+loadLib("supplyDemand");
+loadLib("news");
+loadLib("question");
+loadLib("member");
+
+//模板
+$tpl->assign("PAGE_FUNC_BIG_LINK", "makeCorporationHtml.php");
+$tpl->assign("PAGE_FUNC_BIG_NAME", "静态文件");
+
+$tpl->assign("__NEWS_HTM",__NEWS_HTM);
+$tpl->assign("__NEWS_PIC",__NEWS_PIC);	
+$tpl->assign("__MEMBER_PIC",__MEMBER_PIC);
+$tpl->assign("__SUPPLYDEMAND_PIC",__SUPPLYDEMAND_PIC);
+$tpl->assign("__SUPPLYDEMAND_HTM",__SUPPLYDEMAND_HTM);
+$tpl->assign("__PRODUCT_PIC",__PRODUCT_PIC);
+$tpl->assign("__PRODUCT_HTM",__PRODUCT_HTM);
+$tpl->assign("__QUESTION_PIC",__QUESTION_PIC);
+$tpl->assign("__QUESTION_HTM",__QUESTION_HTM);
+
+if($sAction == "listAll")
+{
+	$tpl->display("html/makeHtml_list.tpl.htm");
+}
+elseif($sAction == "doMakeIndex") // 企业在线首页生成
+{	
+	$sUrl = __ADMIN_URL.$_SERVER['PHP_SELF']."?act=showIndex";
+	$sContent = file_get_contents($sUrl);
+
+	$fp = fopen("../corporation/index.htm","w");
+	if(fwrite($fp,$sContent))
+	{
+		redirect("/corporation/index.htm",3,"页面生成成功！");
+	}
+	else 
+	{
+		redirect("?act=listAll",5,"生成失败！");
+	}	
+}
+elseif($sAction == "showIndex") // 企业在线首页预览
+{
+	$tpl->assign("sPageTitle","企业在线－".__WEBNAME);
+	
+	$aCorporationPic1 =  member::getMemberList(0,1,"logo<>''","","logo,intro"); // 企业入库
+	$aCorporation1 =  member::getMemberList(0,11);	
+	$aCorporationPic2 =  news::getNewsList(0,1,198,"pic<>''","","pic,intro"); // 产业动态
+	$aCorporation2 =  news::getNewsList(0,11,198); 	
+	$aCorporationPic3 =  news::getNewsList(0,1,289,"pic<>''","","pic,intro");  // 财经报道
+	$aCorporation3 =  news::getNewsList(0,11,289);  	
+	$aCorporationPic4 =  news::getNewsList(0,1,290,"pic<>''","","pic,intro");  //展会信息
+	$aCorporation4 =  news::getNewsList(0,11,290); 	 
+	$aCorporationPic5 = news::getNewsList(0,1,68,"pic<>''","","pic,intro");// 高端访问
+	$aCorporation5 = news::getNewsList(0,11,68);// 高端访问	
+	
+	//$aCorporationPic5 =  news::getNewsList(0,1,76,"pic<>''","","pic,intro");  // 315黑榜
+	//$aCorporation5 =  news::getNewsList(0,11,76);
+	
+	$tpl->assign("aCorporation1",$aCorporation1);
+	$tpl->assign("aCorporation2",$aCorporation2);
+	$tpl->assign("aCorporation3",$aCorporation3);
+	$tpl->assign("aCorporation4",$aCorporation4);
+	$tpl->assign("aCorporation5",$aCorporation5);
+	$tpl->assign("aCorporationPic1",$aCorporationPic1);
+	$tpl->assign("aCorporationPic2",$aCorporationPic2);
+	$tpl->assign("aCorporationPic3",$aCorporationPic3);
+	$tpl->assign("aCorporationPic4",$aCorporationPic4);
+	$tpl->assign("aCorporationPic5",$aCorporationPic5);
+	
+	// 企业联盟  ?
+	//$aInfo1 = news::getNewsList(0,6,58);//联盟企业
+	$aInfo1 = member::getMemberList(0,6);//联盟企业
+	//$aInfo2 = news::getNewsList(0,6,140);//企业性质	
+	
+	$aHongb = news::getNewsList(0,9,77);  // 企业红榜 （诚信企业）
+	$aHeib = news::getNewsList(0,9,76);  // 企业黑榜（315黑榜）		
+	$aIntelligence = news::getNewsList(0,16,291);//商业情报
+	
+	$tpl->assign("aInfo1",$aInfo1);
+	$tpl->assign("aInfo2",$aInfo2);
+	$tpl->assign("aHongb",$aHongb);
+	$tpl->assign("aHeib",$aHeib);
+	$tpl->assign("aIntelligence",$aIntelligence);
+
+	/** 地域分类 **/
+	loadLib("area");
+	$aArea = area::getAreaArr(604);
+	//print_r($aArea);
+	$tpl->assign("aArea",$aArea);
+	
+	
+	//广告数据（企业在线首页）
+	loadLib("channel");	
+	$aList = channel::getWebUrlByChannelID(16);
+	$tpl->assign("aList",$aList);
+	$tpl->assign("__AD_PIC",__AD_PIC);
+	
+	
+	require("../config.php");
+	DBconnect(2);
+	//企业沙龙（圈子）
+	//echo "select gid,groupname,logo from supe_groups order by gid desc limit 0,2<br>";
+	$aFieldPic = getRecordSet("select gid,groupname,logo  from supe_groups  limit 0,2");
+
+	$aCircle = getRecordSet(" select itemid,uid,subject from supe_spaceitems where folder='1' order by itemid desc limit 8, 9 ") ;
+	$tpl->assign("aCircle",$aCircle);  // 博客文章
+	$tpl->assign("aFieldPic",$aFieldPic);	   // 圈子
+	
+	//商业互动
+	$aBusiness = getRecordSet(" select itemid,uid,subject from supe_spaceitems where folder='1' order by itemid desc limit 0, 8 ") ;
+	$tpl->assign("aBusiness",$aBusiness);
+	
+	//个人空间
+	/**
+	 
+	$aUserSpace = getRecordSet("select uid,username from supe_members ",1);
+	//print_r($aUserSpace);
+	//exit;
+	$tpl->assign("aUserSpace",$aUserSpace);
+	**/
+	
+
+	
+	$tpl->display("html/corporation.tpl_new.htm");
+}
+elseif($sAction == "doMakeQuestion") // 企业在线－－问吧页面生成
+{
+	$sUrl = __ADMIN_URL.$_SERVER['PHP_SELF']."?act=showQuestion";	
+	
+	$sContent = file_get_contents($sUrl);
+	
+	$fp = fopen("../corporation/question.htm","w");
+	if(fwrite($fp,$sContent))
+	{
+		redirect("/corporation/question.htm",3,"问吧页面生成成功！");
+	}
+	else 
+	{
+		redirect("?act=listAll",5,"生成失败！");
+	}		
+}
+elseif($sAction == "showQuestion")  // 问吧页面预览
+{
+	$tpl->assign("sPageTitle","问吧－".__WEBNAME);
+	
+	$aHelp = question::getQuestionList(0,5,0,"flag = '1' ");//紧急求救
+	
+	$aAnswer = question::getQuestionList(0,10,0,"","","answer");	//已解决问题
+	//print_r($aAnswer);
+	$aReward = question::getQuestionList(0,10,0,"flag = '0'");	//一般问题
+	
+	$aHotQuestion = question::getQuestionList(0,15,0,"","click desc ");	//热点问题(点击率排序)
+	$aExpert = news::getNewsList(0,3,84,"pic<>''","","pic,intro");  /* 管理专家 */	
+	//for($i=0; $i<count($aExpert); $i++) $aExpert[$i]['intro'] = Str_sub($aExpert[$i]['intro'],50);
+	
+	
+	$tpl->assign("aHelp",$aHelp);
+	$tpl->assign("aAnswer",$aAnswer);
+	$tpl->assign("aReward",$aReward);
+	$tpl->assign("aHotQuestion",$aHotQuestion);
+	$tpl->assign("aExpert",$aExpert);
+
+	$aBigClass = $db->getRecordSet(" select id,name from question_class where pID = '0' order by orderID asc ");
+	$aSmallClass = $db->getRecordSet("select id,name,pID from question_class where pID <> '0' order by orderID asc ");
+	
+	$tpl->assign("aBigClass",$aBigClass);//问吧大类别
+	$tpl->assign("aSmallClass",$aSmallClass);//问吧小类别
+	
+	
+	$tpl->display("html/question.tpl.htm");
+}
+elseif($sAction == "doMake80hou") // 企业在线80后企业生成
+{	
+	$sUrl = __ADMIN_URL.$_SERVER['PHP_SELF']."?act=show80hou";//$_SERVER['PHP_SELF']表示当前文件名
+	$sContent = file_get_contents($sUrl);
+
+	$fp = fopen("../corporation/80hou.htm","w");
+	if(fwrite($fp,$sContent))
+	{
+		redirect("/corporation/80hou.htm",3,"页面生成成功！");
+	}
+	else 
+	{
+		redirect("?act=listAll",5,"生成失败！");
+	}	
+}
+elseif($sAction == "show80hou") // 企业在线80后企业预览
+{
+	$tpl->assign("sPageTitle","80后企业－".__WEBNAME);
+	$aNewsPic1 =  news::getNewsList(0,3,254,"pic<>''","","pic,intro"); // 对话80后企业家
+	for($i=0;$i<count($aNewsPic1);$i++)
+	{
+		$aNewsPic1[$i]['intro']=str_sub($aNewsPic1[$i]['intro'],40).'...';
+	}
+	$aNews2 =  news::getNewsList(0,7,259);//互联网80后
+	$aNews3 =  news::getNewsList(0,7,260);//80后创业信息
+	//$aCorporation1 =  member::getMemberList(0,11);	
+	$aNews22 =  news::getNewsList(0,11,255); // 企业动态
+	$aNewsPic2 =  news::getNewsList(0,1,255,"pic<>''","","pic,intro"); // 企业动态
+	
+	$aNews33 =  news::getNewsList(0,11,256);  // 企业展示
+	$aNewsPic3 =  news::getNewsList(0,1,256,"pic<>''","","pic,intro");  // 企业展示
+  	$aNews6 =  news::getNewsList(0,10,257);//80后语录
+  	
+	$aNewsPic4 =  news::getNewsList(0,10,258,"pic<>''","","pic,intro");  //80后名录
+	for($i=0;$i<count($aNewsPic4);$i++)
+	{
+		$aNewsPic4[$i]['title_new']=str_sub($aNewsPic4[$i]['title'],9);
+	}
+	$aNews4 =  news::getNewsList(0,10,258); 	
+	 
+	$aNews55 = news::getNewsList(0,4,261);// 相关80后
+	$aNewsPic5 = news::getNewsList(0,1,261,"pic<>''","","pic,intro");// 相关80后
+	$aNews5 = news::getNewsList(0,9,262);// 相关80后素质
+	
+	//$aCorporationPic5 =  news::getNewsList(0,1,76,"pic<>''","","pic,intro");  // 315黑榜
+	//$aCorporation5 =  news::getNewsList(0,11,76);
+	
+	$tpl->assign("aNews55",$aNews55);
+	$tpl->assign("aNews33",$aNews33);
+	$tpl->assign("aNews22",$aNews22);
+	$tpl->assign("aNewsPic1",$aNewsPic1);
+	$tpl->assign("aNews2",$aNews2);
+	$tpl->assign("aNews3",$aNews3);
+	$tpl->assign("aNewsPic2",$aNewsPic2);
+	$tpl->assign("aNewsPic3",$aNewsPic3);
+	$tpl->assign("aNews6",$aNews6);
+	$tpl->assign("aNewsPic4",$aNewsPic4);
+	$tpl->assign("aNews4",$aNews4);
+	$tpl->assign("aNewsPic5",$aNewsPic5);
+	$tpl->assign("aNews5",$aNews5);
+
+
+
+	//广告数据（企业在线首页）
+	loadLib("channel");	
+	$aList = channel::getWebUrlByChannelID(16);
+	//print_r($aList);
+	/**
+	for($i=0; $i<count($aList); $i++)
+	{
+		$iIsRed = $aList[$i]['isRed'];
+		$sTitle = $aList[$i]['adTitle'];
+		$sNewTitle = ($iIsRed==1) ? "<font color=red>$sTitle</font>" : $sTitle ;
+		$sUrl = $aList[$i]['adWebPage'];		
+		$sStr .= "<a href=\"{$sUrl}\" target=\"_blank\" title=\"{$sTitle}\">{$sNewTitle}</a> ";
+	}
+	**/
+	$tpl->assign("aList",$aList);
+	$tpl->assign("__AD__PIC",__AD_PIC);
+	
+	
+	//require("../config.php");
+	//DBconnect(2);
+	//$aList = getRecordSet($sSQL);
+	$tpl->display("html/corporation_80hou.tpl.htm");
+}
+elseif($sAction == "showXiehui") // 企业协会1
+{
+	$tpl->assign("sPageTitle","企业协会".__WEBNAME);
+	$aNewsZhengCe1 =  news::getNewsList(0,1,270,"pic<>''","","pic,intro"); // 政策风向标1
+	$aNewsZhengCe2 =  news::getNewsList(0,1,270,"","","intro"); // 政策风向标2
+	$aNewsZhengCe2["intro"]=str_sub($aNewsZhengCe2["intro"],104).'...';
+	$aNewsZhengCe3 =  news::getNewsList(1,8,270); // 政策风向标3
+	$aNewsYingXiao1 =  news::getNewsList(0,1,271,"pic<>''","","pic,intro"); // 市场营销1
+	$aNewsYingXiao2 =  news::getNewsList(0,1,271,"","","intro"); // 市场营销2
+	$aNewsYingXiao2["intro"]=str_sub($aNewsYingXiao2["intro"],104).'...';
+	$aNewsYingXiao3 =  news::getNewsList(1,8,271); // 市场营销3
+	$aNewsCaiWu1 =  news::getNewsList(0,1,272,"pic<>''","","pic,intro"); // 财务融资1
+	$aNewsCaiWu2 =  news::getNewsList(0,1,272,"","","intro"); // 财务融资2
+	$aNewsCaiWu2["intro"]=str_sub($aNewsCaiWu2["intro"],104).'...';
+	$aNewsCaiWu3 =  news::getNewsList(1,8,272); // 财务融资3
+	$aNewsZhiShi1 =  news::getNewsList(0,1,275,"pic<>''","","pic,intro"); // 知识产权1
+	$aNewsZhiShi2 =  news::getNewsList(0,1,275,"","","intro"); // 知识产权2
+	$aNewsZhiShi2["intro"]=str_sub($aNewsZhiShi2["intro"],104).'...';
+	$aNewsZhiShi3 =  news::getNewsList(1,8,275); // 知识产权3
+	$aNewsEMBA1 =  news::getNewsList(0,1,276,"pic<>''","","pic,intro"); // EMBA管理1
+	$aNewsEMBA2 =  news::getNewsList(0,1,276,"","","intro"); // EMBA管理2
+	$aNewsEMBA2["intro"]=str_sub($aNewsEMBA2["intro"],104).'...';
+	$aNewsEMBA3 =  news::getNewsList(1,8,276); // EMBA管理3
+	$aNewsShuJia1 =  news::getNewsList(0,1,277,"pic<>''","","pic,intro"); // 企业书架1
+	$aNewsShuJia2 =  news::getNewsList(0,1,277,"","","intro"); // 企业书架2
+	$aNewsShuJia2["intro"]=str_sub($aNewsShuJia2["intro"],104).'...';
+	$aNewsShuJia3 =  news::getNewsList(1,8,277); // 企业书架3
+	$aNewsJiaMeng1 =  news::getNewsList(0,1,273,"","","intro"); // 特许加盟1
+	$aNewsJiaMeng1["intro"]=str_sub($aNewsJiaMeng1["intro"],104).'...';
+	$aNewsJiaMeng2=  news::getNewsList(1,8,273); // 特许加盟2
+	$aNewsChengZhang1 =  news::getNewsList(0,1,274,"","","intro"); // 成长策略1
+	$aNewsChengZhang1["intro"]=str_sub($aNewsChengZhang1["intro"],104).'...';
+	$aNewsChengZhang2=  news::getNewsList(1,8,274); // 成长策略2
+	$aNewsQuDao1 =  news::getNewsList(0,1,278,"","","intro"); // 渠道代理1
+	$aNewsQuDao1["intro"]=str_sub($aNewsQuDao1["intro"],104).'...';
+	$aNewsQuDao2=  news::getNewsList(1,8,278); // 渠道代理2	
+	$aNewsZhongXiao1 =  news::getNewsList(0,1,279,"","","intro"); // 中小企业1
+	$aNewsZhongXiao1["intro"]=str_sub($aNewsZhongXiao1["intro"],104).'...';
+	$aNewsZhongXiao2=  news::getNewsList(1,8,279); // 中小企业2	
+	$aNewsZhaoShang1 =  news::getNewsList(0,8,280); // 招商
+	$aNewsZhaoShang2 =  news::getNewsList(0,1,280,"pic<>''","","pic,intro"); // 招商
+	$aNewsXieHui1 =  news::getNewsList(0,8,281); // 行业协会
+	$aNewsXieHui2 =  news::getNewsList(0,1,281,"pic<>''","","pic,intro"); // 行业协会
+    
+	
+	$tpl->assign("aNewsZhengCe1",$aNewsZhengCe1);
+	$tpl->assign("aNewsZhengCe2",$aNewsZhengCe2);
+	$tpl->assign("aNewsZhengCe3",$aNewsZhengCe3);
+	$tpl->assign("aNewsYingXiao1",$aNewsYingXiao1);
+	$tpl->assign("aNewsYingXiao2",$aNewsYingXiao2);
+	$tpl->assign("aNewsYingXiao3",$aNewsYingXiao3);
+	$tpl->assign("aNewsCaiWu1",$aNewsCaiWu1);
+	$tpl->assign("aNewsCaiWu2",$aNewsCaiWu2);
+	$tpl->assign("aNewsCaiWu3",$aNewsCaiWu3);
+	$tpl->assign("aNewsZhiShi1",$aNewsZhiShi1);
+	$tpl->assign("aNewsZhiShi2",$aNewsZhiShi2);
+	$tpl->assign("aNewsZhiShi3",$aNewsZhiShi3);
+	$tpl->assign("aNewsEMBA1",$aNewsEMBA1);
+	$tpl->assign("aNewsEMBA2",$aNewsEMBA2);
+	$tpl->assign("aNewsEMBA3",$aNewsEMBA3);
+	$tpl->assign("aNewsShuJia1",$aNewsShuJia1);
+	$tpl->assign("aNewsShuJia2",$aNewsShuJia2);
+	$tpl->assign("aNewsShuJia3",$aNewsShuJia3);
+	$tpl->assign("aNewsJiaMeng1",$aNewsJiaMeng1);
+	$tpl->assign("aNewsJiaMeng2",$aNewsJiaMeng2);
+	$tpl->assign("aNewsChengZhang1",$aNewsChengZhang1);
+	$tpl->assign("aNewsChengZhang2",$aNewsChengZhang2);
+	$tpl->assign("aNewsQuDao1",$aNewsQuDao1);
+	$tpl->assign("aNewsQuDao2",$aNewsQuDao2);
+	$tpl->assign("aNewsZhongXiao1",$aNewsZhongXiao1);
+	$tpl->assign("aNewsZhongXiao2",$aNewsZhongXiao2);
+	$tpl->assign("aNewsZhaoShang1",$aNewsZhaoShang1);
+	$tpl->assign("aNewsZhaoShang2",$aNewsZhaoShang2);
+	$tpl->assign("aNewsXieHui1",$aNewsXieHui1);
+	$tpl->assign("aNewsXieHui2",$aNewsXieHui2);
+
+	//广告数据（企业在线首页）
+	loadLib("channel");	
+	$aList = channel::getWebUrlByChannelID(16);
+	$tpl->assign("aList",$aList);
+	$tpl->assign("__AD__PIC",__AD_PIC);
+	
+
+	$tpl->display("html/corporation_xiehui1.tpl.htm");
+}
+elseif($sAction == "doMakeXiehui") // 企业协会生成
+{	
+	$sUrl = __ADMIN_URL.$_SERVER['PHP_SELF']."?act=showXiehui";//$_SERVER['PHP_SELF']表示当前文件名
+	//echo $sUrl;
+	$sContent = file_get_contents($sUrl);
+	//echo $sContent;
+		//exit;
+
+	$fp = fopen("../corporation/Xiehui.htm","w");
+	if(fwrite($fp,$sContent))
+	{
+		redirect("/corporation/Xiehui.htm",3,"页面生成成功！");
+	}
+	else 
+	{
+		redirect("?act=listAll",5,"生成失败！");
+	}	
+}
+
+elseif($sAction == "doMakeComment") // 商业评论页面生成
+{
+	$sUrl = __ADMIN_URL.$_SERVER['PHP_SELF']."?act=showComment";	
+	
+	$sContent = file_get_contents($sUrl);
+	
+	$fp = fopen("../corporation/comment.htm","w");
+	if(fwrite($fp,$sContent))
+	{
+		redirect("/corporation/comment.htm",3,"商业评论生成成功！");
+	}
+	else 
+	{
+		redirect("?act=listAll",5,"生成失败！");
+	}		
+}
+elseif($sAction == "showComment")  // 商业评论页面预览
+{
+	$tpl->assign("sPageTitle","商业评论－".__WEBNAME);
+	
+	//人物热评 
+	$aPersonHot = news::getNewsList(0,27,282);
+	for($i=0;$i<count($aPersonHot);$i++)
+	{
+		$aPersonHot[$i]['title'] = str_replace(" ","",$aPersonHot[$i]['title']);
+	}
+	$tpl->assign("aPersonHot",$aPersonHot);
+	
+	//分析·综述
+	$aAnalyse = news::getNewsList(0,13,283);
+	$tpl->assign("aAnalyse",$aAnalyse);
+	
+	//热点评论
+	$aHotComment = news::getNewsList(0,8,284,"","","addDate"); 
+	for($i=0;$i<count($aHotComment);$i++)
+	{
+		$aHotComment[$i]['addDate'] = substr($aHotComment[$i]['addDate'],0,10);
+	}
+	$tpl->assign("aHotComment",$aHotComment);
+	
+	//企业热评
+	$aCorporationComment = news::getNewsList(0,13,285);
+	$tpl->assign("aCorporationComment",$aCorporationComment);		
+
+	//观察-声音
+	$aObserved =news::getNewsList(0,8,286,"","","addDate");
+	for($i=0;$i<count($aObserved);$i++)
+	{
+		$aObserved[$i]['addDate'] = substr($aObserved[$i]['addDate'],0,10);
+	}
+	$tpl->assign("aObserved",$aObserved);	
+	
+	//风云人物
+	$aDisputedPerson = news::getNewsList(0,2,287,"pic<>''","","pic,intro");
+	$tpl->assign("aDisputedPerson",$aDisputedPerson);
+
+	//观点-时评
+	$aStandPoint = news::getNewsList(0,7,288);
+	$tpl->assign("aStandPoint",$aStandPoint);
+	
+	//广告数据（商业评论）
+	loadLib("channel");	
+	$aList = channel::getWebUrlByChannelID(18);
+	$tpl->assign("aList",$aList);
+	$tpl->assign("__AD_PIC",__AD_PIC);
+	
+	
+	require("../config.php");
+	DBconnect(2);
+
+	//BLOG言论
+	$aBlog = getRecordSet(" select itemid,uid,subject from supe_spaceitems where folder=1 order by itemid desc limit 0, 8 ") ;
+	$tpl->assign("aBlog",$aBlog);	
+
+	$tpl->display("html/corporation_comment.tpl.htm");
+}
+elseif($sAction == "doMakeHuDong") // 商业互动页面生成
+{
+	$sUrl = __ADMIN_URL.$_SERVER['PHP_SELF']."?act=showHuDong";	
+	
+	$sContent = file_get_contents($sUrl);
+	
+	$fp = fopen("../corporation/hudong.htm","w");
+	if(fwrite($fp,$sContent))
+	{
+		redirect("/corporation/hudong.htm",3,"商业互动页面生成成功！");
+	}
+	else 
+	{
+		redirect("?act=listAll",5,"生成失败！");
+	}		
+}
+elseif($sAction == "showHuDong")  // 商业互动页面预览
+{
+	$tpl->assign("sPageTitle","商业互动－".__WEBNAME);
+
+	//领军人物 
+	$aChiefPic =  news::getNewsList(0,2,292,"pic<>''","","pic,intro"); 
+	$aChief = news::getNewsList(0,10,292);
+	$tpl->assign("aChiefPic",$aChiefPic);
+	$tpl->assign("aChief",$aChief);
+	
+	//争议人物
+	$aDisputedPerson = news::getNewsList(0,2,293,"pic<>''","","pic,intro");
+	$tpl->assign("aDisputedPerson",$aDisputedPerson);
+	
+	//专业人士/高级经理（企业家风采）
+	//$aEnterpriserPic1 = news::getNewsList(0,1,69,"pic<>''","","intro,pic"); // 专业人士	
+	$aEnterpriser1 = news::getNewsList(0,8,294); 	
+	//$tpl->assign("aEnterpriserPic1",$aEnterpriserPic1);
+	$tpl->assign("aEnterpriser1",$aEnterpriser1);
+	
+	//$aEnterpriserPic2 = news::getNewsList(0,1,69,"pic<>''","","intro,pic"); // 高级经理	
+	$aEnterpriser2 = news::getNewsList(0,8,295); 	
+	//$tpl->assign("aEnterpriserPic2",$aEnterpriserPic2);
+	$tpl->assign("aEnterpriser2",$aEnterpriser2);
+		
+	//精彩专题
+	$aSubject = news::getNewsList(0,7,296,"","","intro");
+	$tpl->assign("aSubject",$aSubject);
+		
+	//商业新知-战略管理
+	$aTacticManager1 =news::getNewsList(0,8,297);//商业新知
+	//$aTacticManager2 =news::getNewsList(0,8,0);
+	$tpl->assign("aTacticManager1",$aTacticManager1);
+	//$tpl->assign("aTacticManager2",$aTacticManager2);		
+	
+	
+	//财经观察-产业透视
+	$aFinance1 =news::getNewsList(0,8,298);
+	$aFinance2 =news::getNewsList(0,8,299);
+	$tpl->assign("aFinance1",$aFinance1);	
+	$tpl->assign("aFinance2",$aFinance2);	
+	
+		
+	//强媒体排行榜
+	//广告数据（商业互动）
+	loadLib("channel");	
+	$aList = channel::getWebUrlByChannelID(19);
+	$tpl->assign("aList",$aList);
+	$tpl->assign("__AD_PIC",__AD_PIC);	
+	
+
+	
+	//论坛热帖
+	$aBbsPic1 = news::getNewsList(0,1,69,"pic<>''","","pic,intro");//财经理财
+	$aBbs1 = news::getNewsList(0,12,0);	
+	$aBbsPic2 = news::getNewsList(0,1,84,"pic<>''","","pic,intro");//高级经理
+	$aBbs2 = news::getNewsList(0,12,0);	
+	$aBbsPic3 = news::getNewsList(0,1,67,"pic<>''","","pic,intro");//职场提升
+	$aBbs3 = news::getNewsList(0,12,0);	
+	$aBbsPic4 = news::getNewsList(0,1,69,"pic<>''","","pic,intro");//商务互动
+	$aBbs4 = news::getNewsList(0,12,0);	
+	$aBbsPic5 = news::getNewsList(0,1,84,"pic<>''","","pic,intro");//战略管理
+	$aBbs5 = news::getNewsList(0,12,0);
+	
+	$tpl->assign("aBbsPic1",$aBbsPic1);
+	$tpl->assign("aBbs1",$aBbs1);
+	$tpl->assign("aBbsPic2",$aBbsPic2);
+	$tpl->assign("aBbs2",$aBbs2);
+	$tpl->assign("aBbsPic3",$aBbsPic3);
+	$tpl->assign("aBbs3",$aBbs3);
+	$tpl->assign("aBbsPic4",$aBbsPic4);
+	$tpl->assign("aBbs4",$aBbs4);
+	$tpl->assign("aBbsPic5",$aBbsPic5);
+	$tpl->assign("aBbs5",$aBbs5);
+
+	//从博客中调出相应的日志
+	require_once("../config.php");
+	DBconnect(2);
+	//职业分类
+	$sSQL = " select a.itemid,a.uid,a.subject,b.filepath from supe_spaceitems a,supe_attachments b where a.itemid=b.itemid and a.haveattach = '1' order by a.itemid desc" ;
+	$aProfession = getRecordSet($sSQL,1);
+	//print_r($aProfession);exit;
+	$tpl->assign("aProfession",$aProfession);
+	
+	//企业家BLOG
+	$sSQL = " select uid,spacename from supe_userspaces order by uid desc limit 0,28 ";
+	//echo $sSQL;
+	$aEnterpriserBlog =  getRecordSet($sSQL);
+	//print_r($aEnterpriserBlog);exit;
+	$tpl->assign("aEnterpriserBlog",$aEnterpriserBlog);		
+	
+	$tpl->display("html/corporation_hudong.tpl.htm");
+}
+
+
+
+
+elseif($sAction == "showLead") // 企业领袖
+{
+	$tpl->assign("sPageTitle","企业领袖".__WEBNAME);
+	$aNewsToday1 =  news::getNewsList(0,1,309,"","","pic,intro"); // 今日要闻1
+	$aNewsToday2 =  news::getNewsList(0,6,309); // 今日要闻2
+	$aNewsGJshangye1 =  news::getNewsList(0,5,310);//国际商业1
+	//$aNewsGJshangye2 =  news::getNewsList(5,5,0);//国际商业2
+	$aNewsGJshangye3 =  news::getNewsList(0,1,310,"pic<>''","","pic,intro");//国际商业3
+	$aNewsGJhangqing1 =  news::getNewsList(0,5,311);//国际行情1
+	//$aNewsGJhangqing2 =  news::getNewsList(5,10,0);//国际行情2
+	$aNewsGJhangqing3 =  news::getNewsList(0,1,311,"pic<>''","","pic,intro");//国际行情3
+	$aNewsWeek = news::getNewsList(0,10,0,"addDate >='$dDate2'","addDate asc"); // 一周要文	
+	$aNewsJingdian =  news::getNewsList(0,10,0,"","click desc"); // 经典回顾
+	$aNewsPicLead =  news::getNewsList(0,5,314,"pic<>''","","pic,intro"); // 领袖风采
+	$aNewsPicLeadhang =  news::getNewsList(0,1,316,"pic<>''","","pic,intro"); // 行业领袖
+    $aNewsHangGong =  news::getNewsList(0,9,322);  // 行业供应
+	$aNewsGuShi =  news::getNewsList(0,6,317);  // 成功故事
+	$aNewsFangTan =  news::getNewsList(0,6,318);  // 领袖访谈
+	$aNewsPingDian =  news::getNewsList(0,6,319);  // 专家评点
+  	$aNewsDongXiang =  news::getNewsList(0,6,320);//行业动向
+  	$aNewsFaGui =  news::getNewsList(0,6,321);//行业法规
+  	$aNewsCaiJingHQ =  news::getNewsList(0,1,312,"pic<>''","","pic,intro"); // 财经行情
+  	$aNewsCaiJing =  news::getNewsList(0,7,313);  //财经新闻
+  	$aNewsZongJie =  news::getNewsList(0,7,323);  //经验总结
+  	$aNewsHuiLu =  news::getNewsList(0,1,315,"pic<>''","","pic"); //汇率
+  	//$aSupplyPic = supplyDemand::getSupplyDemandList(0,1,0,"pic<>''","","content,pic"); 
+	$aSupply = supplyDemand::getSupplyDemandList(0,9,0);// 供应
+	
+	//$tpl->assign("aSupplyPic",$aSupplyPic);
+	$tpl->assign("aSupply",$aSupply);
+  	$tpl->assign("aNewsHuiLu",$aNewsHuiLu);
+  	$tpl->assign("aNewsCaiJingHQ",$aNewsCaiJingHQ);
+	$tpl->assign("aNewsToday1",$aNewsToday1);
+	$tpl->assign("aNewsToday2",$aNewsToday2);
+	$tpl->assign("aNewsGJshangye1",$aNewsGJshangye1);
+	$tpl->assign("aNewsGJshangye2",$aNewsGJshangye2);
+	$tpl->assign("aNewsGJshangye3",$aNewsGJshangye3);
+	$tpl->assign("aNewsGJhangqing1",$aNewsGJhangqing1);
+	$tpl->assign("aNewsGJhangqing2",$aNewsGJhangqing2);
+	$tpl->assign("aNewsGJhangqing3",$aNewsGJhangqing3);
+	$tpl->assign("aNewsWeek",$aNewsWeek);
+	$tpl->assign("aNewsJingdian",$aNewsJingdian);
+	$tpl->assign("aNewsPicLead",$aNewsPicLead);
+	$tpl->assign("aNewsPicLeadhang",$aNewsPicLeadhang);
+	$tpl->assign("aNewsHangGong",$aNewsHangGong);
+	$tpl->assign("aNewsGuShi",$aNewsGuShi);
+	$tpl->assign("aNewsFangTan",$aNewsFangTan);
+	$tpl->assign("aNewsPingDian",$aNewsPingDian);
+	$tpl->assign("aNewsDongXiang",$aNewsDongXiang);
+	$tpl->assign("aNewsFaGui",$aNewsFaGui);
+	$tpl->assign("aNewsCaiJing",$aNewsCaiJing);
+	$tpl->assign("aNewsZongJie",$aNewsZongJie);
+
+
+
+	//广告数据（企业在线首页）
+	loadLib("channel");	
+	$aList = channel::getWebUrlByChannelID(20);
+	$tpl->assign("aList",$aList);
+	$tpl->assign("__AD_PIC",__AD_PIC);
+	
+
+	$tpl->display("html/corporation_leader.tpl.htm");
+}
+
+
+elseif($sAction == "doMakeLead") // 企业领袖生成
+{	
+	$sUrl = __ADMIN_URL.$_SERVER['PHP_SELF']."?act=showLead";//$_SERVER['PHP_SELF']表示当前文件名
+	//echo $sUrl;
+	$sContent = file_get_contents($sUrl);
+	//echo $sContent;
+		//exit;
+
+	$fp = fopen("../corporation/Lead.htm","w");
+	if(fwrite($fp,$sContent))
+	{
+		redirect("/corporation/Lead.htm",3,"页面生成成功！");
+	}
+	else 
+	{
+		redirect("?act=listAll",5,"生成失败！");
+	}	
+}
+
+elseif($sAction == "showTV") // 企业电视
+{
+	$tpl->assign("sPageTitle","企业电视－".__WEBNAME);
+	
+	//企业管理
+	$aEnterpriserManage = news::getNewsList(0,10,2,"","","","video");
+	//print_r($aEnterpriserManage);
+	$tpl->assign("aEnterpriserManage",$aEnterpriserManage);
+	//热播排行
+	$aHotPlay = news::getNewsList(0,10,3,""," click desc","","video");
+	$tpl->assign("aHotPlay",$aHotPlay);
+	//最新播报
+	$aLatestPlay = news::getNewsList(0,5,4,"","","","video");
+	$tpl->assign("aLatestPlay",$aLatestPlay);	
+	//财经
+	$aFinancePic = news::getNewsList(0,1,6,"pic<>''","","pic,intro","video");
+	$aFinance = news::getNewsList(0,11,0,"","","","video");
+	$tpl->assign("aFinance",$aFinance);	
+	$tpl->assign("aFinancePic",$aFinancePic);
+	
+	//领袖风采
+	$aChief = news::getNewsList(0,5,5,"","","","video");
+	$tpl->assign("aChief",$aChief);	
+
+	$tpl->assign("__VIDEO_HTM",__VIDEO_HTM);
+	$tpl->assign("__VIDEO_PIC",__VIDEO_PIC);
+	
+	//广告数据（企业在线首页）
+	loadLib("channel");	
+	$aList = channel::getWebUrlByChannelID(23);
+	$tpl->assign("aList",$aList);
+	$tpl->assign("__AD_PIC",__AD_PIC);
+
+	$tpl->display("html/corporation_TV.tpl.htm");
+}
+
+
+elseif($sAction == "doMakeTV") // 企业电视生成
+{	
+	$sUrl = __ADMIN_URL.$_SERVER['PHP_SELF']."?act=showTV";//$_SERVER['PHP_SELF']表示当前文件名
+	//echo $sUrl;
+	$sContent = file_get_contents($sUrl);
+	//echo $sContent;
+		//exit;
+
+	$fp = fopen("../corporation/TV.htm","w");
+	if(fwrite($fp,$sContent))
+	{
+		redirect("/corporation/TV.htm",3,"页面生成成功！");
+	}
+	else 
+	{
+		redirect("?act=listAll",5,"生成失败！");
+	}	
+}
+
+else 
+{	
+	showError("参数错误！");
+}
+?>

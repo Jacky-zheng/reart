@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>后台管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+
+
+<link rel="stylesheet" type="text/css" id="css" href="images/admincp.css">
+<script src="../js/common.js" type="text/javascript"></script>
+<script src="../js/iframe.js" type="text/javascript"></script>
+
+<script>
+var collapsed = getcookie('cdb_collapse');
+function collapse_change(menucount) {
+	if($('menu_' + menucount).style.display == 'none') {
+		$('menu_' + menucount).style.display = '';collapsed = collapsed.replace('[' + menucount + ']' , '');
+		$('menuimg_' + menucount).src = 'images/menu_reduce.gif';
+	} else {
+		$('menu_' + menucount).style.display = 'none';collapsed += '[' + menucount + ']';
+		$('menuimg_' + menucount).src = 'images/menu_add.gif';
+	}
+	//setcookie('cdb_collapse', collapsed, 2592000);
+}
+
+function showOrHiddenAllMenu(iType,iBig)
+{
+	
+	var bigMenuNum = iBig;
+	
+	if(iType == 1)
+	{
+		//show all
+		for(var i=0; i < bigMenuNum; i++)
+		{
+			$("menu_" + i).style.display = "";
+		}
+	} else
+	{
+		//hidden all
+		for(var i=0; i < bigMenuNum; i++)
+		{
+			$("menu_" + i).style.display = "none";
+		}
+	}
+}
+
+
+</script>
+
+
+</head>
+
+<body style="margin:5px!important;margin:3px;">
+<table width="146" border="0" cellspacing="0" align="center" cellpadding="0" class="leftmenulist" style="margin-bottom: 5px;">
+<tr class="leftmenutext">
+	<td bgcolor="#F8F8F8" align="center" height="18">
+	<span onclick="showOrHiddenAllMenu(1,11);" style="cursor:hand;" title="展开所有菜单">&nbsp&nbsp&nbsp&nbsp&nbsp[ 展开]</span>&nbsp;&nbsp;&nbsp;&nbsp;
+	<span onclick="showOrHiddenAllMenu(0,11);" style="cursor:hand;" title="关闭所有菜单">[ 关闭]</span>
+	</td>
+</tr>
+</table>
+
+<table width="146" border="0" cellspacing="0" align="center" cellpadding="0" class="leftmenulist" style="margin-bottom: 5px;">
+
+	<tr class="leftmenutext">
+		<td>
+			<div align="center">
+				<a href="/" target="_blank">网站首页</a>&nbsp;&nbsp;				
+				<a href="home.php" target="main">后台首页</a>
+			</div>
+		</td>
+	</tr>
+</table>
+
+<div id="home">
+
+
+		  
+ 
+<table width="146" border="0" cellspacing="0" align="center" cellpadding="0" class="leftmenulist" style="margin-bottom: 5px;">
+	<tr class="leftmenutext">
+		<td>
+			<a href="###" onclick="collapse_change(0)">
+				<img id="menuimg_0" src="images/menu_reduce.gif" border="0">
+			</a>&nbsp;
+			<a href="###" onclick="collapse_change(0)">资讯管理</a>
+		</td>
+	</tr>
+	<tbody id="menu_1" style="display:">
+	<tr class="leftmenutd">
+		<td>
+			<table border="0" cellspacing="0" cellpadding="0" class="leftmenuinfo">
+			 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 									<tr><td><a href="news.php?act=add" target="main">添加资讯</a></td></tr>
+							 									<tr><td><a href="news.php?act=listAll" target="main">资讯列表</a></td></tr>
+							 									<tr><td><a href="question.php?act=add" target="main">添加问吧问题</a></td></tr>
+							 									<tr><td><a href="question.php?act=listAll" target="main">问吧资讯列表</a></td></tr>
+							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 									<tr><td><a href="default_news.php?act=add" target="main">添加代理商默认资讯</a></td></tr>
+							 									<tr><td><a href="default_news.php?act=listAll" target="main">代理商默认资讯列表</a></td></tr>
+							 							 							 							 							 							 							 							 									<tr><td><a href="union_news.php?act=add" target="main">添加服务联盟资讯</a></td></tr>
+							 									<tr><td><a href="union_news.php?act=listAll" target="main">服务联盟资讯列表</a></td></tr>
+							 							 							 							 							 							 							 							 							 							 								
+			</table>
+		</td>
+	</tr>
+	</tbody>
+</table>
+ 
+<table width="146" border="0" cellspacing="0" align="center" cellpadding="0" class="leftmenulist" style="margin-bottom: 5px;">
+	<tr class="leftmenutext">
+		<td>
+			<a href="###" onclick="collapse_change(1)">
+				<img id="menuimg_1" src="images/menu_reduce.gif" border="0">
+			</a>&nbsp;
+			<a href="###" onclick="collapse_change(1)">视频管理</a>
+		</td>
+	</tr>
+	<tbody id="menu_2" style="display:">
+	<tr class="leftmenutd">
+		<td>
+			<table border="0" cellspacing="0" cellpadding="0" class="leftmenuinfo">
+			 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 									<tr><td><a href="video.php?act=add" target="main">添加视频</a></td></tr>
+							 									<tr><td><a href="video.php?act=listAll" target="main">视频列表</a></td></tr>
+							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 								
+			</table>
+		</td>
+	</tr>
+	</tbody>
+</table>
+ 
+<table width="146" border="0" cellspacing="0" align="center" cellpadding="0" class="leftmenulist" style="margin-bottom: 5px;">
+	<tr class="leftmenutext">
+		<td>
+			<a href="###" onclick="collapse_change(2)">
+				<img id="menuimg_2" src="images/menu_reduce.gif" border="0">
+			</a>&nbsp;
+			<a href="###" onclick="collapse_change(2)">静态页面管理</a>
+		</td>
+	</tr>
+	<tbody id="menu_3" style="display:">
+	<tr class="leftmenutd">
+		<td>
+			<table border="0" cellspacing="0" cellpadding="0" class="leftmenuinfo">
+			 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 									<tr><td><a href="makeHtml.php?act=listAll" target="main">静态页面列表</a></td></tr>
+							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 									<tr><td><a href="makeAD.php?act=listAll" target="main">广告生成</a></td></tr>
+							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 								
+			</table>
+		</td>
+	</tr>
+	</tbody>
+</table>
+ 
+<table width="146" border="0" cellspacing="0" align="center" cellpadding="0" class="leftmenulist" style="margin-bottom: 5px;">
+	<tr class="leftmenutext">
+		<td>
+			<a href="###" onclick="collapse_change(3)">
+				<img id="menuimg_3" src="images/menu_reduce.gif" border="0">
+			</a>&nbsp;
+			<a href="###" onclick="collapse_change(3)">内容管理</a>
+		</td>
+	</tr>
+	<tbody id="menu_4" style="display:">
+	<tr class="leftmenutd">
+		<td>
+			<table border="0" cellspacing="0" cellpadding="0" class="leftmenuinfo">
+			 							 							 							 							 									<tr><td><a href="rich4_product.php?act=listAll" target="main">rich产品列表</a></td></tr>
+							 							 									<tr><td><a href="rich4_supplyDemand.php?act=listAll" target="main">rich供求列表</a></td></tr>
+							 							 							 									<tr><td><a href="complaint.php?act=add" target="main">添加投诉</a></td></tr>
+							 									<tr><td><a href="complaint.php?act=listAll" target="main">投诉列表</a></td></tr>
+							 							 							 									<tr><td><a href="praise.php?act=add" target="main">添加表扬</a></td></tr>
+							 							 									<tr><td><a href="praise.php" target="main">表扬列表</a></td></tr>
+							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 								
+			</table>
+		</td>
+	</tr>
+	</tbody>
+</table>
+ 
+<table width="146" border="0" cellspacing="0" align="center" cellpadding="0" class="leftmenulist" style="margin-bottom: 5px;">
+	<tr class="leftmenutext">
+		<td>
+			<a href="###" onclick="collapse_change(4)">
+				<img id="menuimg_4" src="images/menu_reduce.gif" border="0">
+			</a>&nbsp;
+			<a href="###" onclick="collapse_change(4)">会员管理</a>
+		</td>
+	</tr>
+	<tbody id="menu_5" style="display:">
+	<tr class="leftmenutd">
+		<td>
+			<table border="0" cellspacing="0" cellpadding="0" class="leftmenuinfo">
+			 							 							 							 							 							 							 							 									<tr><td><a href="rich4_company.php?act=listAll" target="main">rich企业会员列表</a></td></tr>
+							 							 							 							 									<tr><td><a href="person.php?act=listAll" target="main">个人/专家会员列表</a></td></tr>
+							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 								
+			</table>
+		</td>
+	</tr>
+	</tbody>
+</table>
+ 
+<table width="146" border="0" cellspacing="0" align="center" cellpadding="0" class="leftmenulist" style="margin-bottom: 5px;">
+	<tr class="leftmenutext">
+		<td>
+			<a href="###" onclick="collapse_change(5)">
+				<img id="menuimg_5" src="images/menu_reduce.gif" border="0">
+			</a>&nbsp;
+			<a href="###" onclick="collapse_change(5)">代理管理</a>
+		</td>
+	</tr>
+	<tbody id="menu_6" style="display:">
+	<tr class="leftmenutd">
+		<td>
+			<table border="0" cellspacing="0" cellpadding="0" class="leftmenuinfo">
+			 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 									<tr><td><a href="consumer.php?act=add" target="main">添加消协</a></td></tr>
+							 									<tr><td><a href="consumer.php?act=listAll" target="main">消协列表</a></td></tr>
+							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 								
+			</table>
+		</td>
+	</tr>
+	</tbody>
+</table>
+ 
+<table width="146" border="0" cellspacing="0" align="center" cellpadding="0" class="leftmenulist" style="margin-bottom: 5px;">
+	<tr class="leftmenutext">
+		<td>
+			<a href="###" onclick="collapse_change(6)">
+				<img id="menuimg_6" src="images/menu_reduce.gif" border="0">
+			</a>&nbsp;
+			<a href="###" onclick="collapse_change(6)">广告管理</a>
+		</td>
+	</tr>
+	<tbody id="menu_7" style="display:">
+	<tr class="leftmenutd">
+		<td>
+			<table border="0" cellspacing="0" cellpadding="0" class="leftmenuinfo">
+			 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 									<tr><td><a href="channel.php?act=add" target="main">添加广告位</a></td></tr>
+							 									<tr><td><a href="channel.php?act=listAll" target="main">广告位列表</a></td></tr>
+							 									<tr><td><a href="banner.php?act=listAll" target="main">上稿单列表</a></td></tr>
+							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 									<tr><td><a href="channel.php?act=add&isAgent=1" target="main">添加分站默认广告位</a></td></tr>
+							 									<tr><td><a href="channel.php?act=listAll&isAgent=1" target="main">分站默认广告列表</a></td></tr>
+							 									<tr><td><a href="banner.php?act=listAll&isAgent=1" target="main">分站默认上稿单</a></td></tr>
+							 							 							 							 							 							 							 								
+			</table>
+		</td>
+	</tr>
+	</tbody>
+</table>
+ 
+<table width="146" border="0" cellspacing="0" align="center" cellpadding="0" class="leftmenulist" style="margin-bottom: 5px;">
+	<tr class="leftmenutext">
+		<td>
+			<a href="###" onclick="collapse_change(7)">
+				<img id="menuimg_7" src="images/menu_reduce.gif" border="0">
+			</a>&nbsp;
+			<a href="###" onclick="collapse_change(7)">类别管理</a>
+		</td>
+	</tr>
+	<tbody id="menu_8" style="display:">
+	<tr class="leftmenutd">
+		<td>
+			<table border="0" cellspacing="0" cellpadding="0" class="leftmenuinfo">
+			 									<tr><td><a href="category.php?act=add&tbl=news_class" target="main">添加资讯类</a></td></tr>
+							 									<tr><td><a href="category.php?act=listAll&tbl=news_class" target="main">资讯类列表</a></td></tr>
+							 									<tr><td><a href="category.php?act=add&tbl=law_class" target="main">添加法律类</a></td></tr>
+							 									<tr><td><a href="category.php?act=listAll&tbl=law_class" target="main">法律类列表</a></td></tr>
+							 							 									<tr><td><a href="category.php?act=add" target="main">添加行业</a></td></tr>
+							 							 							 									<tr><td><a href="category.php?act=listAll&tbl=hangye" target="main">行业列表</a></td></tr>
+							 							 							 							 									<tr><td><a href="category.php?act=add&tbl=area" target="main">添加地区</a></td></tr>
+							 							 									<tr><td><a href="category.php?act=listAll&tbl=area" target="main">地区列表</a></td></tr>
+							 							 							 							 							 							 							 							 							 							 							 							 									<tr><td><a href="category.php?act=add&tbl=person_news_class" target="main">添加个人资讯类</a></td></tr>
+							 									<tr><td><a href="category.php?act=listAll&tbl=person_news_class" target="main">个人资讯类别列表</a></td></tr>
+							 									<tr><td><a href="category.php?act=add&tbl=expert_news_class" target="main">添加专家资讯类</a></td></tr>
+							 									<tr><td><a href="category.php?act=listAll&tbl=expert_news_class" target="main">专家资讯类别列表</a></td></tr>
+							 									<tr><td><a href="category.php?act=add&tbl=complaint_class" target="main">添加投诉类别</a></td></tr>
+							 									<tr><td><a href="category.php?act=listAll&tbl=complaint_class" target="main">投诉类别列表</a></td></tr>
+							 							 							 							 									<tr><td><a href="category.php?act=add&tbl=question_class" target="main">添加问吧类别</a></td></tr>
+							 									<tr><td><a href="category.php?act=listAll&tbl=question_class" target="main">问吧类别列表</a></td></tr>
+							 									<tr><td><a href="category.php?act=add&tbl=default_class" target="main">添加代理商默认类别</a></td></tr>
+							 									<tr><td><a href="category.php?act=listAll&tbl=default_class" target="main">代理商默认类别列表</a></td></tr>
+							 							 							 							 							 							 									<tr><td><a href="category.php?act=add&tbl=video_class" target="main">添加视频类</a></td></tr>
+							 									<tr><td><a href="category.php?act=listAll&tbl=video_class" target="main">视频类列表</a></td></tr>
+							 									<tr><td><a href="category.php?act=add&tbl=union1_class" target="main">添加服务联盟类别</a></td></tr>
+							 									<tr><td><a href="category.php?act=listAll&tbl=union1_class" target="main">服务联盟类别列表</a></td></tr>
+							 							 							 							 							 							 							 							 							 							 							 							 								
+			</table>
+		</td>
+	</tr>
+	</tbody>
+</table>
+ 
+<table width="146" border="0" cellspacing="0" align="center" cellpadding="0" class="leftmenulist" style="margin-bottom: 5px;">
+	<tr class="leftmenutext">
+		<td>
+			<a href="###" onclick="collapse_change(8)">
+				<img id="menuimg_8" src="images/menu_reduce.gif" border="0">
+			</a>&nbsp;
+			<a href="###" onclick="collapse_change(8)">消息中心</a>
+		</td>
+	</tr>
+	<tbody id="menu_9" style="display:">
+	<tr class="leftmenutd">
+		<td>
+			<table border="0" cellspacing="0" cellpadding="0" class="leftmenuinfo">
+			 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 									<tr><td><a href="comment.php?act=listAll" target="main">网站评论</a></td></tr>
+							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 								
+			</table>
+		</td>
+	</tr>
+	</tbody>
+</table>
+ 
+<table width="146" border="0" cellspacing="0" align="center" cellpadding="0" class="leftmenulist" style="margin-bottom: 5px;">
+	<tr class="leftmenutext">
+		<td>
+			<a href="###" onclick="collapse_change(9)">
+				<img id="menuimg_9" src="images/menu_reduce.gif" border="0">
+			</a>&nbsp;
+			<a href="###" onclick="collapse_change(9)">法律法规管理</a>
+		</td>
+	</tr>
+	<tbody id="menu_10" style="display:">
+	<tr class="leftmenutd">
+		<td>
+			<table border="0" cellspacing="0" cellpadding="0" class="leftmenuinfo">
+			 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 									<tr><td><a href="law.php?act=add" target="main">添加法律法规</a></td></tr>
+							 									<tr><td><a href="law.php?act=listAll" target="main">法律法规列表</a></td></tr>
+							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 								
+			</table>
+		</td>
+	</tr>
+	</tbody>
+</table>
+ 
+<table width="146" border="0" cellspacing="0" align="center" cellpadding="0" class="leftmenulist" style="margin-bottom: 5px;">
+	<tr class="leftmenutext">
+		<td>
+			<a href="###" onclick="collapse_change(10)">
+				<img id="menuimg_10" src="images/menu_reduce.gif" border="0">
+			</a>&nbsp;
+			<a href="###" onclick="collapse_change(10)">投诉统计</a>
+		</td>
+	</tr>
+	<tbody id="menu_11" style="display:">
+	<tr class="leftmenutd">
+		<td>
+			<table border="0" cellspacing="0" cellpadding="0" class="leftmenuinfo">
+			 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 							 									<tr><td><a href="report.php?act=way" target="main">按投诉方式</a></td></tr>
+							 									<tr><td><a href="report.php?act=hangye" target="main">按投诉行业</a></td></tr>
+							 									<tr><td><a href="report.php?act=type" target="main">按投诉类别</a></td></tr>
+							 									<tr><td><a href="report.php?act=area" target="main">按投诉来源</a></td></tr>
+							 									<tr><td><a href="report.php?act=search" target="main">投诉查询</a></td></tr>
+							 									<tr><td><a href="report.php?act=profession" target="main">按投诉人从事职业</a></td></tr>
+							 									<tr><td><a href="report.php?act=age" target="main">按投诉人年龄</a></td></tr>
+								
+			</table>
+		</td>
+	</tr>
+	</tbody>
+</table>
+</div>
+
+<table width="146" border="0" cellspacing="0" align="center" cellpadding="0" class="leftmenulist">
+	<tr class="leftmenutext">
+		<td><div style="margin-left:48px;"><a href="login.php?act=logout" target="_top">退出</a></td>
+	</tr>
+</table>
+</body>
+</html>

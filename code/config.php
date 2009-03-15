@@ -89,12 +89,11 @@ function insert($sTableName, $aField)
 		}
 		$sField = substr($sField, 0, -1).")";
 		$sValue = substr($sValue, 0, -1).")";
-		$sSQL .= $sField." VALUES ".$sValue;		
+		$sSQL .= $sField." VALUES ".$sValue;
 		mysql_query($sSQL);
 		$iInsertID = mysql_insert_id();
 		return $iInsertID;		
 }
-
 
 /**
  * 更新数据操作
@@ -115,8 +114,46 @@ function update($sTableName, $aField, $sWhere) {
 	$sSQL .= $sField." WHERE {$sWhere}";
 	return mysql_query($sSQL);
 }
-
-
+/**
+ * 检测用户名是否已经存在
+ * @param string $aField
+ * @return true or false
+ */
+function checkNameRepeat( $aField )
+{
+	$sSQL = "SELECT count(userName) as num FROM member WHERE userName ='".$aField."'";
+	$sQUE = mysql_query($sSQL);
+	if ($sQUE["num"] < 0 ) return true;
+	else return false;	
+}
+/**
+ * 检测邮箱格式
+ * @param string $aField
+ * @return true or false
+ */
+function checkEmail( $aField )
+{
+	$email = preg_match("/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/",$aField);
+	if ($email) return true;
+	else return false;
+}
+/**
+ * 检测登陆
+ * @param $arr array
+ * @return true or false
+ * 
+ */
+function checkUserLogin($arr)
+{
+	$sql = "SELECT * FROM member WHERE userName='".$arr["userName"]."' AND pwd='".md5($arr["pwd"])."'";
+	$que = mysql_query($sql);
+	if ($que) return true;
+	else return false;
+}
+function checkUserState()
+{
+	
+}
 define("TIME_INTERVAL",60*60*12);		//cookie时间间隔  （12 hour）
 $__WEB_URL = "http://www.cn315.cc";		//网址
 ?>

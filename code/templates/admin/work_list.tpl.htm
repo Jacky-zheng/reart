@@ -1,0 +1,106 @@
+{include file=admin/header.tpl.htm}
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+<form name="form1" id="form1" method="post">
+  <tr>
+    <td align="center" colspan="8">
+      <input type="radio" name="status" value="0" onclick="location.href='?act=listAll&status=0&cID='+cID.value;" {if $iStatus == 0} checked {/if} />
+      普通区&nbsp;
+      <input type="radio" name="status" value="1" onclick="location.href='?act=listAll&status=1&cID='+cID.value;" {if $iStatus == 1} checked {/if} />
+      推荐区&nbsp;
+      <input type="radio" name="status" value="-1" onclick="location.href='?act=listAll&status=-1&cID='+cID.value;" {if $iStatus == -1} checked {/if} />
+      全部&nbsp;
+      <input type="text" name="q" value="{$q}" />
+      <select name="cID" onchange="location.href='?act=listAll&cID='+cID.value;">
+        <option value="0">所有</option>
+        
+			{$sOptions}
+		  
+      </select>
+      <input type="submit" value="搜索" />
+    </td>
+  </tr>
+  <tr  class="header">
+    <td width="4%">&nbsp;</td>
+    <td width="17%">作品名称</td>
+    <td width="17%">作品类别</td>
+    <td width="14%">价格</td>
+    <td width="14%">年代</td>
+    <td width="12%">作家</td>
+    <td width="17%">添加时间</td>
+    <td width="5%">操作</td>
+  </tr>
+  {section name=list loop=$aList}
+  <tr bgcolor="#FFFFFF">
+    <td><input type="checkbox" name="newsID[]" id="newsID[]" value="{$aList[list].id}" /></td>
+    <td>{$aList[list].name}</td>
+    <td>{$aList[list].catName}</td>
+    <td>{$aList[list].price}</td>
+    <td>{$aList[list].age}</td>
+    <td>{$aList[list].artist}</td>
+    <td>{$aList[list].addDate}</td>
+    <td><a href="?act=edit&id={$aList[list].id}">编辑</a> </td>
+  </tr>
+  {/section}
+  <tr bgcolor="#FFFFFF">
+    <td colspan=8><input name="checkbox" type='checkbox' onclick="CheckAll(this.form.elements['newsID[]'], this.checked)" />
+      全选/反选
+      {if $iStatus == 0} {* 普通区 *}
+        <input type="button" name="recommend" value="推 荐" onclick="SubmitForm('recommend');" />
+        <input type="button" name="recycle"  value="删 除" onclick="SubmitForm('recycle');" />
+      {elseif $iStatus == 1}{* 推荐 *}
+      <input type="button" name="uncheck" value="设为普通" onclick="SubmitForm('uncheck');" />
+      <input type="button" name="recycle"  value="删 除" onclick="SubmitForm('recycle');" />
+      {else}
+      <input type="button" name="recycle"  value="删 除" onclick="SubmitForm('recycle');" />
+      {/if}</td>
+  </tr>
+   </form>
+</table>
+<br>
+{include file=admin/pager_bar.tpl.htm}
+
+
+{include file=admin/footer.tpl.htm}
+
+{literal}
+<script language="javascript">
+function CheckAll(srcElem, do_check){
+        if(typeof(srcElem)=='undefined') return;
+        var cnt = (typeof(srcElem.length)!='undefined')? srcElem.length : 0;
+        if(cnt){
+                for(var i=0;i<cnt; i++)
+                        srcElem[i].checked = do_check;
+        }else
+                srcElem.checked = do_check;
+}
+function SubmitForm()
+{	
+    if (arguments.length<=0) return false;
+	var FormObject;
+    FormObject = document.getElementsByTagName("FORM")[0];
+    if ((FormObject==null)||(FormObject==undefined)) return false;
+   // alert(arguments[0]);
+    switch(arguments[0])
+    {
+    	case "recycle": var str = "放入回收站"; break;
+    	case "del": var str = "彻底删除"; break;
+    	case "check": var str = "进行审核"; break;
+    	case "recommend": var str = "设为推荐"; break;
+    	case "uncheck": var str = "设为未审核"; break;
+    	case "copy": var str = "处理数据"; break;
+    	default: break;    	
+    }
+    
+    if(confirm("您真的要将选中的"+str+"吗?") == true)
+    {
+{/literal}    	
+    	FormObject.action = "?act="+arguments[0]+"&status={$iStatus}&cID={$cID}";
+{literal}    	
+    	FormObject.submit();
+    }    
+  }  
+ 
+</script>
+{/literal}
+

@@ -1,0 +1,86 @@
+{include file=admin/header.tpl.htm}
+<form name="form1" method="post">
+<table width='100%' border='1' cellspacing='0' cellpadding='0' align='center' bordercolordark='#FFFFFF' bordercolorlight='#000000'  bgcolor='#efefef'> 
+           <tr bgcolor="#FFFFFF"> 
+            
+           	<td align="center">内容关键字：<input type="text" name="q" value="{$q}">
+           	  (输入留言内容进行模糊搜索)
+        		<input type="submit" value="提交">
+           	</td> 
+          </tr>         
+</table>
+{include file=admin/pager_bar.tpl.htm} {* 分页 *}
+			
+		<table class="tableborder" width="100%" cellpadding="0" cellspacing="0" align="center">	
+		<tr class="header">
+			<td>{$sActName}</td>	
+		</tr>		
+		
+        <tr bgcolor="#ffffff"><td>
+                   
+         {section name="list" loop=$aList}
+		<table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#666666" style="display:" id="s_{$smarty.section.list.index}" align="center">
+		
+		                       <tr bgcolor="#FFFFFF">
+                              <td width="5%" rowspan="7" align="center"><input type='checkbox' name="id[]" value="{$aList[list].id}"></td> 
+							  <td width="8%"><font color="red">姓名：</font></td>
+							  <td><font color="red">{$aList[list].userName}</font></td>
+							</tr>                                                               
+                           
+                            <tr bgcolor="#FFFFFF">
+                            	<td><font color="#666666">留言内容：</font></td>
+								<td>
+									<font color="#CC0000">留言时间：{$aList[list].addDate}</font><br>
+                                	<font color="#666666">{$aList[list].content}</font>								</td>
+                            </tr>                           
+						
+                          </table>
+                          <br>                         
+          {/section}
+           <center>
+           		<input type='checkbox' onclick="CheckAll(this.form.elements['id[]'], this.checked)">全选/反选 
+           		<input type="button" name="check" value="删除" onclick="SubmitForm('del');">
+           </center>
+          </form>
+		  </td></tr>
+		  		
+		</table>
+          </form>		
+{include file=admin/pager_bar.tpl.htm}<br> {* 分页 *}	
+{include file=admin/footer.tpl.htm}
+
+{literal}
+<script language="javascript">
+function CheckAll(srcElem, do_check){
+        if(typeof(srcElem)=='undefined') return;
+        var cnt = (typeof(srcElem.length)!='undefined')? srcElem.length : 0;
+        if(cnt){
+                for(var i=0;i<cnt; i++)
+                        srcElem[i].checked = do_check;
+        }else
+                srcElem.checked = do_check;
+}
+function SubmitForm()
+{	
+    if (arguments.length<=0) return false;
+    FormObject = document.getElementsByTagName("FORM")[0];
+    if ((FormObject==null)||(FormObject==undefined)) return false;
+   // alert(arguments[0]);
+    switch(arguments[0])
+    {
+    	case "del": var str = "删除"; break;
+    	case "check": var str = "审核"; break;
+    	default: break;    	
+    }
+    
+    if(confirm("您真的要将选中的"+str+"吗?") == true)
+    {
+{/literal}    	
+    	FormObject.action = "?act="+arguments[0]+"&status={$iStatus}";
+{literal}    	
+    	FormObject.submit();
+    }    
+  }  
+ 
+</script>
+{/literal}

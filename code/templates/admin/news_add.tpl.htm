@@ -1,0 +1,86 @@
+{include file=admin/header.tpl.htm}
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+		<form name="add" method="POST" action="?act=addSave" enctype="multipart/form-data" onsubmit="return checkInput();">
+		<tr class="header">
+			<td colspan="2">{$PAGE_FUNC_SMALL_NAME}</td>
+		</tr>
+		<tr>
+			<td width="100" class="altbg1">作品所属类别：</td>
+			<td class="altbg2">
+			<select name="cID">
+				{$sOptions}
+			</select>&nbsp;&nbsp; <span class="starHit">*</span></td>
+		</tr>
+		<tr>
+			<td class="altbg1">作品名称：</td>
+			<td class="altbg2"><input type="text" id="title" name="title" size="40" value=""> <span class="starHit">*</span></td>
+		</tr>
+		<tr>
+			<td class="altbg1">作品价格：</td>
+			<td class="altbg2"><input type="text" name="keywords" size="40" value=""></td>
+		</tr>
+		<tr>
+			<td class="altbg1">作品年代：</td>
+			<td class="altbg2"><input type="text" id="intro" name="intro" size="40" value=""></td>
+		</tr>
+		<tr>
+			<td class="altbg1">作品状态：</td>
+			<td class="altbg2">{html_radios name="status" options="$aENUM" checked=0}<span class="starHit">*</span></td>
+		</tr>		
+		<tr>
+			<td class="altbg1">作品点评：</td>
+			<td class="altbg2"><textarea name="textarea" cols="50" rows="5"></textarea></td>
+		</tr>			
+		
+		<tr>
+			<td class="altbg1">新闻内容：</td>
+			<td class="altbg2">{$sContent}</td>
+		</tr>
+		<tr>
+			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="返回" class="button"></td>
+			<td align="right" class="altbg2"><input type="submit" name="submit" value=" 提 交 " class="submit"></td>	
+		</tr>
+		</form>
+</table>
+{literal}
+<script language="javascript">
+//验证表单输入是否正确
+function checkInput()
+{
+	if($('cID').value =="")
+	{
+		alert("请选择所属栏目！");
+		$('cID').focus();
+		return false;	
+	}
+	if($('hangyeID').value =="")
+	{
+		alert("请选择所属行业！");
+		$('hangyeID').focus();
+		return false;	
+	}
+	if($('title').value =="")
+	{
+		alert("新闻标题不能为空！");
+		$('title').focus();
+		return false;	
+	}
+	if($('keywords').value =="")
+	{
+		alert("新闻关键字不能为空！");
+		$('keywords').focus();
+		return false;	
+	}
+	if($('intro').value =="")
+	{
+		alert("新闻简介不能为空！");
+		$('intro').focus();
+		return false;	
+	}
+	return true;
+}
+</script>
+{/literal}
+
+ {include file=admin/footer.tpl.htm}

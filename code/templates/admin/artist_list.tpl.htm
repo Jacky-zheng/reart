@@ -1,0 +1,80 @@
+{include file=admin/header.tpl.htm}
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder"><form name="form1" method="post" onsubmit="return checkForm();"><tr bgcolor="#FFFFFF"><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+
+  <tr  class="header">
+    <td width="5%">&nbsp;</td>
+    <td>姓名</td>
+    <td>性别</td>
+    <td>职业</td>
+    <td>出生日期</td>
+
+    <td>操作</td>
+  </tr>
+  {section name=list loop=$aList}
+  <tr bgcolor="#FFFFFF">
+    <td><input type="checkbox" name="newsID[]" id="newsID[]" value="{$aList[list].id}" /></td>
+    <td>{$aList[list].name}</td>
+    <td>{if  $aList[list].sex eq '0'}男{else} 女{/if}</td>
+    <td>{$aList[list].profession}</td>
+    <td>{$aList[list].birthday}</td>
+
+    <td> <a href="?act=edit&id={$aList[list].id}">编辑</a> </td>
+  </tr>
+  {/section}
+  <tr bgcolor="#FFFFFF">
+    <td colspan=8><input type='checkbox' onclick="CheckAll(this.form.elements['newsID[]'], this.checked)" />
+      全选/反选
+
+      <input type="button" name="del" value="删 除" onclick="SubmitForm('del');" /></td>
+  </tr>
+</table>  </td>
+		    </tr>
+</form>	
+</table>
+<br>
+{include file=admin/pager_bar.tpl.htm}
+
+
+{include file=admin/footer.tpl.htm}
+
+{literal}
+<script language="javascript">
+function CheckAll(srcElem, do_check){
+        if(typeof(srcElem)=='undefined') return;
+        var cnt = (typeof(srcElem.length)!='undefined')? srcElem.length : 0;
+        if(cnt){
+                for(var i=0;i<cnt; i++)
+                        srcElem[i].checked = do_check;
+        }else
+                srcElem.checked = do_check;
+}
+function SubmitForm()
+{	
+    if (arguments.length<=0) return false;
+    FormObject = document.getElementsByTagName("FORM")[0];
+    if ((FormObject==null)||(FormObject==undefined)) return false;
+   // alert(arguments[0]);
+    switch(arguments[0])
+    {
+    	case "recycle": var str = "放入回收站"; break;
+    	case "del": var str = "彻底删除"; break;
+    	case "check": var str = "进行审核"; break;
+    	case "recommend": var str = "设为推荐"; break;
+    	case "uncheck": var str = "设为未审核"; break;
+    	case "copy": var str = "处理数据"; break;
+    	default: break;    	
+    }
+    
+    if(confirm("您真的要将选中的"+str+"吗?") == true)
+    {
+{/literal}    	
+    	FormObject.action = "?act="+arguments[0]+"&status={$iStatus}&cID={$cID}&cID1={$cID1}";
+{literal}    	
+    	FormObject.submit();
+    }    
+  }  
+ 
+</script>
+{/literal}
+

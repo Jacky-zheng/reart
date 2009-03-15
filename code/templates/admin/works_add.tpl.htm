@@ -1,0 +1,127 @@
+{include file=admin/header.tpl.htm}
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+		<form name="add" method="POST" action="?act=addSave" enctype="multipart/form-data" onsubmit="return checkInput();">
+		<tr class="header">
+			<td colspan="2">{$PAGE_FUNC_SMALL_NAME}</td>
+		</tr>
+		<tr>
+			<td width="100" class="altbg1">所属栏目：</td>
+			<td class="altbg2">
+			<select name="cID">
+				{$sOptions}
+			</select>&nbsp;&nbsp; <span class="starHit">*</span></td>
+		</tr>
+		<tr>
+			<td width="100" class="altbg1">所属行业：</td>
+			<td class="altbg2">
+			<select name="hangyeID">
+				{html_options options=$aHangyeList selected=$iHangyeID}
+			</select>&nbsp;&nbsp; <span class="starHit">*</span></td>
+		</tr>
+		<tr>
+			<td class="altbg1">新闻标题：</td>
+			<td class="altbg2"><input type="text" id="title" name="title" size="40" value=""> <span class="starHit">*</span></td>
+		</tr>
+		<tr>
+			<td class="altbg1">新闻关键字：</td>
+			<td class="altbg2"><input type="text" name="keywords" size="40" value="">(两个关键字以上用","隔开) <span class="starHit">*</span></td>
+		</tr>
+		<tr>
+			<td class="altbg1">新闻简介：</td>
+			<td class="altbg2"><input type="text" id="intro" name="intro" size="100" value=""> <span class="starHit">*</span></td>
+		</tr>
+		<tr>
+			<td class="altbg1">是否加红：</td>
+			<td class="altbg2">{html_radios name="isRed" options="$aENUM" checked=0}<span class="starHit">*</span></td>
+		</tr>		
+		<tr>
+			<td class="altbg1">来源：</td>
+			<td class="altbg2"><input type="text" id="source" name="source" size="40" value="未知"></td>
+		</tr>
+		<tr>
+			<td class="altbg1">作者：</td>
+			<td class="altbg2"><input type="text"  name="author" size="40"></td>
+		</tr>		
+		<tr>
+			<td class="altbg1">终端页图片：</td>
+			<td class="altbg2">
+				<input type="file" name="pic" onPropertyChange='preview.src=this.value'>&nbsp;
+				<img id='preview' src="/images/no_pic.jpg" width="100" height="100" border="1"></td>
+		</tr>	
+		<tr>
+			<td class="altbg1">首页图片：</td>
+			<td class="altbg2">
+				<input type="file" name="pic_index" onPropertyChange='preview_index.src=this.value'>&nbsp;
+				<img id='preview_index' src="/images/no_pic.jpg" width="86" height="56" border="1">(86×56)</td>
+		</tr>		
+		<tr>
+			<td class="altbg1">相关附件1：</td>
+			<td class="altbg2">
+				<input type="file" name="attached1" >&nbsp;
+				</td>
+		</tr>	
+		<tr>
+			<td class="altbg1">相关附件2：</td>
+			<td class="altbg2">
+				<input type="file" name="attached2">&nbsp;
+				</td>
+		</tr>	
+		<tr>
+			<td class="altbg1">相关附件3：</td>
+			<td class="altbg2">
+				<input type="file" name="attached3" >&nbsp;
+				</td>
+		</tr>			
+		
+		<tr>
+			<td class="altbg1">新闻内容：</td>
+			<td class="altbg2">{$sContent}</td>
+		</tr>
+		<tr>
+			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="返回" class="button"></td>
+			<td align="right" class="altbg2"><input type="submit" name="submit" value=" 提 交 " class="submit"></td>	
+		</tr>
+		</form>
+</table>
+{literal}
+<script language="javascript">
+//验证表单输入是否正确
+function checkInput()
+{
+	if($('cID').value =="")
+	{
+		alert("请选择所属栏目！");
+		$('cID').focus();
+		return false;	
+	}
+	if($('hangyeID').value =="")
+	{
+		alert("请选择所属行业！");
+		$('hangyeID').focus();
+		return false;	
+	}
+	if($('title').value =="")
+	{
+		alert("新闻标题不能为空！");
+		$('title').focus();
+		return false;	
+	}
+	if($('keywords').value =="")
+	{
+		alert("新闻关键字不能为空！");
+		$('keywords').focus();
+		return false;	
+	}
+	if($('intro').value =="")
+	{
+		alert("新闻简介不能为空！");
+		$('intro').focus();
+		return false;	
+	}
+	return true;
+}
+</script>
+{/literal}
+
+ {include file=admin/footer.tpl.htm}

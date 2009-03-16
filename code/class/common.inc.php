@@ -1,6 +1,7 @@
 <?php
 //error_reporting(0);
-header("Content-type:text/html;charset=gb2312");
+//header("Content-type:text/html;charset=gb2312");
+//header("Content-type:text/html;charset=UTF-8");
 session_start();
 define("OPEN_DEBUG",false);					//是否开启调试开关
 

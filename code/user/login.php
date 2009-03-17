@@ -7,13 +7,13 @@ $arr = array(
 	'userName' =>  $_POST['login_name'],
 	'password' =>  $_POST['login_pwd'],
 );
+$check_login = checkUserState($_SESSION["reart_id"]);
+$tpl->assign("check_login",$check_login);
 
-
-if(!empty($arr["login_name"]) && $sCheckCode == $_SESSION["xzx_checkCode"])
+if(!empty($arr["userName"]) && $sCheckCode == $_SESSION["xzx_checkCode"])
 {
 	checkUserLogin($arr);
 }
-
 
 
 $tpl->display("reart/login.html");

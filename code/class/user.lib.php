@@ -6,9 +6,10 @@
  */
 function checkNameRepeat( $aField )
 {
-	$sSQL = "SELECT count(*) as num FROM member WHERE userName ='".$aField."'";
-	$sQUE = mysql_query($sSQL);
-	if ($sQUE["num"] == 0 ) return true;
+	global $db;
+	$sSQL = "SELECT count(*) FROM member WHERE userName ='".$aField."'";
+	$sQUE = $db->getRowsNum($sSQL);
+	if ($sQUE == 0 ) return true;
 	else return false;
 }
 /**
@@ -41,14 +42,22 @@ function checkUserLogin($arr)
 		{
 			//密码正确
 			$_SESSION["reart_id"]	 = $aInfo["id"];
-			$_SESSION["reart_uname"] = $aInfo["userName"];
 
 			//更新最后登陆信息
-			$aField["loginIp"] = getIP();
-			$aField["loginDate"] = date("Y-m-d H:i:s");
-			$db->update("manager", $aField, " id=".$aInfo["id"]);
+			$arr = array(
+				'userID' =>  $aInfo["id"],	
+				'loginDate' =>  date("Y-m-d H:i:s"),	
+				'loginIP' =>  getIP(),		
+			);
+			$db->insert("loginlog", $arr);
+			$arr_login = array(
+				'userID' =>  $aInfo["id"],	
+				'loginDate' => date("Y-m-d H:i:s"),
+				'loginIP' =>  getIP(),		
+			);
+			$db->insert("member", $arr_login);
 			//跳转到main页面，开始执行功能
-			gotoPage("/user/");
+			gotoPage("/user/login_index.php");
 		}
 		else
 		{
@@ -60,20 +69,59 @@ function checkUserLogin($arr)
 		redirect_error("该用户不存在！");
 	}
 }
-
+//用户注册
 function checkRegister($aField)
 {
 	global $db;
-	$insertid = insert("member", $aField);
+	$insertid = $db->insert("member", $aField);
 	if(!empty($insertid))
 	{
-		gotoPage("/user/");
+		$_SESSION["reart_id"]	 = $insertid;
+		$arr = array(
+			'userID' =>  $insertid,	
+			'loginDate' =>  date("Y-m-d H:i:s"),	
+			'loginIP' =>  getIP(),		
+		);
+		$db->insert("loginlog", $arr);
+		gotoPage("/user/login_index.php");
 	}
 	else
 	{
 		redirect_error("注册失败！");
 	}
 }
+function checkUserState($id)
+{
+	if (!empty($id))
+	{
+		$data = getUserInfo($id);
+		$check_login = '您好, '.$data["userName"].", <a href='/user/login_out.php'>退出</a>";
+	}
+	else 
+	{
+		$check_login = '<a href="/user/login.php">会员登陆／注册</a>';
+	}
+	return $check_login;
+}
+function loginOut($id)
+{
+	global $db;
+	$arr = array(
+		'userID' =>  $id,	
+		'logoutDate' =>  date("Y-m-d H:i:s"),	
+		'loginIP' =>  getIP(),		
+	);
+	$db->insert("loginlog", $arr);
+}
+//获取用户信息
+function getUserInfo($user_id)
+{
+	global $db;
+	$sSQL = "SELECT * FROM member WHERE id = '".$user_id."'";
+	$aField = $db->getRecordSet($sSQL,1);
+	return $aField;
+}
+
 /**
  * 生成指定字符个数随机字符串,基于md5()，字符长度不超过32位
  *

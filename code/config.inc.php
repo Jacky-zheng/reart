@@ -6,6 +6,7 @@ if(!defined("IN_CN315")){
 
 $__DBType		= "mysql";
 $__DBHost		= "221.181.66.172";
+$__DBHost		= "localhost";
 $__DBUser		= "a0317111520";
 $__DBPwd        = "081228";
 $__DBName		= "a0317111520";

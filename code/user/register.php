@@ -1,6 +1,7 @@
 <?php
 require_once("../class/common.inc.php");
-require_once("../config.php");
+require_once("../class/user.lib.php");
+
 $arr = array(
 	'userName' => $_POST["userName"] ,
 	'pwd' => md5($_POST["pwd"]) ,
@@ -11,39 +12,41 @@ $arr = array(
 	'address' => $_POST["address"] ,
 	'addDate' => date("Y-m-d h:i:s",time()) ,
 );
+$sCheckCode = $_POST['validateCode1'];
 
-if ( empty($arr["userName"]) || !checkNameRepeat($arr["userName"]) ) 
+if(!empty($arr["userName"]) && $sCheckCode == $_SESSION["xzx_checkCode"])
 {
-	setcookie("name",$arr["userName"],0,__URL);
+	if ( !checkNameRepeat($arr["userName"]) )
+	{
+		redirect_error("该用户名已经存在！");
+	}
+	if ( $_POST["pwd"] == $_POST["confirm_pwd"] )
+	{
+		redirect_error("两次输入的密码不一致！");
+	}
+	if ( empty($arr["email"]) || !checkEmail($arr["email"]) )
+	{
+		redirect_error("邮箱为空或者邮箱格式错误！");
+	}
+	if ( !is_numeric($arr["phone"]) )
+	{
+		redirect_error("电话号码请填写数字");
+	}
+
+	if ( !empty($arr["userName"]) && checkNameRepeat($arr["userName"]) && checkEmail($arr["email"]) && is_numeric($arr["phone"]) )
+	{
+		checkRegister($arr);
+	}
+	else
+	{
+		redirect_error("注册失败！");
+	}
 }
-if ( $_POST["pwd"] == $arr["confirm_pwd"] ) 
+else
 {
-	setcookie("pwd",$arr["pwd"],0,__URL);
-}
-if ( empty($arr["email"]) || !checkEmail($arr["email"]) ) 
-{
-	setcookie("email",$arr["email"],0,__URL);
-}
-if ( !is_numeric($arr["phone"]) ) 
-{
-	setcookie("phone",$arr["phone"],0,__URL);
+	redirect_error("验证码错误！");
 }
 
-if ( !empty($arr["userName"]) && checkNameRepeat($arr["userName"]) && checkEmail($arr["email"]) && is_numeric($arr["phone"]) )  
-{
-	$reg = insert("member", $arr);
-	if (!empty($reg))
-	{
-		header("Location:/user/login.php");
-	}
-	else 
-	{
-		header("Location:/user/login.php");
-	}
-}
-else 
-{
-	header("Location:/user/login.php");
-}
+
 
 ?>

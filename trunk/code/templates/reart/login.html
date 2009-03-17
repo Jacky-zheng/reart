@@ -5,26 +5,11 @@ function refreshValidateCode(id)
 {
 	document.getElementById(id).src = "/js/validateCode.php?t="+Math.random();
 }
-function GetCookie(cookieName)
-{
-	var cookieString = document.cookie;
-	var start = cookieString.indexOf(cookieName + '=');
-	if (start == -1)
-	{
-		return null;
-	}
-	start += cookieName.length + 1;
-	var end = cookieString.indexOf(";", start);
-	if (end == -1) return unescape(cookieString.substring(start));
-	return unescape(cookieString.substring(start, end));
-}
-
 {/literal}
 </script>
 	<div class="sign-form">
-
-		<form action="/user/register.php" method="POST">
-        <table width="100%">
+ <table width="100%">
+		<form action="/user/login.php" method="POST" name="login">       
 			<tr>
 				<td class="link" width="332" rowspan="4" align="center"><a class="btn-01" href="#">睿艺会员登陆</a></td>
 				<td width="81">用户名:</td>
@@ -42,10 +27,8 @@ function GetCookie(cookieName)
 				<td></td>
 				<td class="btn"><button type="submit">登陆</button></td>
 			</tr>
-        </table>
 		</form>
-        <form action="register.php" method="POST">
-        <table width="100%">
+        <form action="register.php" method="POST" name="register">
 			<tr>
 				<td class="link" rowspan="9" align="center"><a class="btn-01" href="#">注册睿艺会员</a></td>
 				<td>用户名:</td>

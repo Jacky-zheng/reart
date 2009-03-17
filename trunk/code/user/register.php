@@ -11,8 +11,14 @@ $arr = array(
 	'phone' => $_POST["phone"] ,
 	'address' => $_POST["address"] ,
 	'addDate' => date("Y-m-d h:i:s",time()) ,
+	'loginIp' => getIP(),
+	'addDate' => date("Y-m-d H:i:s"),
+	'loginDate' => date("Y-m-d H:i:s"),
 );
 $sCheckCode = $_POST['validateCode1'];
+
+$check_login = checkUserState($_SESSION["reart_id"]);
+$tpl->assign("check_login",$check_login);
 
 if(!empty($arr["userName"]) && $sCheckCode == $_SESSION["xzx_checkCode"])
 {
@@ -20,7 +26,7 @@ if(!empty($arr["userName"]) && $sCheckCode == $_SESSION["xzx_checkCode"])
 	{
 		redirect_error("该用户名已经存在！");
 	}
-	if ( $_POST["pwd"] == $_POST["confirm_pwd"] )
+	if ( $_POST["pwd"] != $_POST["confirm_pwd"] )
 	{
 		redirect_error("两次输入的密码不一致！");
 	}

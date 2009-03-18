@@ -109,12 +109,22 @@ function checkMessage($id)
 	}
 	return $check_login;
 }
+//建议
 function insertMsg($arr)
 {
 	global $db;
 	$msg = $db->insert("guestbook", $arr);
 	return $msg;
 }
+//关于睿艺
+function getAboutUs()
+{
+	global $db;
+	$sSQL = "SELECT content FROM content ORDER BY id DESC LIMIT 1  ";
+	$aField = $db->getRecordSet($sSQL,1);
+	return $aField;
+}
+//退出
 function loginOut($id)
 {
 	global $db;

@@ -109,5 +109,20 @@ class work
 		$res = $db->getRecordSet($sSQL);
 		return $res;
 	}
+	function getFavorite($params=array())
+	{
+		global $db;
+		$start = !empty($params['start'])?$params['start']:0;
+		$pagesize = !empty($params['pagesize'])?$params['pagesize']:8;
+		$sSQL = "SELECT f.workID, f.addDate as faddDate, w.id, w.name, w.cID, w.price, w.age, w.artistID, w.picPath, w.addDate, a.name as artist_name FROM workfavorite as f left join work as w on f.workID=w.id left join artist as a on a.id=w.artistID where f.userID='".$params['userid']."' order by f.addDate desc limit ".$start.",".$pagesize;
+		$cSQL = "select count(*) as num from workfavorite where userID='".$params['userid']."'";
+		//echo $sSQL;
+		$res['data'] = $db->getRecordSet($sSQL);
+		$rCnt = $db->getRecordSet($cSQL);
+		$res['start'] = $start;
+		$res['pagesize'] = $pagesize;
+		$res['count'] = $rCnt[0]['num'];
+		return $res;
+	}
 }
 ?>

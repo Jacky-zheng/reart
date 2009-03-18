@@ -105,9 +105,15 @@ function checkMessage($id)
 	}
 	else 
 	{
-		$check_login = '<td width="71">匿名<input class="box" type="checkbox"  /></td><td width="524">用户名:&nbsp;&nbsp;<input class="width-03" type="text" />&nbsp;&nbsp;密码:&nbsp;&nbsp;<input class="width-03" type="text" />&nbsp;&nbsp;<button type="submit">登陆</button><button>注册</button></td>';
+		$check_login = '<td width="71">匿名<input class="box" type="checkbox" name="no_reg" /></td><form action="/user/contact_us.php" method="POST" name="login"><td width="524">用户名:&nbsp;&nbsp;<input class="width-03" type="text" name="login_name"/>&nbsp;&nbsp;密码:&nbsp;&nbsp;<input class="width-03" type="text" name="login_pwd" />&nbsp;&nbsp;<button type="submit">登陆</button></form></td>';
 	}
 	return $check_login;
+}
+function insertMsg($arr)
+{
+	global $db;
+	$msg = $db->insert("guestbook", $arr);
+	return $msg;
 }
 function loginOut($id)
 {

@@ -468,10 +468,21 @@ function favorite(workid, userid)
 	}
 	*/
 	var str='workid='+workid+'&userid='+userid;
-	Ajax.call('flow.php?action=favorite', str, ajaxResponse, 'POST', 'text');
+	Ajax.call('flow.php?action=favorite', str, addFavoriteResponse, 'POST', 'text');
 }
 
-function ajaxResponse(result)
+function addFavoriteResponse(result)
 {
 	alert("success");	
+}
+
+function delete_favorite(workid, userid)
+{
+	var str='workid='+workid+'&userid='+userid;
+	Ajax.call('flow.php?action=delete', str, delFavoriteResponse, 'POST', 'text');
+}
+function delFavoriteResponse(result)
+{
+		
+
 }

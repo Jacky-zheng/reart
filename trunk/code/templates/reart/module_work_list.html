@@ -1,4 +1,6 @@
-		<div class="photo">
+		<script type="text/javascript" src="js/common.js"></script>
+        <script type="text/javascript" src="js/transport.js"></script>
+        <div class="photo">
 			<ul class="wrapClear">
             {foreach from=$worklist item=work }
 				<li>
@@ -7,6 +9,7 @@
 					<p>作者：{$work.artist_name}</p>
 					<p>日期：{$work.addDate}</p>
 					<p>价格：{$work.price}</p>
+                    <p><button onclick="favorite({$work.id},{$user_id})">收藏</botton></p>
 				</li>
             {/foreach}					
 			</ul>

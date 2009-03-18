@@ -1,5 +1,6 @@
 <?php
 require_once("class/common.inc.php");
+require_once("class/user.lib.php");
 loadLib("page_link");
 loadLib("work");
 
@@ -17,7 +18,10 @@ $params = array(
 
 $work = new work();
 $res = $work->getWorkList($params);
+$check_login = checkUserState($_SESSION["reart_id"]);
+$tpl->assign("user_id",empty($_SESSION["reart_id"])?'177':$_SESSION["reart_id"]);
 
+$tpl->assign("check_login",$check_login);
 $tpl->assign('worklist', $res['data']);
 $tpl->assign('img_url_xl', IMG_URL_XL);
 $tpl->assign('img_url_l', IMG_URL_L);

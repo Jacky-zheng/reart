@@ -33,13 +33,12 @@ function checkUserLogin($arr)
 {
 	global $db;
 	$sSQL = "SELECT * FROM member WHERE userName='".$arr["userName"]."'";
-	$bUserIsExists = $db->getRowsNum("SELECT COUNT(*) FROM member WHERE userName='".$arr["userName"]."'");
+	$bUserIsExists = $db->getRowsNum("SELECT COUNT(*) FROM member WHERE userName='".$arr["userName"]."' AND pwd='".md5($arr["password"])."'");
 	if($bUserIsExists)
 	{
 		//用户存在
 		$aInfo = $db->getRecordSet($sSQL, 1);
-		if(md5($arr["password"]) == $aInfo["pwd"])
-		{
+		
 			//密码正确
 			$_SESSION["reart_id"]	 = $aInfo["id"];
 
@@ -56,17 +55,11 @@ function checkUserLogin($arr)
 				'loginIP' =>  getIP(),		
 			);
 			$db->insert("member", $arr_login);
-			//跳转到main页面，开始执行功能
-			gotoPage("/user/login_index.php");
-		}
-		else
-		{
-			redirect_error("密码错误！");
-		}
+			return true;
 	}
 	else
 	{
-		redirect_error("该用户不存在！");
+		return false;
 	}
 }
 //用户注册
@@ -100,6 +93,19 @@ function checkUserState($id)
 	else 
 	{
 		$check_login = '<a href="/user/login.php">会员登陆／注册</a>';
+	}
+	return $check_login;
+}
+function checkMessage($id)
+{
+	if (!empty($id))
+	{
+		$data = getUserInfo($id);
+		$check_login = '<td width="71">您好,</td><td width="524">'.$data["userName"].'</td>';
+	}
+	else 
+	{
+		$check_login = '<td width="71">匿名<input class="box" type="checkbox"  /></td><td width="524">用户名:&nbsp;&nbsp;<input class="width-03" type="text" />&nbsp;&nbsp;密码:&nbsp;&nbsp;<input class="width-03" type="text" />&nbsp;&nbsp;<button type="submit">登陆</button><button>注册</button></td>';
 	}
 	return $check_login;
 }

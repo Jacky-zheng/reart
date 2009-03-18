@@ -73,16 +73,41 @@ class work
 		{
 			return false;
 		}
-		$sql = "select w.id, w.name, w.cID, w.price, w.age, w.artistID, w.picPath, w.addDate, a.name as artist_name, a.description from work as w, artist as a where a.id=w.artistID and w.id=".$id;
+		$sql = "select w.id, w.name, w.cID, w.price, w.age, w.artistID, w.picPath, w.addDate, w.comment, w.description, a.name as artist_name, a.description as resume from work as w, artist as a where a.id=w.artistID and w.id=".$id;
 		$res = $db->getRecordSet($sql);
+		$sql_more = "select id from work where id>$id order by id asc limit 0,1";
+		$res_more = $db->getRecordSet($sql_more);
+		$sql_less = "select id from work where id<$id order by id desc limit 0,1";
+		$res_less = $db->getRecordSet($sql_less);
 		if ($res)
 		{
+			$res[0][less_id] = $res_less[0]['id'];
+			$res[0][more_id] = $res_more[0]['id'];
 			return $res[0];
 		}
 		else 
 		{
 			return false;
 		}
+	}
+	
+	function getWorkbyIDs($ids)
+	{
+		global $db;
+		$sql = "SELECT w.id, w.name, w.cID, w.price, w.age, w.artistID, w.picPath, w.addDate, a.name as artist_name FROM work as w left join artist as a on a.id=w.artistID where w.id in ($ids) order by w.addDate desc";
+		$res = $db->getRecordSet($sql);
+		return $res;
+		
+	}
+	/*获得五条推荐作品，status=3*/
+	function getReWork()
+	{
+		global $db;
+		
+		$sSQL = "SELECT w.id, w.name, w.cID, w.price, w.age, w.artistID, w.picPath, w.addDate, a.name as artist_name FROM work as w left join artist as a on a.id=w.artistID where w.status='1' order by w.addDate desc limit 0, 5";
+		//echo $sSQL;
+		$res = $db->getRecordSet($sSQL);
+		return $res;
 	}
 }
 ?>

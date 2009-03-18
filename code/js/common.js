@@ -455,3 +455,23 @@ function doane(event) {
 		e.preventDefault();
 	}
 }
+
+function favorite(workid, userid)
+{/*
+	if(userid == "")
+	{
+		alert("please login");
+	}
+	else
+	{
+		alert("please fa");
+	}
+	*/
+	var str='workid='+workid+'&userid='+userid;
+	Ajax.call('flow.php?action=favorite', str, ajaxResponse, 'POST', 'text');
+}
+
+function ajaxResponse(result)
+{
+	alert("success");	
+}

@@ -5,10 +5,10 @@
 {/literal}
 	<div class="left-wrap">
 		<div class="text-description-01">
-			<p>隋建国&nbsp;&nbsp;&nbsp;&nbsp;倾斜的桃花源</p>
-			<p>Sui Jianguo, Tilted Utopia</p> 
-			<p>玻璃钢&nbsp;装置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Firberglass installation</p>
-			<p>2008</p>
+			<p>{$workdetail.artist_name}&nbsp;&nbsp;&nbsp;&nbsp;{$workdetail.name}</p>
+			<!--p>Sui Jianguo, Tilted Utopia</p--> 
+			<p>{$workdetail.description}</p>
+			<p>{$workdetail.age}</p>
 			<p>展览：</p>
 			<p>中国北京，C-空间，倾斜的桃花源--- 汉克.维奇和隋建国, 2008</p>
 			<p>EXHIBITED</p>
@@ -17,37 +17,14 @@
 		<div class="photo-view-01">
 			<h2>您浏览过的作品</h2>
 			<dl class="wrapClear">
+            {foreach from=$history_list item=hl}
 				<dd>
-					<p class="images"><a href="#"><img src="images/images-02.gif" /></a></p>
-					<p>作者名称</p>
-					<p>作者</p>
+					<p class="images"><a href="detail.php?id={$hl.id}"><img src="{$img_url_s}{$hl.picPath}" /></a></p>
+					<p>{$hl.name}</p>
+					<p>{$hl.artist_name}</p>
 				</dd>
-				<dd>
-					<p class="images"><a href="#"><img src="images/images-02.gif" /></a></p>
-					<p>作者名称</p>
-					<p>作者</p>
-				</dd>
-				<dd>
-					<p class="images"><a href="#"><img src="images/images-02.gif" /></a></p>
-					<p>作者名称</p>
-					<p>作者</p>
-				</dd>
-				<dd>
-					<p class="images"><a href="#"><img src="images/images-02.gif" /></a></p>
-					<p>作者名称</p>
-					<p>作者</p>
-				</dd>
-				<dd>
-					<p class="images"><a href="#"><img src="images/images-02.gif" /></a></p>
-					<p>作者名称</p>
-					<p>作者</p>
-				</dd>
-				<dd>
-					<p class="images"><a href="#"><img src="images/images-02.gif" /></a></p>
-					<p>作者名称</p>
-					<p>作者</p>
-				</dd>
-				<dt><a href="#">更多</a></dt>	
+             {/foreach}   
+				<dt><a href="list.php">更多</a></dt>	
 			</dl>
 		</div>
 	</div>
@@ -55,9 +32,9 @@
 		<div class="flash">
 		  <table width="100%">
 		    <tr>
-		      <td><a href="#"><img src="images/left_arrow.gif"  /></a></td>
+		      <td><a href="detail.php?id={$workdetail.less_id}"><img src="images/left_arrow.gif"  /></a></td>
 		      <td><img src="images/flash-image.gif" /></td>
-		      <td><a  href="#"><img src="images/right_arrow.gif"/></a></td>
+		      <td><a  href="detail.php?id={$workdetail.more_id}"><img src="images/right_arrow.gif"/></a></td>
 	        </tr>
 	      </table>
           <table width="100%" height="30">
@@ -67,53 +44,23 @@
           </table>
   </div>
 		<div class="text-description-02">
-			<p> 术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术</p>
-			<p>术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术
-   术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术术</p>
-			
+			{$workdetail.comment}
 		</div>		
 		<div class="text-description-03">
-			隋建国 	SUI JIANGUO (b.1956)</p>
-			<p>1956年生于中国山东省青岛市</p>
-			<p>现为中央美术学院雕塑系主任、教授</p>
-			<p class="marginT20">重要个展</p>
-			<p>2008年&nbsp;&nbsp;《艺术 时间 广场—隋建国作品展》 香港</p>
-			<p>2007年&nbsp;&nbsp;《点穴——隋建国艺术展》浦江新城 上海 中国</p>
-			<p>2005年&nbsp;&nbsp;《隋建国——理性的沉睡》亚洲美术馆 旧金山 美国</p>
-			<p>1997年&nbsp;&nbsp;《世纪的影子——隋建国作品展》维多利亚艺术学院 墨尔本 澳大利亚</p>
-			<p>1996年&nbsp;&nbsp;《隋建国作品展》 汉雅轩画廊 香港 中国</p>
-			<p class="marginT20">重要联展</p>
+			{$workdetail.resume}
 		</div>		
 	</div>
 	<div class="right-wrap">
 		<div class="photo-view-02">
-			<h2>浏览该作品的人还浏览<br />以下作品：</h2>
+			<h2>推荐作品：</h2>
 			<dl class="wrapClear">
+				{foreach from=$recommen_list item=rw}
 				<dd>
-					<p class="images"><a href="#"><img src="images/images-02.gif" /></a></p>
-					<p>作者名称</p>
-					<p>作者</p>
-				</dd>
-				<dd>
-					<p class="images"><a href="#"><img src="images/images-02.gif" /></a></p>
-					<p>作者名称</p>
-					<p>作者</p>
-				</dd>
-				<dd>
-					<p class="images"><a href="#"><img src="images/images-02.gif" /></a></p>
-					<p>作者名称</p>
-					<p>作者</p>
-				</dd>
-				<dd>
-					<p class="images"><a href="#"><img src="images/images-02.gif" /></a></p>
-					<p>作者名称</p>
-					<p>作者</p>
-				</dd>
-				<dd>
-					<p class="images"><a href="#"><img src="images/images-02.gif" /></a></p>
-					<p>作者名称</p>
-					<p>作者</p>
+					<p class="images"><a href="detail.php?id={$rw.id}"><img src="{$img_url_s}{$rw.picPath}" /></a></p>
+					<p>{$rw.name}</p>
+					<p>{$rw.artist_name}</p>
 				</dd>	
+                {/foreach}
 			</dl>
 		</div>	
 	</div>

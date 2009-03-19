@@ -47,6 +47,7 @@ elseif($sAction=="addSave") // 添加保存
 	$aField['price'] = $_POST['price'];
 	$aField['age'] = $_POST['age'];
 	$aField['picCode'] = $_POST['picCode'];
+	$aField['artistCode'] = $_POST['artistCode'];
 	$aField['status'] = $_POST['status'];
 	$aField['comment'] = $_POST['comment'];
 	$aField['description'] = $_POST['content'];
@@ -92,6 +93,7 @@ elseif ($sAction == "editSave" && isset($_POST['id'])) // 修改保存
 	$aField['price'] = $_POST['price'];
 	$aField['age'] = $_POST['age'];
 	$aField['picCode'] = $_POST['picCode'];	
+	$aField['artistCode'] = $_POST['artistCode'];
 	$aField['status'] = $_POST['status'];
 	$aField['comment'] = $_POST['comment'];
 	$aField['description'] = $_POST['content'];

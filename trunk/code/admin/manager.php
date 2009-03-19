@@ -1,17 +1,17 @@
-<?php
+ï»¿<?php
 //define("OPEN_DEBUG",true);
 require_once("../class/common.inc.php");
-require_once("check_login.php"); //È¨ÏÞ¼ì²é
+require_once("check_login.php"); //æƒé™æ£€æŸ¥
 $sAction = isset($_GET["act"]) ? $_GET["act"] : "listAll";
 
 $tpl->assign("PAGE_FUNC_BIG_LINK", "manager.php");
-$tpl->assign("PAGE_FUNC_BIG_NAME", "ÓÃ»§¹ÜÀí");
-$tpl->assign("aStatus", array("0"=>"¹Ø±Õ","1"=>"¿ªÆô","2"=>"¶³½á"));
+$tpl->assign("PAGE_FUNC_BIG_NAME", "ç”¨æˆ·ç®¡ç†");
+$tpl->assign("aStatus", array("0"=>"å…³é—­","1"=>"å¼€å¯","2"=>"å†»ç»“"));
 
-//³¬¼¶¹ÜÀíÔ±
+//è¶…çº§ç®¡ç†å‘˜
 if ($_SESSION['xzx_userName'] != 'admin') 
 {
-	redirect("manager.php?act=$sAction",2, "ÎÞÈ¨Ö´ÐÐÕâ¸ö¹¦ÄÜ");
+	redirect("manager.php?act=$sAction",2, "æ— æƒæ‰§è¡Œè¿™ä¸ªåŠŸèƒ½");
 }
 else 
 {
@@ -19,31 +19,31 @@ else
 }
 $manager = new manager();
 
-//¹ÜÀíÔ±ÁÐ±í
+//ç®¡ç†å‘˜åˆ—è¡¨
 if($sAction == "listAll")
 {
 	$sWhere = isset($_GET["status"]) ? " a.status = '".$_GET["status"]."'" : "1";
 	$iNowPage = empty($_REQUEST["pageNo"]) ? 1 : intval($_REQUEST["pageNo"]); 
 	$iPerpage = defined("I_PERPAGE") ? I_PERPAGE : 10;
 	$iStartNo = ($iNowPage - 1) * $iPerpage;
-	//µÃµ½×ÜÊýÄ¿
+	//å¾—åˆ°æ€»æ•°ç›®
 	$iTotalNum = $db->getRowsNum("SELECT a.id FROM manager a WHERE {$sWhere}");		
 	$sSQL = "SELECT a.id, a.userName, a.trueName, a.email,a.lastTime,a.lastIP,a.status FROM `manager` a  WHERE {$sWhere} ORDER BY a.id DESC LIMIT {$iStartNo}, $iPerpage";
 	$aList = $db->getRecordSet($sSQL);
 	$tpl->assign("aList", $aList);
 	dividePage("manager.php", $iTotalNum, $iPerpage, $iNowPage, "act=listAll");
 	
-	$tpl->assign("PAGE_FUNC_SMALL_NAME", "¹ÜÀíÔ±ÁÐ±í");
+	$tpl->assign("PAGE_FUNC_SMALL_NAME", "ç®¡ç†å‘˜åˆ—è¡¨");
 	$tpl->display("admin/manager_listAll.tpl.htm");
 }
-elseif($sAction == "add")  //Ìí¼Ó¹ÜÀíÔ± 
+elseif($sAction == "add")  //æ·»åŠ ç®¡ç†å‘˜ 
 {
-	//Éú³ÉËæ»úÃÜÂë
+	//ç”Ÿæˆéšæœºå¯†ç 
 	loadLib("rand");
 	$sRandPwd = rand::makeRand(4, 6);
 	$tpl->assign("randPwd", $sRandPwd);
 	
-	$tpl->assign("PAGE_FUNC_SMALL_NAME", "Ìí¼Ó¹ÜÀíÔ±");
+	$tpl->assign("PAGE_FUNC_SMALL_NAME", "æ·»åŠ ç®¡ç†å‘˜");
 	$tpl->display("admin/manager_add.tpl.htm");
 }
 elseif($sAction == "addSave")
@@ -57,39 +57,39 @@ elseif($sAction == "addSave")
 	$aField["telephone"]= $_POST["text_telephone"];
 	$aField["mobile"]	= $_POST["text_mobile"];
 	$aField["status"]= $_POST["radio_status"];
-	//¼ì²éÓÃ»§ÃûÊÇ·ñ´æÔÚ
+	//æ£€æŸ¥ç”¨æˆ·åæ˜¯å¦å­˜åœ¨
 	$bUserIsExists = $manager->isUserExists($aField["userName"]);
 	if(!$bUserIsExists)
 	{
-		//ÓÃ»§²»´æÔÚ
+		//ç”¨æˆ·ä¸å­˜åœ¨
 		if($db->insert('manager', $aField))
 		{
-			redirect("manager.php?act=listAll",2, "³É¹¦Ìí¼Ó".$aField["userName"]);
+			redirect("manager.php?act=listAll",2, "æˆåŠŸæ·»åŠ ".$aField["userName"]);
 		}
 		else 
 		{
-			redirect("manager.php?act=add", 2, "Ìí¼Ó".$aField["userName"]."Ê§°Ü£¡");
+			redirect("manager.php?act=add", 2, "æ·»åŠ ".$aField["userName"]."å¤±è´¥ï¼");
 		}
 	}
 	else 
 	{
-		redirect("manager.php?act=add", 2, "ÓÃ»§Ãû".$aField["userName"]."ÒÑ¾­´æÔÚ£¬Ìí¼ÓÊ§°Ü£¡");
+		redirect("manager.php?act=add", 2, "ç”¨æˆ·å".$aField["userName"]."å·²ç»å­˜åœ¨ï¼Œæ·»åŠ å¤±è´¥ï¼");
 	}
 }
-elseif($sAction == "modify") //±à¼­¹ÜÀíÔ± 
+elseif($sAction == "modify") //ç¼–è¾‘ç®¡ç†å‘˜ 
 {
 	$iID = isset($_GET["id"]) ? $_GET["id"] : NULL;
 	if(!is_null($iID))
 		$aInfo = $manager->getManagerInfo($iID);
 	else 
-		showError("²ÎÊý´«µÝ´íÎó");
-	//Éú³ÉËæ»úÃÜÂë
+		showError("å‚æ•°ä¼ é€’é”™è¯¯");
+	//ç”Ÿæˆéšæœºå¯†ç 
 	loadLib("rand");
 	$sRandPwd = rand::makeRand(4, 6);
 	$tpl->assign("randPwd", $sRandPwd);
 	$tpl->assign("aInfo", $aInfo);
 
-	$tpl->assign("PAGE_FUNC_SMALL_NAME", "±à¼­¹ÜÀíÔ±");
+	$tpl->assign("PAGE_FUNC_SMALL_NAME", "ç¼–è¾‘ç®¡ç†å‘˜");
 	$tpl->display("admin/manager_edit.tpl.htm");
 }
 elseif($sAction == "modifySave")
@@ -106,25 +106,25 @@ elseif($sAction == "modifySave")
 	$aField["mobile"]	= $_POST["text_mobile"];
 	$aField["status"]= $_POST["radio_status"];
 	
-	//¼ì²éÓÃ»§ÃûÊÇ·ñ´æÔÚ
+	//æ£€æŸ¥ç”¨æˆ·åæ˜¯å¦å­˜åœ¨
 	$sWhere = " id = '" . $_POST["managerID"] . "'";
 	$bUserIsExists = 0;
 	//$bUserIsExists = $manager->isUserExists($aField["userName"],1);
 	if(!$bUserIsExists)
 	{
-		//ÓÃ»§²»´æÔÚ
+		//ç”¨æˆ·ä¸å­˜åœ¨
 		if($db->update('manager', $aField, $sWhere))
 		{
-			redirect("manager.php?act=listAll",2, "³É¹¦ÐÞ¸Ä".$aField["userName"]);
+			redirect("manager.php?act=listAll",2, "æˆåŠŸä¿®æ”¹".$aField["userName"]);
 		}
 		else 
 		{
-			redirect("manager.php?act=listAll", 2, "ÐÞ¸Ä".$aField["userName"]."Ê§°Ü£¡");
+			redirect("manager.php?act=listAll", 2, "ä¿®æ”¹".$aField["userName"]."å¤±è´¥ï¼");
 		}
 	}
 	else 
 	{
-		redirect("manager.php?act=listAll", 2, "ÓÃ»§Ãû".$aField["userName"]."ÒÑ¾­´æÔÚ£¬Ìí¼ÓÊ§°Ü£¡");
+		redirect("manager.php?act=listAll", 2, "ç”¨æˆ·å".$aField["userName"]."å·²ç»å­˜åœ¨ï¼Œæ·»åŠ å¤±è´¥ï¼");
 	}
 }
 elseif ($sAction == "detail")
@@ -133,11 +133,11 @@ elseif ($sAction == "detail")
 	if(!is_null($iID))
 		$aInfo = $manager->getManagerInfo($iID);
 	else 
-		showError("²ÎÊý´«µÝ´íÎó");
+		showError("å‚æ•°ä¼ é€’é”™è¯¯");
 
 	$tpl->assign("aInfo", $aInfo);
 	
-	$tpl->assign("PAGE_FUNC_SMALL_NAME", "²é¿´¹ÜÀíÔ±ÐÅÏ¢");
+	$tpl->assign("PAGE_FUNC_SMALL_NAME", "æŸ¥çœ‹ç®¡ç†å‘˜ä¿¡æ¯");
 	$tpl->display("admin/manager_detail.tpl.htm");
 }
 elseif ($sAction == "closed")
@@ -145,25 +145,25 @@ elseif ($sAction == "closed")
 	$iManagerID = $_GET["id"];
 	$aField['status'] = 0;
 	$db->update("manager", $aField, " id=".$iManagerID);
-	redirect("manager.php", 3, "³É¹¦¹Ø±ÕÓÃ»§");	
+	redirect("manager.php", 3, "æˆåŠŸå…³é—­ç”¨æˆ·");	
 } 
 elseif ($sAction == "open")
 {
 	$iManagerID = $_GET["id"];
 	$aField['status'] = 1;
 	$db->update("manager", $aField, " id=".$iManagerID);
-	redirect("manager.php", 3, "³É¹¦¹Ø±ÕÓÃ»§");	
+	redirect("manager.php", 3, "æˆåŠŸå…³é—­ç”¨æˆ·");	
 }
 elseif ($sAction == "modifySingle")
 {
 	$aUserInfo = $manager->getManagerInfo($_SESSION["xzx_uID"]);	
 	$tpl->assign("aInfo", $aUserInfo);
-	//Éú³ÉËæ»úÃÜÂë
+	//ç”Ÿæˆéšæœºå¯†ç 
 	loadLib("rand");
 	$sRandPwd = rand::makeRand(4, 6);
 	$tpl->assign("randPwd", $sRandPwd);	
 	
-	$tpl->assign("PAGE_FUNC_SMALL_NAME", "ÐÞ¸Ä×ÊÁÏ");
+	$tpl->assign("PAGE_FUNC_SMALL_NAME", "ä¿®æ”¹èµ„æ–™");
 	$tpl->display("admin/manager_modifySingle.tpl.htm");
 }
 elseif($sAction == "modifySingleSave")
@@ -185,23 +185,23 @@ elseif($sAction == "modifySingleSave")
 	//$bUserIsExists = $manager->isUserExists($aField["userName"],1);
 	if(!$bUserIsExists)
 	{
-		//ÓÃ»§²»´æÔÚ
+		//ç”¨æˆ·ä¸å­˜åœ¨
 		if($db->update('manager', $aField, $sWhere))
 		{
-			redirect("home.php",2, "³É¹¦ÐÞ¸Ä".$aField["userName"]);
+			redirect("home.php",2, "æˆåŠŸä¿®æ”¹".$aField["userName"]);
 		}
 		else 
 		{
-			redirect("home.php", 2, "ÐÞ¸Ä".$aField["userName"]."Ê§°Ü£¡");
+			redirect("home.php", 2, "ä¿®æ”¹".$aField["userName"]."å¤±è´¥ï¼");
 		}
 	}
 	else 
 	{
-		redirect("home.php", 5, "ÓÃ»§Ãû".$aField["userName"]."ÒÑ¾­´æÔÚ£¬Ìí¼ÓÊ§°Ü£¡");
+		redirect("home.php", 5, "ç”¨æˆ·å".$aField["userName"]."å·²ç»å­˜åœ¨ï¼Œæ·»åŠ å¤±è´¥ï¼");
 	}
 }
 else 
 {
-	showError("²ÎÊý´«µÝ´íÎó");
+	showError("å‚æ•°ä¼ é€’é”™è¯¯");
 }
 ?>

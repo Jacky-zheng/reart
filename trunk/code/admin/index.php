@@ -1,6 +1,6 @@
-<?php
+ï»¿<?php
 session_start();
-//ÕâÀï¼òµ¥µÄÅÐ¶ÏÒ»ÏÂÓÃ»§ÊÇ·ñµÇÂ½
+//è¿™é‡Œç®€å•çš„åˆ¤æ–­ä¸€ä¸‹ç”¨æˆ·æ˜¯å¦ç™»é™†
 if(isset($_SESSION["xzx_uID"]))
 	header("Location:login.php");
 else 

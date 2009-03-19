@@ -1,9 +1,9 @@
-<?php
+ï»¿<?php
 /**
- * content.php(ÄÚÈÝÄ£¿é)
+ * content.php(å†…å®¹æ¨¡å—)
  */
 //define("OPEN_DEBUG",true);
-require_once("check_login.php"); //µÇÂ¼¼ì²é
+require_once("check_login.php"); //ç™»å½•æ£€æŸ¥
 require_once("../class/common.inc.php");
 include "../js/editor/fckeditor.php";
 
@@ -11,18 +11,18 @@ $sAction = (isset($_GET["act"])) ? $_GET["act"] : "listAll";
 $sTbl =  "content";
 
 $tpl->assign("PAGE_FUNC_BIG_LINK", "content.php");
-$tpl->assign("PAGE_FUNC_BIG_NAME", "ÄÚÈÝ¹ÜÀí");
+$tpl->assign("PAGE_FUNC_BIG_NAME", "å†…å®¹ç®¡ç†");
 
-if($sAction == "edit" && isset($_GET['id'])) // ÐÞ¸Ä
+if($sAction == "edit" && isset($_GET['id'])) // ä¿®æ”¹
 {	
 	$id = $_GET['id'];
 	if( 1 == $id)
 	{
-		$tmp_name = "¹«Ë¾¼ò½é";
+		$tmp_name = "å…¬å¸ç®€ä»‹";
 	}
 	elseif ( 2 == $id )
 	{
-		$tmp_name = "ÁªÏµÎÒÃÇ";
+		$tmp_name = "è”ç³»æˆ‘ä»¬";
 	}
 	$tpl->assign("PAGE_FUNC_SMALL_NAME",$tmp_name);	
 	$sSQL = "SELECT * FROM $sTbl WHERE id=$id";
@@ -40,7 +40,7 @@ if($sAction == "edit" && isset($_GET['id'])) // ÐÞ¸Ä
 	$tpl->assign("aField",$aField);
 	$tpl->display("admin/about_us_edit.tpl.htm");
 }
-elseif ($sAction == "editSave" && isset($_POST['id'])) // ÐÞ¸Ä±£´æ
+elseif ($sAction == "editSave" && isset($_POST['id'])) // ä¿®æ”¹ä¿å­˜
 {
 	$id = $_POST['id'];
 	$aField['title'] = $_POST['title'];		
@@ -48,15 +48,15 @@ elseif ($sAction == "editSave" && isset($_POST['id'])) // ÐÞ¸Ä±£´æ
 
 	if($db->update($sTbl,$aField,"id=$id"))
 	{
-		redirect("content.php?act=edit&id=".$id,3,"ÐÞ¸Ä³É¹¦£¡");	
+		redirect("content.php?act=edit&id=".$id,3,"ä¿®æ”¹æˆåŠŸï¼");	
 	}
 	else 
 	{
-		redirect("content.php?act=edit&id=".$id,3,"ÐÞ¸ÄÊ§°Ü£¡");
+		redirect("content.php?act=edit&id=".$id,3,"ä¿®æ”¹å¤±è´¥ï¼");
 	}	
 }
 else
 {
-	showError("²ÎÊý´íÎó");
+	showError("å‚æ•°é”™è¯¯");
 }
 ?>

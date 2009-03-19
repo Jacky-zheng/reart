@@ -1,19 +1,19 @@
-<?php
+ï»¿<?php
 /**
- * £¨×ÜºóÌ¨£­ÍøÃñÁôÑÔ£©
+ * ï¼ˆæ€»åå°ï¼ç½‘æ°‘ç•™è¨€ï¼‰
  */
 //define("OPEN_DEBUG",true);
-require_once("check_login.php"); //µÇÂ¼¼ì²é
+require_once("check_login.php"); //ç™»å½•æ£€æŸ¥
 require_once("../class/common.inc.php");
 
 $sAction = (isset($_GET["act"])) ? $_GET["act"] : "listAll";
 $sGbookTbl = "guestbook";
-$sActName = "ÍøÃñÁôÑÔ";
+$sActName = "ç½‘æ°‘ç•™è¨€";
 
 $tpl->assign("PAGE_FUNC_BIG_LINK", "gbook.php");
-$tpl->assign("PAGE_FUNC_BIG_NAME", "ÁôÑÔ¹ÜÀí");		
+$tpl->assign("PAGE_FUNC_BIG_NAME", "ç•™è¨€ç®¡ç†");		
 
-if($sAction == "del") // ÁôÑÔÉ¾³ı
+if($sAction == "del") // ç•™è¨€åˆ é™¤
 {
 	$aID = $_POST['id'];
 	$iNum = count($aID);
@@ -23,21 +23,21 @@ if($sAction == "del") // ÁôÑÔÉ¾³ı
 		for($i=0; $i<$iNum; $i++)
 		{
 			$iID = $aID[$i];
-			$sSQL = "DELETE FROM $sGbookTbl WHERE id=$iID "; // ¸ÃÁôÑÔÒÑ¾­Ïà¹Ø»Ø¸´µÄÁôÑÔÒ»²¢É¾³ı
+			$sSQL = "DELETE FROM $sGbookTbl WHERE id=$iID "; // è¯¥ç•™è¨€å·²ç»ç›¸å…³å›å¤çš„ç•™è¨€ä¸€å¹¶åˆ é™¤
 			if($db->query($sSQL))
 				$iSuc ++;
 			else	 
 				$iErr ++;	
 		}
-		$sMsg = "É¾³ı³É¹¦Êı".$iSuc.";Ê§°ÜÊı£º".$iErr;
+		$sMsg = "åˆ é™¤æˆåŠŸæ•°".$iSuc.";å¤±è´¥æ•°ï¼š".$iErr;
 		redirect("gbook.php?act=listAll",2,$sMsg);
 	}
 	else 
 	{
-		redirect("gbook.php?act=listAll",3,"Î´Ñ¡ÖĞ£¬É¾³ıÊ§°Ü£¡");
+		redirect("gbook.php?act=listAll",3,"æœªé€‰ä¸­ï¼Œåˆ é™¤å¤±è´¥ï¼");
 	}
 }
-elseif($sAction == "listAll") // ÁôÑÔÁĞ±í
+elseif($sAction == "listAll") // ç•™è¨€åˆ—è¡¨
 {
 	$tpl->assign("PAGE_FUNC_SMALL_NAME",$sActName);	
 	$tpl->assign("sActName",$sActName);
@@ -49,7 +49,7 @@ elseif($sAction == "listAll") // ÁôÑÔÁĞ±í
 	
 	$sWhere .= $q ? "  (content like '%$q%')" : "1";
 	
-	//µÃµ½×ÜÊıÄ¿	
+	//å¾—åˆ°æ€»æ•°ç›®	
 	$iTotalNum = $db->getRowsNum("select count(*) from $sGbookTbl where $sWhere");
 	$sSQL = "select * from $sGbookTbl where $sWhere order by id desc LIMIT {$iStartNo}, $iPerpage";
 	dividePage("gbook.php", $iTotalNum, $iPerpage, $iNowPage, "act=listAll&q=".$q);
@@ -63,7 +63,7 @@ elseif($sAction == "listAll") // ÁôÑÔÁĞ±í
 		}
 		else 
 		{
-			$aList[$i]['userName'] = 'ÄäÃû';
+			$aList[$i]['userName'] = 'åŒ¿å';
 		}
 		$aList[$i]['content'] = str_replace(chr(13),"<br>",$aList[$i]['content']);
 	}
@@ -74,11 +74,11 @@ elseif($sAction == "listAll") // ÁôÑÔÁĞ±í
 }
 else 
 {
-	showError("²ÎÊı³ö´í£¡");
+	showError("å‚æ•°å‡ºé”™ï¼");
 }
 
 /**
- * USERID»ñÈ¡ USERNAME
+ * USERIDè·å– USERNAME
  * */
 function getUserName($userID)
 {

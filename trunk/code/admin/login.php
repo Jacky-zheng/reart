@@ -1,71 +1,71 @@
-<?php
+ï»¿<?php
 //define("OPEN_DEBUG",true);
 require_once("../class/common.inc.php");
 $sAction = isset($_GET["act"]) ? $_GET["act"] : "login";
 
 if($sAction == "login")
 {
-	//ÏÔÊ¾µÇÂ¼½çÃæ
+	//æ˜¾ç¤ºç™»å½•ç•Œé¢
 	$tpl->display("admin/login.tpl.htm");	
 }
 elseif($sAction == "doLogin") 
 {
-	//Ö´ÐÐµÇÂ¼²Ù×÷
+	//æ‰§è¡Œç™»å½•æ“ä½œ
 	$sUserName = $_POST["userName"];
 	$sPassword = $_POST["password"];
 	$sCheckCode = $_POST['validateCode'];
 	
-	//¼ì²éÑéÖ¤ÂëÊÇ·ñÕýÈ·
+	//æ£€æŸ¥éªŒè¯ç æ˜¯å¦æ­£ç¡®
 	if($sCheckCode == $_SESSION["xzx_checkCode"]) 
 	{
-		//ÔÚÑéÖ¤ÂëÕýÈ·µÄÇé¿öÏÂ£¬¿ªÊ¼¼ÇÂ¼µÇÂ¼´ÎÊý	
+		//åœ¨éªŒè¯ç æ­£ç¡®çš„æƒ…å†µä¸‹ï¼Œå¼€å§‹è®°å½•ç™»å½•æ¬¡æ•°	
 		$sSQL = "SELECT * FROM manager WHERE userName='$sUserName' AND status='1'";
 		$bUserIsExists = $db->getRowsNum("SELECT COUNT(*) FROM manager WHERE userName='$sUserName' AND status='1'");
 		if($bUserIsExists)
 		{
-			//ÓÃ»§´æÔÚ
+			//ç”¨æˆ·å­˜åœ¨
 			$aInfo = $db->getRecordSet($sSQL, 1);
 			if(md5($sPassword) == $aInfo["pwd"])
 			{
-				//ÃÜÂëÕýÈ·
+				//å¯†ç æ­£ç¡®
 				$_SESSION["xzx_uID"]		= $aInfo["id"];
 				$_SESSION["xzx_userName"]= $aInfo["userName"];
 				$_SESSION["xzx_trueName"]= $aInfo["trueName"];
 	
-				//¸üÐÂ×îºóµÇÂ½ÐÅÏ¢
+				//æ›´æ–°æœ€åŽç™»é™†ä¿¡æ¯
 				$aField["lastIP"] = getIP();
 				$aField["lastTime"] = date("Y-m-d H:i:s"); 
 				$db->update("manager", $aField, " id=".$aInfo["id"]);
-				//Ìø×ªµ½mainÒ³Ãæ£¬¿ªÊ¼Ö´ÐÐ¹¦ÄÜ
-				redirect("main.php", 1, "µÇÂ¼³É¹¦£¡",true);
+				//è·³è½¬åˆ°mainé¡µé¢ï¼Œå¼€å§‹æ‰§è¡ŒåŠŸèƒ½
+				redirect("main.php", 1, "ç™»å½•æˆåŠŸï¼",true);
 			} 
 			else
 			{
-				redirect("login.php", 2, "ÃÜÂë²»ÕýÈ·",true);
+				redirect("login.php", 2, "å¯†ç ä¸æ­£ç¡®",true);
 			}
 		} 
 		else 
 		{
-			redirect("login.php", 2, "¸ÃÓÃ»§²»´æÔÚ",true);
+			redirect("login.php", 2, "è¯¥ç”¨æˆ·ä¸å­˜åœ¨",true);
 		}		
 	}
 	else 
 	{
-		//ÑéÖ¤Âë²»ÕýÈ·
-		redirect("login.php", 2, "ÄãÊäÈëµÄÑéÖ¤Âë²»ÕýÈ·",true);
+		//éªŒè¯ç ä¸æ­£ç¡®
+		redirect("login.php", 2, "ä½ è¾“å…¥çš„éªŒè¯ç ä¸æ­£ç¡®",true);
 	}
-	//¿ªÊ¼¼ÇÂ¼ËûµÄµÇÂ¼´ÎÊý£¬µÇÂ¼Èý´ÎÒÔºó×Ô¶¯Ëø¶¨¸ÃÕÊºÅ	
+	//å¼€å§‹è®°å½•ä»–çš„ç™»å½•æ¬¡æ•°ï¼Œç™»å½•ä¸‰æ¬¡ä»¥åŽè‡ªåŠ¨é”å®šè¯¥å¸å·	
 } 
 elseif ($sAction == "logout")
 {
 	$aField["logoutTime"] = date("Y-m-d H:i:s");
 	$db->update("log_login",$aField,"id=".$_GET["logID"]);
 	session_destroy();
-	//¶ÔÊý¾Ý¿â½øÐÐ²Ù×÷£¬¼ÇÂ¼ÍË³öÊ±¼ä
-	redirect("login.php", 1, "³É¹¦ÍË³öÏµÍ³",true);
+	//å¯¹æ•°æ®åº“è¿›è¡Œæ“ä½œï¼Œè®°å½•é€€å‡ºæ—¶é—´
+	redirect("login.php", 1, "æˆåŠŸé€€å‡ºç³»ç»Ÿ",true);
 }
 else
 {
-	showError("·Ç·¨²Ù×÷£¡");
+	showError("éžæ³•æ“ä½œï¼");
 }
 ?>

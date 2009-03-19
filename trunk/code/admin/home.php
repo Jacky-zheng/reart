@@ -1,10 +1,10 @@
-<?php
+ï»¿<?php
 //define("OPEN_DEBUG",true);
 require_once("../class/common.inc.php");
-//ÕâÀï¼òµ¥µÄÅÐ¶ÏÒ»ÏÂÓÃ»§ÊÇ·ñµÇÂ½
+//è¿™é‡Œç®€å•çš„åˆ¤æ–­ä¸€ä¸‹ç”¨æˆ·æ˜¯å¦ç™»é™†
 if($_SESSION["xzx_uID"] == "")
 	header("Location:login.php");
-//¸öÈËÐÅÏ¢
+//ä¸ªäººä¿¡æ¯
 $aInfo = manager::getManagerInfo($_SESSION["xzx_uID"]);
 $tpl->assign("aInfo", $aInfo);
 

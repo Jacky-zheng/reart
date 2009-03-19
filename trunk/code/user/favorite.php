@@ -4,7 +4,7 @@ require_once("../class/common.inc.php");
 require_once("../class/user.lib.php");
 loadLib("page_link");
 loadLib("work");
-$user_id = /*$_SESSION["reart_id"]*/'177';
+$user_id = $_SESSION["reart_id"]/*'177'*/;
 
 $check_login = checkUserState($_SESSION["reart_id"]);
 $tpl->assign("check_login",$check_login);

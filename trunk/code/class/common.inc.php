@@ -25,8 +25,8 @@ define("CACHE_FILE", "cache");		//缓存文件
 define("I_PERPAGE", 15);		//默认的每页显示数字
 
 define("PAGESIZE", 8);
-define("IMG_URL_XL", '/img/800/');
-define("IMG_URL_L", '/img/400/');
+define("IMG_URL_XL", '/img/860/');
+define("IMG_URL_L", '/img/260/');
 define("IMG_URL_M", '/img/200/');
 define("IMG_URL_S", '/img/80/');
 //echo ROOT;

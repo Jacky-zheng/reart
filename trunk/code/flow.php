@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 require_once("class/common.inc.php");
 loadLib("favorite");
 loadLib("work");
@@ -28,11 +28,11 @@ elseif ($_GET['action'] == 'delete')
 	{
 		$str .= '<li>
 					<span><a href="detail.php?id='.$v['id'].'"><img src="'.$img_url_m.$v['picCode'].'.jpg" alt="" /></a></span>
-					<p>×÷Æ·Ãû£º'.$v['name'].'</p>
-					<p>×÷Õß£º'.$v['artist_name'].'</p>
-					<p>ÈÕÆÚ£º'.$v['addDate'].'</p>
-					<p>¼Û¸ñ£º'.$v['price'].'</p>
-					<p><button onclick="delete_favorite('.$v['id'].','.$_REQUEST['userid'].')">É¾³ı</botton></p>
+					<p>ä½œå“åï¼š'.$v['name'].'</p>
+					<p>ä½œè€…ï¼š'.$v['artist_name'].'</p>
+					<p>æ—¥æœŸï¼š'.$v['addDate'].'</p>
+					<p>ä»·æ ¼ï¼š'.$v['price'].'</p>
+					<p><button onclick="delete_favorite('.$v['id'].','.$_REQUEST['userid'].')">åˆ é™¤</botton></p>
 				</li>';
 	}
 	echo $str;

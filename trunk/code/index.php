@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once("class/common.inc.php");
 require_once("class/user.lib.php");
 

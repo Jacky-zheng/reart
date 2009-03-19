@@ -29,5 +29,14 @@ class favorite
 		$id = $db->insert("workfavorite", $arr);
 		return $id;
 	}
+
+	function delFavorite($workid, $userid)
+	{
+		global $db;
+		
+		$str = "workID='".$workid."' and userID='".$userid."'";
+		$res = $db->delete("workfavorite", $str);
+		return $res;
+	}
 }
 ?>

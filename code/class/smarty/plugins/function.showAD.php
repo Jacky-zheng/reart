@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 /**
  * Smarty plugin
  * @package Smarty
@@ -40,7 +40,7 @@
  */
 function smarty_function_showAD($aParams, &$smarty)
 {
-	//ÐèÒªµÄÌõ¼þ$aList,$i,$iWidth,$iHeight	
+	//éœ€è¦çš„æ¡ä»¶$aList,$i,$iWidth,$iHeight	
 	
 	$aList = $aParams['aList'];
 	$i= $aParams['i'];
@@ -61,11 +61,11 @@ function smarty_function_showAD($aParams, &$smarty)
     	
     switch (intval($aList[$j]['type']))
     {
-    	case 0 : // ÎÄ×Ö		
+    	case 0 : // æ–‡å­—		
     		$sTitle = ($aList[$j]['isRed']) ? "<font color=red>$sTitle</font>" : $sTitle;
     		$sStr = "<a href='$sUrl' target='_blank'>".$sTitle."</a>";
     		break;
-    	case 1 : // Í¼Æ¬
+    	case 1 : // å›¾ç‰‡
     		$sStr = "<a href='$sUrl' target='_blank'><img src='http://www.ts918.com/images_89189/{$iChannelID}_{$i}.gif' border=0 alt='{$iChannelID}_{$i}.gif' title='$sTitle' width='$iWidth' height='$iHeight'></a>";
     		break;
     	case 2: // flash
@@ -74,7 +74,7 @@ function smarty_function_showAD($aParams, &$smarty)
   <param name='quality' value='high'>
   <embed src='{$iChannelID}_{$i}' quality='high' pluginspage='http://www.macromedia.com/go/getflashplayer' type='application/x-shockwave-flash' width='$iWidth' height='{$iHeight}'></embed>
 </object>";
-    	case 3 : // ÊÓÆµ
+    	case 3 : // è§†é¢‘
     		$sStr = "";
     }   	  	        
 	echo $sStr;

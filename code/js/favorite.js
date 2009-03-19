@@ -1,16 +1,14 @@
 function favorite(workid, userid)
-{/*
-	if(userid == "")
+{
+	if(userid == "0")
 	{
 		alert("please login");
 	}
 	else
 	{
-		alert("please fa");
-	}
-	*/
-	var str='workid='+workid+'&userid='+userid;
-	Ajax.call('/flow.php?action=favorite', str, addFavoriteResponse, 'POST', 'text');
+		var str='workid='+workid+'&userid='+userid;
+		Ajax.call('/flow.php?action=favorite', str, addFavoriteResponse, 'POST', 'text');
+	}	
 }
 
 function addFavoriteResponse(result)

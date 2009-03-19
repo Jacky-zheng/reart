@@ -28,7 +28,7 @@ $res = $work->searchWorkList($params);
 
 $check_login = checkUserState($_SESSION["reart_id"]);
 $tpl->assign("check_login",$check_login);
-$tpl->assign("user_id",empty($_SESSION["reart_id"])?'177':$_SESSION["reart_id"]);
+$tpl->assign("user_id",empty($_SESSION["reart_id"])?'0':$_SESSION["reart_id"]);
 
 $tpl->assign('worklist', $res['data']);
 $tpl->assign('img_url_xl', IMG_URL_XL);

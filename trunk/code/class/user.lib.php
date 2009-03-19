@@ -38,24 +38,22 @@ function checkUserLogin($arr)
 	{
 		//用户存在
 		$aInfo = $db->getRecordSet($sSQL, 1);
-		
-			//密码正确
-			$_SESSION["reart_id"]	 = $aInfo["id"];
-
-			//更新最后登陆信息
-			$arr = array(
-				'userID' =>  $aInfo["id"],	
-				'loginDate' =>  date("Y-m-d H:i:s"),	
-				'loginIP' =>  getIP(),		
-			);
-			$db->insert("loginlog", $arr);
-			$arr_login = array(
-				'userID' =>  $aInfo["id"],	
-				'loginDate' => date("Y-m-d H:i:s"),
-				'loginIP' =>  getIP(),		
-			);
-			$db->insert("member", $arr_login);
-			return true;
+		//密码正确
+		$_SESSION["reart_id"]	 = $aInfo["id"];
+		//更新最后登陆信息
+		$arr = array(
+			'userID' =>  $aInfo["id"],	
+			'loginDate' =>  date("Y-m-d H:i:s"),	
+			'loginIP' =>  getIP(),		
+		);
+		$db->insert("loginlog", $arr);
+		$arr_login = array(
+			'userID' =>  $aInfo["id"],	
+			'loginDate' => date("Y-m-d H:i:s"),
+			'loginIP' =>  getIP(),		
+		);
+		$db->insert("member", $arr_login);
+		return true;
 	}
 	else
 	{
@@ -105,7 +103,7 @@ function checkMessage($id)
 	}
 	else 
 	{
-		$check_login = '<td width="71">匿名<input class="box" type="checkbox" name="no_reg" /></td><form action="/user/contact_us.php" method="POST" name="login"><td width="524">用户名:&nbsp;&nbsp;<input class="width-03" type="text" name="login_name"/>&nbsp;&nbsp;密码:&nbsp;&nbsp;<input class="width-03" type="text" name="login_pwd" />&nbsp;&nbsp;<button type="submit">登陆</button></form></td>';
+		$check_login = '<td width="71">匿名<input class="box" checked type="checkbox" name="no_reg" /></td><form action="/user/contact_us.php" method="POST" name="login"><td width="524">用户名:&nbsp;&nbsp;<input class="width-03" type="text" name="login_name"/>&nbsp;&nbsp;密码:&nbsp;&nbsp;<input class="width-03" type="text" name="login_pwd" />&nbsp;&nbsp;<button type="submit">登陆</button></form></td>';
 	}
 	return $check_login;
 }
@@ -120,7 +118,16 @@ function insertMsg($arr)
 function getAboutUs()
 {
 	global $db;
-	$sSQL = "SELECT content FROM content ORDER BY id DESC LIMIT 1  ";
+	$sSQL = "SELECT content,title FROM content WHERE id=1  ";
+	$aField = $db->getRecordSet($sSQL,1);
+	return $aField;
+}
+//
+//投资收藏咨询
+function getConsultation()
+{
+	global $db;
+	$sSQL = "SELECT content,title FROM content WHERE id=2  ";
 	$aField = $db->getRecordSet($sSQL,1);
 	return $aField;
 }

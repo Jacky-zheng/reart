@@ -13,10 +13,10 @@ function refreshValidateCode(id)
 	      <td class="link" width="328" rowspan="4" align="center"><a class="btn-01" href="#">联系我们</a></td>
 	      {$msg}
         </tr>
-        <form action="/user/contact_us.php?action=submit" method="POST" name="message">
+        <form action="/user/contact_us.php?action=submit" method="POST">
 	    <tr>
 	      <td >建议/意见:</td>
-	      <td><textarea name="textarea" cols="30" rows="8" name="msg"></textarea></td>
+	      <td><textarea cols="30" rows="8" name="content"></textarea></td>
         </tr>
 	    <tr>
 	      <td>验证码</td>

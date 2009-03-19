@@ -1,35 +1,34 @@
-<?php
+ï»¿<?php
 if(!defined("IN_CN315")){
 	echo "<script>location.href='/';</script>";
 }
-/***********************Êý¾Ý¿âÏà¹ØµÄ¶¨Òå********************************/
+/***********************æ•°æ®åº“ç›¸å…³çš„å®šä¹‰********************************/
 
 $__DBType		= "mysql";
 $__DBHost		= "221.181.66.172";
-$__DBHost		= "localhost";
 $__DBUser		= "a0317111520";
 $__DBPwd        = "081228";
 $__DBName		= "a0317111520";
 $__DBPconnect 	= 1;
 
-/************************ÏµÍ³ÅäÖÃÏà¹ØµÄ¶¨Òå******************************/
-define("__ADMINTITLE", "ºóÌ¨¹ÜÀí");				//ÏÔÊ¾µÄ±ê×¼Í·
-define("__TECH_MAIL", "chenlqin@126.com");				//¼¼Êõemail£¬ÏµÍ³³ö´í¿ÉÒÔ·¢ËÍÓÊ¼þ
-define("__DEFAULT_TEMPLATE", "");			//Ä¬ÈÏµÄÄ£°æÎÄ¼þ
-define("__ADMIN_URL", "/");	//ºóÌ¨ÓòÃû
-define("__URL","/"); // ÍøÕ¾ÓòÃû
-define("__WEBNAME","î£ÒÕ");
+/************************ç³»ç»Ÿé…ç½®ç›¸å…³çš„å®šä¹‰******************************/
+define("__ADMINTITLE", "åŽå°ç®¡ç†");				//æ˜¾ç¤ºçš„æ ‡å‡†å¤´
+define("__TECH_MAIL", "chenlqin@126.com");				//æŠ€æœ¯emailï¼Œç³»ç»Ÿå‡ºé”™å¯ä»¥å‘é€é‚®ä»¶
+define("__DEFAULT_TEMPLATE", "");			//é»˜è®¤çš„æ¨¡ç‰ˆæ–‡ä»¶
+define("__ADMIN_URL", "/");	//åŽå°åŸŸå
+define("__URL","/"); // ç½‘ç«™åŸŸå
+define("__WEBNAME","ç¿è‰º");
 
-/** Í¼Æ¬Â·¾¶ **/
-define("__NEWS_PIC","../newsPic/"); // ×ÊÑ¶Í¼Æ¬
-define("__NEWS_ATTACHED","../attached/"); // ×ÊÑ¶¸½¼þ
-define("__MEMBER_PIC","../memberPic/");// »áÔ±Í¼Æ¬
-define("__USER_PIC","../userPic/");	//ºóÌ¨±à¼­ÓÃ»§ÏàÆ¬
+/** å›¾ç‰‡è·¯å¾„ **/
+define("__NEWS_PIC","../newsPic/"); // èµ„è®¯å›¾ç‰‡
+define("__NEWS_ATTACHED","../attached/"); // èµ„è®¯é™„ä»¶
+define("__MEMBER_PIC","../memberPic/");// ä¼šå‘˜å›¾ç‰‡
+define("__USER_PIC","../userPic/");	//åŽå°ç¼–è¾‘ç”¨æˆ·ç›¸ç‰‡
 
 
-/** ÎÄ¼þÒ³ÃæÂ·¾¶ **/
-define("__NEWS_HTM","../newsHtm/"); // ×ÊÑ¶Ò³Ãæ
-define("__PRODUCT_HTM","../productHtm/"); // ²úÆ·Ò³Ãæ
+/** æ–‡ä»¶é¡µé¢è·¯å¾„ **/
+define("__NEWS_HTM","../newsHtm/"); // èµ„è®¯é¡µé¢
+define("__PRODUCT_HTM","../productHtm/"); // äº§å“é¡µé¢
 
-define("TIME_INTERVAL",60*60*12);		//cookieÊ±¼ä¼ä¸ô  £¨12 hour£©
+define("TIME_INTERVAL",60*60*12);		//cookieæ—¶é—´é—´éš”  ï¼ˆ12 hourï¼‰
 ?>

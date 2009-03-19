@@ -1,14 +1,14 @@
-<?php
+ï»¿<?php
 /**
- * config.php £¨DB Connect£©
+ * config.php ï¼ˆDB Connectï¼‰
  */
 //error_reporting(0);
 DBconnect(0);
 
 /**
- * Á¬½ÓÊý¾Ý¿â
+ * è¿žæŽ¥æ•°æ®åº“
  *
- * @param int $flag  £¨0 ±íÊ¾ÍøÕ¾£» 1 ±íÊ¾bbs£©
+ * @param int $flag  ï¼ˆ0 è¡¨ç¤ºç½‘ç«™ï¼› 1 è¡¨ç¤ºbbsï¼‰
  */
 
 function DBconnect($flag=0)
@@ -33,7 +33,7 @@ function DBconnect($flag=0)
 }
 
 /**
- * »ñÈ¡·ûºÏÌõ¼þµÄ¼ÇÂ¼×ÜÊý
+ * èŽ·å–ç¬¦åˆæ¡ä»¶çš„è®°å½•æ€»æ•°
  *
  * @param unknown_type $sSQL
  */
@@ -72,7 +72,7 @@ function getRecordSet($sSQL, $iCount = NULL)
 }
 
 /**
-	 * ²åÈëÊý¾Ýµ½Ö¸¶¨µÄÊý¾Ý±í
+	 * æ’å…¥æ•°æ®åˆ°æŒ‡å®šçš„æ•°æ®è¡¨
 	 *
 	 * @param string $sTableName
 	 * @param array $aField
@@ -96,7 +96,7 @@ function insert($sTableName, $aField)
 }
 
 /**
- * ¸üÐÂÊý¾Ý²Ù×÷
+ * æ›´æ–°æ•°æ®æ“ä½œ
  *
  * @param string $sTableName
  * @param array $aField
@@ -115,7 +115,7 @@ function update($sTableName, $aField, $sWhere) {
 	return mysql_query($sSQL);
 }
 /**
- * ¼ì²âÓÃ»§ÃûÊÇ·ñÒÑ¾­´æÔÚ
+ * æ£€æµ‹ç”¨æˆ·åæ˜¯å¦å·²ç»å­˜åœ¨
  * @param string $aField
  * @return true or false
  */
@@ -127,7 +127,7 @@ function checkNameRepeat( $aField )
 	else return false;	
 }
 /**
- * ¼ì²âÓÊÏä¸ñÊ½
+ * æ£€æµ‹é‚®ç®±æ ¼å¼
  * @param string $aField
  * @return true or false
  */
@@ -138,7 +138,7 @@ function checkEmail( $aField )
 	else return false;
 }
 /**
- * ¼ì²âµÇÂ½
+ * æ£€æµ‹ç™»é™†
  * @param $arr array
  * @return true or false
  * 
@@ -154,6 +154,6 @@ function checkUserState()
 {
 	
 }
-define("TIME_INTERVAL",60*60*12);		//cookieÊ±¼ä¼ä¸ô  £¨12 hour£©
-$__WEB_URL = "http://www.cn315.cc";		//ÍøÖ·
+define("TIME_INTERVAL",60*60*12);		//cookieæ—¶é—´é—´éš”  ï¼ˆ12 hourï¼‰
+$__WEB_URL = "http://www.cn315.cc";		//ç½‘å€
 ?>

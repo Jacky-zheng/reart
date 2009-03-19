@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 require_once("class/common.inc.php");
 require_once("class/user.lib.php");
 loadLib("work");
@@ -19,7 +19,7 @@ $check_login = checkUserState($_SESSION["reart_id"]);
 $tpl->assign("check_login",$check_login);
 $tpl->assign('recommen_list', $recommen_list);
 
-/* ¼ÇÂ¼ä¯ÀÀÀúÊ· */
+/* è®°å½•æµè§ˆå†å² */
 if (!empty($_COOKIE['reart']['history']))
 {
     $history = explode(',', $_COOKIE['reart']['history']);

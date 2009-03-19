@@ -11,7 +11,11 @@ function formSubmit()
 			<dl class="wrapClear">
 				<dt class="f">作品搜索</dt>
 				<dd>类别<select name="cate">
-                	<option>全部</option></select>
+                	<option value='0'>全部</option>
+				{foreach from=$cate item=ct}
+					<option value='{$ct.id}'>{$ct.name}</option>
+				{/foreach}
+				</select>
                 </dd>
 				<dd>价格<input type="text" name="price" value="{$sarch_arr.price}" /></dd>
 				<dd>作者<input type="text" name="artist" value="{$sarch_arr.artist}" /></dd>

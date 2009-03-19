@@ -1,6 +1,6 @@
-<?php
+ï»¿<?php
 /**
- * Êı¾İ¿â´¦ÀíÀà,Ö»ÄÜ´¦ÀíMysqlÀàĞÍÊı¾İ¿â
+ * æ•°æ®åº“å¤„ç†ç±»,åªèƒ½å¤„ç†Mysqlç±»å‹æ•°æ®åº“
  * 
  * @package database
  * @version 0.1
@@ -10,7 +10,7 @@ class Database
 {	
 	var $__queryNum = 0;	
 	/**
-	 * ¹¹Ôìº¯Êı
+	 * æ„é€ å‡½æ•°
 	 *
 	 * @param string $sDBHost
 	 * @param string $sDBName
@@ -26,7 +26,7 @@ class Database
 	}
 	
 	/**
-	 * Á¬½ÓÊı¾İ¿â
+	 * è¿æ¥æ•°æ®åº“
 	 *
 	 * @return true on Sucess,False on Failure
 	 */
@@ -34,13 +34,14 @@ class Database
 		//echo $this->__DBHost."<br>".$this->__DBUser."<br>".$this->__DBPwd."<br>".$this->__DBName;		
 		$this->__moDB = mysql_connect($this->__DBHost, $this->__DBUser, $this->__DBPwd);		
 		mysql_select_db($this->__DBName, $this->__moDB);
+		$this->query("set names utf8");
 		return true;
 	}
 	
 	
 	
 	/**
-	 * Ö´ĞĞquery²Ù×÷
+	 * æ‰§è¡Œqueryæ“ä½œ
 	 *
 	 * @param string $sSQL
 	 * @return resource
@@ -49,19 +50,19 @@ class Database
 		$this->__queryNum++;
 		if($this->__debug)
 			$this->showDebug($sSQL);
-		//ÅĞ¶ÏÀïÃæÓĞÃ»delete£¬insert,update²Ù×÷£¬ÕâĞ©²Ù×÷²»ÔÊĞíÔÚÕâÀïÖ´ĞĞ
+		//åˆ¤æ–­é‡Œé¢æœ‰æ²¡deleteï¼Œinsert,updateæ“ä½œï¼Œè¿™äº›æ“ä½œä¸å…è®¸åœ¨è¿™é‡Œæ‰§è¡Œ
 		$this->__moQuery = mysql_query($sSQL, $this->__moDB);
 		return $this->__moQuery;
 	}
 	
 	/**
-	 * µÃµ½¼ÇÂ¼Êı×é
+	 * å¾—åˆ°è®°å½•æ•°ç»„
 	 *
 	 * @param unknown_type $sSQL
 	 * @return unknown
 	 */
 	function getRecordSet($sSQL, $iCount = NULL) {
-		//ÕâÀï¼ì²â×¢ÈëÎ£º¦£¬sqlÖĞ²»ÄÜ³öÏÖdeleteºÍupdate
+		//è¿™é‡Œæ£€æµ‹æ³¨å…¥å±å®³ï¼Œsqlä¸­ä¸èƒ½å‡ºç°deleteå’Œupdate
 		$aRes = $this->query($sSQL);
 		$aList = array();
 		while ($rr = mysql_fetch_array($aRes, MYSQL_ASSOC)) {
@@ -74,7 +75,7 @@ class Database
 	}
 	
 /**
-	 * ²åÈëÊı¾İµ½Ö¸¶¨µÄÊı¾İ±í
+	 * æ’å…¥æ•°æ®åˆ°æŒ‡å®šçš„æ•°æ®è¡¨
 	 *
 	 * @param string $sTableName
 	 * @param array $aField
@@ -99,7 +100,7 @@ class Database
 	}
 	
 	/**
-	 * ¸üĞÂ²Ù×÷
+	 * æ›´æ–°æ“ä½œ
 	 *
 	 * @param string $sTableName
 	 * @param array $aField
@@ -120,7 +121,7 @@ class Database
 	}
 	
 	/**
-	 * É¾³ı
+	 * åˆ é™¤
 	 *
 	 * @param string $sTableName
 	 * @param string $sWhere
@@ -166,7 +167,7 @@ class Database
 	}
 	
 	/**
-	 * µÃµ½²éÑ¯ºóµÄÊıÁ¿
+	 * å¾—åˆ°æŸ¥è¯¢åçš„æ•°é‡
 	 *
 	 * @param string $sSQL
 	 * @return unknown
@@ -207,11 +208,11 @@ class Database
 	
 	
 	/**
-	 * ÅĞ¶ÏÊı¾İÊÇ·ñÒÑ¾­´æÔÚ
+	 * åˆ¤æ–­æ•°æ®æ˜¯å¦å·²ç»å­˜åœ¨
 	 *
-	 * @param string $sTable	- ²éÑ¯µÄ±í
-	 * @param string $sWHERE	- ²éÑ¯Ìõ¼ş
-	 * @param int $iType		- ÀàĞÍ£º$iType=0±íÊ¾Ìí¼Ó£¬$iType=1±íÊ¾ĞŞ¸Ä
+	 * @param string $sTable	- æŸ¥è¯¢çš„è¡¨
+	 * @param string $sWHERE	- æŸ¥è¯¢æ¡ä»¶
+	 * @param int $iType		- ç±»å‹ï¼š$iType=0è¡¨ç¤ºæ·»åŠ ï¼Œ$iType=1è¡¨ç¤ºä¿®æ”¹
 	 * @return unknown
 	 */
 	function isExists($sTable,$sWHERE,$iType=0)

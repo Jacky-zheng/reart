@@ -22,7 +22,7 @@ class work
 		global $db;
 		$start = !empty($params['start'])?$params['start']:0;
 		$pagesize = !empty($params['pagesize'])?$params['pagesize']:8;
-		$sSQL = "SELECT w.id, w.name, w.cID, w.price, w.age, w.artistID, w.picPath, w.addDate, a.name as artist_name FROM work as w left join artist as a on a.id=w.artistID  limit ".$start.",".$pagesize;
+		$sSQL = "SELECT w.id, w.name, w.cID, w.price, w.age, w.artistCode, w.picCode, w.addDate, a.name as artist_name FROM work as w left join artist as a on a.artistCode=w.artistCode  limit ".$start.",".$pagesize;
 		$cSQL = "select count(*) as num from work";
 		//echo $sSQL;
 		$res['data'] = $db->getRecordSet($sSQL);
@@ -49,8 +49,8 @@ class work
 			$sql_tail = " and w.age=".$params['age'];
 		}
 		
-		$sql = "SELECT w.id, w.name, w.cID, w.price, w.age, w.artistID, w.picPath, w.addDate, a.name as artist_name FROM work as w, artist as a where a.id=w.artistID ";
-		$sql_count = "SELECT count(*) as num FROM work w, artist a where a.id=w.artistID ";
+		$sql = "SELECT w.id, w.name, w.cID, w.price, w.age, w.artistCode, w.picCode, w.addDate, a.name as artist_name FROM work as w, artist as a where a.artistCode=w.artistCode ";
+		$sql_count = "SELECT count(*) as num FROM work w, artist a where a.artistCode=w.artistCode ";
 		
 		$start = !empty($params['start'])?$params['start']:0;
 		$pagesize = !empty($params['pagesize'])?$params['pagesize']:8;
@@ -73,7 +73,7 @@ class work
 		{
 			return false;
 		}
-		$sql = "select w.id, w.name, w.cID, w.price, w.age, w.artistID, w.picPath, w.addDate, w.comment, w.description, a.name as artist_name, a.description as resume from work as w, artist as a where a.id=w.artistID and w.id=".$id;
+		$sql = "select w.id, w.name, w.cID, w.price, w.age, w.artistCode, w.picCode, w.addDate, w.comment, w.description, a.name as artist_name, a.description as resume from work as w, artist as a where a.artistCode=w.artistCode and w.id=".$id;
 		$res = $db->getRecordSet($sql);
 		$sql_more = "select id from work where id>$id order by id asc limit 0,1";
 		$res_more = $db->getRecordSet($sql_more);
@@ -94,7 +94,7 @@ class work
 	function getWorkbyIDs($ids)
 	{
 		global $db;
-		$sql = "SELECT w.id, w.name, w.cID, w.price, w.age, w.artistID, w.picPath, w.addDate, a.name as artist_name FROM work as w left join artist as a on a.id=w.artistID where w.id in ($ids) order by w.addDate desc";
+		$sql = "SELECT w.id, w.name, w.cID, w.price, w.age, w.artistCode, w.picCode, w.addDate, a.name as artist_name FROM work as w left join artist as a on a.artistCode=w.artistCode where w.id in ($ids) order by w.addDate desc";
 		$res = $db->getRecordSet($sql);
 		return $res;
 		
@@ -104,7 +104,7 @@ class work
 	{
 		global $db;
 		
-		$sSQL = "SELECT w.id, w.name, w.cID, w.price, w.age, w.artistID, w.picPath, w.addDate, a.name as artist_name FROM work as w left join artist as a on a.id=w.artistID where w.status='1' order by w.addDate desc limit 0, 5";
+		$sSQL = "SELECT w.id, w.name, w.cID, w.price, w.age, w.artistCode, w.picCode, w.addDate, a.name as artist_name FROM work as w left join artist as a on a.artistCode=w.artistCode where w.status='1' order by w.addDate desc limit 0, 5";
 		//echo $sSQL;
 		$res = $db->getRecordSet($sSQL);
 		return $res;
@@ -114,7 +114,7 @@ class work
 		global $db;
 		$start = !empty($params['start'])?$params['start']:0;
 		$pagesize = !empty($params['pagesize'])?$params['pagesize']:8;
-		$sSQL = "SELECT f.workID, f.addDate as faddDate, w.id, w.name, w.cID, w.price, w.age, w.artistID, w.picPath, w.addDate, a.name as artist_name FROM workfavorite as f left join work as w on f.workID=w.id left join artist as a on a.id=w.artistID where f.userID='".$params['userid']."' order by f.addDate desc limit ".$start.",".$pagesize;
+		$sSQL = "SELECT f.workID, f.addDate as faddDate, w.id, w.name, w.cID, w.price, w.age, w.artistCode, w.picCode, w.addDate, a.name as artist_name FROM workfavorite as f left join work as w on f.workID=w.id left join artist as a on a.artistCode=w.artistCode where f.userID='".$params['userid']."' order by f.addDate desc limit ".$start.",".$pagesize;
 		$cSQL = "select count(*) as num from workfavorite where userID='".$params['userid']."'";
 		//echo $sSQL;
 		$res['data'] = $db->getRecordSet($sSQL);
@@ -122,6 +122,15 @@ class work
 		$res['start'] = $start;
 		$res['pagesize'] = $pagesize;
 		$res['count'] = $rCnt[0]['num'];
+		return $res;
+	}
+
+	function getCatelog()
+	{
+		global $db;
+		
+		$sSQL = "SELECT * from category";
+		$res = $db->getRecordSet($sSQL);
 		return $res;
 	}
 }

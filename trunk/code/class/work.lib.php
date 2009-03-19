@@ -73,7 +73,7 @@ class work
 		{
 			return false;
 		}
-		$sql = "select w.id, w.name, w.cID, w.price, w.age, w.artistCode, w.picCode, w.addDate, w.comment, w.description, a.name as artist_name, a.description as resume from work as w, artist as a where a.artistCode=w.artistCode and w.id=".$id;
+		$sql = "select w.id, w.name, w.cID, w.price, w.age, w.artistCode, w.picCode, w.addDate, w.comment, w.description, a.name as artist_name, a.description as resume from work as w left join artist as a on a.artistCode=w.artistCode where w.id=".$id;
 		$res = $db->getRecordSet($sql);
 		$sql_more = "select id from work where id>$id order by id asc limit 0,1";
 		$res_more = $db->getRecordSet($sql_more);

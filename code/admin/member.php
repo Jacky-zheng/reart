@@ -1,20 +1,20 @@
-<?php
+ï»¿<?php
 /**
- * member.php(»áÔ±Ä£¿é)
+ * member.php(ä¼šå‘˜æ¨¡å—)
  */
-//define("OPEN_DEBUG",true); //ÊÇ·ñ¿ªÆôµ÷ÊÔ¿ª¹Ø
-require_once("check_login.php"); //È¨ÏÞ¼ì²é
+//define("OPEN_DEBUG",true); //æ˜¯å¦å¼€å¯è°ƒè¯•å¼€å…³
+require_once("check_login.php"); //æƒé™æ£€æŸ¥
 require_once("../class/common.inc.php");
 
 $sAction = (isset($_GET["act"])) ? $_GET["act"] : "listAll";
 $sTbl = "member"; 
 
 $tpl->assign("PAGE_FUNC_BIG_LINK", "member.php");
-$tpl->assign("PAGE_FUNC_BIG_NAME", "»áÔ±¹ÜÀí");
+$tpl->assign("PAGE_FUNC_BIG_NAME", "ä¼šå‘˜ç®¡ç†");
 
-if($sAction == "edit" && $_GET['id']) // ÐÞ¸Ä
+if($sAction == "edit" && $_GET['id']) // ä¿®æ”¹
 {
-	$tpl->assign("PAGE_FUNC_SMALL_NAME","±à¼­»áÔ±");	
+	$tpl->assign("PAGE_FUNC_SMALL_NAME","ç¼–è¾‘ä¼šå‘˜");	
 	$id = $_GET['id'];
 	$iPageNo = $_GET['pageNo'];
 		
@@ -25,11 +25,11 @@ if($sAction == "edit" && $_GET['id']) // ÐÞ¸Ä
 	$tpl->assign("iPageNo",$iPageNo);
 	$tpl->display("admin/person_edit.tpl.htm");
 }
-elseif ($sAction == "editSave" && isset($_POST['id'])) // ÐÞ¸Ä±£´æ
+elseif ($sAction == "editSave" && isset($_POST['id'])) // ä¿®æ”¹ä¿å­˜
 {
 	$id = $_POST['id'];
-	/** »ù±¾×ÊÁÏ **/
-	if(isset($_POST['modifyPwd']) && !empty($_POST['pwd']))//ÐÞ¸ÄÃÜÂë
+	/** åŸºæœ¬èµ„æ–™ **/
+	if(isset($_POST['modifyPwd']) && !empty($_POST['pwd']))//ä¿®æ”¹å¯†ç 
 	{
 		$aField['pwd'] = md5($_POST['pwd']);		
 	}
@@ -40,16 +40,16 @@ elseif ($sAction == "editSave" && isset($_POST['id'])) // ÐÞ¸Ä±£´æ
 	
 	if($db->update($sTbl,$aField,"id='$id' "))
 	{		
-		redirect("?act=edit&id=$id",3,"±à¼­³É¹¦£¡");
+		redirect("?act=edit&id=$id",3,"ç¼–è¾‘æˆåŠŸï¼");
 	}
 	else
 	{	
-		redirect("?act=edit&id=$id",3,"±à¼­Ê§°Ü£¡");
+		redirect("?act=edit&id=$id",3,"ç¼–è¾‘å¤±è´¥ï¼");
 	}
 }
-elseif ($sAction == "listAll")  // ÁÐ±í
+elseif ($sAction == "listAll")  // åˆ—è¡¨
 {
-	$tpl->assign("PAGE_FUNC_SMALL_NAME","»áÔ±ÁÐ±í");			
+	$tpl->assign("PAGE_FUNC_SMALL_NAME","ä¼šå‘˜åˆ—è¡¨");			
 	$q = isset($_REQUEST['q']) ? $_REQUEST['q'] : "";
 	$iStatus = isset($_REQUEST['status']) ? $_REQUEST['status'] : -1;
 	
@@ -60,7 +60,7 @@ elseif ($sAction == "listAll")  // ÁÐ±í
 	$iPerpage = isset($_REQUEST['perPage']) ? $_REQUEST['perPage'] : (defined("I_PERPAGE") ? I_PERPAGE : 10);
 	$iStartNo = ($iNowPage - 1) * $iPerpage;
 	
-	//µÃµ½×ÜÊýÄ¿
+	//å¾—åˆ°æ€»æ•°ç›®
 	$iTotalNum = $db->getRowsNum("SELECT count(id) FROM $sTbl  WHERE $sWhere");		
 	$sSQL = "SELECT * FROM $sTbl WHERE $sWhere ORDER BY id DESC LIMIT {$iStartNo}, $iPerpage";	
 	$aList = $db->getRecordSet($sSQL);
@@ -73,35 +73,35 @@ elseif ($sAction == "listAll")  // ÁÐ±í
 	$tpl->assign("iPageNo",$iNowPage);
 	$tpl->display("admin/person_list.tpl.htm");
 }
-elseif ($sAction == "check")//ÉóºË--ÆôÓÃ
+elseif ($sAction == "check")//å®¡æ ¸--å¯ç”¨
 {
 	$iStatus = $_REQUEST['status'];
 	$sID = array2Str($_POST['id']);
 
 	if($db->query("UPDATE $sTbl SET status='0' WHERE id in $sID"))
 	{
-		redirect("?act=listAll&status=$iStatus",2,"²Ù×÷³É¹¦£¡");
+		redirect("?act=listAll&status=$iStatus",2,"æ“ä½œæˆåŠŸï¼");
 	}
 	else 
 	{
-		redirect("?act=listAll&status=$iStatus",2,"²Ù×÷Ê§°Ü£¡");
+		redirect("?act=listAll&status=$iStatus",2,"æ“ä½œå¤±è´¥ï¼");
 	}
 }
-elseif($sAction == "stop") // Í£ÓÃ
+elseif($sAction == "stop") // åœç”¨
 {
 	$iStatus = $_REQUEST['status'];
 	$sID = array2Str($_POST['id']);
 	if($db->query("UPDATE $sTbl SET status='1' WHERE id in $sID"))
 	{
-		redirect("?act=listAll&status=$iStatus",2,"²Ù×÷³É¹¦£¡");
+		redirect("?act=listAll&status=$iStatus",2,"æ“ä½œæˆåŠŸï¼");
 	}
 	else 
 	{
-		redirect("?act=listAll&status=$iStatus",2,"²Ù×÷Ê§°Ü£¡");
+		redirect("?act=listAll&status=$iStatus",2,"æ“ä½œå¤±è´¥ï¼");
 	}
 }
 else
 {
-	showError("²ÎÊý´íÎó");
+	showError("å‚æ•°é”™è¯¯");
 }
 ?>

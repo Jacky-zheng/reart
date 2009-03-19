@@ -1,9 +1,9 @@
-<?php
+ï»¿<?php
 /**
- * work.php(×÷Æ·¹ÜÀíÄ£¿é)
+ * work.php(ä½œå“ç®¡ç†æ¨¡å—)
  */
 //define("OPEN_DEBUG",true);
-require_once("check_login.php"); //µÇÂ¼¼ì²é
+require_once("check_login.php"); //ç™»å½•æ£€æŸ¥
 require_once("../class/common.inc.php");
 include "../js/editor/fckeditor.php";
 
@@ -13,10 +13,10 @@ loadLib("category");
 $sTbl =  "work";
 $sClass = "category";
 $tpl->assign("PAGE_FUNC_BIG_LINK", "work.php");
-$tpl->assign("PAGE_FUNC_BIG_NAME", "×÷Æ·¹ÜÀí");
+$tpl->assign("PAGE_FUNC_BIG_NAME", "ä½œå“ç®¡ç†");
 $tpl->assign("aENUM",$aENUM);
 
-if($sAction == "add") //Ìí¼Ó
+if($sAction == "add") //æ·»åŠ 
 {	
 	$cID = isset($_GET['cID']) ? $_GET['cID'] : 1;
 	$oFCKeditor = new FCKeditor('FCKeditor1') ; 
@@ -28,19 +28,19 @@ if($sAction == "add") //Ìí¼Ó
 	$sContent = $oFCKeditor->Create() ; 
 	$tpl->assign("sContent",$sContent);
 	
-	// À¸Ä¿
-	$sOptions = category::getCatOptions($sClass,0);	 // -1±íÊ¾ÎŞÏŞ¼¶·ÖÀà£» 0±íÊ¾Ò»¼¶·ÖÀà£» 1±íÊ¾¶ş¼¶·ÖÀà£»ÒÔ´ËÀàÍÆ
+	// æ ç›®
+	$sOptions = category::getCatOptions($sClass,0);	 // -1è¡¨ç¤ºæ— é™çº§åˆ†ç±»ï¼› 0è¡¨ç¤ºä¸€çº§åˆ†ç±»ï¼› 1è¡¨ç¤ºäºŒçº§åˆ†ç±»ï¼›ä»¥æ­¤ç±»æ¨
 	$tpl->assign("sOptions",$sOptions);
 	
-	$tpl->assign("PAGE_FUNC_SMALL_NAME","Ìí¼Ó×÷Æ·");		
+	$tpl->assign("PAGE_FUNC_SMALL_NAME","æ·»åŠ ä½œå“");		
 	$tpl->assign("cID",$cID);		
 	$tpl->display("admin/work_add.tpl.htm");
 }
-elseif($sAction=="addSave") // Ìí¼Ó±£´æ
+elseif($sAction=="addSave") // æ·»åŠ ä¿å­˜
 {
 	if (empty($_POST['name']))
 	{
-		redirect("work.php?act=add&cID=".$_POST['cID'],2,"×÷Æ·Ãû³Æ²»ÄÜÎª¿Õ£¡");
+		redirect("work.php?act=add&cID=".$_POST['cID'],2,"ä½œå“åç§°ä¸èƒ½ä¸ºç©ºï¼");
 	}
 	$aField['cID'] = $_POST['cID'];
 	$aField['name'] = $_POST['name'];
@@ -55,17 +55,17 @@ elseif($sAction=="addSave") // Ìí¼Ó±£´æ
 	
 	if($db->insert($sTbl,$aField))
 	{
-		redirect("work.php?act=add&cID=".$_POST['cID'],2,"Ìí¼Ó³É¹¦£¡");
+		redirect("work.php?act=add&cID=".$_POST['cID'],2,"æ·»åŠ æˆåŠŸï¼");
 	}
 	else 
 	{
-		redirect("work.php?act=add&cID=".$_POST['cID'],2,"Ìí¼ÓÊ§°Ü£¡");
+		redirect("work.php?act=add&cID=".$_POST['cID'],2,"æ·»åŠ å¤±è´¥ï¼");
 	}	
 }
-elseif($sAction == "edit" && isset($_GET['id'])) // ĞŞ¸Ä
+elseif($sAction == "edit" && isset($_GET['id'])) // ä¿®æ”¹
 {	
 	$id = $_GET['id'];
-	$tpl->assign("PAGE_FUNC_SMALL_NAME","±à¼­×÷Æ·");	
+	$tpl->assign("PAGE_FUNC_SMALL_NAME","ç¼–è¾‘ä½œå“");	
 	$sSQL = "SELECT * FROM $sTbl WHERE id=$id";
 	$aField = $db->getRecordSet($sSQL,1);		
 	$oFCKeditor = new FCKeditor('FCKeditor1') ; 
@@ -78,14 +78,14 @@ elseif($sAction == "edit" && isset($_GET['id'])) // ĞŞ¸Ä
 	$sContent = $oFCKeditor->Create() ; 
 	$tpl->assign("sContent",$sContent);	
 
-	// À¸Ä¿
-	$sOptions = category::getCatOptions($sClass,0,$aField['cID']);	// -1±íÊ¾ÎŞÏŞ¼¶·ÖÀà£» 0±íÊ¾Ò»¼¶·ÖÀà£» 1±íÊ¾¶ş¼¶·ÖÀà£»ÒÔ´ËÀàÍÆ
+	// æ ç›®
+	$sOptions = category::getCatOptions($sClass,0,$aField['cID']);	// -1è¡¨ç¤ºæ— é™çº§åˆ†ç±»ï¼› 0è¡¨ç¤ºä¸€çº§åˆ†ç±»ï¼› 1è¡¨ç¤ºäºŒçº§åˆ†ç±»ï¼›ä»¥æ­¤ç±»æ¨
 	$tpl->assign("sOptions",$sOptions);
 	
 	$tpl->assign("aField",$aField);
 	$tpl->display("admin/work_edit.tpl.htm");
 }
-elseif ($sAction == "editSave" && isset($_POST['id'])) // ĞŞ¸Ä±£´æ
+elseif ($sAction == "editSave" && isset($_POST['id'])) // ä¿®æ”¹ä¿å­˜
 {	
 	$id = $_POST['id'];
 	$aField['cID'] = $_POST['cID'];
@@ -101,16 +101,16 @@ elseif ($sAction == "editSave" && isset($_POST['id'])) // ĞŞ¸Ä±£´æ
 
 	if($db->update($sTbl,$aField,"id=$id"))
 	{
-		redirect("work.php?act=listAll&cID=".$_POST['cID'],3,"ĞŞ¸Ä³É¹¦£¡");	
+		redirect("work.php?act=listAll&cID=".$_POST['cID'],3,"ä¿®æ”¹æˆåŠŸï¼");	
 	}
 	else 
 	{
-		redirect("work.php?act=edit&id=".$id,3,"ĞŞ¸ÄÊ§°Ü£¡");
+		redirect("work.php?act=edit&id=".$id,3,"ä¿®æ”¹å¤±è´¥ï¼");
 	}	
 }
-elseif ($sAction == "listAll")  // ÁĞ±í
+elseif ($sAction == "listAll")  // åˆ—è¡¨
 {
-	$cID = isset($_REQUEST['cID']) ? $_REQUEST['cID'] : 0; //À¸Ä¿
+	$cID = isset($_REQUEST['cID']) ? $_REQUEST['cID'] : 0; //æ ç›®
 	if($cID > 0)
 	{
 		//$sWhere = "cID in".category::getSubID($sClass,$cID);
@@ -120,11 +120,11 @@ elseif ($sAction == "listAll")  // ÁĞ±í
 	else 
 	{
 		$sWhere = "1";
-		$sCatName = "ËùÓĞ";
+		$sCatName = "æ‰€æœ‰";
 	}
 	
-	$tpl->assign("PAGE_FUNC_SMALL_NAME",$sCatName."×÷Æ·ÁĞ±í");
-	$iStatus = isset($_REQUEST['status']) ? $_REQUEST['status'] : -1; // -1 ´ú±íËùÓĞ×÷Æ·
+	$tpl->assign("PAGE_FUNC_SMALL_NAME",$sCatName."ä½œå“åˆ—è¡¨");
+	$iStatus = isset($_REQUEST['status']) ? $_REQUEST['status'] : -1; // -1 ä»£è¡¨æ‰€æœ‰ä½œå“
 	$q = isset($_REQUEST['q']) ? $_REQUEST['q'] : "";		
 	
 	$sWhere .= ($iStatus >=0) ? " AND a.status = '".$iStatus."'" : "  AND a.status != '2' ";
@@ -133,7 +133,7 @@ elseif ($sAction == "listAll")  // ÁĞ±í
 	$iNowPage = empty($_REQUEST["pageNo"]) ? 1 : intval($_REQUEST["pageNo"]); 
 	$iPerpage = isset($_REQUEST['perPage']) ? $_REQUEST['perPage'] : (defined("I_PERPAGE") ? I_PERPAGE : 10);
 	$iStartNo = ($iNowPage - 1) * $iPerpage;
-	//µÃµ½×ÜÊıÄ¿
+	//å¾—åˆ°æ€»æ•°ç›®
 	$iTotalNum = $db->getRowsNum("SELECT COUNT(id) FROM $sTbl AS a WHERE $sWhere");	
 	
 	$sSQL = "SELECT * FROM $sTbl AS a WHERE $sWhere ORDER BY a.id desc LIMIT {$iStartNo}, $iPerpage";
@@ -146,8 +146,8 @@ elseif ($sAction == "listAll")  // ÁĞ±í
 	}
 	dividePage("work.php", $iTotalNum, $iPerpage, $iNowPage, "act=listAll&cID=$cID&status=$iStatus&q=$q&perPage=$iPerpage");	
 		
-	//Àà±ğ
-	$sOptions = category::getCatOptions($sClass,0,$cID);	// -1±íÊ¾ÎŞÏŞ¼¶·ÖÀà£» 0±íÊ¾Ò»¼¶·ÖÀà£» 1±íÊ¾¶ş¼¶·ÖÀà£»ÒÔ´ËÀàÍÆ
+	//ç±»åˆ«
+	$sOptions = category::getCatOptions($sClass,0,$cID);	// -1è¡¨ç¤ºæ— é™çº§åˆ†ç±»ï¼› 0è¡¨ç¤ºä¸€çº§åˆ†ç±»ï¼› 1è¡¨ç¤ºäºŒçº§åˆ†ç±»ï¼›ä»¥æ­¤ç±»æ¨
 	$tpl->assign("sOptions",$sOptions);
 	
 	$tpl->assign("aList",$aList);
@@ -157,50 +157,50 @@ elseif ($sAction == "listAll")  // ÁĞ±í
 	$tpl->assign("cID",$cID);	
 	$tpl->display("admin/work_list.tpl.htm");
 }
-elseif($sAction == "recycle") // ·ÅÈë»ØÊÕÕ¾
+elseif($sAction == "recycle") // æ”¾å…¥å›æ”¶ç«™
 {	
 	$cID = $_REQUEST['cID'];	
 	$iStatus = $_REQUEST['status'];	
 	$sID = array2Str($_POST['newsID']) ;	
 	if($db->query("UPDATE $sTbl SET status='2' WHERE id in $sID"))
 	{
-		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"³É¹¦·ÅÈë»ØÊÕÕ¾£¡");
+		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"æˆåŠŸæ”¾å…¥å›æ”¶ç«™ï¼");
 	}	
 	else
 	{
-		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"·ÅÈë»ØÊÕÕ¾Ê§°Ü£¡");
+		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"æ”¾å…¥å›æ”¶ç«™å¤±è´¥ï¼");
 	}	
 }
-elseif($sAction == "uncheck") // ÉèÎªÆÕÍ¨
+elseif($sAction == "uncheck") // è®¾ä¸ºæ™®é€š
 {
 	$cID = $_REQUEST['cID'];
 	$iStatus = $_REQUEST['status'];
 	$sID = array2Str($_POST['newsID']);	
 
 	if($db->query("UPDATE $sTbl SET status='0' WHERE id in $sID"))
-		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"³É¹¦ÉèÎªÆÕÍ¨£¡");
+		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"æˆåŠŸè®¾ä¸ºæ™®é€šï¼");
 	else
-		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"ÉèÎªÆÕÍ¨Ê§°Ü£¡");
+		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"è®¾ä¸ºæ™®é€šå¤±è´¥ï¼");
 }
-elseif($sAction == "recommend") // ÉèÎªÍÆ¼ö
+elseif($sAction == "recommend") // è®¾ä¸ºæ¨è
 {	
 	$cID = $_REQUEST['cID'];
 	$iStatus = $_REQUEST['status'];
 	$sID = array2str($_POST['newsID']);	
 
 	if($db->query("UPDATE $sTbl SET status='1' WHERE id in $sID"))
-		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"³É¹¦ÉèÎªÍÆ¼ö£¡");
+		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"æˆåŠŸè®¾ä¸ºæ¨èï¼");
 	else
-		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"ÉèÎªÍÆ¼öÊ§°Ü£¡");
+		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"è®¾ä¸ºæ¨èå¤±è´¥ï¼");
 }
 else
 {
-	showError("²ÎÊı´íÎó");
+	showError("å‚æ•°é”™è¯¯");
 }
 
 
 /**
- * »ñÈ¡×÷¼ÒµÄÃû³Æ
+ * è·å–ä½œå®¶çš„åç§°
  */
 function getArtist($artistID)
 {

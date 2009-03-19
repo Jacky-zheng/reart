@@ -1,6 +1,6 @@
-<?php
+ï»¿<?php
 /**
- * ºóÌ¨×ó±ß²Ëµ¥Ä£¿é
+ * åå°å·¦è¾¹èœå•æ¨¡å—
  *  2006.11
  */
 //define("OPEN_DEBUG",true);
@@ -10,16 +10,16 @@ require_once("../class/common.inc.php");
 loadLib("menu");
 
 $sAction = (isset($_GET["act"])) ? $_GET["act"] : "show";
-//ÕâÀïĞèÒªÅĞ¶ÏÖ»ÓĞrootÕÊºÅ²ÅÄÜµÇÂ½
-// µ±Ç°Î»ÖÃ
-$tpl->assign("PAGE_FUNC_BIG_NAME", "½çÃæ¹ÜÀí");
+//è¿™é‡Œéœ€è¦åˆ¤æ–­åªæœ‰rootå¸å·æ‰èƒ½ç™»é™†
+// å½“å‰ä½ç½®
+$tpl->assign("PAGE_FUNC_BIG_NAME", "ç•Œé¢ç®¡ç†");
 $tpl->assign("PAGE_FUNC_BIG_LINK", "menu.php?act=listAll");
 
 $sTbl = "menu";
 
-if($sAction == "show") // ²Ëµ¥ÏÔÊ¾
+if($sAction == "show") // èœå•æ˜¾ç¤º
 {
-	//ÒªÑ¡È¡ËùÓĞ´óÀàºÍÔÚsessionÈ¨ÏŞÖĞµÄĞ¡Àà
+	//è¦é€‰å–æ‰€æœ‰å¤§ç±»å’Œåœ¨sessionæƒé™ä¸­çš„å°ç±»
 	$sSQL = "SELECT * FROM $sTbl  ORDER BY orderID asc";
 	$aList = $db->getRecordSet($sSQL); 
 	$aBigAllList = array();
@@ -31,7 +31,7 @@ if($sAction == "show") // ²Ëµ¥ÏÔÊ¾
 		else 
 			$aSmallAllList[] = $aList[$i];
 	}
-	//ÒÑ¾­Çø·Ö³ö´óÀàºÍĞ¡À×ÁË
+	//å·²ç»åŒºåˆ†å‡ºå¤§ç±»å’Œå°é›·äº†
 	$k=0;
 	for($i=0; $i<count($aBigAllList); $i++)
 	{
@@ -56,19 +56,19 @@ if($sAction == "show") // ²Ëµ¥ÏÔÊ¾
 	$tpl->assign("aSmallAllList",$aSmallAllList);
 	$tpl->display("admin/menu.tpl.htm");
 }
-elseif($sAction == "add") // ²Ëµ¥Ìí¼Ó
+elseif($sAction == "add") // èœå•æ·»åŠ 
 {	
 	$pid = isset($_GET['pid']) ? $_GET['pid'] : 0;
 	$tpl->assign("pid",$pid);
 	
 /*	loadLib("power");
 	$power = new power();
-	$aPowerList = $power->getPowerList(1);  //È¨ÏŞ*/
+	$aPowerList = $power->getPowerList(1);  //æƒé™*/
 	$aMenuList = menu::getMenuList(0);	
 	$tpl->assign("aMenuList",$aMenuList);
 	$tpl->assign("pid",$pid);
 //	$tpl->assign("aPowerList", $aPowerList);
-	$tpl->assign("PAGE_FUNC_SMALL_NAME","Ìí¼Ó×ó±ß²Ëµ¥");
+	$tpl->assign("PAGE_FUNC_SMALL_NAME","æ·»åŠ å·¦è¾¹èœå•");
 	$tpl->display("admin/menu_add.tpl.htm");		
 }
 elseif($sAction == "addSave")
@@ -86,20 +86,20 @@ elseif($sAction == "addSave")
 	{
 		$aField['orderID'] = $id;
 		$db->update($sTbl,$aField," id =$id");
-		//redirect("menu.php?act=listAll",3,"Ìí¼Ó³É¹¦£¡");
-		redirect("menu.php?act=add&pid=".$aField['pID'],1,"Ìí¼Ó³É¹¦£¡");
+		//redirect("menu.php?act=listAll",3,"æ·»åŠ æˆåŠŸï¼");
+		redirect("menu.php?act=add&pid=".$aField['pID'],1,"æ·»åŠ æˆåŠŸï¼");
 	}	
 	else
 	{
-		redirect("menu.php?act=add",2,"Ìí¼ÓÊ§°Ü£¡");
+		redirect("menu.php?act=add",2,"æ·»åŠ å¤±è´¥ï¼");
 	}	
 }
-elseif($sAction == "edit" & isset($_GET['id'])) // ²Ëµ¥ĞŞ¸Ä
+elseif($sAction == "edit" & isset($_GET['id'])) // èœå•ä¿®æ”¹
 {	
 	$id = $_GET['id'];
 /*	loadLib("power");
 	$power = new power();
-	$aPowerList = $power->getPowerList(1);  //È¨ÏŞ*/
+	$aPowerList = $power->getPowerList(1);  //æƒé™*/
 	$aMenuList = menu::getMenuList(0);
 	
 	$aInfo = $db->getRecordSet("SELECT * FROM $sTbl WHERE id = $id",1); 
@@ -107,10 +107,10 @@ elseif($sAction == "edit" & isset($_GET['id'])) // ²Ëµ¥ĞŞ¸Ä
 	$tpl->assign("aMenuList",$aMenuList);
 	$tpl->assign("aInfo",$aInfo);
 //	$tpl->assign("aPowerList", $aPowerList);
-	$tpl->assign("PAGE_FUNC_SMALL_NAME","ĞŞ¸Ä×ó±ß²Ëµ¥");
+	$tpl->assign("PAGE_FUNC_SMALL_NAME","ä¿®æ”¹å·¦è¾¹èœå•");
 	$tpl->display("admin/menu_edit.tpl.htm");		
 }
-elseif($sAction == "editSave" && isset($_POST['id']))  // ²Ëµ¥ĞŞ¸Ä±£´æ
+elseif($sAction == "editSave" && isset($_POST['id']))  // èœå•ä¿®æ”¹ä¿å­˜
 {
 	$id = $_POST['id'];
 	
@@ -126,26 +126,26 @@ elseif($sAction == "editSave" && isset($_POST['id']))  // ²Ëµ¥ĞŞ¸Ä±£´æ
 	if($db->update($sTbl,$aField,"id = $id"))		
 	{
 		//echo "ok";
-		redirect("menu.php?act=listAll&pid=".$aField['pID'],3,"ĞŞ¸Ä³É¹¦£¡");	
+		redirect("menu.php?act=listAll&pid=".$aField['pID'],3,"ä¿®æ”¹æˆåŠŸï¼");	
 		
 	}	
 	else
-		redirect("menu.php?act=edit&id=$id",5,"ĞŞ¸ÄÊ§°Ü£¡");
+		redirect("menu.php?act=edit&id=$id",5,"ä¿®æ”¹å¤±è´¥ï¼");
 }
 elseif ( $sAction == "del" )
 {
 	$id = $_GET['id'];
 	if($db->query("delete FROM $sTbl WHERE id=$id or PID=$id "))
 	{
-		redirect("menu.php?act=listAll",2,"É¾³ı³É¹¦£¡");
+		redirect("menu.php?act=listAll",2,"åˆ é™¤æˆåŠŸï¼");
 	}
 	else 
 	{
-		redirect("menu.php?act=listAll",2,"É¾³ıÊ§°Ü£¡");
+		redirect("menu.php?act=listAll",2,"åˆ é™¤å¤±è´¥ï¼");
 	}
 	
 }
-elseif($sAction == "listAll") // ×ó±ß²Ëµ¥ÁĞ±í
+elseif($sAction == "listAll") // å·¦è¾¹èœå•åˆ—è¡¨
 {
 	$pid = (isset($_GET['pid']))? $_GET['pid'] : 0;
 	$aList = menu::getMenuList($pid);
@@ -158,12 +158,12 @@ elseif($sAction == "listAll") // ×ó±ß²Ëµ¥ÁĞ±í
   			$aList[$i]['name'] = "&nbsp;&nbsp;&raquo;&nbsp;".$aList[$i]['name'];
 	}	
 	
-	$tpl->assign("PAGE_FUNC_SMALL_NAME", "×ó±ß²Ëµ¥ÁĞ±í");
+	$tpl->assign("PAGE_FUNC_SMALL_NAME", "å·¦è¾¹èœå•åˆ—è¡¨");
 	$tpl->assign("aList",$aList);
 	$tpl->assign("pid",$pid);
 	$tpl->display("admin/menu_list.tpl.htm");
 }
-elseif($sAction == "changeOrder" && $_POST['orderID']) // ¸ü¸ÄÅÅĞò
+elseif($sAction == "changeOrder" && $_POST['orderID']) // æ›´æ”¹æ’åº
 {
 	$pid = (isset($_GET['pid'])) ? $_GET['pid'] : 0;
 	$aOrderID = $_POST['orderID'];
@@ -175,10 +175,10 @@ elseif($sAction == "changeOrder" && $_POST['orderID']) // ¸ü¸ÄÅÅĞò
 		$db->update($sTbl,$aField,"id=".$aID[$i]);
 	}
 	//exit;
-	redirect("menu.php?act=listAll&pid=$pid",3,"¸ü¸Ä³É¹¦£¡");
+	redirect("menu.php?act=listAll&pid=$pid",3,"æ›´æ”¹æˆåŠŸï¼");
 }
 else
 {
-	showError("²ÎÊı´íÎó£¡");
+	showError("å‚æ•°é”™è¯¯ï¼");
 }
 ?>

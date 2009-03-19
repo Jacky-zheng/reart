@@ -1,9 +1,9 @@
-<?php
+ï»¿<?php
 /**
- * artist.php(×÷¼Ò¹ÜÀíÄ£¿é)
+ * artist.php(ä½œå®¶ç®¡ç†æ¨¡å—)
  */
 //define("OPEN_DEBUG",true);
-require_once("check_login.php"); //µÇÂ¼¼ì²é
+require_once("check_login.php"); //ç™»å½•æ£€æŸ¥
 require_once("../class/common.inc.php");
 include "../js/editor/fckeditor.php";
 
@@ -12,10 +12,10 @@ $sAction = (isset($_GET["act"])) ? $_GET["act"] : "listAll";
 $sTbl =  "artist";
 
 $tpl->assign("PAGE_FUNC_BIG_LINK", "artist.php");
-$tpl->assign("PAGE_FUNC_BIG_NAME", "×÷¼Ò¹ÜÀí");
+$tpl->assign("PAGE_FUNC_BIG_NAME", "ä½œå®¶ç®¡ç†");
 $tpl->assign("aSex",$aSex);
 
-if($sAction == "add") //Ìí¼Ó
+if($sAction == "add") //æ·»åŠ 
 {	
 	$oFCKeditor = new FCKeditor('FCKeditor1') ; 
 	$oFCKeditor->BasePath = "../js/editor/" ; 
@@ -26,14 +26,14 @@ if($sAction == "add") //Ìí¼Ó
 	$sContent = $oFCKeditor->Create() ; 
 	$tpl->assign("sContent",$sContent);
 
-	$tpl->assign("PAGE_FUNC_SMALL_NAME","Ìí¼Ó×÷¼Ò");		
+	$tpl->assign("PAGE_FUNC_SMALL_NAME","æ·»åŠ ä½œå®¶");		
 	$tpl->display("admin/artist_add.tpl.htm");
 }
-elseif($sAction=="addSave") // Ìí¼Ó±£´æ
+elseif($sAction=="addSave") // æ·»åŠ ä¿å­˜
 {
 	if( $_POST['name'] == '' || $_POST['content'] == '')
 	{
-		redirect("artist.php?act=add",2,"ÐÕÃû»òÕß¼ò½éÎª¿Õ£¡");
+		redirect("artist.php?act=add",2,"å§“åæˆ–è€…ç®€ä»‹ä¸ºç©ºï¼");
 	}
 	
 	$aField['name'] = $_POST['name'];
@@ -46,17 +46,17 @@ elseif($sAction=="addSave") // Ìí¼Ó±£´æ
 
 	if($db->insert($sTbl,$aField))
 	{
-		redirect("artist.php?act=add",2,"Ìí¼Ó³É¹¦£¡");
+		redirect("artist.php?act=add",2,"æ·»åŠ æˆåŠŸï¼");
 	}
 	else 
 	{
-		redirect("artist.php?act=add",2,"Ìí¼ÓÊ§°Ü£¡");
+		redirect("artist.php?act=add",2,"æ·»åŠ å¤±è´¥ï¼");
 	}	
 }
-elseif($sAction == "edit" && isset($_GET['id'])) // ÐÞ¸Ä
+elseif($sAction == "edit" && isset($_GET['id'])) // ä¿®æ”¹
 {	
 	$id = $_GET['id'];
-	$tpl->assign("PAGE_FUNC_SMALL_NAME","±à¼­×÷¼Ò");	
+	$tpl->assign("PAGE_FUNC_SMALL_NAME","ç¼–è¾‘ä½œå®¶");	
 	$sSQL = "SELECT * FROM $sTbl WHERE id=$id";
 	$aField = $db->getRecordSet($sSQL,1);		
 	$oFCKeditor = new FCKeditor('FCKeditor1') ; 
@@ -72,12 +72,12 @@ elseif($sAction == "edit" && isset($_GET['id'])) // ÐÞ¸Ä
 	$tpl->assign("aField",$aField);
 	$tpl->display("admin/artist_edit.tpl.htm");
 }
-elseif ($sAction == "editSave" && isset($_POST['id'])) // ÐÞ¸Ä±£´æ
+elseif ($sAction == "editSave" && isset($_POST['id'])) // ä¿®æ”¹ä¿å­˜
 {
 	$id = $_POST['id'];
 	if( $_POST['name'] == '' || $_POST['content'] == '' || $id == '')
 	{
-		redirect("artist.php?act=edit&id=$id",2,"ÐÕÃû»òÕß¼ò½éÎª¿Õ£¡");
+		redirect("artist.php?act=edit&id=$id",2,"å§“åæˆ–è€…ç®€ä»‹ä¸ºç©ºï¼");
 		exit;
 	}
 	$aField['name'] = $_POST['name'];
@@ -90,21 +90,21 @@ elseif ($sAction == "editSave" && isset($_POST['id'])) // ÐÞ¸Ä±£´æ
 		
 	if($db->update($sTbl,$aField,"id=$id"))
 	{
-		redirect("artist.php?act=listAll",2,"ÐÞ¸Ä³É¹¦£¡");	
+		redirect("artist.php?act=listAll",2,"ä¿®æ”¹æˆåŠŸï¼");	
 	}
 	else 
 	{
-		redirect("artist.php?act=edit&id=".$id,2,"ÐÞ¸ÄÊ§°Ü£¡");
+		redirect("artist.php?act=edit&id=".$id,2,"ä¿®æ”¹å¤±è´¥ï¼");
 	}	
 }
-elseif ($sAction == "listAll")  // ÁÐ±í
+elseif ($sAction == "listAll")  // åˆ—è¡¨
 {
-	$tpl->assign("PAGE_FUNC_SMALL_NAME",$sCatName."×÷¼ÒÁÐ±í");
+	$tpl->assign("PAGE_FUNC_SMALL_NAME",$sCatName."ä½œå®¶åˆ—è¡¨");
 	 $sWhere = " status != '1' ";
 	$iNowPage = empty($_REQUEST["pageNo"]) ? 1 : intval($_REQUEST["pageNo"]); 
 	$iPerpage = isset($_REQUEST['perPage']) ? $_REQUEST['perPage'] : (defined("I_PERPAGE") ? I_PERPAGE : 10);
 	$iStartNo = ($iNowPage - 1) * $iPerpage;
-	//µÃµ½×ÜÊýÄ¿
+	//å¾—åˆ°æ€»æ•°ç›®
 	$iTotalNum = $db->getRowsNum("SELECT COUNT(id) FROM $sTbl AS a WHERE $sWhere");	
 	$sSQL = "SELECT * FROM $sTbl AS a WHERE $sWhere ORDER BY a.id desc LIMIT {$iStartNo}, $iPerpage";
 	$aList = $db->getRecordSet($sSQL);
@@ -116,17 +116,17 @@ elseif ($sAction == "listAll")  // ÁÐ±í
 	$tpl->assign("iPerPage",$iPerpage);
 	$tpl->display("admin/artist_list.tpl.htm");
 }
-elseif($sAction == "del") // ³¹µ×É¾³ý
+elseif($sAction == "del") // å½»åº•åˆ é™¤
 {
 	$sID = '(' . implode(',',$_POST['newsID']) . ')';
 	
 	if($db->query("delete FROM $sTbl WHERE id in $sID"))
-		redirect("artist.php?act=listAll",3,"É¾³ý³É¹¦£¡");
+		redirect("artist.php?act=listAll",3,"åˆ é™¤æˆåŠŸï¼");
 	else
-		redirect("artist.php?act=listAll",5,"É¾³ýÊ§°Ü£¡");		
+		redirect("artist.php?act=listAll",5,"åˆ é™¤å¤±è´¥ï¼");		
 }
 else
 {
-	showError("²ÎÊý´íÎó");
+	showError("å‚æ•°é”™è¯¯");
 }
 ?>

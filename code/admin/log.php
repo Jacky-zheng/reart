@@ -1,28 +1,28 @@
-<?php
+ï»¿<?php
 /**
- * ÈÕÖ¾Ä£¿é
+ * æ—¥å¿—æ¨¡å—
  *  2007-05-15
  */
 
 require_once("../class/common.inc.php");
 
 $sAction = (isset($_GET["act"])) ? $_GET["act"] : "loginLogAll";
-checkExecPower("log", $sAction);		//È¨ÏŞ¼ì²é
+checkExecPower("log", $sAction);		//æƒé™æ£€æŸ¥
 
 $tpl->assign("PAGE_FUNC_BIG_LINK", "log.php");
-$tpl->assign("PAGE_FUNC_BIG_NAME", "ÈÕÖ¾¹ÜÀí");
+$tpl->assign("PAGE_FUNC_BIG_NAME", "æ—¥å¿—ç®¡ç†");
 
-//ÈÕÖ¾
+//æ—¥å¿—
 loadLib("log");
 $log = new log();
-//¹ÜÀíÔ±
+//ç®¡ç†å‘˜
 $manager = new manager();
 
-/*******************ËùÓĞµÇÂ¼ÈÕÖ¾********************/
+/*******************æ‰€æœ‰ç™»å½•æ—¥å¿—********************/
 if($sAction == "loginAll")
 {
-	$tpl->assign("PAGE_FUNC_SMALL_NAME", "ËùÓĞµÇÂ¼ÈÕÖ¾");
-	//·ÖÒ³
+	$tpl->assign("PAGE_FUNC_SMALL_NAME", "æ‰€æœ‰ç™»å½•æ—¥å¿—");
+	//åˆ†é¡µ
 	$iNowPage 	= empty($_REQUEST["pageNo"]) ? 1 : intval($_REQUEST["pageNo"]); 
 	$iPerpage 	= defined("I_PERPAGE") ? I_PERPAGE : 10;
 	$iStartNo 	= ($iNowPage - 1) * $iPerpage;
@@ -35,15 +35,15 @@ if($sAction == "loginAll")
 	$sWhere .= ($iStatus>=0) ? " AND status='$iStatus' " : "";
 	$sWhere .= ($q) ? " AND userName like '%$q%'" : "";
 	
-	//µÃµ½×ÜÊıÄ¿
+	//å¾—åˆ°æ€»æ•°ç›®
 	$iTotalNum 	= $db->getRowsNum("SELECT id FROM log_login where $sWhere");
 	
 	$aLoginAll = $log->loginAll($iStartNo,$iPerpage,$sWhere);	
 
 	dividePage("log.php", $iTotalNum, $iPerpage, $iNowPage, "act=loginAll&adminType=$iAdminType&status=$iStatus");
 	
-	$aAdminType = array(0=>"×ÜºóÌ¨",1=>"·ÖÕ¾ºóÌ¨",2=>"¸öÈËºóÌ¨",3=>"ÆóÒµºóÌ¨",4=>"×¨¼ÒºóÌ¨");
-	$aStatus    = array(0=>"µÇÂ¼Ãû´íÎó",1=>"µÇÂ¼³É¹¦",2=>"ÃÜÂë´íÎó");
+	$aAdminType = array(0=>"æ€»åå°",1=>"åˆ†ç«™åå°",2=>"ä¸ªäººåå°",3=>"ä¼ä¸šåå°",4=>"ä¸“å®¶åå°");
+	$aStatus    = array(0=>"ç™»å½•åé”™è¯¯",1=>"ç™»å½•æˆåŠŸ",2=>"å¯†ç é”™è¯¯");
 	
 	$tpl->assign("aAdminType",$aAdminType);
 	$tpl->assign("aStatus",$aStatus);
@@ -54,15 +54,15 @@ if($sAction == "loginAll")
 	$tpl->assign("a_loginAll",$aLoginAll);
 	$tpl->display("admin/log_loginAll.tpl.htm");
 }
-/*******************ËùÓĞ²Ù×÷ÈÕÖ¾********************/
+/*******************æ‰€æœ‰æ“ä½œæ—¥å¿—********************/
 elseif ($sAction == "operateAll")
 {
-	$tpl->assign("PAGE_FUNC_SMALL_NAME", "ËùÓĞ²Ù×÷ÈÕÖ¾");
-	//·ÖÒ³
+	$tpl->assign("PAGE_FUNC_SMALL_NAME", "æ‰€æœ‰æ“ä½œæ—¥å¿—");
+	//åˆ†é¡µ
 	$iNowPage 	= empty($_REQUEST["pageNo"]) ? 1 : intval($_REQUEST["pageNo"]); 
 	$iPerpage 	= defined("I_PERPAGE") ? I_PERPAGE : 10;
 	$iStartNo 	= ($iNowPage - 1) * $iPerpage;
-	//µÃµ½×ÜÊıÄ¿
+	//å¾—åˆ°æ€»æ•°ç›®
 	$iTotalNum 	= $db->getRowsNum("SELECT id FROM log_operate");
 	
 	$aOperateAll  = $log->operateAll($iStartNo,$iPerpage);
@@ -80,15 +80,15 @@ elseif ($sAction == "operateAll")
 	$tpl->assign("a_operateAll",$aOperateAll);
 	$tpl->display("admin/log_operateAll.tpl.htm");
 }
-/*******************µÇÂ¼´íÎóÈÕÖ¾********************/
+/*******************ç™»å½•é”™è¯¯æ—¥å¿—********************/
 elseif ($sAction == "loginError")
 {
-	$tpl->assign("PAGE_FUNC_SMALL_NAME", "µÇÂ¼´íÎóÈÕÖ¾");
-	//·ÖÒ³
+	$tpl->assign("PAGE_FUNC_SMALL_NAME", "ç™»å½•é”™è¯¯æ—¥å¿—");
+	//åˆ†é¡µ
 	$iNowPage 	= empty($_REQUEST["pageNo"]) ? 1 : intval($_REQUEST["pageNo"]); 
 	$iPerpage 	= defined("I_PERPAGE") ? I_PERPAGE : 10;
 	$iStartNo 	= ($iNowPage - 1) * $iPerpage;
-	//µÃµ½×ÜÊıÄ¿
+	//å¾—åˆ°æ€»æ•°ç›®
 	$iTotalNum 	= $db->getRowsNum("SELECT id FROM log_login WHERE status <> '1'");
 	
 	$aLoginError = $log->loginError($iStartNo,$iPerpage);
@@ -97,15 +97,15 @@ elseif ($sAction == "loginError")
 	$tpl->assign("a_loginError",$aLoginError);
 	$tpl->display("admin/log_loginError.tpl.htm");
 }
-/*******************²Ù×÷´íÎóÈÕÖ¾********************/
+/*******************æ“ä½œé”™è¯¯æ—¥å¿—********************/
 elseif ($sAction == "operateError")
 {
-	$tpl->assign("PAGE_FUNC_SMALL_NAME", "²Ù×÷´íÎóÈÕÖ¾");
-	//·ÖÒ³
+	$tpl->assign("PAGE_FUNC_SMALL_NAME", "æ“ä½œé”™è¯¯æ—¥å¿—");
+	//åˆ†é¡µ
 	$iNowPage 	= empty($_REQUEST["pageNo"]) ? 1 : intval($_REQUEST["pageNo"]); 
 	$iPerpage 	= defined("I_PERPAGE") ? I_PERPAGE : 10;
 	$iStartNo 	= ($iNowPage - 1) * $iPerpage;
-	//µÃµ½×ÜÊıÄ¿
+	//å¾—åˆ°æ€»æ•°ç›®
 	$iTotalNum 	= $db->getRowsNum("SELECT id FROM log_operate WHERE status = '0'");
 	
 	$aOperateError = $log->operateError($iStartNo,$iPerpage);
@@ -115,15 +115,15 @@ elseif ($sAction == "operateError")
 	$tpl->assign("a_operateError",$aOperateError);
 	$tpl->display("admin/log_operateError.tpl.htm");
 }
-/*******************Ô½È¨²Ù×÷ÈÕÖ¾********************/
+/*******************è¶Šæƒæ“ä½œæ—¥å¿—********************/
 elseif ($sAction == "operateOver")
 {
-	$tpl->assign("PAGE_FUNC_SMALL_NAME", "Ô½È¨²Ù×÷ÈÕÖ¾");
-	//·ÖÒ³
+	$tpl->assign("PAGE_FUNC_SMALL_NAME", "è¶Šæƒæ“ä½œæ—¥å¿—");
+	//åˆ†é¡µ
 	$iNowPage 	= empty($_REQUEST["pageNo"]) ? 1 : intval($_REQUEST["pageNo"]); 
 	$iPerpage 	= defined("I_PERPAGE") ? I_PERPAGE : 10;
 	$iStartNo 	= ($iNowPage - 1) * $iPerpage;
-	//µÃµ½×ÜÊıÄ¿
+	//å¾—åˆ°æ€»æ•°ç›®
 	$iTotalNum 	= $db->getRowsNum("SELECT id FROM log_operate WHERE status = '2'");
 	
 	$aOperateOver = $log->operateOver($iStartNo,$iPerpage);
@@ -135,7 +135,7 @@ elseif ($sAction == "operateOver")
 }
 elseif ($sAction == "backup")
 {
-	$aRadios = array("°´²Ù×÷ÈÕÆÚ","°´²Ù×÷ÈË","°´²Ù×÷ÎÄ¼ş","°´²Ù×÷¶¯×÷","°´²Ù×÷ÄÚÈİ","°´²Ù×÷×´Ì¬");
+	$aRadios = array("æŒ‰æ“ä½œæ—¥æœŸ","æŒ‰æ“ä½œäºº","æŒ‰æ“ä½œæ–‡ä»¶","æŒ‰æ“ä½œåŠ¨ä½œ","æŒ‰æ“ä½œå†…å®¹","æŒ‰æ“ä½œçŠ¶æ€");
 	for ($i=0;$i<count($aRadios);$i++)
 	{
 		$check = "";
@@ -147,5 +147,5 @@ elseif ($sAction == "backup")
 	$tpl->display("admin/log_backup.tpl.htm");
 }
 
-else showError("´íÎó£º²ÎÊı´íÎó!¾Ü¾ø·ÃÎÊ!");
+else showError("é”™è¯¯ï¼šå‚æ•°é”™è¯¯!æ‹’ç»è®¿é—®!");
 ?>

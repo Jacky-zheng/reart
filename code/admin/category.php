@@ -1,33 +1,33 @@
-<?php
+ï»¿<?php
 /**
- * Àà±ðÄ£¿é
+ * ç±»åˆ«æ¨¡å—
  */
 
 //define("OPEN_DEBUG",true);
-require_once("check_login.php"); //È¨ÏÞ¼ì²é
+require_once("check_login.php"); //æƒé™æ£€æŸ¥
 require_once("../class/common.inc.php");
 $sAction = isset($_REQUEST["act"]) ? $_REQUEST["act"] : "listAll";
 
 loadLib("category");
 $sTbl = isset($_GET['tbl']) ? $_GET['tbl'] : "category";
-$aTbl = array("category"=>"×÷Æ·");
+$aTbl = array("category"=>"ä½œå“");
 $sCatName = $aTbl[$sTbl];
 
 $tpl->assign("PAGE_FUNC_BIG_LINK", "category.php?tbl=$sTbl");
-$tpl->assign("PAGE_FUNC_BIG_NAME", "Àà±ð¹ÜÀí");
+$tpl->assign("PAGE_FUNC_BIG_NAME", "ç±»åˆ«ç®¡ç†");
 $tpl->assign("sTbl",$sTbl);
 
-if($sAction == "add") // Àà±ðÌí¼Ó
+if($sAction == "add") // ç±»åˆ«æ·»åŠ 
 {
 	//$pID = isset($_GET['pID']) ? $_GET['pID'] : 0;
-	$tpl->assign("PAGE_FUNC_SMALL_NAME","Ìí¼Ó".$sCatName."Àà±ð");
+	$tpl->assign("PAGE_FUNC_SMALL_NAME","æ·»åŠ ".$sCatName."ç±»åˆ«");
 	
-/*	$sOptions = category::getCatOptions($sTbl,0); // -1±íÊ¾ÎÞÏÞ¼¶·ÖÀà£» 0±íÊ¾Ò»¼¶·ÖÀà£» 1±íÊ¾¶þ¼¶·ÖÀà£»ÒÔ´ËÀàÍÆ	
+/*	$sOptions = category::getCatOptions($sTbl,0); // -1è¡¨ç¤ºæ— é™çº§åˆ†ç±»ï¼› 0è¡¨ç¤ºä¸€çº§åˆ†ç±»ï¼› 1è¡¨ç¤ºäºŒçº§åˆ†ç±»ï¼›ä»¥æ­¤ç±»æŽ¨	
 	$tpl->assign("pID",$pID);
 	$tpl->assign("sOptions",$sOptions);*/
 	$tpl->display("admin/category_add.tpl.htm");
 }
-elseif($sAction == "addSave") //Àà±ðÌí¼Ó±£´æ
+elseif($sAction == "addSave") //ç±»åˆ«æ·»åŠ ä¿å­˜
 {	
 	$aField['name'] = $_POST['name'];
 	$aField['ename'] = $_POST['ename'];
@@ -39,25 +39,25 @@ elseif($sAction == "addSave") //Àà±ðÌí¼Ó±£´æ
 	{
 /*		$aField['orderID'] = $id;*/
 		$db->update($sTbl,$aField,"id=$id");
-		redirect("category.php?act=add&tbl=$sTbl&pID=".$_POST['pID'],3,"Ìí¼Ó³É¹¦£¡");
+		redirect("category.php?act=add&tbl=$sTbl&pID=".$_POST['pID'],3,"æ·»åŠ æˆåŠŸï¼");
 	}		
 	else
 	{
-		redirect("category.php?act=add&tbl=$sTbl&pID=".$_POST['pID'],5,"Ìí¼ÓÊ§°Ü£¡");
+		redirect("category.php?act=add&tbl=$sTbl&pID=".$_POST['pID'],5,"æ·»åŠ å¤±è´¥ï¼");
 	}
 }
-elseif($sAction == "edit" && isset($_GET['id'])) // Àà±ðÐÞ¸Ä
+elseif($sAction == "edit" && isset($_GET['id'])) // ç±»åˆ«ä¿®æ”¹
 {
 	$id = $_GET['id'];
-	$tpl->assign("PAGE_FUNC_SMALL_NAME", "ÐÞ¸Ä".$sCatName."Àà±ð");
+	$tpl->assign("PAGE_FUNC_SMALL_NAME", "ä¿®æ”¹".$sCatName."ç±»åˆ«");
 	$aField = $db->getRecordSet("SELECT * FROM $sTbl WHERE id=$id",1);
-//	$sOptions = category::getCatOptions($sTbl,1,$aField['pID']);	 // -1±íÊ¾ÎÞÏÞ¼¶·ÖÀà£» 0±íÊ¾Ò»¼¶·ÖÀà£» 1±íÊ¾¶þ¼¶·ÖÀà£»ÒÔ´ËÀàÍÆ	
+//	$sOptions = category::getCatOptions($sTbl,1,$aField['pID']);	 // -1è¡¨ç¤ºæ— é™çº§åˆ†ç±»ï¼› 0è¡¨ç¤ºä¸€çº§åˆ†ç±»ï¼› 1è¡¨ç¤ºäºŒçº§åˆ†ç±»ï¼›ä»¥æ­¤ç±»æŽ¨	
 	
 	$tpl->assign("aField",$aField);
 //	$tpl->assign("sOptions",$sOptions);	
 	$tpl->display("admin/category_edit.tpl.htm");
 }
-elseif($sAction == "editSave" && isset($_POST['id'])) // Àà±ðÐÞ¸Ä±£´æ
+elseif($sAction == "editSave" && isset($_POST['id'])) // ç±»åˆ«ä¿®æ”¹ä¿å­˜
 {
 	$id = $_POST['id'];
 	$aField['name'] = $_POST['name'];
@@ -65,13 +65,13 @@ elseif($sAction == "editSave" && isset($_POST['id'])) // Àà±ðÐÞ¸Ä±£´æ
 //	$aField['pID'] = $_POST['pID'];
 	$aField['addDate'] = date("Y-m-d H:i:s");
 	if($db->update($sTbl,$aField,"id=$id"))
-		redirect("category.php?act=listAll&tbl=$sTbl",2,"ÐÞ¸Ä³É¹¦£¡");
+		redirect("category.php?act=listAll&tbl=$sTbl",2,"ä¿®æ”¹æˆåŠŸï¼");
 	else
-		redirect("category.php?act=listAll&tbl=$sTbl",2,"ÐÞ¸ÄÊ§°Ü£¡");
+		redirect("category.php?act=listAll&tbl=$sTbl",2,"ä¿®æ”¹å¤±è´¥ï¼");
 }
-elseif($sAction == "listAll") // Àà±ðÁÐ±í
+elseif($sAction == "listAll") // ç±»åˆ«åˆ—è¡¨
 {
-	$tpl->assign("PAGE_FUNC_SMALL_NAME", $sCatName."Àà±ðÁÐ±í");
+	$tpl->assign("PAGE_FUNC_SMALL_NAME", $sCatName."ç±»åˆ«åˆ—è¡¨");
 	$pID = isset($_GET['pID'])? $_GET['pID'] : 0;
 	$iCorporationID = intval($_GET['corporationID']);
 	$aList = category::subCatListByID($sTbl,$pID,1,$iCorporationID);
@@ -90,16 +90,16 @@ elseif($sAction == "listAll") // Àà±ðÁÐ±í
 	$tpl->assign("pID",$pID);
 	$tpl->display("admin/category_list.tpl.htm");
 }
-elseif($sAction == "delete" && isset($_GET['id'])) // É¾³ý
+elseif($sAction == "delete" && isset($_GET['id'])) // åˆ é™¤
 {
 	$id  = $_GET['id'];
 	if($db->delete($sTbl,"id=$id"))
-		redirect("category.php?act=listAll&tbl=$sTbl",1,"É¾³ý³É¹¦£¡");
+		redirect("category.php?act=listAll&tbl=$sTbl",1,"åˆ é™¤æˆåŠŸï¼");
 	else
-		redirect("category.php?act=listAll&tbl=$sTbl",2,"É¾³ýÊ§°Ü£¡");	
+		redirect("category.php?act=listAll&tbl=$sTbl",2,"åˆ é™¤å¤±è´¥ï¼");	
 }
 else
 {
-	showError("²ÎÊý´íÎó£¡");
+	showError("å‚æ•°é”™è¯¯ï¼");
 }
 ?>

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  * Config_File class.

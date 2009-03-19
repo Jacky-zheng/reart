@@ -27,7 +27,7 @@ elseif ($_GET['action'] == 'delete')
 	foreach ($wl['data'] as $k=>$v)
 	{
 		$str .= '<li>
-					<span><a href="detail.php?id='.$v['id'].'"><img src="'.$img_url_m.$v['picPath'].'" alt="" /></a></span>
+					<span><a href="detail.php?id='.$v['id'].'"><img src="'.$img_url_m.$v['picCode'].'.jpg" alt="" /></a></span>
 					<p>作品名：'.$v['name'].'</p>
 					<p>作者：'.$v['artist_name'].'</p>
 					<p>日期：'.$v['addDate'].'</p>

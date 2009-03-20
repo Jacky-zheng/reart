@@ -1,4 +1,4 @@
-<cfsetting enablecfoutputonly="Yes">
+﻿<cfsetting enablecfoutputonly="Yes">
 <!--- @Packager.Header
 <FileDescription>
 	ColdFusion integration. 

@@ -1,4 +1,4 @@
-//�������´���
+﻿//加入以下代码
 
 <IFRAME 
 frameBorder=0 id=popFrame name=popFrame scrolling=no 
@@ -10,7 +10,7 @@ function checkForm(){
     var flag=true;
     if (!isEmpty(document.forms[0].publishDate.value)){
             if(!isDate(document.forms[0].publishDate.value)){
-	    alert("���ڸ�ʽ���������Աߵ�����ѡ�񷢲����ڣ�"); 
+	    alert("日期格式不对请点击旁边的日历选择发布日期！"); 
 	    document.forms[0].publishDate.focus();
 	    flag=false;
 	    }
@@ -21,6 +21,6 @@ function checkForm(){
 
 
 
-<input id=dc1 readOnly size="10" name="mem_birth">  //id����Ҫ��img�е����Ӧ
+<input id=dc1 readOnly size="10" name="mem_birth">  //id名称要与img中的相对应
 
-<img onClick="popFrame.fPopCalendar('dc1','dc1',event);" value=" ѡ������ " name="caseDealTime" src="./date/date.files/date.gif" >
+<img onClick="popFrame.fPopCalendar('dc1','dc1',event);" value=" 选择日期 " name="caseDealTime" src="./date/date.files/date.gif" >

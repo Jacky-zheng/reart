@@ -1,6 +1,6 @@
-/* ¹«ÓÃajaxº¯Êı */
+ï»¿/* å…¬ç”¨ajaxå‡½æ•° */
 
-/* startµØÇø */
+/* startåœ°åŒº */
 function searchProvince()
 {		
 	var field = "h_province";
@@ -75,17 +75,17 @@ function waitResult(field,msg)
 }
 
 
-/** end µØÇø **/
+/** end åœ°åŒº **/
 
 
 
 
 
-/** start ¹ã¸æÎ» **/
+/** start å¹¿å‘Šä½ **/
 
-function loadWebUrl(id,x)  // x£½0 ±íÊ¾×ÜÕ¾£» x=1±íÊ¾·ÖÕ¾
+function loadWebUrl(id,x)  // xï¼0 è¡¨ç¤ºæ€»ç«™ï¼› x=1è¡¨ç¤ºåˆ†ç«™
 {
-	waitResult("webUrl","<br>ÕıÔÚ¶ÁÈ¡¡­¡­");
+	waitResult("webUrl","<br>æ­£åœ¨è¯»å–â€¦â€¦");
 	var url = "/js/channel.php?act=loadWebUrl&flag=1&channelID="+id+"&isAgent="+x;
 	//alert(url);
 	var pars = 'parentID='+id;	
@@ -102,9 +102,9 @@ function showResult_webUrl(originalRequest)
 	$('webUrl').innerHTML = response;
 }
 
-function loadSmallChannel(id,flag,x) // x£½0 ±íÊ¾×ÜÕ¾£» x=1±íÊ¾·ÖÕ¾
+function loadSmallChannel(id,flag,x) // xï¼0 è¡¨ç¤ºæ€»ç«™ï¼› x=1è¡¨ç¤ºåˆ†ç«™
 {	
-	waitResult("smallCat","<br>ÕıÔÚ¶ÁÈ¡Ğ¡Àà¡­¡­");
+	waitResult("smallCat","<br>æ­£åœ¨è¯»å–å°ç±»â€¦â€¦");
 	var url = "/js/channel.php?act=loadSmallChannel&parentID="+id+"&flag="+flag+"&isAgent="+x;
 	//alert(url);
 	var pars = 'parentID='+id;	
@@ -121,13 +121,13 @@ function showResult_smallChannel(originalRequest)
 	$('smallCat').innerHTML = response;
 }
 
-function showInput(iID,sName,x) // x£½0 ±íÊ¾×ÜÕ¾£» x=1±íÊ¾·ÖÕ¾
+function showInput(iID,sName,x) // xï¼0 è¡¨ç¤ºæ€»ç«™ï¼› x=1è¡¨ç¤ºåˆ†ç«™
 {
 	$("s_"+iID).style.display="none";
-	$("n_"+iID).innerHTML = "<input type='text' style='width:120px' value='"+sName+"' id='input_"+iID+"'>&nbsp;<input type='button' onclick='submitInput("+iID+","+ x +")' value='Ìá½»'><span id='hit'></span>";
+	$("n_"+iID).innerHTML = "<input type='text' style='width:120px' value='"+sName+"' id='input_"+iID+"'>&nbsp;<input type='button' onclick='submitInput("+iID+","+ x +")' value='æäº¤'><span id='hit'></span>";
 }
 
-function submitInput(iID,x) // x£½0 ±íÊ¾×ÜÕ¾£» x=1±íÊ¾·ÖÕ¾
+function submitInput(iID,x) // xï¼0 è¡¨ç¤ºæ€»ç«™ï¼› x=1è¡¨ç¤ºåˆ†ç«™
 {
 
 	var v = $F('input_'+iID);
@@ -146,10 +146,10 @@ function showSubmitResult(originalRequest)
 	$('hit').innerHTML = response;
 }
 
-/** end ¹ã¸æÎ» **/
+/** end å¹¿å‘Šä½ **/
 
 
-// È«Ñ¡»ò·´Ñ¡
+// å…¨é€‰æˆ–åé€‰
 function chkall()  
 {
 	var put=document.all.tags("input");
@@ -162,7 +162,7 @@ function chkall()
 	}
 }
 
-// ÅĞ¶ÏÊÇ·ñÑ¡ÖĞ
+// åˆ¤æ–­æ˜¯å¦é€‰ä¸­
 
 function judge()
 {
@@ -177,7 +177,7 @@ function judge()
 	
 	if(i>=put.length)
 	{
-	  alert ("ÇëÏÈÑ¡Ôñ£¡");
+	  alert ("è¯·å…ˆé€‰æ‹©ï¼");
 	  return false;
 	}
 	return true;

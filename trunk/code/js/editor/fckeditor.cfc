@@ -1,4 +1,4 @@
-<cfcomponent output="false" displayname="FCKeditor" hint="Create an instance of the FCKeditor.">
+﻿<cfcomponent output="false" displayname="FCKeditor" hint="Create an instance of the FCKeditor.">
 <!--- @Packager.Header
 <FileDescription>
 	ColdFusion MX integration. 

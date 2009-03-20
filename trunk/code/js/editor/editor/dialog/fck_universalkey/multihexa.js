@@ -62,7 +62,7 @@ var actC1=new Array(0,371,364,0,378,0,358,0,344,0,112,378)
 var actC2=new Array(0,0,14,42,42,70,70,98,98,126,126,126)
 var actC3=new Array(32,403,403,39,403,47,403,61,403,25,291,403)
 var actC4=new Array(11,11,39,67,67,95,95,123,123,151,151,151)
-var act  =new Array(" « KB"," KB » ","Delete","Clear","Back","Caps<br> Lock","Enter","Shift","Shift","<|<","Space",">|>")
+var act  =new Array(" ? KB"," KB ? ","Delete","Clear","Back","Caps<br> Lock","Enter","Shift","Shift","<|<","Space",">|>")
 var effet=new Array("keyscroll(-3)","keyscroll(3)","faire(\"del\")","RAZ()","faire(\"bck\")","bloq()","faire(\"\\n\")","haut()","haut()","faire(\"ar\")","faire(\" \")","faire(\"av\")")
 var nbActions=12
 for (i=0;i<nbActions;i++){
@@ -239,8 +239,8 @@ function arkey(e) {
 		cont=e.srcElement || e.currentTarget || e.target;
 		if (keyCode>64 && keyCode<91) {
 			entry=false;
-			source='ش لاؤ ي ث ب ل ا ه ت ن م ة ى خ ح ض ق س ف ع ر ص ء غ ئ ';
-			shsource='ِ لآ} ] ُ [ لأأ ÷ ـ ، /   آ × ؛ َ ٌ ٍ لإ  { ً ْ إ ~'; 
+			source='? ??? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ';
+			shsource='? ??} ] ? [ ??? ÷ ? ? /   ? × ? ? ? ? ??  { ? ? ? ~'; 
 
 			if (e.shiftKey) cont.value += shsource.substr((keyCode-64)*2-2,2);
 			else
@@ -251,19 +251,19 @@ function arkey(e) {
 			if (keyCode==186) {cont.value += ':';entry=false;}
 			if (keyCode==188) {cont.value += ',';entry=false;}
 			if (keyCode==190) {cont.value += '.';entry=false;}
-			if (keyCode==191) {cont.value += '؟';entry=false;}
-			if (keyCode==192) {cont.value += 'ّ';entry=false;}
+			if (keyCode==191) {cont.value += '?';entry=false;}
+			if (keyCode==192) {cont.value += '?';entry=false;}
 			if (keyCode==219) {cont.value += '<';entry=false;}
 			if (keyCode==221) {cont.value += '>';entry=false;}
 		} else {
-			if (keyCode==186||keyCode==59) {cont.value += 'ك';entry=false;}
-			if (keyCode==188) {cont.value += 'و';entry=false;}
-			if (keyCode==190) {cont.value += 'ز';entry=false;}
-			if (keyCode==191) {cont.value += 'ظ';entry=false;}
-			if (keyCode==192) {cont.value += 'ذ';entry=false;}
-			if (keyCode==219) {cont.value += 'ج';entry=false;}
-			if (keyCode==221) {cont.value += 'د';entry=false;}
-			if (keyCode==222) {cont.value += 'ط';entry=false;}
+			if (keyCode==186||keyCode==59) {cont.value += '?';entry=false;}
+			if (keyCode==188) {cont.value += '?';entry=false;}
+			if (keyCode==190) {cont.value += '?';entry=false;}
+			if (keyCode==191) {cont.value += '?';entry=false;}
+			if (keyCode==192) {cont.value += '?';entry=false;}
+			if (keyCode==219) {cont.value += '?';entry=false;}
+			if (keyCode==221) {cont.value += '?';entry=false;}
+			if (keyCode==222) {cont.value += '?';entry=false;}
 		}
 	return entry;
 }

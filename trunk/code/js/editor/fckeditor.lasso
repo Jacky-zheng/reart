@@ -1,4 +1,4 @@
-[//lasso
+﻿[//lasso
 /*
  
  * FCKeditor - The text editor for internet

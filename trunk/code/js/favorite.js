@@ -1,4 +1,4 @@
-function favorite(workid, userid)
+锘縡unction favorite(workid, userid)
 {
 	if(userid == "0")
 	{
@@ -15,11 +15,11 @@ function addFavoriteResponse(result)
 {
 	if (result == false)
 	{
-		alert("添加收藏失败，请联系客服");	
+		alert("娣诲姞鏀惰棌澶辫触锛岃鑱旂郴瀹㈡湇");	
 	}
 	else
 	{
-		alert("添加收藏成功");	
+		alert("娣诲姞鏀惰棌鎴愬姛");	
 	}
 }
 

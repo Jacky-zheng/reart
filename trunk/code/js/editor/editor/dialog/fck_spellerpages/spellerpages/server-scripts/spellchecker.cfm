@@ -1,4 +1,4 @@
-<!--- Coldfusion MX uses java on the server to process tags. So it is save to use most java attributes. For example below
+﻿<!--- Coldfusion MX uses java on the server to process tags. So it is save to use most java attributes. For example below
 I use list.lastindexOf(), lastindexOf() is a java string attribute. If you plan on using this tag with earlier versions
 of Coldfusion, you will have to replace the lastindexOf with a pure coldfusion function. By replacing the lastindexOf, spellchecker.cfm
 script should be compatible with all cf version 4.5 and up.

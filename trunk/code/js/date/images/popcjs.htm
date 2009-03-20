@@ -1,4 +1,4 @@
-
+ï»¿
 <HTML><HEAD><TITLE>PopCalendar Millennium, By Liming(Victor) Weng</TITLE>
 <META content="text/html; charset=gb2312" http-equiv=Content-Type>
 <STYLE type=text/css>A:link {
@@ -133,7 +133,7 @@ function fBuildCal(iYear, iMonth) {
 }
 
 function fDrawCal(iCellWidth) {
-  var WeekDay = new Array("ÈÕ","Ò»","¶þ","Èý","ËÄ","Îå","Áù");
+  var WeekDay = new Array("æ—¥","ä¸€","äºŒ","ä¸‰","å››","äº”","å…­");
   var styleTD = " width='"+iCellWidth+"' ";            //Coded by Liming Weng(Victor Won)  email:victorwon@netease.com
 
   with (document) {
@@ -225,7 +225,7 @@ with (document) {
   gCellSet = getElementsByTagName("A"); 
   fSetYearMon(giYear, giMonth);
   write("</table></DIV></td></TR><TR><TD align='center'>");
-  write("<A href='#null' class='Today' onclick='fSetDate(giYear,giMonth,giDay); this.blur();' onMouseOver='gcTemp=this.style.color;this.style.color=gcWorkday' onMouseOut='this.style.color=gcWorkday'>½ñÌìÊÇ :&nbsp;"+giYear+"Äê"+gMonths[giMonth-1]+"ÔÂ"+giDay+"ÈÕ</A>");
+  write("<A href='#null' class='Today' onclick='fSetDate(giYear,giMonth,giDay); this.blur();' onMouseOver='gcTemp=this.style.color;this.style.color=gcWorkday' onMouseOut='this.style.color=gcWorkday'>ä»Šå¤©æ˜¯ :&nbsp;"+giYear+"å¹´"+gMonths[giMonth-1]+"æœˆ"+giDay+"æ—¥</A>");
   write("</TD></TR></TD></TR><TR></TR></TABLE>");
   
   gfPop.width = getElementById("popTable").offsetWidth;

@@ -30,7 +30,7 @@ Save				: "Opslaan",
 NewPage				: "Nieuwe pagina",
 Preview				: "Voorbeeld",
 Cut					: "Knippen",
-Copy				: "Kopiëren",
+Copy				: "Kopi?ren",
 Paste				: "Plakken",
 PasteText			: "Plakken als pure tekst",
 PasteWord			: "Plakken Word-gegevens",
@@ -127,11 +127,11 @@ FontFormats			: "Normaal;Met opmaak;Adres;Heading 1;Heading 2;Heading 3;Heading 
 // Alerts and Messages
 ProcessingXHTML		: "Verwerken XHTML. Even geduld aub...",
 Done				: "Klaar",
-PasteWordConfirm	: "De tekst die je plakt lijkt gekopiëerd uit Word. Wil je de tekst opschonen voordat er geplakt wordt?",
+PasteWordConfirm	: "De tekst die je plakt lijkt gekopi?erd uit Word. Wil je de tekst opschonen voordat er geplakt wordt?",
 NotCompatiblePaste	: "Deze opdracht is beschikbaar voor Internet Explorer versie 5.5 of hoger. Wil je plakken zonder opschonen?",
 UnknownToolbarItem	: "Onbekende item op menubalk \"%1\"",
 UnknownCommand		: "Onbekende opdracht naam \"%1\"",
-NotImplemented		: "Opdracht niet geïmplementeerd.",
+NotImplemented		: "Opdracht niet ge?mplementeerd.",
 UnknownToolbarSet	: "Menubalk \"%1\" bestaat niet.",
 NoActiveX			: "You browser's security settings could limit some features of the editor. You must enable the option \"Run ActiveX controls and plug-ins\". You may experience errors and notice missing features.",	//MISSING
 
@@ -323,7 +323,7 @@ DlgReplaceWordChk		: "Hele woord moet voorkomen",
 // Paste Operations / Dialog
 PasteErrorPaste	: "De beveiligingsinstelling van de browser verhinderen het automatisch plakken. Gebruik Ctrl+V op het toetsenbord.",
 PasteErrorCut	: "De beveiligingsinstelling van de browser verhinderen het automatisch knippen. Gebruik Ctrl+X op het toetsenbord.",
-PasteErrorCopy	: "De beveiligingsinstelling van de browser verhinderen het automatisch kopieëren. Gebruik Ctrl+C op het toetsenbord.",
+PasteErrorCopy	: "De beveiligingsinstelling van de browser verhinderen het automatisch kopie?ren. Gebruik Ctrl+C op het toetsenbord.",
 
 PasteAsText		: "Plakken als platte tekst",
 PasteFromWord	: "Plakken van Word-gegevens",
@@ -361,7 +361,7 @@ DlgSpellNoChanges		: "Klaar met spellingscontrole: Geen woorden aangepast",
 DlgSpellOneChange		: "Klaar met spellingscontrole: 1 woord aangepast",
 DlgSpellManyChanges		: "Klaar met spellingscontrole: %1 woorden aangepast",
 
-IeSpellDownload			: "Spellingscontrole niet geïnstalleerd. Wil je deze nu downloaden?",
+IeSpellDownload			: "Spellingscontrole niet ge?nstalleerd. Wil je deze nu downloaden?",
 
 // Button Dialog
 DlgButtonText	: "Tekst (waarde)",
@@ -464,7 +464,7 @@ Templates			: "Sjablonen",
 DlgTemplatesTitle	: "Inhoud sjabonen",
 DlgTemplatesSelMsg	: "Selecteer een sjabloon die in de editor geopend moet worden. (De actuele inhoud gaat verloren.):",
 DlgTemplatesLoading	: "Bezig met laden sjabonen. Even geduld aub...",
-DlgTemplatesNoTpl	: "(Geen sjablonen gedefiniëerd)",
+DlgTemplatesNoTpl	: "(Geen sjablonen gedefini?erd)",
 
 // About Dialog
 DlgAboutAboutTab	: "Over",

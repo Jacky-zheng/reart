@@ -1,6 +1,6 @@
-/**
+﻿/**
  * @file            transport.js
- * @description     用于支持AJAX的传输类。
+ * @description     鐢ㄤ簬鏀寔AJAX镄勪紶杈撶被銆?
  * @author          ECShop R&D Team ( http://www.ecshop.com/ )
  * @date            2007-03-08 Wednesday
  * @license         Licensed under the Academic Free License 2.1 http://www.opensource.org/licenses/afl-2.1.php
@@ -10,14 +10,14 @@
 var Transport =
 {
   /* *
-  * 存储本对象所在的文件名。
+  * 瀛桦偍链璞℃墍鍦ㄧ殑鏂囦欢鍚嶃€?
   *
   * @static
   */
   filename : "transport.js",
 
   /* *
-  * 存储是否进入调试模式的开关，打印调试消息的方式，换行符，调试用的容器的ID。
+  * 瀛桦偍鏄惁杩涘叆璋冭瘯妯″纺镄勫紑鍏筹紝镓揿嵃璋冭瘯娑堟伅镄勬柟寮忥紝鎹㈣绗︼紝璋冭瘯鐢ㄧ殑瀹瑰櫒镄処D銆?
   *
   * @private
   */
@@ -30,11 +30,11 @@ var Transport =
   },
 
   /* *
-  * 设置调试模式以及打印调试消息方式的方法。
+  * 璁剧疆璋冭瘯妯″纺浠ュ强镓揿嵃璋冭瘯娑堟伅鏂瑰纺镄勬柟娉曘€?
   *
   * @public
-  * @param   {int}   是否打开调试模式      0：关闭，1：打开
-  * @param   {int}   打印调试消息的方式    0：alert，1：innerHTML
+  * @param   {int}   鏄惁镓揿紑璋冭瘯妯″纺      0锛氩叧闂紝1锛氭墦寮€
+  * @param   {int}   镓揿嵃璋冭瘯娑堟伅镄勬柟寮?   0锛歛lert锛?锛歩nnerHTML
   *
   */
   debug : function (isDebugging, debuggingMode)
@@ -49,7 +49,7 @@ var Transport =
   },
 
   /* *
-  * 传输完毕后自动调用的方法，优先级比用户从run()方法中传入的回调函数高。
+  * 浼犺緭瀹屾瘯鍚庤嚜锷ㄨ皟鐢ㄧ殑鏂规硶锛屼紭鍏堢骇姣旗敤鎴蜂粠run()鏂规硶涓紶鍏ョ殑锲炶皟鍑芥暟楂朴€?
   *
   * @public
   */
@@ -58,7 +58,7 @@ var Transport =
   },
 
   /* *
-  * 传输过程中自动调用的方法。
+  * 浼犺緭杩囩▼涓嚜锷ㄨ皟鐢ㄧ殑鏂规硶銆?
   *
   * @public
   */
@@ -67,20 +67,20 @@ var Transport =
   },
 
   /* *
-  * 调用此方法发送HTTP请求。
+  * 璋幂敤姝ゆ柟娉曞彂阃丠TTP璇锋眰銆?
   *
   * @public
-  * @param   {string}    url             请求的URL地址
-  * @param   {mix}       params          发送参数
-  * @param   {Function}  callback        回调函数
-  * @param   {string}    ransferMode     请求的方式，有"GET"和"POST"两种
-  * @param   {string}    responseType    响应类型，有"JSON"、"XML"和"TEXT"三种
-  * @param   {boolean}   asyn            是否异步请求的方式
-  * @param   {boolean}   quiet           是否安静模式请求
+  * @param   {string}    url             璇锋眰镄刄RL鍦板潃
+  * @param   {mix}       params          鍙戦€佸弬鏁?
+  * @param   {Function}  callback        锲炶皟鍑芥暟
+  * @param   {string}    ransferMode     璇锋眰镄勬柟寮忥紝链?GET"鍜?POST"涓ょ
+  * @param   {string}    responseType    鍝嶅簲绫诲瀷锛屾湁"JSON"銆?XML"鍜?TEXT"涓夌
+  * @param   {boolean}   asyn            鏄惁寮傛璇锋眰镄勬柟寮?
+  * @param   {boolean}   quiet           鏄惁瀹夐润妯″纺璇锋眰
   */
   run : function (url, params, callback, transferMode, responseType, asyn, quiet)
   {
-    /* 处理用户在调用该方法时输入的参数 */
+    /* 澶勭悊鐢ㄦ埛鍦ㄨ皟鐢ㄨ鏂规硶镞惰緭鍏ョ殑鍙傛暟 */
     params = this.parseParams(params);
     transferMode = typeof(transferMode) === "string"
     && transferMode.toUpperCase() === "GET"
@@ -99,7 +99,7 @@ var Transport =
     responseType = typeof(responseType) === "string" && ((responseType = responseType.toUpperCase()) === "JSON" || responseType === "XML") ? responseType : "TEXT";
     asyn = asyn === false ? false : true;
 
-    /* 处理HTTP请求和响应 */
+    /* 澶勭悊HTTP璇锋眰鍜屽搷搴?*/
     var xhr = this.createXMLHttpRequest();
 
     try
@@ -229,11 +229,11 @@ var Transport =
   },
 
   /* *
-  * 如果开启了调试模式，该方法会打印出相应的信息。
+  * 濡傛灉寮€鍚简璋冭瘯妯″纺锛岃鏂规硶浼氭墦鍗板嚭鐩稿簲镄勪俊鎭€?
   *
   * @private
-  * @param   {string}    info    调试信息
-  * @param   {string}    type    信息类型
+  * @param   {string}    info    璋冭瘯淇℃伅
+  * @param   {string}    type    淇℃伅绫诲瀷
   */
   displayDebuggingInfo : function (info, type)
   {
@@ -278,10 +278,10 @@ var Transport =
   },
 
   /* *
-  * 创建XMLHttpRequest对象的方法。
+  * 鍒涘缓XMLHttpRequest瀵硅薄镄勬柟娉曘€?
   *
   * @private
-  * @return      返回一个XMLHttpRequest对象
+  * @return      杩斿洖涓€涓猉MLHttpRequest瀵硅薄
   * @type    Object
   */
   createXMLHttpRequest : function ()
@@ -314,11 +314,11 @@ var Transport =
   },
 
   /* *
-  * 当传输过程发生错误时将调用此方法。
+  * 褰扑紶杈撹绷绋嫔彂鐢熼敊璇椂灏呜皟鐢ㄦ鏂规硶銆?
   *
   * @private
-  * @param   {Object}    xhr     XMLHttpRequest对象
-  * @param   {String}    url     HTTP请求的地址
+  * @param   {Object}    xhr     XMLHttpRequest瀵硅薄
+  * @param   {String}    url     HTTP璇锋眰镄勫湴鍧€
   */
   onXMLHttpRequestError : function (xhr, url)
   {
@@ -329,11 +329,11 @@ var Transport =
   },
 
   /* *
-  * 对将要发送的参数进行格式化。
+  * 瀵瑰皢瑕佸彂阃佺殑鍙傛暟杩涜镙煎纺鍖栥€?
   *
   * @private
-  * @params {mix}    params      将要发送的参数
-  * @return 返回合法的参数
+  * @params {mix}    params      灏呜鍙戦€佺殑鍙傛暟
+  * @return 杩斿洖鍚堟硶镄勫弬鏁?
   * @type string
   */
   parseParams : function (params)
@@ -376,11 +376,11 @@ var Transport =
   },
 
   /* *
-  * 对返回的HTTP响应结果进行过滤。
+  * 瀵硅繑锲炵殑HTTP鍝嶅簲缁撴灉杩涜杩囨护銆?
   *
   * @public
-  * @params   {mix}   result   HTTP响应结果
-  * @return  返回过滤后的结果
+  * @params   {mix}   result   HTTP鍝嶅簲缁撴灉
+  * @return  杩斿洖杩囨护鍚庣殑缁撴灉
   * @type string
   */
   preFilter : function (result)
@@ -389,10 +389,10 @@ var Transport =
   },
 
   /* *
-  * 对返回的结果进行格式化。
+  * 瀵硅繑锲炵殑缁撴灉杩涜镙煎纺鍖栥€?
   *
   * @private
-  * @return 返回特定格式的数据结果
+  * @return 杩斿洖鐗瑰畾镙煎纺镄勬暟鎹粨鏋?
   * @type mix
   */
   parseResult : function (responseType, xhr)
@@ -442,6 +442,6 @@ var Transport =
   }
 };
 
-/* 定义两个别名 */
+/* 瀹氢箟涓や釜鍒悕 */
 var Ajax = Transport;
 Ajax.call = Transport.run;

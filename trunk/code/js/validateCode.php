@@ -1,27 +1,27 @@
-<?
+ï»¿<?
 session_start();
 
-define("IN_CN315",true);		//¶ÔÎÄ¼þµÄ·ÃÎÊ°²È«×÷¸öÏÞÖÆ
-define("ROOT",substr(dirname(__FILE__), 0, -2));	//ÎÄ¼þµÄÖ÷Ä¿Â¼
+define("IN_CN315",true);		//å¯¹æ–‡ä»¶çš„è®¿é—®å®‰å…¨ä½œä¸ªé™åˆ¶
+define("ROOT",substr(dirname(__FILE__), 0, -2));	//æ–‡ä»¶çš„ä¸»ç›®å½•
 
 require_once(ROOT.'./class/functions.inc.php');
 
 loadLib("rand");
 $_SESSION["xzx_checkCode"] = rand::makeRand(0, 4);
 
-//Éú³ÉÑéÖ¤ÂëÍ¼Æ¬
+//ç”ŸæˆéªŒè¯ç å›¾ç‰‡
 Header("Content-type: image/PNG");
 $im = @imagecreate( 12 * strlen($_SESSION["xzx_checkCode"]), 20);
-imagefill($im,80,30,ImageColor($im,'#FFFFFF'));	//ÉèÖÃ±³¾°É«
+imagefill($im,80,30,ImageColor($im,'#FFFFFF'));	//è®¾ç½®èƒŒæ™¯è‰²
 
-//½«ËÄÎ»ÕûÊýÑéÖ¤Âë»æÈëÍ¼Æ¬,Î»ÖÃ½»´í
+//å°†å››ä½æ•´æ•°éªŒè¯ç ç»˜å…¥å›¾ç‰‡,ä½ç½®äº¤é”™
 for ($i = 0; $i < strlen($_SESSION["xzx_checkCode"]); $i++)
 {
 	($i%2 == 0) ? $top = 1:$top = 4;
 	imagestring($im, 5, 10*$i+6, $top, substr($_SESSION["xzx_checkCode"],$i,1),ImageColor($im,'#000000'));
 }
 
-for($i=0;$i<150;$i++) //¼ÓÈë¸ÉÈÅÏóËØ
+for($i=0;$i<150;$i++) //åŠ å…¥å¹²æ‰°è±¡ç´ 
 	imagesetpixel($im, rand()%90 , rand()%30 , ImageColor($im,'#CCCCCC'));
 ImagePNG($im);
 ImageDestroy($im);

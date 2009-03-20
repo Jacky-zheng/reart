@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 require_once("../class/common.inc.php");
 require_once("../class/user.lib.php");
 
@@ -19,23 +19,23 @@ if ('submit' == $action)
 	);
 	if (empty($arr_msg["content"]))
 	{
-		redirect_error("½¨Òé²»ÄÜÎª¿Õ£¡");
+		redirect_error("å»ºè®®ä¸èƒ½ä¸ºç©ºï¼");
 	}
 	if (!empty($arr_msg["content"]) && $sCheckCode == $_SESSION["xzx_checkCode"])
 	{
 		$insertMsg = insertMsg($arr_msg);
 		if (!empty($insertMsg))
 		{
-			echo "<script>alert('½¨ÒéÌá½»³É¹¦£¡');</script>";
+			echo "<script>alert('å»ºè®®æäº¤æˆåŠŸï¼');</script>";
 		}
 		else 
 		{
-			echo "<script>alert('½¨ÒéÌá½»Ê§°Ü£¡');</script>";
+			echo "<script>alert('å»ºè®®æäº¤å¤±è´¥ï¼');</script>";
 		}
 	}
 	else 
 	{
-		redirect_error("ÑéÖ¤Âë´íÎó£¡");
+		redirect_error("éªŒè¯ç é”™è¯¯ï¼");
 	}
 	gotoPage("/user/contact_us.php");
 }
@@ -54,7 +54,7 @@ else
 		}
 		else 
 		{
-			redirect_error("¸ÃÓÃ»§²»´æÔÚ£¡");
+			redirect_error("è¯¥ç”¨æˆ·ä¸å­˜åœ¨ï¼");
 		}
 	}
 }

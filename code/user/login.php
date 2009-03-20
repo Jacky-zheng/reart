@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 require_once("../class/common.inc.php");
 require_once("../class/user.lib.php");
 
@@ -30,7 +30,7 @@ if(!empty($arr["userName"]) && $sCheckCode == $_SESSION["xzx_checkCode"])
 	}
 	else 
 	{
-		redirect_error("¸ÃÓÃ»§²»´æÔÚ£¡");
+		redirect_error("è¯¥ç”¨æˆ·ä¸å­˜åœ¨ï¼");
 	}
 }
 

@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 require_once("../class/common.inc.php");
 require_once("../class/user.lib.php");
 
@@ -24,19 +24,19 @@ if(!empty($arr["userName"]) && $sCheckCode == $_SESSION["xzx_checkCode"])
 {
 	if ( !checkNameRepeat($arr["userName"]) )
 	{
-		redirect_error("¸ÃÓÃ»§ÃûÒÑ¾­´æÔÚ£¡");
+		redirect_error("è¯¥ç”¨æˆ·åå·²ç»å­˜åœ¨ï¼");
 	}
 	if ( $_POST["pwd"] != $_POST["confirm_pwd"] )
 	{
-		redirect_error("Á½´ÎÊäÈëµÄÃÜÂë²»Ò»ÖÂ£¡");
+		redirect_error("ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸ä¸€è‡´ï¼");
 	}
 	if ( empty($arr["email"]) || !checkEmail($arr["email"]) )
 	{
-		redirect_error("ÓÊÏäÎª¿Õ»òÕßÓÊÏä¸ñÊ½´íÎó£¡");
+		redirect_error("é‚®ç®±ä¸ºç©ºæˆ–è€…é‚®ç®±æ ¼å¼é”™è¯¯ï¼");
 	}
 	if ( !is_numeric($arr["phone"]) )
 	{
-		redirect_error("µç»°ºÅÂëÇëÌîÐ´Êý×Ö");
+		redirect_error("ç”µè¯å·ç è¯·å¡«å†™æ•°å­—");
 	}
 
 	if ( !empty($arr["userName"]) && checkNameRepeat($arr["userName"]) && checkEmail($arr["email"]) && is_numeric($arr["phone"]) )
@@ -45,12 +45,12 @@ if(!empty($arr["userName"]) && $sCheckCode == $_SESSION["xzx_checkCode"])
 	}
 	else
 	{
-		redirect_error("×¢²áÊ§°Ü£¡");
+		redirect_error("æ³¨å†Œå¤±è´¥ï¼");
 	}
 }
 else
 {
-	redirect_error("ÑéÖ¤Âë´íÎó£¡");
+	redirect_error("éªŒè¯ç é”™è¯¯ï¼");
 }
 
 

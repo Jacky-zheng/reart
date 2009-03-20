@@ -1,4 +1,4 @@
-{include file=admin/header.tpl.htm}
+ï»¿{include file=admin/header.tpl.htm}
 {literal}
 <script>
 	document.onclick=function() {document.getElementById("popFrame").style.visibility="hidden";}
@@ -11,50 +11,50 @@
 			<td colspan="2">{$PAGE_FUNC_SMALL_NAME}</td>
 		</tr>
 		<tr>
-			<td width="100" class="altbg1">ĞÕÃû£º</td>
+			<td width="100" class="altbg1">å§“åï¼š</td>
 			<td class="altbg2"><input type="text" id="name" name="name" size="40" value="">
 		   <span class="starHit">*</span></td>
 		</tr>
 		<tr>
-			<td class="altbg1">ĞÔ±ğ£º</td>
+			<td class="altbg1">æ€§åˆ«ï¼š</td>
 			<td class="altbg2">{html_radios name="sex" options="$aSex" checked=0}<span class="starHit">*</span></td>
 		</tr>
         
 		<tr>
-			<td class="altbg1">Ö°Òµ£º</td>
+			<td class="altbg1">èŒä¸šï¼š</td>
 			<td class="altbg2"><input type="text" id="profession" name="profession" size="40" value=""></td>
 		</tr>
 		<tr>
-			<td class="altbg1">×÷¼Ò±àºÅ£º</td>
+			<td class="altbg1">ä½œå®¶ç¼–å·ï¼š</td>
 			<td class="altbg2"><input type="text" id="artistCode" name="artistCode" size="40" value=""></td>
 		</tr>        
         
 		<tr>
-			<td class="altbg1">³öÉúÈÕÆÚ£º</td>
+			<td class="altbg1">å‡ºç”Ÿæ—¥æœŸï¼š</td>
 		  <td class="altbg2">
 			  <input type="text" name="birthday" id="birthday" readonly="" value="" class="input_text" />
-              <img src="../js/date/images/date.gif" name="caseDealTime" id="caseDealTime" style="cursor:hand;" onclick="popFrame.fPopCalendar('birthday','birthday',event);" value=" Ñ¡ÔñÈÕÆÚ "></td>
+              <img src="../js/date/images/date.gif" name="caseDealTime" id="caseDealTime" style="cursor:hand;" onclick="popFrame.fPopCalendar('birthday','birthday',event);" value=" é€‰æ‹©æ—¥æœŸ "></td>
 		</tr>			
 		
 		<tr>
-			<td class="altbg1">×÷¼Ò¼ò½é£º</td>
+			<td class="altbg1">ä½œå®¶ç®€ä»‹ï¼š</td>
 			<td class="altbg2">{$sContent}</td>
 		</tr>
 		<tr>
-			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="·µ»Ø" class="button"></td>
-			<td align="right" class="altbg2"><input type="submit" name="submit" value=" Ìá ½» " class="submit"></td>	
+			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="è¿”å›" class="button"></td>
+			<td align="right" class="altbg2"><input type="submit" name="submit" value=" æ äº¤ " class="submit"></td>	
 		</tr>
 		</form>
 </table>
 {literal}
 <script language="javascript">
-//ÑéÖ¤±íµ¥ÊäÈëÊÇ·ñÕıÈ·
+//éªŒè¯è¡¨å•è¾“å…¥æ˜¯å¦æ­£ç¡®
 function checkInput()
 {
 
 	if($('name').value =="")
 	{
-		alert("ĞÕÃû²»ÄÜÎª¿Õ£¡");
+		alert("å§“åä¸èƒ½ä¸ºç©ºï¼");
 		$('name').focus();
 		return false;	
 	}

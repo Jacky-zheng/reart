@@ -1,4 +1,4 @@
-{include file=admin/header.tpl.htm}
+ï»¿{include file=admin/header.tpl.htm}
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
 		<form name="add" method="POST" action="?act=addSave" enctype="multipart/form-data" onsubmit="return checkInput();">
@@ -6,116 +6,116 @@
 			<td colspan="2">{$PAGE_FUNC_SMALL_NAME}</td>
 		</tr>
 		<tr>
-			<td width="100" class="altbg1">ËùÊôÀ¸Ä¿£º</td>
+			<td width="100" class="altbg1">æ‰€å±æ ç›®ï¼š</td>
 			<td class="altbg2">
 			<select name="cID">
 				{$sOptions}
 			</select>&nbsp;&nbsp; <span class="starHit">*</span></td>
 		</tr>
 		<tr>
-			<td width="100" class="altbg1">ËùÊôĞĞÒµ£º</td>
+			<td width="100" class="altbg1">æ‰€å±è¡Œä¸šï¼š</td>
 			<td class="altbg2">
 			<select name="hangyeID">
 				{html_options options=$aHangyeList selected=$iHangyeID}
 			</select>&nbsp;&nbsp; <span class="starHit">*</span></td>
 		</tr>
 		<tr>
-			<td class="altbg1">ĞÂÎÅ±êÌâ£º</td>
+			<td class="altbg1">æ–°é—»æ ‡é¢˜ï¼š</td>
 			<td class="altbg2"><input type="text" id="title" name="title" size="40" value=""> <span class="starHit">*</span></td>
 		</tr>
 		<tr>
-			<td class="altbg1">ĞÂÎÅ¹Ø¼ü×Ö£º</td>
-			<td class="altbg2"><input type="text" name="keywords" size="40" value="">(Á½¸ö¹Ø¼ü×ÖÒÔÉÏÓÃ","¸ô¿ª) <span class="starHit">*</span></td>
+			<td class="altbg1">æ–°é—»å…³é”®å­—ï¼š</td>
+			<td class="altbg2"><input type="text" name="keywords" size="40" value="">(ä¸¤ä¸ªå…³é”®å­—ä»¥ä¸Šç”¨","éš”å¼€) <span class="starHit">*</span></td>
 		</tr>
 		<tr>
-			<td class="altbg1">ĞÂÎÅ¼ò½é£º</td>
+			<td class="altbg1">æ–°é—»ç®€ä»‹ï¼š</td>
 			<td class="altbg2"><input type="text" id="intro" name="intro" size="100" value=""> <span class="starHit">*</span></td>
 		</tr>
 		<tr>
-			<td class="altbg1">ÊÇ·ñ¼Óºì£º</td>
+			<td class="altbg1">æ˜¯å¦åŠ çº¢ï¼š</td>
 			<td class="altbg2">{html_radios name="isRed" options="$aENUM" checked=0}<span class="starHit">*</span></td>
 		</tr>		
 		<tr>
-			<td class="altbg1">À´Ô´£º</td>
-			<td class="altbg2"><input type="text" id="source" name="source" size="40" value="Î´Öª"></td>
+			<td class="altbg1">æ¥æºï¼š</td>
+			<td class="altbg2"><input type="text" id="source" name="source" size="40" value="æœªçŸ¥"></td>
 		</tr>
 		<tr>
-			<td class="altbg1">×÷Õß£º</td>
+			<td class="altbg1">ä½œè€…ï¼š</td>
 			<td class="altbg2"><input type="text"  name="author" size="40"></td>
 		</tr>		
 		<tr>
-			<td class="altbg1">ÖÕ¶ËÒ³Í¼Æ¬£º</td>
+			<td class="altbg1">ç»ˆç«¯é¡µå›¾ç‰‡ï¼š</td>
 			<td class="altbg2">
 				<input type="file" name="pic" onPropertyChange='preview.src=this.value'>&nbsp;
 				<img id='preview' src="/images/no_pic.jpg" width="100" height="100" border="1"></td>
 		</tr>	
 		<tr>
-			<td class="altbg1">Ê×Ò³Í¼Æ¬£º</td>
+			<td class="altbg1">é¦–é¡µå›¾ç‰‡ï¼š</td>
 			<td class="altbg2">
 				<input type="file" name="pic_index" onPropertyChange='preview_index.src=this.value'>&nbsp;
-				<img id='preview_index' src="/images/no_pic.jpg" width="86" height="56" border="1">(86¡Á56)</td>
+				<img id='preview_index' src="/images/no_pic.jpg" width="86" height="56" border="1">(86Ã—56)</td>
 		</tr>		
 		<tr>
-			<td class="altbg1">Ïà¹Ø¸½¼ş1£º</td>
+			<td class="altbg1">ç›¸å…³é™„ä»¶1ï¼š</td>
 			<td class="altbg2">
 				<input type="file" name="attached1" >&nbsp;
 				</td>
 		</tr>	
 		<tr>
-			<td class="altbg1">Ïà¹Ø¸½¼ş2£º</td>
+			<td class="altbg1">ç›¸å…³é™„ä»¶2ï¼š</td>
 			<td class="altbg2">
 				<input type="file" name="attached2">&nbsp;
 				</td>
 		</tr>	
 		<tr>
-			<td class="altbg1">Ïà¹Ø¸½¼ş3£º</td>
+			<td class="altbg1">ç›¸å…³é™„ä»¶3ï¼š</td>
 			<td class="altbg2">
 				<input type="file" name="attached3" >&nbsp;
 				</td>
 		</tr>			
 		
 		<tr>
-			<td class="altbg1">ĞÂÎÅÄÚÈİ£º</td>
+			<td class="altbg1">æ–°é—»å†…å®¹ï¼š</td>
 			<td class="altbg2">{$sContent}</td>
 		</tr>
 		<tr>
-			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="·µ»Ø" class="button"></td>
-			<td align="right" class="altbg2"><input type="submit" name="submit" value=" Ìá ½» " class="submit"></td>	
+			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="è¿”å›" class="button"></td>
+			<td align="right" class="altbg2"><input type="submit" name="submit" value=" æ äº¤ " class="submit"></td>	
 		</tr>
 		</form>
 </table>
 {literal}
 <script language="javascript">
-//ÑéÖ¤±íµ¥ÊäÈëÊÇ·ñÕıÈ·
+//éªŒè¯è¡¨å•è¾“å…¥æ˜¯å¦æ­£ç¡®
 function checkInput()
 {
 	if($('cID').value =="")
 	{
-		alert("ÇëÑ¡ÔñËùÊôÀ¸Ä¿£¡");
+		alert("è¯·é€‰æ‹©æ‰€å±æ ç›®ï¼");
 		$('cID').focus();
 		return false;	
 	}
 	if($('hangyeID').value =="")
 	{
-		alert("ÇëÑ¡ÔñËùÊôĞĞÒµ£¡");
+		alert("è¯·é€‰æ‹©æ‰€å±è¡Œä¸šï¼");
 		$('hangyeID').focus();
 		return false;	
 	}
 	if($('title').value =="")
 	{
-		alert("ĞÂÎÅ±êÌâ²»ÄÜÎª¿Õ£¡");
+		alert("æ–°é—»æ ‡é¢˜ä¸èƒ½ä¸ºç©ºï¼");
 		$('title').focus();
 		return false;	
 	}
 	if($('keywords').value =="")
 	{
-		alert("ĞÂÎÅ¹Ø¼ü×Ö²»ÄÜÎª¿Õ£¡");
+		alert("æ–°é—»å…³é”®å­—ä¸èƒ½ä¸ºç©ºï¼");
 		$('keywords').focus();
 		return false;	
 	}
 	if($('intro').value =="")
 	{
-		alert("ĞÂÎÅ¼ò½é²»ÄÜÎª¿Õ£¡");
+		alert("æ–°é—»ç®€ä»‹ä¸èƒ½ä¸ºç©ºï¼");
 		$('intro').focus();
 		return false;	
 	}

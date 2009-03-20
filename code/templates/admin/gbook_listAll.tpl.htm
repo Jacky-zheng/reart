@@ -1,15 +1,15 @@
-{include file=admin/header.tpl.htm}
+ï»¿{include file=admin/header.tpl.htm}
 <form name="form1" method="post">
 <table width='100%' border='1' cellspacing='0' cellpadding='0' align='center' bordercolordark='#FFFFFF' bordercolorlight='#000000'  bgcolor='#efefef'> 
            <tr bgcolor="#FFFFFF"> 
             
-           	<td align="center">ÄÚÈİ¹Ø¼ü×Ö£º<input type="text" name="q" value="{$q}">
-           	  (ÊäÈëÁôÑÔÄÚÈİ½øĞĞÄ£ºıËÑË÷)
-        		<input type="submit" value="Ìá½»">
+           	<td align="center">å†…å®¹å…³é”®å­—ï¼š<input type="text" name="q" value="{$q}">
+           	  (è¾“å…¥ç•™è¨€å†…å®¹è¿›è¡Œæ¨¡ç³Šæœç´¢)
+        		<input type="submit" value="æäº¤">
            	</td> 
           </tr>         
 </table>
-{include file=admin/pager_bar.tpl.htm} {* ·ÖÒ³ *}
+{include file=admin/pager_bar.tpl.htm} {* åˆ†é¡µ *}
 			
 		<table class="tableborder" width="100%" cellpadding="0" cellspacing="0" align="center">	
 		<tr class="header">
@@ -23,14 +23,14 @@
 		
 		                       <tr bgcolor="#FFFFFF">
                               <td width="5%" rowspan="7" align="center"><input type='checkbox' name="id[]" value="{$aList[list].id}"></td> 
-							  <td width="8%"><font color="red">ĞÕÃû£º</font></td>
+							  <td width="8%"><font color="red">å§“åï¼š</font></td>
 							  <td><font color="red">{$aList[list].userName}</font></td>
 							</tr>                                                               
                            
                             <tr bgcolor="#FFFFFF">
-                            	<td><font color="#666666">ÁôÑÔÄÚÈİ£º</font></td>
+                            	<td><font color="#666666">ç•™è¨€å†…å®¹ï¼š</font></td>
 								<td>
-									<font color="#CC0000">ÁôÑÔÊ±¼ä£º{$aList[list].addDate}</font><br>
+									<font color="#CC0000">ç•™è¨€æ—¶é—´ï¼š{$aList[list].addDate}</font><br>
                                 	<font color="#666666">{$aList[list].content}</font>								</td>
                             </tr>                           
 						
@@ -38,15 +38,15 @@
                           <br>                         
           {/section}
            <center>
-           		<input type='checkbox' onclick="CheckAll(this.form.elements['id[]'], this.checked)">È«Ñ¡/·´Ñ¡ 
-           		<input type="button" name="check" value="É¾³ı" onclick="SubmitForm('del');">
+           		<input type='checkbox' onclick="CheckAll(this.form.elements['id[]'], this.checked)">å…¨é€‰/åé€‰ 
+           		<input type="button" name="check" value="åˆ é™¤" onclick="SubmitForm('del');">
            </center>
           </form>
 		  </td></tr>
 		  		
 		</table>
           </form>		
-{include file=admin/pager_bar.tpl.htm}<br> {* ·ÖÒ³ *}	
+{include file=admin/pager_bar.tpl.htm}<br> {* åˆ†é¡µ *}	
 {include file=admin/footer.tpl.htm}
 
 {literal}
@@ -68,12 +68,12 @@ function SubmitForm()
    // alert(arguments[0]);
     switch(arguments[0])
     {
-    	case "del": var str = "É¾³ı"; break;
-    	case "check": var str = "ÉóºË"; break;
+    	case "del": var str = "åˆ é™¤"; break;
+    	case "check": var str = "å®¡æ ¸"; break;
     	default: break;    	
     }
     
-    if(confirm("ÄúÕæµÄÒª½«Ñ¡ÖĞµÄ"+str+"Âğ?") == true)
+    if(confirm("æ‚¨çœŸçš„è¦å°†é€‰ä¸­çš„"+str+"å—?") == true)
     {
 {/literal}    	
     	FormObject.action = "?act="+arguments[0]+"&status={$iStatus}";

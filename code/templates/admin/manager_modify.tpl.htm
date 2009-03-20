@@ -1,48 +1,48 @@
-{include file=admin/header.tpl.htm}
+ï»¿{include file=admin/header.tpl.htm}
 
 		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">	
 		<tr class="header">
-			<td colspan="2">±à¼­ÓÃ»§[{$aInfo.trueName}]</td>
+			<td colspan="2">ç¼–è¾‘ç”¨æˆ·[{$aInfo.trueName}]</td>
 		</tr>
 		
 		<form name="add" method="POST" action="manager.php?act=modifySave" onsubmit="return checkForm();">
 		<input type="hidden" name="managerID" value="{$aInfo.id}">
 		<tr>
-			<td width="100" class="altbg1">ÓÃ»§Ãû£º</td>
+			<td width="100" class="altbg1">ç”¨æˆ·åï¼š</td>
 			<td class="altbg2"><input type="text" id="text_userName" name="text_userName" value="{$aInfo.userName}"> <span class="starHit">*</span></td>
 		</tr>
 		<tr>
-			<td class="altbg1">ÃÜ&nbsp;&nbsp;Âë£º</td>
+			<td class="altbg1">å¯†&nbsp;&nbsp;ç ï¼š</td>
 			<td class="altbg2"><input type="text" id="text_pwd" name="text_pwd" value="{$randPwd}"> 
 			<span class="starHit">*</span>&nbsp;
-			<input type="checkbox" name="modifyPwd" value="1">ĞŞ¸ÄÃÜÂë£¿
-			{* html_checkboxes name="modifyPwd" values=1  output="ĞŞ¸ÄÃÜÂë£¿" *}</td>
+			<input type="checkbox" name="modifyPwd" value="1">ä¿®æ”¹å¯†ç ï¼Ÿ
+			{* html_checkboxes name="modifyPwd" values=1  output="ä¿®æ”¹å¯†ç ï¼Ÿ" *}</td>
 		</tr>
 		<tr>
-			<td class="altbg1">½Ç&nbsp;&nbsp;É«£º</td>
+			<td class="altbg1">è§’&nbsp;&nbsp;è‰²ï¼š</td>
 			<td class="altbg2">
 				<select name="select_roleID" id="select_roleID" onchange="changeExtFunc();">
-				<option value="0">ÇëÑ¡Ôñ½ÇÉ«...</option>
+				<option value="0">è¯·é€‰æ‹©è§’è‰²...</option>
 				{html_options options=$aRoleList selected=$aInfo.roleID}
 				</select> <span class="starHit">*</span>
 			</td>
 		</tr>
 		<tr>
-			<td class="altbg1">ÕæÊµĞÕÃû</td>
+			<td class="altbg1">çœŸå®å§“å</td>
 			<td class="altbg2"><input type="text" id="text_trueName" name="text_trueName" value="{$aInfo.trueName}"> <span class="starHit">*</span></td>
 		</tr>
 		
 		<tr>
-			<td class="altbg1">¸öÈËÏàÆ¬</td>
+			<td class="altbg1">ä¸ªäººç›¸ç‰‡</td>
 			<td class="altbg2">
 			<input type="file" name="pic" onPropertyChange='preview.src=this.value'>&nbsp;
 			{if $aInfo.pic} <a href="{$__USER_PIC}{$aInfo.pic}" target="_blank"><img id='preview' src="{$__USER_PIC}{$aInfo.pic}" width="100" height="100" border="0"></a>
-			<input name="delPic" type="checkbox" value="1">É¾³ıÍ¼Æ¬{else}<img id='preview' src="/images/no_pic.jpg" width="65" height="65" border="1">{/if}			
+			<input name="delPic" type="checkbox" value="1">åˆ é™¤å›¾ç‰‡{else}<img id='preview' src="/images/no_pic.jpg" width="65" height="65" border="1">{/if}			
 						
 			</td>
 		</tr>		
 		<tr>
-			<td class="altbg1">¼ò½é</td>
+			<td class="altbg1">ç®€ä»‹</td>
 			<td class="altbg2">
 				<textarea name="intro" rows="10" cols="50">{$aInfo.intro}</textarea>
 			<span class="starHit">*</span></td>
@@ -60,45 +60,45 @@
 			<td class="altbg2"><input type="text" id="text_email" name="text_email" value="{$aInfo.email}"></td>
 		</tr>
 		<tr>
-			<td class="altbg1">ÁªÏµµç»°</td>
+			<td class="altbg1">è”ç³»ç”µè¯</td>
 			<td class="altbg2"><input type="text" id="text_telephone" name="text_telephone" value="{$aInfo.telephone}"></td>
 		</tr>
 		<tr>
-			<td class="altbg1">ÊÖ&nbsp;&nbsp;»ú</td>
+			<td class="altbg1">æ‰‹&nbsp;&nbsp;æœº</td>
 			<td class="altbg2"><input type="text" id="text_mobile" name="text_mobile" value="{$aInfo.mobile}"></td>
 		</tr>
 		<tr>
-			<td class="altbg1">Ö±½ÓÁìµ¼£º</td>
+			<td class="altbg1">ç›´æ¥é¢†å¯¼ï¼š</td>
 			<td class="altbg2">
 				<select name="select_managerID" id="select_managerID">
-				<option value="0">ÇëÑ¡ÔñÖ±½ÓÁìµ¼...</option>
+				<option value="0">è¯·é€‰æ‹©ç›´æ¥é¢†å¯¼...</option>
 				{html_options options=$aManagerList selected=$aInfo.managerID}
 				</select> <span class="starHit">*</span>
 			</td>
 		</tr>
 		<tr>
-			<td class="altbg1">Ö°Îñ&nbsp; </td>
+			<td class="altbg1">èŒåŠ¡&nbsp; </td>
 			<td class="altbg2">{html_radios name="radio_isManager" options=$bIsManager checked=$aInfo.isManager separator="&nbsp;"}</td>
 		</tr>
 		<tr>
-			<td class="altbg1">ÕËºÅ×´Ì¬&nbsp; {html_help alt="Çë²Î¿¼FAQ 3.1" href="help.php?mod=manager&act=1#4"}</td>
+			<td class="altbg1">è´¦å·çŠ¶æ€&nbsp; {html_help alt="è¯·å‚è€ƒFAQ 3.1" href="help.php?mod=manager&act=1#4"}</td>
 			<td class="altbg2">{html_radios name="radio_status" options=$aStatus checked=$aInfo.status separator="&nbsp;"}</td>
 		</tr>
 		<tr>
-			<td class="altbg1">¸½¼Ó¹¦ÄÜ&nbsp; {html_help alt="Çë²Î¿¼FAQ 3.2" href="help.php?mod=manager&act=1#4"}</td>
+			<td class="altbg1">é™„åŠ åŠŸèƒ½&nbsp; {html_help alt="è¯·å‚è€ƒFAQ 3.2" href="help.php?mod=manager&act=1#4"}</td>
 			<td class="altbg2"><div id="extFunc"></div></td>
 		</tr>
 		<tr>
-			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="·µ»Ø" class="button"></td>
+			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="è¿”å›" class="button"></td>
 			<td align="right" class="altbg2">
-			<input type="submit" name="submit" value=" Ìá ½» " class="submit">
+			<input type="submit" name="submit" value=" æ äº¤ " class="submit">
 			<input type="hidden" name="oldPic" value="{$aInfo.pic}">
 			</td>	
 		</tr>
 		</form>
 </table>
 
-{* ÕâÀïµÄjsºÍÇ°ÃæµÄ³ÌĞòÓĞ¹ØÏµ£¬Êı×éÈ«²¿ÊÇÓÉ³ÌĞòÉú³ÉµÄ *}
+{* è¿™é‡Œçš„jså’Œå‰é¢çš„ç¨‹åºæœ‰å…³ç³»ï¼Œæ•°ç»„å…¨éƒ¨æ˜¯ç”±ç¨‹åºç”Ÿæˆçš„ *}
 {literal}
 <script language="javascript">
 
@@ -140,7 +140,7 @@ for(var i=0; i < radioLables.length; i++)
 outHtml = outHtml + "</table>";
 $('extFunc').innerHTML = outHtml;
 
-//¼ÓÔØÄ¬ÈÏµÄ¹¦ÄÜº¯Êı
+//åŠ è½½é»˜è®¤çš„åŠŸèƒ½å‡½æ•°
 function loadDefaultExtFunc()
 {
 {/literal}
@@ -187,32 +187,32 @@ function changeExtFunc()
 	outHtml = outHtml + "</table>";
 	$('extFunc').innerHTML = outHtml;
 }
-//¶Ôµ±Ç°µÄ²î¼¯Êı×é½øĞĞ´¦Àí
+//å¯¹å½“å‰çš„å·®é›†æ•°ç»„è¿›è¡Œå¤„ç†
 
-//ÑéÖ¤±íµ¥ÊäÈëÊÇ·ñÕıÈ·
+//éªŒè¯è¡¨å•è¾“å…¥æ˜¯å¦æ­£ç¡®
 function checkForm()
 {
 	if($('text_userName').value == "")
 	{
-		alert("ÓÃ»§Ãû²»ÄÜÎª¿Õ");
+		alert("ç”¨æˆ·åä¸èƒ½ä¸ºç©º");
 		$('text_userName').focus();
 		return false;
 	}
 	if($('text_pwd').value == "")
 	{
-		alert("ÃÜÂë²»ÄÜÎª¿Õ");
+		alert("å¯†ç ä¸èƒ½ä¸ºç©º");
 		$('text_pwd').focus();
 		return false;
 	}
 	if($('select_roleID').value == "0")
 	{
-		alert("ÇëÑ¡Ôñ½ÇÉ«");
+		alert("è¯·é€‰æ‹©è§’è‰²");
 		$('select_roleID').focus();
 		return false;
 	}
 	if($('text_trueName').value == "")
 	{
-		alert("ÇëÊäÈëÕæÊµĞÕÃû");
+		alert("è¯·è¾“å…¥çœŸå®å§“å");
 		$('text_trueName').focus();
 		return false;
 	}

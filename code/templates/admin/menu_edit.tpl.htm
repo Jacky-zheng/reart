@@ -1,4 +1,4 @@
-{include file=admin/header.tpl.htm}
+ï»¿{include file=admin/header.tpl.htm}
 
 {literal}
 <script language="javascript">
@@ -6,7 +6,7 @@ function checkInput()
 {		
 	if($('name').value == "")
 	{
-		alert("ÇëÌîĞ´Ãû³Æ£¡");		
+		alert("è¯·å¡«å†™åç§°ï¼");		
 		$('name').focus();
 		return false;
 	}
@@ -15,7 +15,7 @@ function checkInput()
 	{
 		if($('url').value == "" )
 		{
-			alert('ÇëÌîĞ´Á´½ÓµØÖ·£¡');
+			alert('è¯·å¡«å†™é“¾æ¥åœ°å€ï¼');
 			$('url').focus();			
 			return false;
 		}
@@ -29,7 +29,7 @@ function checkInput()
 				
 		if(powerID == "")
 		{
-			alert("ÇëÑ¡ÔñÈ¨ÏŞ£¡");
+			alert("è¯·é€‰æ‹©æƒé™ï¼");
 	   		return false;
 		}		
 	}	
@@ -58,34 +58,34 @@ function displayPowerUrl()
 			
 		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
 		<tr class="header">
-			<td colspan="2">ĞŞ¸Ä×ó±ß²Ëµ¥</td>
+			<td colspan="2">ä¿®æ”¹å·¦è¾¹èœå•</td>
 		</tr>
 		
 		<form  method="POST" onsubmit="return checkInput();" action="menu.php?act=editSave">		
 		<tr>
-          <td width="100" class="altbg1">ÉÏ¼¶²Ëµ¥</td>
+          <td width="100" class="altbg1">ä¸Šçº§èœå•</td>
           <td class="altbg2">
           <select name="pID" onchange="displayPowerUrl();">
-          	<option value="0">ĞÂÔö</option>                     	
+          	<option value="0">æ–°å¢</option>                     	
           	{section name="menuList" loop="$aMenuList"}
            		<option value="{$aMenuList[menuList].id}" {if $aMenuList[menuList].id == $aInfo.pID} selected {/if}>{$aMenuList[menuList].name}</option>
            {/section}
           </select>&nbsp;&nbsp;*</td>
         </tr>
         <tr>
-          <td class="altbg1">Ãû³Æ</td>
+          <td class="altbg1">åç§°</td>
           <td class="altbg2"><input type="text" name="name" size="50" class="input_text" value="{$aInfo.name}">&nbsp;&nbsp;*</td>
         </tr>
         <tr id="tr_url" {if $aInfo.pID == 0} style="display:none;" {/if}>
-          <td class="altbg1">Á´½ÓµØÖ·</td>
+          <td class="altbg1">é“¾æ¥åœ°å€</td>
           <td class="altbg2"><input type="text" name="url" size="50" class="input_text" value="{$aInfo.url}"  >&nbsp;&nbsp;*</td>
         </tr>
        		
 		<tr>
-			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="·µ»Ø"></td>
+			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="è¿”å›"></td>
 			<td align="right" class="altbg2">
 				<input type="hidden" name="id" value="{$aInfo.id}">
-				<input type="submit" name="submit" value=" Ìá ½» ">
+				<input type="submit" name="submit" value=" æ äº¤ ">
 			</td>
 		</tr>
 		</form>

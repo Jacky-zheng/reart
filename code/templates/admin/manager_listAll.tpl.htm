@@ -1,4 +1,4 @@
-{include file=admin/header.tpl.htm}
+ï»¿{include file=admin/header.tpl.htm}
 
 
 
@@ -7,12 +7,12 @@
 		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">	
 		<tr  class="header">
 			<td width="7" height="20">&nbsp;</td>
-			<td width="175">ÓÃ»§Ãû</td>
-			<td width="191">ÕæÊµĞÕÃû</td>
+			<td width="175">ç”¨æˆ·å</td>
+			<td width="191">çœŸå®å§“å</td>
 			<td width="186">E-mail</td>
-			<td width="193">×îºóµÇÂ½IP</td>
-			<td width="199">×îºóµÇÂ½Ê±¼ä</td>
-			<td width="278" align="right">¶¯×÷</td>
+			<td width="193">æœ€åç™»é™†IP</td>
+			<td width="199">æœ€åç™»é™†æ—¶é—´</td>
+			<td width="278" align="right">åŠ¨ä½œ</td>
 		</tr>
 		
 		{section name=a_list loop=$aList}
@@ -23,13 +23,13 @@
 			<td>{$aList[a_list].email}</td>
 			<td>{$aList[a_list].lastIP}</td>
 			<td>{$aList[a_list].lastTime}</td>
-			<td><a href="manager.php?act=detail&id={$aList[a_list].id}">²é¿´</a>&nbsp;&nbsp;
-			<a href="manager.php?act=modify&id={$aList[a_list].id}">±à¼­</a>&nbsp;&nbsp;
+			<td><a href="manager.php?act=detail&id={$aList[a_list].id}">æŸ¥çœ‹</a>&nbsp;&nbsp;
+			<a href="manager.php?act=modify&id={$aList[a_list].id}">ç¼–è¾‘</a>&nbsp;&nbsp;
 			{if $aList[a_list].userName neq 'admin' }
 			{if $aList[a_list].status == '0'}
-			  <a href="manager.php?act=open&id={$aList[a_list].id}" onclick="return confirm('È·ÈÏ¿ªÆô[{$aList[a_list].trueName}]µÄÕÊºÅ');">¿ªÆô</a>&nbsp;&nbsp;
+			  <a href="manager.php?act=open&id={$aList[a_list].id}" onclick="return confirm('ç¡®è®¤å¼€å¯[{$aList[a_list].trueName}]çš„å¸å·');">å¼€å¯</a>&nbsp;&nbsp;
 			{else}
-			<a href="manager.php?act=closed&id={$aList[a_list].id}" onclick="return confirm('È·ÈÏ¹Ø±Õ[{$aList[a_list].trueName}]µÄÕÊºÅ');">¹Ø±Õ</a>
+			<a href="manager.php?act=closed&id={$aList[a_list].id}" onclick="return confirm('ç¡®è®¤å…³é—­[{$aList[a_list].trueName}]çš„å¸å·');">å…³é—­</a>
 			{/if}
 			{/if}			</td>
 		  </tr>

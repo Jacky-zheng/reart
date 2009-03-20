@@ -1,4 +1,4 @@
-{literal}
+ï»¿{literal}
 <script type="text/javascript">
 function formSubmit()
 {
@@ -9,18 +9,18 @@ function formSubmit()
         <form name="work_search" id="work_search" method="post" action="search.php">
 		<div class="footer-option" style="margin-bottom:20px;">
 			<dl class="wrapClear">
-				<dt class="f">×÷Æ·ËÑË÷</dt>
-				<dd>Àà±ğ<select name="cate">
-                	<option value='0'>È«²¿</option>
+				<dt class="f">ä½œå“æœç´¢</dt>
+				<dd>ç±»åˆ«<select name="cate">
+                	<option value='0'>å…¨éƒ¨</option>
 				{foreach from=$cate item=ct}
 					<option value='{$ct.id}'>{$ct.name}</option>
 				{/foreach}
 				</select>
                 </dd>
-				<dd>¼Û¸ñ<input type="text" name="price" value="{$sarch_arr.price}" /></dd>
-				<dd>×÷Õß<input type="text" name="artist" value="{$sarch_arr.artist}" /></dd>
-				<dd>Äê´ú<input type="text" name="age" value="{$sarch_arr.age}" /></dd>
-				<dt class="l" onClick="formSubmit();"><button>ËÑË÷</button></dt>
+				<dd>ä»·æ ¼<input type="text" name="price" value="{$sarch_arr.price}" /></dd>
+				<dd>ä½œè€…<input type="text" name="artist" value="{$sarch_arr.artist}" /></dd>
+				<dd>å¹´ä»£<input type="text" name="age" value="{$sarch_arr.age}" /></dd>
+				<dt class="l" onClick="formSubmit();"><button>æœç´¢</button></dt>
 			</dl>
 		</div>		
         </form>

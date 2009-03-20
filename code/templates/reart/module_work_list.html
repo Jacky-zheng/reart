@@ -1,18 +1,18 @@
-		<script type="text/javascript" src="/js/favorite.js"></script>
+ï»¿		<script type="text/javascript" src="/js/favorite.js"></script>
         <script type="text/javascript" src="/js/transport.js"></script>
         <div class="photo">
 			<ul class="wrapClear" id="worklist">
             {foreach from=$worklist item=work }
 				<li>
 					<span><a href="/detail.php?id={$work.id}"><img src="{$img_url_m}{$work.picCode}.jpg" alt="" /></a></span>
-					<p>×÷Æ·Ãû£º{$work.name}</p>
-					<p>×÷Õß£º{$work.artist_name}</p>
-					<p>ÈÕÆÚ£º{$work.addDate}</p>
-					<p>¼Û¸ñ£º{$work.price}</p>
+					<p>ä½œå“åï¼š{$work.name}</p>
+					<p>ä½œè€…ï¼š{$work.artist_name}</p>
+					<p>æ—¥æœŸï¼š{$work.addDate}</p>
+					<p>ä»·æ ¼ï¼š{$work.price}</p>
 					{if $favo eq '1'}
-						<p><button onclick="delete_favorite({$work.id},{$user_id})">É¾³ı</botton></p>
+						<p><button onclick="delete_favorite({$work.id},{$user_id})">åˆ é™¤</botton></p>
 					{else}
-						<p><button onclick="favorite({$work.id},{$user_id})">ÊÕ²Ø</botton></p>
+						<p><button onclick="favorite({$work.id},{$user_id})">æ”¶è—</botton></p>
 					{/if}
 				</li>
             {/foreach}					

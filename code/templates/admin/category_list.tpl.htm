@@ -1,4 +1,4 @@
-{include file=admin/header.tpl.htm}
+ï»¿{include file=admin/header.tpl.htm}
 {literal}
 <script language="javascript">
 	function checkInput()
@@ -14,10 +14,10 @@
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">	
 		<tr class="header">				
-			<td width="20%">ÖĞÎÄÃû³Æ</td>
-			<td width="40%">Ó¢ÎÄÃû³Æ</td>		
+			<td width="20%">ä¸­æ–‡åç§°</td>
+			<td width="40%">è‹±æ–‡åç§°</td>		
 		
-		  <td align="center">²Ù×÷</td>
+		  <td align="center">æ“ä½œ</td>
 		</tr>
 				
 		<form method="POST" action="category.php?act=changeOrder&tbl={$sTbl}&pID={$pID}" onsubmit="return checkInput();">
@@ -26,11 +26,11 @@
 			<td>{$aList[list].name}</td>
 			<td><a href="?act=listAll&tbl={$sTbl}&corporationID={$aList[list].corporationID}">{$aList[list].ename}</a></td>
 
-			<td><a href="category.php?act=edit&tbl={$sTbl}&id={$aList[list].id}">ĞŞ¸Ä</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="category.php?act=delete&tbl={$sTbl}&id={$aList[list].id}" onclick="return confirm('È·¶¨É¾³ı?');return false;"> É¾³ı</a></td>
+			<td><a href="category.php?act=edit&tbl={$sTbl}&id={$aList[list].id}">ä¿®æ”¹</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="category.php?act=delete&tbl={$sTbl}&id={$aList[list].id}" onclick="return confirm('ç¡®å®šåˆ é™¤?');return false;"> åˆ é™¤</a></td>
 		</tr>		
 		{/section}
-		<!--tr bgcolor="White" align="center"><td colspan="6"><input type="submit" value="¸ü¸ÄÅÅĞòºÅ"></td></tr-->
+		<!--tr bgcolor="White" align="center"><td colspan="6"><input type="submit" value="æ›´æ”¹æ’åºå·"></td></tr-->
 		</form>
 		</table>
 <br>

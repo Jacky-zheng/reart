@@ -1,4 +1,4 @@
-{include file=admin/header.tpl.htm}
+ï»¿{include file=admin/header.tpl.htm}
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
 		<form name="add" method="POST" action="?act=editSave" enctype="multipart/form-data" onsubmit="return checkInput();">
@@ -6,69 +6,69 @@
 			<td colspan="2">{$PAGE_FUNC_SMALL_NAME}</td>
 		</tr>
 		<tr>
-			<td width="100" class="altbg1">×÷Æ·ËùÊôÀà±ğ£º</td>
+			<td width="100" class="altbg1">ä½œå“æ‰€å±ç±»åˆ«ï¼š</td>
 			<td class="altbg2">
 			<select name="cID" id="cID">
 				{$sOptions}
 			</select>&nbsp;&nbsp; <span class="starHit">*</span></td>
 		</tr>
 		<tr>
-			<td class="altbg1">×÷Æ·Ãû³Æ£º</td>
+			<td class="altbg1">ä½œå“åç§°ï¼š</td>
 			<td class="altbg2"><input type="text" id="name" name="name" size="40" value="{$aField.name}"> <span class="starHit">*</span></td>
 		</tr>
 		<tr>
-			<td class="altbg1">×÷Æ·¼Û¸ñ£º</td>
+			<td class="altbg1">ä½œå“ä»·æ ¼ï¼š</td>
 			<td class="altbg2"><input name="price" type="text" id="price" value="{$aField.price}" size="40">
 		    RMB</td>
 		</tr>
 		<tr>
-			<td class="altbg1">×÷Æ·Äê´ú£º</td>
+			<td class="altbg1">ä½œå“å¹´ä»£ï¼š</td>
 			<td class="altbg2"><input type="text" id="age" name="age" size="40" value="{$aField.age}"></td>
 		</tr>
 		<tr>
-			<td class="altbg1">×÷Æ·±àÂë£º</td>
+			<td class="altbg1">ä½œå“ç¼–ç ï¼š</td>
 			<td class="altbg2"><input type="text" id="picCode" name="picCode" size="40" value="{$aField.picCode}"></td>
 		</tr>         
 		<tr>
-			<td class="altbg1">×÷Õß±àÂë£º</td>
-			<td class="altbg2"><input type="text" id="artistCode" name="artistCode" size="40" value="">ÇëÈ·±£´Ë×÷ÕßÒÑ¾­´æÔÚ</td>
+			<td class="altbg1">ä½œè€…ç¼–ç ï¼š</td>
+			<td class="altbg2"><input type="text" id="artistCode" name="artistCode" size="40" value="">è¯·ç¡®ä¿æ­¤ä½œè€…å·²ç»å­˜åœ¨</td>
 		</tr> 
 		<tr>
-			<td class="altbg1">ÍÆ¼ö×÷Æ·£º</td>
+			<td class="altbg1">æ¨èä½œå“ï¼š</td>
 			<td class="altbg2">{html_radios name="status" options="$aENUM" checked=$aField.status}<span class="starHit">*</span></td>
 		</tr>		
 		<tr>
-			<td class="altbg1">×÷Æ·µãÆÀ£º</td>
+			<td class="altbg1">ä½œå“ç‚¹è¯„ï¼š</td>
 			<td class="altbg2"><textarea name="comment" cols="50" rows="5" id="comment">{$aField.comment}</textarea></td>
 		</tr>			
 		
 		<tr>
-			<td class="altbg1">×÷Æ·ÃèÊö£º</td>
+			<td class="altbg1">ä½œå“æè¿°ï¼š</td>
 			<td class="altbg2">{$sContent}</td>
 		</tr>
 		<tr>
-			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="·µ»Ø" class="button"></td>
+			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="è¿”å›" class="button"></td>
 			<td align="right" class="altbg2">
 			<input type="hidden" name="id" value="{$aField.id}">
 			<input type="hidden" name="oldStatus" value="{$aField.status}">
-			<input type="submit" name="submit" value=" Ìá ½» " class="submit"></td>	
+			<input type="submit" name="submit" value=" æ äº¤ " class="submit"></td>	
 		</tr>
 		</form>
 </table>
 {literal}
 <script language="javascript">
-//ÑéÖ¤±íµ¥ÊäÈëÊÇ·ñÕıÈ·
+//éªŒè¯è¡¨å•è¾“å…¥æ˜¯å¦æ­£ç¡®
 function checkInput()
 {
 	if($('cID').value =="")
 	{
-		alert("ÇëÑ¡ÔñËùÊôÀ¸Ä¿£¡");
+		alert("è¯·é€‰æ‹©æ‰€å±æ ç›®ï¼");
 		$('cID').focus();
 		return false;	
 	}
 	else if($('name').value =="" || $('name').value == null )
 	{
-		alert("×÷Æ·Ãû³Æ²»ÄÜÎª¿Õ£¡");
+		alert("ä½œå“åç§°ä¸èƒ½ä¸ºç©ºï¼");
 		$('name').focus();
 		return false;	
 	}

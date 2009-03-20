@@ -1,7 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>ºóÌ¨¹ÜÀí</title>
+<title>åå°ç®¡ç†</title>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk">
 
 {literal}
@@ -56,8 +56,8 @@ function showOrHiddenAllMenu(iType,iBig)
 <table width="146" border="0" cellspacing="0" align="center" cellpadding="0" class="leftmenulist" style="margin-bottom: 5px;">
 <tr class="leftmenutext">
 	<td bgcolor="#F8F8F8" align="center" height="18">
-	<span onclick="showOrHiddenAllMenu(1,{$iBigCatNum});" style="cursor:hand;" title="Õ¹¿ªËùÓĞ²Ëµ¥">&nbsp&nbsp&nbsp&nbsp&nbsp[ Õ¹¿ª]</span>&nbsp;&nbsp;&nbsp;&nbsp;
-	<span onclick="showOrHiddenAllMenu(0,{$iBigCatNum});" style="cursor:hand;" title="¹Ø±ÕËùÓĞ²Ëµ¥">[ ¹Ø±Õ]</span>
+	<span onclick="showOrHiddenAllMenu(1,{$iBigCatNum});" style="cursor:hand;" title="å±•å¼€æ‰€æœ‰èœå•">&nbsp&nbsp&nbsp&nbsp&nbsp[ å±•å¼€]</span>&nbsp;&nbsp;&nbsp;&nbsp;
+	<span onclick="showOrHiddenAllMenu(0,{$iBigCatNum});" style="cursor:hand;" title="å…³é—­æ‰€æœ‰èœå•">[ å…³é—­]</span>
 	</td>
 </tr>
 </table>
@@ -67,8 +67,8 @@ function showOrHiddenAllMenu(iType,iBig)
 	<tr class="leftmenutext">
 		<td>
 			<div align="center">
-				<a href="/" target="_blank">ÍøÕ¾Ê×Ò³</a>&nbsp;&nbsp;				
-				<a href="home.php" target="main">ºóÌ¨Ê×Ò³</a>
+				<a href="/" target="_blank">ç½‘ç«™é¦–é¡µ</a>&nbsp;&nbsp;				
+				<a href="home.php" target="main">åå°é¦–é¡µ</a>
 			</div>
 		</td>
 	</tr>
@@ -76,31 +76,31 @@ function showOrHiddenAllMenu(iType,iBig)
 
 <div id="home">
 
-{* ½çÃæ¹ÜÀí begin *}
+{* ç•Œé¢ç®¡ç† begin *}
 {if $isRootLogin}
 <table width="146" border="0" cellspacing="0" align="center" cellpadding="0" class="leftmenulist" style="margin-bottom: 5px;">
 	<tr class="leftmenutext">
 		<td>
 			<a href="###" onclick="collapse_change('face')"><img id="menuimg_0" src="images/menu_reduce.gif" border="0"/></a>&nbsp;
-			<a href="###" onclick="collapse_change('face')">ÏµÍ³ÉèÖÃ</a>
+			<a href="###" onclick="collapse_change('face')">ç³»ç»Ÿè®¾ç½®</a>
 		</td>
 	</tr>
 	<tbody id="menu_face" style="display:">
 	<tr class="leftmenutd">
 		<td>
 			<table border="0" cellspacing="0" cellpadding="0" class="leftmenuinfo">
-				<tr><td><a href="menu.php?act=add" target="main">Ìí¼Ó×ó±ß²Ëµ¥</a></td></tr>
-				<tr><td><a href="menu.php?act=listAll" target="main">×ó±ß²Ëµ¥ÁĞ±í</a></td></tr>				
+				<tr><td><a href="menu.php?act=add" target="main">æ·»åŠ å·¦è¾¹èœå•</a></td></tr>
+				<tr><td><a href="menu.php?act=listAll" target="main">å·¦è¾¹èœå•åˆ—è¡¨</a></td></tr>				
 			</table>
 		</td>
 	</tr>
 	</tbody>
 </table>
 {/if}
-{* ½çÃæ¹ÜÀí end *}
+{* ç•Œé¢ç®¡ç† end *}
 
-{* Ñ­»·¿ªÊ¼ *}		  
-{section name="list" loop=$aBigList} {* ´óÀà *}
+{* å¾ªç¯å¼€å§‹ *}		  
+{section name="list" loop=$aBigList} {* å¤§ç±» *}
 
 <table width="146" border="0" cellspacing="0" align="center" cellpadding="0" class="leftmenulist" style="margin-bottom: 5px;">
 	<tr class="leftmenutext">
@@ -115,7 +115,7 @@ function showOrHiddenAllMenu(iType,iBig)
 	<tr class="leftmenutd">
 		<td>
 			<table border="0" cellspacing="0" cellpadding="0" class="leftmenuinfo">
-			{section name="smallList" loop=$aSmallAllList} {* µ¥¸ö´óÀàÖĞµÄĞ¡Àà *}
+			{section name="smallList" loop=$aSmallAllList} {* å•ä¸ªå¤§ç±»ä¸­çš„å°ç±» *}
 				{if $aSmallAllList[smallList].pID == $aBigList[list].id}
 					<tr><td><a href="{$aSmallAllList[smallList].url}" target="main">{$aSmallAllList[smallList].name}</a></td></tr>
 				{/if}
@@ -130,7 +130,7 @@ function showOrHiddenAllMenu(iType,iBig)
 
 <table width="146" border="0" cellspacing="0" align="center" cellpadding="0" class="leftmenulist">
 	<tr class="leftmenutext">
-		<td><div style="margin-left:48px;"><a href="login.php?act=logout" target="_top">ÍË³ö</a></td>
+		<td><div style="margin-left:48px;"><a href="login.php?act=logout" target="_top">é€€å‡º</a></td>
 	</tr>
 </table>
 </body>

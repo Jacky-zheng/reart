@@ -1,4 +1,4 @@
-{include file=admin/header.tpl.htm}
+ï»¿{include file=admin/header.tpl.htm}
 
 
 {literal}
@@ -7,7 +7,7 @@ function checkInput()
 {		
 	if($('name').value == "")
 	{
-		alert("ÇëÌîĞ´Ãû³Æ£¡");		
+		alert("è¯·å¡«å†™åç§°ï¼");		
 		$('name').focus();
 		return false;
 	}
@@ -23,26 +23,26 @@ function checkInput()
 		
 		<form name="add" method="POST" onsubmit="return checkInput();" action="category.php?act=editSave&tbl={$sTbl}">		
 		<!--tr>
-          <td width="100" class="altbg1">ÉÏ¼¶·ÖÀà</td>
+          <td width="100" class="altbg1">ä¸Šçº§åˆ†ç±»</td>
           <td class="altbg2">
           <select name="pID">
-          	<option value="0">Ò»¼¶·ÖÀà</option>          
+          	<option value="0">ä¸€çº§åˆ†ç±»</option>          
           	{$sOptions}
           </select>&nbsp;&nbsp;*</td>
         </tr-->
         <tr>
-          <td class="altbg1">ÖĞÎÄÃû³Æ</td>
+          <td class="altbg1">ä¸­æ–‡åç§°</td>
           <td class="altbg2"><input type="text" name="name" size="50" class="input_text" value="{$aField.name}"  >&nbsp;&nbsp;*</td>
         </tr>
          <tr>
-          <td class="altbg1">Ó¢ÎÄÃû³Æ</td>
+          <td class="altbg1">è‹±æ–‡åç§°</td>
           <td class="altbg2"><input type="text" name="ename" size="50" class="input_text" value="{$aField.ename}" /></td>
         </tr>       
 		<tr>
 			<td align="left" class="altbg1">
 				<input type="hidden" name="id" value="{$aField.id}">
-				<input type="button" onclick="history.go(-1);" value="·µ»Ø"></td>
-			<td align="right" class="altbg2"><input type="submit" name="submit" value=" Ìá ½» "></td>
+				<input type="button" onclick="history.go(-1);" value="è¿”å›"></td>
+			<td align="right" class="altbg2"><input type="submit" name="submit" value=" æ äº¤ "></td>
 		</tr>
 		</form>
 		</table>		

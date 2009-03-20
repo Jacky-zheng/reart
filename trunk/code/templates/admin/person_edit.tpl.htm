@@ -1,4 +1,4 @@
-{include file=admin/header.tpl.htm}
+ï»¿{include file=admin/header.tpl.htm}
 
 {literal}
 
@@ -7,40 +7,40 @@ function checkInput()
 { 
 if (form1.question.value == "" || form1.question.value == "0")
   {
-    alert("ÇëÑ¡ÔñÃÜÂëÌáÊ¾ÎÊÌâ");
+    alert("è¯·é€‰æ‹©å¯†ç æç¤ºé—®é¢˜");
     form1.question.focus();
     return (false);
   }
   if (form1.answer.value == "")
   {
-    alert("ÇëÌîĞ´ÃÜÂëÌáÊ¾ÎÊÌâ´ğ°¸");
+    alert("è¯·å¡«å†™å¯†ç æç¤ºé—®é¢˜ç­”æ¡ˆ");
     form1.answer.focus();
     return (false);
   }
   
 if (form1.answer.value.length > 20)
   {
-    alert("ÃÜÂëÌáÊ¾ÎÊÌâ´ğ°¸²»ÄÜ´óÓÚ20Î»£¬ÇëÖØĞÂÊäÈë£¡");
+    alert("å¯†ç æç¤ºé—®é¢˜ç­”æ¡ˆä¸èƒ½å¤§äº20ä½ï¼Œè¯·é‡æ–°è¾“å…¥ï¼");
     form1.answer.focus();
     return (false);
   }
 if(form1.hangyeID.value == 0)
 {
-	alert('ÇëÑ¡ÔñĞĞÒµ');
+	alert('è¯·é€‰æ‹©è¡Œä¸š');
 	form1.hangyeID.focus();
 	return false;
 }
 
 if(form1.address.value == 0)
 {
-	alert('ÇëÌîĞ´Í¨Ñ¶µØÖ·');
+	alert('è¯·å¡«å†™é€šè®¯åœ°å€');
 	form1.address.focus();
 	return false;
 }
 	
 if (form1.email.value == "")
 {
-	alert("ÇëÊäÈëÓÊ¼şµØÖ·£¡");
+	alert("è¯·è¾“å…¥é‚®ä»¶åœ°å€ï¼");
 	form1.email.focus();
 	return (false);
 }
@@ -54,7 +54,7 @@ if (form1.email.value == "")
          form1.email.value.lastIndexOf("@") ==form1.email.value.length-1 || 
          form1.email.value.lastIndexOf(".") ==form1.email.value.length-1)
      {
-      alert("EmailµÄ¸ñÊ½²»ÕıÈ·£¡");
+      alert("Emailçš„æ ¼å¼ä¸æ­£ç¡®ï¼");
       form1.email.focus();
       return false;
       }
@@ -62,48 +62,48 @@ if (form1.email.value == "")
 
  if (form1.phone.value == "")
   {
-    alert("ÇëÊäÈëµç»°¹ú¼ÒÇøºÅ£¡");
+    alert("è¯·è¾“å…¥ç”µè¯å›½å®¶åŒºå·ï¼");
     form1.phone.focus();
     return (false);
   }  
   
 if(form1.qq.value == "")
 {
-	alert("ÇëÌîĞ´ÄúµÄQQ/MSN");
+	alert("è¯·å¡«å†™æ‚¨çš„QQ/MSN");
 	form1.qq.focus();
 	return (false);
 }
 if(form1.idCard.value == "")
 {
-	alert("Éí·İÖ¤ºÅÂë²»ÄÜÎª¿Õ");
+	alert("èº«ä»½è¯å·ç ä¸èƒ½ä¸ºç©º");
 	form1.idCard.focus();
 	return (false);
 }
 
 if(isNaN(form1.idCard.value) || (form1.idCard.value.length != 18 ) )
 {
-	alert("ÇëÊäÈëÕıÈ·µÄÉí·İÖ¤ºÅÂë");
+	alert("è¯·è¾“å…¥æ­£ç¡®çš„èº«ä»½è¯å·ç ");
 	form1.idCard.focus();
 	return (false);
 }
 
   if (form1.province.options[form1.province.selectedIndex].value=="0")
   {
-    alert("Ñ¡ÔñµØÇø");
+    alert("é€‰æ‹©åœ°åŒº");
     form1.province.focus();
     return (false);
 
   }
   if (form1.city.options[form1.city.selectedIndex].value=="0")
   {
-    alert("Ñ¡ÔñµØÇø");
+    alert("é€‰æ‹©åœ°åŒº");
     form1.city.focus();
     return (false);
 
   }
 if (form1.county.options[form1.county.selectedIndex].value=="0")
   {
-    alert("Ñ¡ÔñµØÇø");
+    alert("é€‰æ‹©åœ°åŒº");
     form1.county.focus();
     return (false);
 
@@ -123,38 +123,38 @@ frameBorder=0 id=popFrame name=popFrame scrolling=no src="../js/date/images\popc
 			
 		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
 		<tr class="header">
-			<td colspan="4">»ù±¾×ÊÁÏ</td>
+			<td colspan="4">åŸºæœ¬èµ„æ–™</td>
 		</tr>		
 		<form method="POST" name="form1" onsubmit="return checkInput();" enctype="multipart/form-data"  action="?act=editSave">
         <tr>
-          <td width="100" class="altbg1">ÓÃ»§Ãû</td>
+          <td width="100" class="altbg1">ç”¨æˆ·å</td>
           <td class="altbg2">{$aField.userName}&nbsp;&nbsp;</td>
-          <td width="100" class="altbg1">ÃÜÂë</td>
+          <td width="100" class="altbg1">å¯†ç </td>
           <td class="altbg2"><input type="password" name="pwd" size="50" >
-          <input type="checkbox" name="modifyPwd" value="1"><font color="Red">ĞŞ¸Ä£¿</font>	 </td>
+          <input type="checkbox" name="modifyPwd" value="1"><font color="Red">ä¿®æ”¹ï¼Ÿ</font>	 </td>
         </tr>		
               
         <tr>
-          <td class="altbg1" >ÕæÊµĞÕÃû</td>
+          <td class="altbg1" >çœŸå®å§“å</td>
           <td class="altbg2"><input type="text" name="trueName" value="{$aField.trueName}" size="60"></td>  
               
-          <td class="altbg1" >Í¨Ñ¶µØÖ·</td>
+          <td class="altbg1" >é€šè®¯åœ°å€</td>
           <td class="altbg2"><input type="text" name="address" value="{$aField.address}" size="60" >&nbsp;&nbsp;*</td>       
        </tr>
        
        <tr>
-          <td class="altbg1" >µç×ÓÓÊÏä</td>
+          <td class="altbg1" >ç”µå­é‚®ç®±</td>
           <td class="altbg2"><input type="text" name="email" value="{$aField.email}" size="60"></td>
-          <td class="altbg1" >¹Ì¶¨µç»°</td>
+          <td class="altbg1" >å›ºå®šç”µè¯</td>
           <td class="altbg2"><input type="text" name="phone" value="{$aField.phone}" size="60" ></td>
        </tr> 
  
 		<tr>
-			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="·µ»Ø"></td>
+			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="è¿”å›"></td>
 			<td align="right" class="altbg2">
 				<input type="hidden" name="id" value="{$aField.id}">					
-				<input type="reset"  value=" ÖØ ÖÃ ">
-				<input type="submit" name="submit" value=" Ìá ½» ">			</td>
+				<input type="reset"  value=" é‡ ç½® ">
+				<input type="submit" name="submit" value=" æ äº¤ ">			</td>
 			<td></td>
 			<td></td>
 		</tr>

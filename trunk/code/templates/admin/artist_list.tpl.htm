@@ -1,32 +1,32 @@
-{include file=admin/header.tpl.htm}
+ï»¿{include file=admin/header.tpl.htm}
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder"><form name="form1" method="post" onsubmit="return checkForm();"><tr bgcolor="#FFFFFF"><td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
 
   <tr  class="header">
     <td width="5%">&nbsp;</td>
-    <td>ĞÕÃû</td>
-    <td>ĞÔ±ğ</td>
-    <td>Ö°Òµ</td>
-    <td>³öÉúÈÕÆÚ</td>
+    <td>å§“å</td>
+    <td>æ€§åˆ«</td>
+    <td>èŒä¸š</td>
+    <td>å‡ºç”Ÿæ—¥æœŸ</td>
 
-    <td>²Ù×÷</td>
+    <td>æ“ä½œ</td>
   </tr>
   {section name=list loop=$aList}
   <tr bgcolor="#FFFFFF">
     <td><input type="checkbox" name="newsID[]" id="newsID[]" value="{$aList[list].id}" /></td>
     <td>{$aList[list].name}</td>
-    <td>{if  $aList[list].sex eq '0'}ÄĞ{else} Å®{/if}</td>
+    <td>{if  $aList[list].sex eq '0'}ç”·{else} å¥³{/if}</td>
     <td>{$aList[list].profession}</td>
     <td>{$aList[list].birthday}</td>
 
-    <td> <a href="?act=edit&id={$aList[list].id}">±à¼­</a> </td>
+    <td> <a href="?act=edit&id={$aList[list].id}">ç¼–è¾‘</a> </td>
   </tr>
   {/section}
   <tr bgcolor="#FFFFFF">
     <td colspan=8><input type='checkbox' onclick="CheckAll(this.form.elements['newsID[]'], this.checked)" />
-      È«Ñ¡/·´Ñ¡
+      å…¨é€‰/åé€‰
 
-      <input type="button" name="del" value="É¾ ³ı" onclick="SubmitForm('del');" /></td>
+      <input type="button" name="del" value="åˆ  é™¤" onclick="SubmitForm('del');" /></td>
   </tr>
 </table>  </td>
 		    </tr>
@@ -57,16 +57,16 @@ function SubmitForm()
    // alert(arguments[0]);
     switch(arguments[0])
     {
-    	case "recycle": var str = "·ÅÈë»ØÊÕÕ¾"; break;
-    	case "del": var str = "³¹µ×É¾³ı"; break;
-    	case "check": var str = "½øĞĞÉóºË"; break;
-    	case "recommend": var str = "ÉèÎªÍÆ¼ö"; break;
-    	case "uncheck": var str = "ÉèÎªÎ´ÉóºË"; break;
-    	case "copy": var str = "´¦ÀíÊı¾İ"; break;
+    	case "recycle": var str = "æ”¾å…¥å›æ”¶ç«™"; break;
+    	case "del": var str = "å½»åº•åˆ é™¤"; break;
+    	case "check": var str = "è¿›è¡Œå®¡æ ¸"; break;
+    	case "recommend": var str = "è®¾ä¸ºæ¨è"; break;
+    	case "uncheck": var str = "è®¾ä¸ºæœªå®¡æ ¸"; break;
+    	case "copy": var str = "å¤„ç†æ•°æ®"; break;
     	default: break;    	
     }
     
-    if(confirm("ÄúÕæµÄÒª½«Ñ¡ÖĞµÄ"+str+"Âğ?") == true)
+    if(confirm("æ‚¨çœŸçš„è¦å°†é€‰ä¸­çš„"+str+"å—?") == true)
     {
 {/literal}    	
     	FormObject.action = "?act="+arguments[0]+"&status={$iStatus}&cID={$cID}&cID1={$cID1}";

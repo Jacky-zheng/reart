@@ -1,13 +1,13 @@
-{include file=admin/header.tpl.htm}
+ï»¿{include file=admin/header.tpl.htm}
 <form name="form1" method="POST" >
 	<table width='100%' border='1' cellspacing='0' cellpadding='0' align='center' bordercolordark='#FFFFFF' bordercolorlight='#000000'  bgcolor='#efefef'> 	
 			<tr>
 			<td align="center">						
-				<input type="radio" name="status" onclick="location.href='?act=listAll&status=0'" value="0" {if $iStatus == 0} checked {/if}  >ÆÕÍ¨»áÔ±&nbsp;
-				<input type="radio" name="status" onclick="location.href='?act=listAll&status=1'" value="1" {if $iStatus == 1} checked {/if} >Í£ÓÃ»áÔ±
-			 	<input type="radio" name="status" onclick="location.href='?act=listAll&status=-1'" value="-1" {if $iStatus == -1} checked {/if}>È«²¿&nbsp;&nbsp;
+				<input type="radio" name="status" onclick="location.href='?act=listAll&status=0'" value="0" {if $iStatus == 0} checked {/if}  >æ™®é€šä¼šå‘˜&nbsp;
+				<input type="radio" name="status" onclick="location.href='?act=listAll&status=1'" value="1" {if $iStatus == 1} checked {/if} >åœç”¨ä¼šå‘˜
+			 	<input type="radio" name="status" onclick="location.href='?act=listAll&status=-1'" value="-1" {if $iStatus == -1} checked {/if}>å…¨éƒ¨&nbsp;&nbsp;
 				<input type="text" name="q" value="{$q}">
-				<input type="submit" value="Ìá½»">              
+				<input type="submit" value="æäº¤">              
 	      	</td>         	 	
 			</tr>
 	</table>		 
@@ -16,29 +16,29 @@
 	
 		<tr class="header">
 			<td width="3%"></td>
-			<td width="48%">ÓÃ»§Ãû</td>
-			<td width="23%">ÕæÊµĞÕÃû</td>
-			<td width="22%">×¢²áÊ±¼ä</td>
-		  <td width="4%">²Ù×÷</td>
+			<td width="48%">ç”¨æˆ·å</td>
+			<td width="23%">çœŸå®å§“å</td>
+			<td width="22%">æ³¨å†Œæ—¶é—´</td>
+		  <td width="4%">æ“ä½œ</td>
 		</tr>
 	{ section name=list loop=$aList } 
 		<tr>
 			<td><input type="checkbox" name="id[]" value="{$aList[list].id}"></td> 			
-			<td>{$aList[list].userName} &nbsp;&nbsp;{if $aList[list].status eq '1'}[ÒÑÍ£ÓÃ]{/if}</td>
+			<td>{$aList[list].userName} &nbsp;&nbsp;{if $aList[list].status eq '1'}[å·²åœç”¨]{/if}</td>
 			<td>{$aList[list].trueName}</td>
 			<td>{$aList[list].addDate}</td>
 		  <td>
-           	  <a  href="?act=edit&id={$aList[list].id}&pageNo={$iPageNo}">±à¼­</a><br>			</td>
+           	  <a  href="?act=edit&id={$aList[list].id}&pageNo={$iPageNo}">ç¼–è¾‘</a><br>			</td>
 		</tr>
 	{/section}	
 		<tr bgcolor="#FFFFFF">
 		 <td colspan=5>	
-			<input type='checkbox' onclick="CheckAll(this.form.elements['id[]'], this.checked)">È«Ñ¡/·´Ñ¡
+			<input type='checkbox' onclick="CheckAll(this.form.elements['id[]'], this.checked)">å…¨é€‰/åé€‰
 			 				 			 	
-		 	{if $iStatus == 1}{* Í£ÓÃ *}
-		 		<input type="button" name="check" value="ÆôÓÃ" onclick="SubmitForm('check');">	
+		 	{if $iStatus == 1}{* åœç”¨ *}
+		 		<input type="button" name="check" value="å¯ç”¨" onclick="SubmitForm('check');">	
 			{else}	 		
-				<input type="button" name="stop" value="Í£ÓÃ" onclick="SubmitForm('stop');"> 			 			 	
+				<input type="button" name="stop" value="åœç”¨" onclick="SubmitForm('stop');"> 			 			 	
 		 	{/if}
 		 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		 </td></tr>
@@ -68,13 +68,13 @@ function SubmitForm()
    // alert(arguments[0]);
     switch(arguments[0])
     {
-    	case "stop": var str = "Í£ÓÃ"; break;
-    	case "check": var str = "ÉóºË"; break;
-    	case "uncheck": var str = "ÉèÎªÎ´ÉóºË"; break;
+    	case "stop": var str = "åœç”¨"; break;
+    	case "check": var str = "å®¡æ ¸"; break;
+    	case "uncheck": var str = "è®¾ä¸ºæœªå®¡æ ¸"; break;
     	default: break;    	
     }
     
-    if(confirm("ÄúÕæµÄÒª½«Ñ¡ÖĞµÄ"+str+"Âğ?") == true)
+    if(confirm("æ‚¨çœŸçš„è¦å°†é€‰ä¸­çš„"+str+"å—?") == true)
     {
 {/literal}    	
     	FormObject.action = "?act="+arguments[0]+"&status={$iStatus}";

@@ -1,34 +1,34 @@
-{include file=admin/header.tpl.htm}
+ï»¿{include file=admin/header.tpl.htm}
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
 <form name="form1" id="form1" method="post">
   <tr>
     <td align="center" colspan="8">
       <input type="radio" name="status" value="0" onclick="location.href='?act=listAll&status=0&cID='+cID.value;" {if $iStatus == 0} checked {/if} />
-      ÆÕÍ¨Çø&nbsp;
+      æ™®é€šåŒº&nbsp;
       <input type="radio" name="status" value="1" onclick="location.href='?act=listAll&status=1&cID='+cID.value;" {if $iStatus == 1} checked {/if} />
-      ÍÆ¼öÇø&nbsp;
+      æ¨èåŒº&nbsp;
       <input type="radio" name="status" value="-1" onclick="location.href='?act=listAll&status=-1&cID='+cID.value;" {if $iStatus == -1} checked {/if} />
-      È«²¿&nbsp;
+      å…¨éƒ¨&nbsp;
       <input type="text" name="q" value="{$q}" />
       <select name="cID" onchange="location.href='?act=listAll&cID='+cID.value;">
-        <option value="0">ËùÓĞ</option>
+        <option value="0">æ‰€æœ‰</option>
         
 			{$sOptions}
 		  
       </select>
-      <input type="submit" value="ËÑË÷" />
+      <input type="submit" value="æœç´¢" />
     </td>
   </tr>
   <tr  class="header">
     <td width="4%">&nbsp;</td>
-    <td width="17%">×÷Æ·Ãû³Æ</td>
-    <td width="17%">×÷Æ·Àà±ğ</td>
-    <td width="14%">¼Û¸ñ</td>
-    <td width="14%">Äê´ú</td>
-    <td width="12%">×÷¼Ò</td>
-    <td width="17%">Ìí¼ÓÊ±¼ä</td>
-    <td width="5%">²Ù×÷</td>
+    <td width="17%">ä½œå“åç§°</td>
+    <td width="17%">ä½œå“ç±»åˆ«</td>
+    <td width="14%">ä»·æ ¼</td>
+    <td width="14%">å¹´ä»£</td>
+    <td width="12%">ä½œå®¶</td>
+    <td width="17%">æ·»åŠ æ—¶é—´</td>
+    <td width="5%">æ“ä½œ</td>
   </tr>
   {section name=list loop=$aList}
   <tr bgcolor="#FFFFFF">
@@ -39,20 +39,20 @@
     <td>{$aList[list].age}</td>
     <td>{$aList[list].artist}</td>
     <td>{$aList[list].addDate}</td>
-    <td><a href="?act=edit&id={$aList[list].id}">±à¼­</a> </td>
+    <td><a href="?act=edit&id={$aList[list].id}">ç¼–è¾‘</a> </td>
   </tr>
   {/section}
   <tr bgcolor="#FFFFFF">
     <td colspan=8><input name="checkbox" type='checkbox' onclick="CheckAll(this.form.elements['newsID[]'], this.checked)" />
-      È«Ñ¡/·´Ñ¡
-      {if $iStatus == 0} {* ÆÕÍ¨Çø *}
-        <input type="button" name="recommend" value="ÍÆ ¼ö" onclick="SubmitForm('recommend');" />
-        <input type="button" name="recycle"  value="É¾ ³ı" onclick="SubmitForm('recycle');" />
-      {elseif $iStatus == 1}{* ÍÆ¼ö *}
-      <input type="button" name="uncheck" value="ÉèÎªÆÕÍ¨" onclick="SubmitForm('uncheck');" />
-      <input type="button" name="recycle"  value="É¾ ³ı" onclick="SubmitForm('recycle');" />
+      å…¨é€‰/åé€‰
+      {if $iStatus == 0} {* æ™®é€šåŒº *}
+        <input type="button" name="recommend" value="æ¨ è" onclick="SubmitForm('recommend');" />
+        <input type="button" name="recycle"  value="åˆ  é™¤" onclick="SubmitForm('recycle');" />
+      {elseif $iStatus == 1}{* æ¨è *}
+      <input type="button" name="uncheck" value="è®¾ä¸ºæ™®é€š" onclick="SubmitForm('uncheck');" />
+      <input type="button" name="recycle"  value="åˆ  é™¤" onclick="SubmitForm('recycle');" />
       {else}
-      <input type="button" name="recycle"  value="É¾ ³ı" onclick="SubmitForm('recycle');" />
+      <input type="button" name="recycle"  value="åˆ  é™¤" onclick="SubmitForm('recycle');" />
       {/if}</td>
   </tr>
    </form>
@@ -83,16 +83,16 @@ function SubmitForm()
    // alert(arguments[0]);
     switch(arguments[0])
     {
-    	case "recycle": var str = "·ÅÈë»ØÊÕÕ¾"; break;
-    	case "del": var str = "³¹µ×É¾³ı"; break;
-    	case "check": var str = "½øĞĞÉóºË"; break;
-    	case "recommend": var str = "ÉèÎªÍÆ¼ö"; break;
-    	case "uncheck": var str = "ÉèÎªÎ´ÉóºË"; break;
-    	case "copy": var str = "´¦ÀíÊı¾İ"; break;
+    	case "recycle": var str = "æ”¾å…¥å›æ”¶ç«™"; break;
+    	case "del": var str = "å½»åº•åˆ é™¤"; break;
+    	case "check": var str = "è¿›è¡Œå®¡æ ¸"; break;
+    	case "recommend": var str = "è®¾ä¸ºæ¨è"; break;
+    	case "uncheck": var str = "è®¾ä¸ºæœªå®¡æ ¸"; break;
+    	case "copy": var str = "å¤„ç†æ•°æ®"; break;
     	default: break;    	
     }
     
-    if(confirm("ÄúÕæµÄÒª½«Ñ¡ÖĞµÄ"+str+"Âğ?") == true)
+    if(confirm("æ‚¨çœŸçš„è¦å°†é€‰ä¸­çš„"+str+"å—?") == true)
     {
 {/literal}    	
     	FormObject.action = "?act="+arguments[0]+"&status={$iStatus}&cID={$cID}";

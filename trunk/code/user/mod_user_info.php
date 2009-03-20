@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 require_once("check_login.php");
 require_once("../class/common.inc.php");
 require_once("../class/user.lib.php");
@@ -15,16 +15,16 @@ if ( checkEmail($arr["email"]) && is_numeric($arr["phone"]))
 {
 	if (empty($arr["trueName"]))
 	{
-		redirect_error("ÕæÊµĞÕÃû²»ÄÜÎª¿Õ£¡");
+		redirect_error("çœŸå®å§“åä¸èƒ½ä¸ºç©ºï¼");
 	}
 	$mod = $db->update("member", $arr, " id='".$_SESSION["reart_id"]."'");
 	if ($mod)  
 	{
-		redirect_error("ĞÅÏ¢ĞŞ¸Ä³É¹¦£¡");
+		redirect_error("ä¿¡æ¯ä¿®æ”¹æˆåŠŸï¼");
 	}
 	else 
 	{
-		redirect_error("ĞÅÏ¢ĞŞ¸Ä°Ü£¡");
+		redirect_error("ä¿¡æ¯ä¿®æ”¹è´¥ï¼");
 	}
 }
 

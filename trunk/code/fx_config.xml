@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<loadBitmap>
+	<property image="/img/260/1.jpg" link="/detail.php?id=1" />
+	<property image="/img/260/3.jpg" link="/detail.php?id=3" />
+	<property image="/img/260/4.jpg" link="/detail.php?id=4"/>
+	<property image="/img/260/5.jpg" link="/detail.php?id=5"/>
+	<property image="/img/260/6.jpg" link="/detail.php?id=6" />
+	<property image="/img/260/7.jpg" link="/detail.php?id=7" />	
+</loadBitmap>

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class menu {
 	
@@ -11,7 +11,7 @@ class menu {
 	}
 	
 	/**
-	 * ��߲˵��б�
+	 * 左边菜单列表
 	 *
 	 * @param int $pID
 	 * @return array

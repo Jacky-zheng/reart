@@ -1,6 +1,6 @@
-<?php
+ï»¿<?php
 /**
- * Àà±ğ²Ù×÷Àà
+ * ç±»åˆ«æ“ä½œç±»
  *  2006.12
  */
 if(!defined("IN_CN315")) {
@@ -10,9 +10,9 @@ if(!defined("IN_CN315")) {
 class category
 {
 	/**
-	 * ÌáÈ¡¸¸ÀàÁĞ±í
+	 * æå–çˆ¶ç±»åˆ—è¡¨
 	 *
-	 * @param string $sTbl £¨Àà±ğ±íÃû£©
+	 * @param string $sTbl ï¼ˆç±»åˆ«è¡¨åï¼‰
 	 * @return array
 	 */
 	function pCatList($sTbl)
@@ -25,12 +25,12 @@ class category
 	}
 	
 	/**
-	 * °´¸¸ÀàidÌáÈ¡Æä×ÓÀàÁĞ±í
+	 * æŒ‰çˆ¶ç±»idæå–å…¶å­ç±»åˆ—è¡¨
 	 *
 	 * @param string $sTbl
-	 * @param $pID £¨¸¸Ààid£©
-	 * @param $isDisplaySelf £¨ÊÇ·ñÏÔÊ¾±¾Éí£©
-	 * @param $iCorporationID £¨ÆóÒµ»áÔ±ID£©
+	 * @param $pID ï¼ˆçˆ¶ç±»idï¼‰
+	 * @param $isDisplaySelf ï¼ˆæ˜¯å¦æ˜¾ç¤ºæœ¬èº«ï¼‰
+	 * @param $iCorporationID ï¼ˆä¼ä¸šä¼šå‘˜IDï¼‰
 	 * @return array
 	 */
 	
@@ -45,11 +45,11 @@ class category
 	}
 	
 	/**
-	 * ¸ù¾İÀà±ğidÈ¡µÃÀà±ğÃû³Æ£¬Èç¹ûÊÇ×ÓÀà£¬ÔòÍ¬Ê±»ñÈ¡¸¸ÀàµÄÃû³Æ
+	 * æ ¹æ®ç±»åˆ«idå–å¾—ç±»åˆ«åç§°ï¼Œå¦‚æœæ˜¯å­ç±»ï¼Œåˆ™åŒæ—¶è·å–çˆ¶ç±»çš„åç§°
 	 *
 	 * @param string $sTbl
 	 * @param int $id
-	 * @param int $iSort  0±íÊ¾ºáÅÅ£­£¬ 1±íÊ¾ºáÅÅ¡ú£¬ 2±íÊ¾ÊúÅÅ
+	 * @param int $iSort  0è¡¨ç¤ºæ¨ªæ’ï¼ï¼Œ 1è¡¨ç¤ºæ¨ªæ’â†’ï¼Œ 2è¡¨ç¤ºç«–æ’
 	 * @return string
 	 */
 	
@@ -59,12 +59,12 @@ class category
 		{
 			$aList = category::getSingleCatInfoByID($sTbl,$id); //			
 			$aPList = category::getSingleCatInfoByID($sTbl,intval($aList['pID']));		
-			//$sCatName = $aPList	? $aPList['name']." ¡ú ".$aList['name'] : $aList['name'];		
+			//$sCatName = $aPList	? $aPList['name']." â†’ ".$aList['name'] : $aList['name'];		
 			
 			if($iSort == 0)
-				$sCatName = $aPList	? $aPList['name']."£­".$aList['name'] : $aList['name'];		
+				$sCatName = $aPList	? $aPList['name']."ï¼".$aList['name'] : $aList['name'];		
 			elseif($iSort == 1) 
-				$sCatName = $aPList	? $aPList['name']." ¡ú ".$aList['name'] : $aList['name'];
+				$sCatName = $aPList	? $aPList['name']." â†’ ".$aList['name'] : $aList['name'];
 			else
 				$sCatName = $aList['name']."<br>&uarr;<br>".$aPList['name'];	
 		}
@@ -99,8 +99,8 @@ class category
 	}
 	
 	/**
-	 * Éú³É·ÖÀàÏÂÀ­²Ëµ¥£¨µİ¹é£©
-	 * @param int $iMaxDepth  -1±íÊ¾ÎŞÏŞ¼¶·ÖÀà£» 0±íÊ¾Ò»¼¶·ÖÀà£» 1±íÊ¾¶ş¼¶·ÖÀà£»ÒÔ´ËÀàÍÆ
+	 * ç”Ÿæˆåˆ†ç±»ä¸‹æ‹‰èœå•ï¼ˆé€’å½’ï¼‰
+	 * @param int $iMaxDepth  -1è¡¨ç¤ºæ— é™çº§åˆ†ç±»ï¼› 0è¡¨ç¤ºä¸€çº§åˆ†ç±»ï¼› 1è¡¨ç¤ºäºŒçº§åˆ†ç±»ï¼›ä»¥æ­¤ç±»æ¨
 	 */
 	
 	function getCatOptions($sTbl,$iMaxDepth=-1,$pidMe=0,$pid=0,$iDepth=0,$bIsFirst=true)
@@ -120,13 +120,13 @@ class category
 	      		$sOption .= "<option value=".$aRs[$i]['id'].">".$str.$aRs[$i]['name']."</option>";
 	      		
 			if($iMaxDepth== -1 || $iMaxDepth>$iDepth) 
-				self::getCatOptions($sTbl,$iMaxDepth,$pidMe,$aRs[$i]['id'],$iDepth+1,false); //µİ¹é	
+				self::getCatOptions($sTbl,$iMaxDepth,$pidMe,$aRs[$i]['id'],$iDepth+1,false); //é€’å½’	
 		}
 		return $sOption;  				
 	}	
 	
 	/**
-	 * È¡³öËùÓĞÀà
+	 * å–å‡ºæ‰€æœ‰ç±»
 	 *
 	 */
 	function getCatOptions_bak($sTbl)
@@ -162,7 +162,7 @@ class category
 	}
 	
 	/**
-	 * µÃµ½Ä³Àà±ğËùÓĞ×ÓÀàµÄÒ»Î¬Êı×é
+	 * å¾—åˆ°æŸç±»åˆ«æ‰€æœ‰å­ç±»çš„ä¸€ç»´æ•°ç»„
 	 *
 	 * @param unknown_type $pID
 	 */

@@ -1,6 +1,6 @@
-<?php
+ï»¿<?php
 /**
- * ¼ì²âÓÃ»§ÃûÊÇ·ñÒÑ¾­´æÔÚ
+ * æ£€æµ‹ç”¨æˆ·åæ˜¯å¦å·²ç»å­˜åœ¨
  * @param string $aField
  * @return true or false
  */
@@ -13,7 +13,7 @@ function checkNameRepeat( $aField )
 	else return false;
 }
 /**
- * ¼ì²âÓÊÏä¸ñÊ½
+ * æ£€æµ‹é‚®ç®±æ ¼å¼
  * @param string $aField
  * @return true or false
  */
@@ -24,7 +24,7 @@ function checkEmail( $aField )
 	else return false;
 }
 /**
- * ¼ì²âµÇÂ½
+ * æ£€æµ‹ç™»é™†
  * @param $arr array
  * @return true or false
  *
@@ -36,11 +36,11 @@ function checkUserLogin($arr)
 	$bUserIsExists = $db->getRowsNum("SELECT COUNT(*) FROM member WHERE userName='".$arr["userName"]."' AND pwd='".md5($arr["password"])."'");
 	if($bUserIsExists)
 	{
-		//ÓÃ»§´æÔÚ
+		//ç”¨æˆ·å­˜åœ¨
 		$aInfo = $db->getRecordSet($sSQL, 1);
-		//ÃÜÂëÕıÈ·
+		//å¯†ç æ­£ç¡®
 		$_SESSION["reart_id"]	 = $aInfo["id"];
-		//¸üĞÂ×îºóµÇÂ½ĞÅÏ¢
+		//æ›´æ–°æœ€åç™»é™†ä¿¡æ¯
 		$arr = array(
 			'userID' =>  $aInfo["id"],	
 			'loginDate' =>  date("Y-m-d H:i:s"),	
@@ -60,7 +60,7 @@ function checkUserLogin($arr)
 		return false;
 	}
 }
-//ÓÃ»§×¢²á
+//ç”¨æˆ·æ³¨å†Œ
 function checkRegister($aField)
 {
 	global $db;
@@ -78,7 +78,7 @@ function checkRegister($aField)
 	}
 	else
 	{
-		redirect_error("×¢²áÊ§°Ü£¡");
+		redirect_error("æ³¨å†Œå¤±è´¥ï¼");
 	}
 }
 function checkUserState($id)
@@ -86,11 +86,11 @@ function checkUserState($id)
 	if (!empty($id))
 	{
 		$data = getUserInfo($id);
-		$check_login = 'ÄúºÃ, '.$data["userName"].", <a href='/user/login_out.php'>ÍË³ö</a>";
+		$check_login = 'æ‚¨å¥½, '.$data["userName"].", <a href='/user/login_out.php'>é€€å‡º</a>";
 	}
 	else 
 	{
-		$check_login = '<a href="/user/login.php">»áÔ±µÇÂ½£¯×¢²á</a>';
+		$check_login = '<a href="/user/login.php">ä¼šå‘˜ç™»é™†ï¼æ³¨å†Œ</a>';
 	}
 	return $check_login;
 }
@@ -99,22 +99,22 @@ function checkMessage($id)
 	if (!empty($id))
 	{
 		$data = getUserInfo($id);
-		$check_login = '<td width="71">ÄúºÃ,</td><td width="524">'.$data["userName"].'</td>';
+		$check_login = '<td width="71">æ‚¨å¥½,</td><td width="524">'.$data["userName"].'</td>';
 	}
 	else 
 	{
-		$check_login = '<td width="71">ÄäÃû<input class="box" checked type="checkbox" name="no_reg" /></td><form action="/user/contact_us.php" method="POST" name="login"><td width="524">ÓÃ»§Ãû:&nbsp;&nbsp;<input class="width-03" type="text" name="login_name"/>&nbsp;&nbsp;ÃÜÂë:&nbsp;&nbsp;<input class="width-03" type="text" name="login_pwd" />&nbsp;&nbsp;<button type="submit">µÇÂ½</button></form></td>';
+		$check_login = '<td width="71">åŒ¿å<input class="box" checked type="checkbox" name="no_reg" /></td><form action="/user/contact_us.php" method="POST" name="login"><td width="524">ç”¨æˆ·å:&nbsp;&nbsp;<input class="width-03" type="text" name="login_name"/>&nbsp;&nbsp;å¯†ç :&nbsp;&nbsp;<input class="width-03" type="text" name="login_pwd" />&nbsp;&nbsp;<button type="submit">ç™»é™†</button></form></td>';
 	}
 	return $check_login;
 }
-//½¨Òé
+//å»ºè®®
 function insertMsg($arr)
 {
 	global $db;
 	$msg = $db->insert("guestbook", $arr);
 	return $msg;
 }
-//¹ØÓÚî£ÒÕ
+//å…³äºç¿è‰º
 function getAboutUs()
 {
 	global $db;
@@ -123,7 +123,7 @@ function getAboutUs()
 	return $aField;
 }
 //
-//Í¶×ÊÊÕ²Ø×ÉÑ¯
+//æŠ•èµ„æ”¶è—å’¨è¯¢
 function getConsultation()
 {
 	global $db;
@@ -131,7 +131,7 @@ function getConsultation()
 	$aField = $db->getRecordSet($sSQL,1);
 	return $aField;
 }
-//ÍË³ö
+//é€€å‡º
 function loginOut($id)
 {
 	global $db;
@@ -142,7 +142,7 @@ function loginOut($id)
 	);
 	$db->insert("loginlog", $arr);
 }
-//»ñÈ¡ÓÃ»§ĞÅÏ¢
+//è·å–ç”¨æˆ·ä¿¡æ¯
 function getUserInfo($user_id)
 {
 	global $db;
@@ -152,7 +152,7 @@ function getUserInfo($user_id)
 }
 
 /**
- * Éú³ÉÖ¸¶¨×Ö·û¸öÊıËæ»ú×Ö·û´®,»ùÓÚmd5()£¬×Ö·û³¤¶È²»³¬¹ı32Î»
+ * ç”ŸæˆæŒ‡å®šå­—ç¬¦ä¸ªæ•°éšæœºå­—ç¬¦ä¸²,åŸºäºmd5()ï¼Œå­—ç¬¦é•¿åº¦ä¸è¶…è¿‡32ä½
  *
  * @param integer $num
  * @return string

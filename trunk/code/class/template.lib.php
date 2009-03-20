@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 if(!defined("IN_CN315")) {
 	echo "<script>location.href='http://www.ts918.com';</script>";
 }
@@ -37,20 +37,20 @@ class template{
 	 * @param unknown_type $sTPL
 	 */
 	function display($sTPL) {		
-		//´«µÝÒ»Ð©¹«¹²±ä±äÁ¿
-		$this->__moTPL->assign("__ADMINTITLE",__ADMINTITLE);  // ºóÌ¨title
-		$this->__moTPL->assign("__WEBNAME",__WEBNAME); // Ç°Ì¨Ò³Ãætitle
+		//ä¼ é€’ä¸€äº›å…¬å…±å˜å˜é‡
+		$this->__moTPL->assign("__ADMINTITLE",__ADMINTITLE);  // åŽå°title
+		$this->__moTPL->assign("__WEBNAME",__WEBNAME); // å‰å°é¡µé¢title
 		$this->__moTPL->assign("__DEFAULT_TEMPLATE", __DEFAULT_TEMPLATE);
 		
-		// »áÔ±ÖÐÐÄ
+		// ä¼šå‘˜ä¸­å¿ƒ
 		if(isset($_COOKIE["xzx_trueName"])) $this->__moTPL->assign("__M_TRUENAME", $_COOKIE["xzx_trueName"]);
 		if(isset($_COOKIE["xzx_isVip"])) $this->__moTPL->assign("__M_ISVIP", $_COOKIE["xzx_isVip"]);
 		if(isset($_COOKIE["xzx_userName"])) $this->__moTPL->assign("__M_USERNAME", $_COOKIE["xzx_userName"]);
 		
-		// ×ÜºóÌ¨
+		// æ€»åŽå°
 		if(isset($_SESSION["xzx_trueName"])) $this->__moTPL->assign("__TRUENAME", $_SESSION["xzx_trueName"]);
 		
-		// ´úÀíºóÌ¨
+		// ä»£ç†åŽå°
 		if(isset($_SESSION["agent_trueName"])) $this->__moTPL->assign("__AGENT_TRUENAME", $_SESSION["agent_trueName"]);		
 		
 
@@ -60,7 +60,7 @@ class template{
 	}
 	
 	/**
-	 * Çå³ý»º´æÎÄ¼þ
+	 * æ¸…é™¤ç¼“å­˜æ–‡ä»¶
 	 *
 	 * @return unknown
 	 */

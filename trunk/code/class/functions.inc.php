@@ -1,6 +1,6 @@
-<?php
+ï»¿<?php
 /**
- * ¼ÓÔØ¿âÎÄ¼ş
+ * åŠ è½½åº“æ–‡ä»¶
  *
  * @param string $sLibName
  */
@@ -12,20 +12,20 @@ function loadLib($sLibName) {
 
 
 /**
- * Ç°Ì¨·ÖÒ³³ÌĞò(Î±¾²Ì¬·ÖÒ³)
+ * å‰å°åˆ†é¡µç¨‹åº(ä¼ªé™æ€åˆ†é¡µ)
  *
- * @param string $sPage  	- ÏÔÊ¾µÄÒ³Ãæ
- * @param int $iTotalNum	- ×ÜÊı
- * @param int $iPerpage		- Ã¿Ò³ÏÔÊ¾ÊıÁ¿
- * @param int $iPageNo		- µ±Ç°Ò³ºÅ
- * @param string $sExt		- ÆäËû²ÎÊı
+ * @param string $sPage  	- æ˜¾ç¤ºçš„é¡µé¢
+ * @param int $iTotalNum	- æ€»æ•°
+ * @param int $iPerpage		- æ¯é¡µæ˜¾ç¤ºæ•°é‡
+ * @param int $iPageNo		- å½“å‰é¡µå·
+ * @param string $sExt		- å…¶ä»–å‚æ•°
  */
 function dividePage_1($sPage,$iTotalNum,$iPerpage,$iPageNo,$sExt,$bIsDiv=1)
 {
 	global $tpl;
-	//¿ªÊ¼ÏÔÊ¾µÄÊıÄ¿
+	//å¼€å§‹æ˜¾ç¤ºçš„æ•°ç›®
 	$iPageStart = ($iPageNo - 1) * $iPerpage + 1;
-	//¹²ÓĞ¶àÉÙÒ³
+	//å…±æœ‰å¤šå°‘é¡µ
 	$iTotalPage = ceil($iTotalNum / $iPerpage);
 	if($iPageNo < $iTotalPage)
 		$iEndPage = $iPageStart + $iPerpage - 1;
@@ -34,41 +34,41 @@ function dividePage_1($sPage,$iTotalNum,$iPerpage,$iPageNo,$sExt,$bIsDiv=1)
 	
 	$sStr = " <div class=\"mainipselc\">";
 		
-	$sStr .= "µÚ<span class=\"colorsb\">{$iPageNo}</span>Ò³</span>  <span class=\"colorsc\">¹²<span class=\"colorsb\">{$iTotalPage}</span>Ò³ ";	
+	$sStr .= "ç¬¬<span class=\"colorsb\">{$iPageNo}</span>é¡µ</span>  <span class=\"colorsc\">å…±<span class=\"colorsb\">{$iTotalPage}</span>é¡µ ";	
 	$iPrev = $iPageNo - 1;
 	$iNext = $iPageNo + 1;
 	
 	if($iPageNo == 1) {	
-		//µ±Ç°Ò³ÊıÊÇ1£¬µÚÒ»Ò³Ã»ÓĞÁ´½Ó    	
-    	$sStr .= "×îÇ°Ò³ ";
+		//å½“å‰é¡µæ•°æ˜¯1ï¼Œç¬¬ä¸€é¡µæ²¡æœ‰é“¾æ¥    	
+    	$sStr .= "æœ€å‰é¡µ ";
     	
     } else {
-    	//µ±Ç°Ò³Êı²»ÊÇ1£¬µÚÒ»Ò³ÓĞÁ´½Ó
-    	//$sStr .= "<a href='{$sPage}?pageNo=1&{$sExt}'>×îÇ°Ò³</a> ";
-    	$sStr .= "<a href='{$sPage}_1.html'>×îÇ°Ò³</a> ";
+    	//å½“å‰é¡µæ•°ä¸æ˜¯1ï¼Œç¬¬ä¸€é¡µæœ‰é“¾æ¥
+    	//$sStr .= "<a href='{$sPage}?pageNo=1&{$sExt}'>æœ€å‰é¡µ</a> ";
+    	$sStr .= "<a href='{$sPage}_1.html'>æœ€å‰é¡µ</a> ";
     }
-    //ÅĞ¶ÏÉÏÒ»Ò³
+    //åˆ¤æ–­ä¸Šä¸€é¡µ
     if($iPrev < 1) {
-    	//Ã»ÓĞÉÏÒ»Ò³
-    	$sStr .= "  ÉÏÒ»Ò³ ";
+    	//æ²¡æœ‰ä¸Šä¸€é¡µ
+    	$sStr .= "  ä¸Šä¸€é¡µ ";
     } else {
-    	//ÓĞÉÏÒ»Ò³
-    	//$sStr .= "<a href='{$sPage}?pageNo={$iPrev}&{$sExt}'>ÉÏÒ»Ò³</a> ";
-    	$sStr .= "<a href='{$sPage}_{$iPrev}.html'>ÉÏÒ»Ò³</a> ";
+    	//æœ‰ä¸Šä¸€é¡µ
+    	//$sStr .= "<a href='{$sPage}?pageNo={$iPrev}&{$sExt}'>ä¸Šä¸€é¡µ</a> ";
+    	$sStr .= "<a href='{$sPage}_{$iPrev}.html'>ä¸Šä¸€é¡µ</a> ";
     }
-    //ÅĞ¶ÏÏÂÒ»Ò³
+    //åˆ¤æ–­ä¸‹ä¸€é¡µ
     if ($iNext > $iTotalPage) {
-    	//Ã»ÓĞÏÂÒ»Ò³ÁË
-        $sStr .= "ÏÂÒ»Ò³ ";
+    	//æ²¡æœ‰ä¸‹ä¸€é¡µäº†
+        $sStr .= "ä¸‹ä¸€é¡µ ";
     } else {
-    	//»¹ÓĞÏÂÒ»Ò³
-    	//$sStr .= "<a href='{$sPage}?pageNo={$iNext}&{$sExt}'>ÏÂÒ»Ò³</a> ";
-    	$sStr .= "<a href='{$sPage}_{$iNext}.html'>ÏÂÒ»Ò³</a> ";
+    	//è¿˜æœ‰ä¸‹ä¸€é¡µ
+    	//$sStr .= "<a href='{$sPage}?pageNo={$iNext}&{$sExt}'>ä¸‹ä¸€é¡µ</a> ";
+    	$sStr .= "<a href='{$sPage}_{$iNext}.html'>ä¸‹ä¸€é¡µ</a> ";
     }
     if ($iPageNo >= $iTotalPage) {
-        $sStr .= "×îÄ©Ò³";
+        $sStr .= "æœ€æœ«é¡µ";
     } else {
-    	$sStr .= "<a href='{$sPage}_{$iTotalPage}.html'>×îÄ©Ò³</a> ";
+    	$sStr .= "<a href='{$sPage}_{$iTotalPage}.html'>æœ€æœ«é¡µ</a> ";
     }
     $sStr .= "</div>";
        
@@ -76,22 +76,22 @@ function dividePage_1($sPage,$iTotalNum,$iPerpage,$iPageNo,$sExt,$bIsDiv=1)
 }
 
 /**
- * Ç°Ì¨·ÖÒ³³ÌĞò(Õı³£·ÖÒ³)
+ * å‰å°åˆ†é¡µç¨‹åº(æ­£å¸¸åˆ†é¡µ)
  *
- * @param string $sPage  	- ÏÔÊ¾µÄÒ³Ãæ
- * @param int $iTotalNum	- ×ÜÊı
- * @param int $iPerpage		- Ã¿Ò³ÏÔÊ¾ÊıÁ¿
- * @param int $iPageNo		- µ±Ç°Ò³ºÅ
- * @param string $sExt		- ÆäËû²ÎÊı
+ * @param string $sPage  	- æ˜¾ç¤ºçš„é¡µé¢
+ * @param int $iTotalNum	- æ€»æ•°
+ * @param int $iPerpage		- æ¯é¡µæ˜¾ç¤ºæ•°é‡
+ * @param int $iPageNo		- å½“å‰é¡µå·
+ * @param string $sExt		- å…¶ä»–å‚æ•°
  */
 
 
 function dividePage_2($sPage,$iTotalNum,$iPerpage,$iPageNo,$sExt,$bIsDiv=1)
 {
 	global $tpl;
-	//¿ªÊ¼ÏÔÊ¾µÄÊıÄ¿
+	//å¼€å§‹æ˜¾ç¤ºçš„æ•°ç›®
 	$iPageStart = ($iPageNo - 1) * $iPerpage + 1;
-	//¹²ÓĞ¶àÉÙÒ³
+	//å…±æœ‰å¤šå°‘é¡µ
 	$iTotalPage = ceil($iTotalNum / $iPerpage);
 	if($iPageNo < $iTotalPage)
 		$iEndPage = $iPageStart + $iPerpage - 1;
@@ -100,38 +100,38 @@ function dividePage_2($sPage,$iTotalNum,$iPerpage,$iPageNo,$sExt,$bIsDiv=1)
 	
 	$sStr = ($bIsDiv ==1) ? " <div class=\"mainipselc\">" : "";
 		
-	$sStr .= "µÚ<span class=\"colorsb\">{$iPageNo}</span>Ò³</span>  <span class=\"colorsc\">¹²<span class=\"colorsb\">{$iTotalPage}</span>Ò³ ";	
+	$sStr .= "ç¬¬<span class=\"colorsb\">{$iPageNo}</span>é¡µ</span>  <span class=\"colorsc\">å…±<span class=\"colorsb\">{$iTotalPage}</span>é¡µ ";	
 	$iPrev = $iPageNo - 1;
 	$iNext = $iPageNo + 1;
 	
 	if($iPageNo == 1) {	
-		//µ±Ç°Ò³ÊıÊÇ1£¬µÚÒ»Ò³Ã»ÓĞÁ´½Ó    	
-    	$sStr .= "×îÇ°Ò³ ";
+		//å½“å‰é¡µæ•°æ˜¯1ï¼Œç¬¬ä¸€é¡µæ²¡æœ‰é“¾æ¥    	
+    	$sStr .= "æœ€å‰é¡µ ";
     	
     } else {
-    	//µ±Ç°Ò³Êı²»ÊÇ1£¬µÚÒ»Ò³ÓĞÁ´½Ó
-    	$sStr .= "<a href='{$sPage}?pageNo=1&{$sExt}'>×îÇ°Ò³</a> ";
+    	//å½“å‰é¡µæ•°ä¸æ˜¯1ï¼Œç¬¬ä¸€é¡µæœ‰é“¾æ¥
+    	$sStr .= "<a href='{$sPage}?pageNo=1&{$sExt}'>æœ€å‰é¡µ</a> ";
     }
-    //ÅĞ¶ÏÉÏÒ»Ò³
+    //åˆ¤æ–­ä¸Šä¸€é¡µ
     if($iPrev < 1) {
-    	//Ã»ÓĞÉÏÒ»Ò³
-    	$sStr .= "  ÉÏÒ»Ò³ ";
+    	//æ²¡æœ‰ä¸Šä¸€é¡µ
+    	$sStr .= "  ä¸Šä¸€é¡µ ";
     } else {
-    	//ÓĞÉÏÒ»Ò³
-    	$sStr .= "<a href='{$sPage}?pageNo={$iPrev}&{$sExt}'>ÉÏÒ»Ò³</a> ";
+    	//æœ‰ä¸Šä¸€é¡µ
+    	$sStr .= "<a href='{$sPage}?pageNo={$iPrev}&{$sExt}'>ä¸Šä¸€é¡µ</a> ";
     }
-    //ÅĞ¶ÏÏÂÒ»Ò³
+    //åˆ¤æ–­ä¸‹ä¸€é¡µ
     if ($iNext > $iTotalPage) {
-    	//Ã»ÓĞÏÂÒ»Ò³ÁË
-        $sStr .= "ÏÂÒ»Ò³ ";
+    	//æ²¡æœ‰ä¸‹ä¸€é¡µäº†
+        $sStr .= "ä¸‹ä¸€é¡µ ";
     } else {
-    	//»¹ÓĞÏÂÒ»Ò³
-    	$sStr .= "<a href='{$sPage}?pageNo={$iNext}&{$sExt}'>ÏÂÒ»Ò³</a> ";
+    	//è¿˜æœ‰ä¸‹ä¸€é¡µ
+    	$sStr .= "<a href='{$sPage}?pageNo={$iNext}&{$sExt}'>ä¸‹ä¸€é¡µ</a> ";
     }
     if ($iPageNo >= $iTotalPage) {
-        $sStr .= "×îÄ©Ò³";
+        $sStr .= "æœ€æœ«é¡µ";
     } else {
-    	$sStr .= "<a href='{$sPage}?pageNo={$iTotalPage}&{$sExt}'>×îÄ©Ò³</a> ";
+    	$sStr .= "<a href='{$sPage}?pageNo={$iTotalPage}&{$sExt}'>æœ€æœ«é¡µ</a> ";
     }
     $sStr .=($bIsDiv ==1) ? "</div>" : "";
        
@@ -140,72 +140,72 @@ function dividePage_2($sPage,$iTotalNum,$iPerpage,$iPageNo,$sExt,$bIsDiv=1)
 
 
 /**
- * ·ÖÒ³³ÌĞò
+ * åˆ†é¡µç¨‹åº
  *
- * @param string $sPage  	- ÏÔÊ¾µÄÒ³Ãæ
- * @param int $iTotalNum	- ×ÜÊı
- * @param int $iPerpage		- Ã¿Ò³ÏÔÊ¾ÊıÁ¿
- * @param int $iPageNo		- µ±Ç°Ò³ºÅ
- * @param string $sExt		- ÆäËû²ÎÊı
+ * @param string $sPage  	- æ˜¾ç¤ºçš„é¡µé¢
+ * @param int $iTotalNum	- æ€»æ•°
+ * @param int $iPerpage		- æ¯é¡µæ˜¾ç¤ºæ•°é‡
+ * @param int $iPageNo		- å½“å‰é¡µå·
+ * @param string $sExt		- å…¶ä»–å‚æ•°
  */
 function dividePage($sPage,$iTotalNum,$iPerpage,$iPageNo,$sExt)
 {
 	global $tpl;
-	//¿ªÊ¼ÏÔÊ¾µÄÊıÄ¿
+	//å¼€å§‹æ˜¾ç¤ºçš„æ•°ç›®
 	$iPageStart = ($iPageNo - 1) * $iPerpage + 1;
-	//¹²ÓĞ¶àÉÙÒ³
+	//å…±æœ‰å¤šå°‘é¡µ
 	$iTotalPage = ceil($iTotalNum / $iPerpage);
 	if($iPageNo < $iTotalPage)
 		$iEndPage = $iPageStart + $iPerpage - 1;
 	else 
 		$iEndPage = $iTotalNum;
 	
-	$sStr = " <table width='100%' border='1' cellspacing='0' cellpadding='0' align='center' bordercolordark='#FFFFFF' bordercolorlight='#000000'  bgcolor='#efefef'><tr align=center><td>¡ñ";
-	$sStr .= "¹²".$iTotalNum."Ìõ¼ÇÂ¼,Ã¿Ò³ÏÔÊ¾{$iPerpage}Ìõ£¬ÁĞ³öµÚ".$iPageStart;
-	$sStr .= "µ½µÚ";
+	$sStr = " <table width='100%' border='1' cellspacing='0' cellpadding='0' align='center' bordercolordark='#FFFFFF' bordercolorlight='#000000'  bgcolor='#efefef'><tr align=center><td>â—";
+	$sStr .= "å…±".$iTotalNum."æ¡è®°å½•,æ¯é¡µæ˜¾ç¤º{$iPerpage}æ¡ï¼Œåˆ—å‡ºç¬¬".$iPageStart;
+	$sStr .= "åˆ°ç¬¬";
 	$sStr .= $iEndPage;
-	$sStr .= "Ìõ ";
+	$sStr .= "æ¡ ";
 	$sStr .= "</td>  <td> <div align='center'>";
 	$iPrev = $iPageNo - 1;
 	$iNext = $iPageNo + 1;
 	
 	if($iPageNo == 1) {	
-		//µ±Ç°Ò³ÊıÊÇ1£¬µÚÒ»Ò³Ã»ÓĞÁ´½Ó
-    	$sStr .= "µÚÒ»Ò³";
+		//å½“å‰é¡µæ•°æ˜¯1ï¼Œç¬¬ä¸€é¡µæ²¡æœ‰é“¾æ¥
+    	$sStr .= "ç¬¬ä¸€é¡µ";
     } else {
-    	//µ±Ç°Ò³Êı²»ÊÇ1£¬µÚÒ»Ò³ÓĞÁ´½Ó
-    	$sStr .= "<a href='{$sPage}?pageNo=1&{$sExt}'>µÚÒ»Ò³</a> ";
+    	//å½“å‰é¡µæ•°ä¸æ˜¯1ï¼Œç¬¬ä¸€é¡µæœ‰é“¾æ¥
+    	$sStr .= "<a href='{$sPage}?pageNo=1&{$sExt}'>ç¬¬ä¸€é¡µ</a> ";
     }
-    //ÅĞ¶ÏÉÏÒ»Ò³
+    //åˆ¤æ–­ä¸Šä¸€é¡µ
     if($iPrev < 1) {
-    	//Ã»ÓĞÉÏÒ»Ò³
-    	$sStr .= "  ÉÏÒ»Ò³ ";
+    	//æ²¡æœ‰ä¸Šä¸€é¡µ
+    	$sStr .= "  ä¸Šä¸€é¡µ ";
     } else {
-    	//ÓĞÉÏÒ»Ò³
-    	$sStr .= "<a href='{$sPage}?pageNo={$iPrev}&{$sExt}'>ÉÏÒ»Ò³</a> ";
+    	//æœ‰ä¸Šä¸€é¡µ
+    	$sStr .= "<a href='{$sPage}?pageNo={$iPrev}&{$sExt}'>ä¸Šä¸€é¡µ</a> ";
     }
-    //ÅĞ¶ÏÏÂÒ»Ò³
+    //åˆ¤æ–­ä¸‹ä¸€é¡µ
     if ($iNext > $iTotalPage) {
-    	//Ã»ÓĞÏÂÒ»Ò³ÁË
-        $sStr .= "ÏÂÒ»Ò³ ";
+    	//æ²¡æœ‰ä¸‹ä¸€é¡µäº†
+        $sStr .= "ä¸‹ä¸€é¡µ ";
     } else {
-    	//»¹ÓĞÏÂÒ»Ò³
-    	$sStr .= "<a href='{$sPage}?pageNo={$iNext}&{$sExt}'>ÏÂÒ»Ò³</a> ";
+    	//è¿˜æœ‰ä¸‹ä¸€é¡µ
+    	$sStr .= "<a href='{$sPage}?pageNo={$iNext}&{$sExt}'>ä¸‹ä¸€é¡µ</a> ";
     }
     if ($iPageNo >= $iTotalPage) {
-        $sStr .= "×îºóÒ»Ò³";
+        $sStr .= "æœ€åä¸€é¡µ";
     } else {
-    	$sStr .= "<a href='{$sPage}?pageNo={$iTotalPage}&{$sExt}'>×îºóÒ»Ò³</a> ";
+    	$sStr .= "<a href='{$sPage}?pageNo={$iTotalPage}&{$sExt}'>æœ€åä¸€é¡µ</a> ";
     }
     $sStr .= "</div> </td> <td width='15%'> ";
-    $sStr .= "µÚ".$iPageNo."/".$iTotalPage."Ò³ ";
+    $sStr .= "ç¬¬".$iPageNo."/".$iTotalPage."é¡µ ";
     $sStr .=  "</td> <form name=form1 method=post action={$sPage}?{$sExt}><td width='15%' align=center><input name=pageNo type=text class='form_text' size=2  value=$iPageNo> <input type=submit name=Submit2 value=go class='button'></td> </form></tr></table>";
 	$tpl->assign("Divide_Page", $sStr);
 }
 
 
 /**
- * Ìø×ªÒ³Ãæ
+ * è·³è½¬é¡µé¢
  *
  * @param string $sURL
  * @param integer $iTime
@@ -224,7 +224,7 @@ function redirect($sURL, $iTime, $sMsg = "",$bIsLogin = "") {
 }
 
 
-/** ´íÎóºóÌø×ª **/
+/** é”™è¯¯åè·³è½¬ **/
 function redirect_error($sMsg)
 {
 	echo "<script>alert('$sMsg');history.go(-1);</script>";
@@ -232,7 +232,7 @@ function redirect_error($sMsg)
 }
 
 /**
- * ³ö´íÒ³Ãæ
+ * å‡ºé”™é¡µé¢
  *
  * @param unknown_type $sMsg
  */
@@ -255,7 +255,7 @@ function cutString($sStr, $iStart=0, $iNum, $iSuffix='') {
 	
 }
 
-//È¡IP
+//å–IP
 function getIP() {
 	if (getenv('HTTP_CLIENT_IP')) {
 			$ip = getenv('HTTP_CLIENT_IP');
@@ -279,7 +279,7 @@ function getIP() {
 }
 
 /**
- * Êı×é×ª»»³É¼¯ºÏ
+ * æ•°ç»„è½¬æ¢æˆé›†åˆ
  *
  * @param array $aArr
  * @param string $sField
@@ -322,7 +322,7 @@ function array2Set($aArr,$sFieldName = NULL)
 }
 
 /**
- * Êı×é×ª»»³É¼¯ºÏ
+ * æ•°ç»„è½¬æ¢æˆé›†åˆ
  *
  * @param array $aArr
  * @return string
@@ -335,7 +335,7 @@ function array2Str($aArr)
 }
 
 /**
- * Êı×éÖĞµÄÒ»Î¬×÷Îªkey£¬Ò»Î¬×÷Îªvalue
+ * æ•°ç»„ä¸­çš„ä¸€ç»´ä½œä¸ºkeyï¼Œä¸€ç»´ä½œä¸ºvalue
  *
  * @param array $aArray
  * @param string $sFieldName1	- key
@@ -351,7 +351,7 @@ function array2Array($aArray, $sFieldName1, $sFieldName2)
 }
 
 /**
- * È¡µÃºó¼¸ÌìµÄÈÕÆÚº¯Êı  
+ * å–å¾—åå‡ å¤©çš„æ—¥æœŸå‡½æ•°  
  *
  * @param unknown_type $sDate
  * @param unknown_type $month_
@@ -387,7 +387,7 @@ function locationWin($sUrl)
 
 
 /**
- * ¹Ø±Õ´°¿Ú
+ * å…³é—­çª—å£
  *
  */
 function closeWin()
@@ -396,7 +396,7 @@ function closeWin()
 }
 
 /**
- * È¨ÏŞ¼ì²é
+ * æƒé™æ£€æŸ¥
  *
  * @param unknown_type $sFileName
  * @param unknown_type $sAction
@@ -406,8 +406,8 @@ function checkExecPower($sFileName, $sAction)
 	$bIsHavePower = manager::checkPower($_SESSION["xzx_roleID"], $sFileName, $sAction);
 	if(!$bIsHavePower)
 	{
-		log::insertLog($_SESSION['xzx_roleID'], $sFileName, $sAction, "ÎŞÈ¨Ö´ĞĞÕâ¸ö¹¦ÄÜ", 2);
-		redirect("home.php", 5, "ÄãÎŞÈ¨Ö´ĞĞÕâ¸ö¹¦ÄÜ");
+		log::insertLog($_SESSION['xzx_roleID'], $sFileName, $sAction, "æ— æƒæ‰§è¡Œè¿™ä¸ªåŠŸèƒ½", 2);
+		redirect("home.php", 5, "ä½ æ— æƒæ‰§è¡Œè¿™ä¸ªåŠŸèƒ½");
 		exit();
 	}
 }
@@ -416,12 +416,12 @@ function checkCookie()
 {
 	if (!$_COOKIE['xzx_userName'])
 	{
-		redirect("member.php",5,"ÇëµÇÂ¼£¡");
+		redirect("member.php",5,"è¯·ç™»å½•ï¼");
 		exit;
 	}
 }
 
-// Ò³ÃæÉú³É
+// é¡µé¢ç”Ÿæˆ
 function createHtm($sUploadPath,$sFileName,$id,$sTbl="")
 {		
 	$sUrl = __ADMIN_URL.$_SERVER['PHP_SELF']."?act=showPage&tbl=$sTbl&id=".$id;
@@ -445,7 +445,7 @@ function createHtm($sUploadPath,$sFileName,$id,$sTbl="")
 }
 
 /**
- * »ñÈ¡¶¨³¤µÄ×Ó×Ö·û´®
+ * è·å–å®šé•¿çš„å­å­—ç¬¦ä¸²
  *
  * @param string $str
  * @param int $lenth
@@ -485,7 +485,7 @@ function getstrsize($str,$len)
 	return $m;
 }
 
-// ×Ö·û¹ıÂË
+// å­—ç¬¦è¿‡æ»¤
 
 
 

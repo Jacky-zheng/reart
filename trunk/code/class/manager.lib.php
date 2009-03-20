@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 if(!defined("IN_CN315")) {
 	echo "<script>location.href='http://www.ts918.com';</script>";
 }
@@ -6,7 +6,7 @@ if(!defined("IN_CN315")) {
 class manager {	
 	
 	/**
-	 * È¡µÃ¹ÜÀíÔ±µÄÈ«²¿ÐÅÏ¢
+	 * å–å¾—ç®¡ç†å‘˜çš„å…¨éƒ¨ä¿¡æ¯
 	 *
 	 * @param unknown_type $iID
 	 * @return unknown
@@ -41,7 +41,7 @@ class manager {
 	}
 	
 	/**
-	 * ÓÃ»§ÃûÊÇ·ñÒÑ¾­´æÔÚ
+	 * ç”¨æˆ·åæ˜¯å¦å·²ç»å­˜åœ¨
 	 *
 	 * @param string $sUserName
 	 */
@@ -67,7 +67,7 @@ class manager {
 		global $db;
 		if($iUID == 1 || $iUID == 9)
 			return true;
-		//ÕâÀï¶Ôsave½øÐÐÉ¸Ñ¡È¥µô 
+		//è¿™é‡Œå¯¹saveè¿›è¡Œç­›é€‰åŽ»æŽ‰ 
 		if(preg_match("/save/i", $sAction))
 			return true;
 		$sSQL = "SELECT id FROM `power` WHERE fileNameEn='$sFileName' AND powerNameEn='$sAction'";
@@ -85,15 +85,15 @@ class manager {
 	 * @param unknown_type $sType
 	 */
 	function getManagerListByType($sType) {
-		$sLowerStr = strtolower($sType);		//Ð¡Ð´
-		$sUpperStr = strtoupper($sType);		//´óÐ´
+		$sLowerStr = strtolower($sType);		//å°å†™
+		$sUpperStr = strtoupper($sType);		//å¤§å†™
 		if(file_exists("../".CACHE_FILE."/_cache_manager_".$sLowerStr.".php"))
 		{
 			require_once("../".CACHE_FILE."/_cache_manager_".$sLowerStr.".php");
 			$sVarPrefix = "_CACHE_MANAGER_";
 			$aReturnArray = ${$sVarPrefix.$sUpperStr};
 		} else {
-			//²»´æÔÚ»º´æÎÄ¼þ£¬¿ªÊ¼²éÑ¯Êý¾Ý¿â
+			//ä¸å­˜åœ¨ç¼“å­˜æ–‡ä»¶ï¼Œå¼€å§‹æŸ¥è¯¢æ•°æ®åº“
 			$aReturnArray = $this->_getManagerIDAndNameByType($sLowerStr);
 		}
 		return $aReturnArray;

@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 /**
  * ????????
  *  2006.12
@@ -10,7 +10,7 @@ if(!defined("IN_CN315")) {
 class work
 {
 	/**
-	 * µÃµ½×÷Æ·ÁÐ±í
+	 * å¾—åˆ°ä½œå“åˆ—è¡¨
 	 *
 	 * @param array $params
 	 * start:
@@ -99,7 +99,7 @@ class work
 		return $res;
 		
 	}
-	/*»ñµÃÎåÌõÍÆ¼ö×÷Æ·£¬status=3*/
+	/*èŽ·å¾—äº”æ¡æŽ¨èä½œå“ï¼Œstatus=3*/
 	function getReWork()
 	{
 		global $db;

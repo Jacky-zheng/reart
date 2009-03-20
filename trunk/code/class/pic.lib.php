@@ -1,17 +1,17 @@
-<?php
+ï»¿<?php
 /**
- * pic.lib.php£¨Í¼Æ¬ÉÏ´«Àà£©
+ * pic.lib.phpï¼ˆå›¾ç‰‡ä¸Šä¼ ç±»ï¼‰
  *  2006.12
  */
 
 class pic 
 {
-	var $sUploadPath;				//Í¼Æ¬´æ´¢Â·¾¶
-	var $toFile	= true;			//ÊÇ·ñÉú³ÉÎÄ¼ş
-	var $fontName;					//Ê¹ÓÃµÄTTF×ÖÌåÃû³Æ
-	var $maxWidth  = 120;			//Í¼Æ¬×î´ó¿í¶È
-	var $maxHeight = 180;			//Í¼Æ¬×î´ó¸ß¶È
-	var $useTimeAsFileName = true;	//ÊÇ·ñÊ¹ÓÃÊ±¼ä×öÎªÉÏ´«ºóµÄÎÄ¼şÃû
+	var $sUploadPath;				//å›¾ç‰‡å­˜å‚¨è·¯å¾„
+	var $toFile	= true;			//æ˜¯å¦ç”Ÿæˆæ–‡ä»¶
+	var $fontName;					//ä½¿ç”¨çš„TTFå­—ä½“åç§°
+	var $maxWidth  = 120;			//å›¾ç‰‡æœ€å¤§å®½åº¦
+	var $maxHeight = 180;			//å›¾ç‰‡æœ€å¤§é«˜åº¦
+	var $useTimeAsFileName = true;	//æ˜¯å¦ä½¿ç”¨æ—¶é—´åšä¸ºä¸Šä¼ åçš„æ–‡ä»¶å
 	
 	function pic($sUploadPath)
 	{
@@ -20,12 +20,12 @@ class pic
 	}
 	
 	//==========================================
-	// º¯Êı: makeThumb($sourFile,$width=128,$height=128) 
-	// ¹¦ÄÜ: Éú³ÉËõÂÔÍ¼(Êä³öµ½ä¯ÀÀÆ÷)
-	// ²ÎÊı: $sourFile Í¼Æ¬Ô´ÎÄ¼ş
-	// ²ÎÊı: $width Éú³ÉËõÂÔÍ¼µÄ¿í¶È
-	// ²ÎÊı: $height Éú³ÉËõÂÔÍ¼µÄ¸ß¶È
-	// ·µ»Ø: 0 Ê§°Ü ³É¹¦Ê±·µ»ØÉú³ÉµÄÍ¼Æ¬Â·¾¶
+	// å‡½æ•°: makeThumb($sourFile,$width=128,$height=128) 
+	// åŠŸèƒ½: ç”Ÿæˆç¼©ç•¥å›¾(è¾“å‡ºåˆ°æµè§ˆå™¨)
+	// å‚æ•°: $sourFile å›¾ç‰‡æºæ–‡ä»¶
+	// å‚æ•°: $width ç”Ÿæˆç¼©ç•¥å›¾çš„å®½åº¦
+	// å‚æ•°: $height ç”Ÿæˆç¼©ç•¥å›¾çš„é«˜åº¦
+	// è¿”å›: 0 å¤±è´¥ æˆåŠŸæ—¶è¿”å›ç”Ÿæˆçš„å›¾ç‰‡è·¯å¾„
 	//==========================================
 	
 	function makeThumb($sourFile,$width=128,$height=128)
@@ -107,11 +107,11 @@ class pic
 
 	}
 	//==========================================
-	// º¯Êı: makeWaterMark($sourFile, $text)
-	// ¹¦ÄÜ: ¸øÍ¼Æ¬¼ÓË®Ó¡
-	// ²ÎÊı: $sourFile Í¼Æ¬ÎÄ¼şÃû
-	// ²ÎÊı: $text ÎÄ±¾Êı×é(°üº¬¶ş¸ö×Ö·û´®)
-	// ·µ»Ø: 1 ³É¹¦ ³É¹¦Ê±·µ»ØÉú³ÉµÄÍ¼Æ¬Â·¾¶
+	// å‡½æ•°: makeWaterMark($sourFile, $text)
+	// åŠŸèƒ½: ç»™å›¾ç‰‡åŠ æ°´å°
+	// å‚æ•°: $sourFile å›¾ç‰‡æ–‡ä»¶å
+	// å‚æ•°: $text æ–‡æœ¬æ•°ç»„(åŒ…å«äºŒä¸ªå­—ç¬¦ä¸²)
+	// è¿”å›: 1 æˆåŠŸ æˆåŠŸæ—¶è¿”å›ç”Ÿæˆçš„å›¾ç‰‡è·¯å¾„
 	//==========================================
 	
 	function makeWaterMark($sourFile, $text) 
@@ -166,20 +166,20 @@ class pic
 		//$rectW = max(strlen($text[0]),strlen($text[1]))*7;
 		
 		//echo $width.".".$height;
-		//ÔÚ image Í¼ÏñÖĞ»­Ò»¸öÓÃ color ÑÕÉ«Ìî³äÁËµÄ¾ØĞÎ£¬Æä×óÉÏ½Ç×ø±êÎª x1£¬y1£¬ÓÒÏÂ½Ç×ø±êÎª x2£¬y2¡£0, 0 ÊÇÍ¼ÏñµÄ×î×óÉÏ½Ç¡£
+		//åœ¨ image å›¾åƒä¸­ç”»ä¸€ä¸ªç”¨ color é¢œè‰²å¡«å……äº†çš„çŸ©å½¢ï¼Œå…¶å·¦ä¸Šè§’åæ ‡ä¸º x1ï¼Œy1ï¼Œå³ä¸‹è§’åæ ‡ä¸º x2ï¼Œy2ã€‚0, 0 æ˜¯å›¾åƒçš„æœ€å·¦ä¸Šè§’ã€‚
 		// int imagefilledrectangle ( resource image, int x1, int y1, int x2, int y2, int color)
 		
 		//ImageFilledRectangle($new, 0, $height/2-26, $width, $height/2, $alpha);		 	
 		//ImageFilledRectangle($new, 13, $height/2-20, 15, $height/2-7, $black);
 		
-		ImageTTFText($new, 4.9, 0, 20, $height/2-14, $red, $this->fontName, $text[0]);  // ¼ÓË®Ó¡ÎÄ×Ö1
-		//ImageTTFText($new, 4.9, 0, 20, $height/2-6, $black, $this->fontName, $text[1]);   // ¼ÓË®Ó¡ÎÄ×Ö2
+		ImageTTFText($new, 4.9, 0, 20, $height/2-14, $red, $this->fontName, $text[0]);  // åŠ æ°´å°æ–‡å­—1
+		//ImageTTFText($new, 4.9, 0, 20, $height/2-6, $black, $this->fontName, $text[1]);   // åŠ æ°´å°æ–‡å­—2
 				
 		/*
 		ImageFilledRectangle($new, 0, $height-26, $width, $height, $alpha);	
 		ImageFilledRectangle($new, 13, $height-20, 15, $height-7, $black);	
 		
-		ImageTTFText($new, 4.9, 0, 20, $height-14, $black, $this->fontName, $text[0]);  // ¼ÓË®Ó¡ÎÄ×Ö
+		ImageTTFText($new, 4.9, 0, 20, $height-14, $black, $this->fontName, $text[0]);  // åŠ æ°´å°æ–‡å­—
 		ImageTTFText($new, 4.9, 0, 20, $height-6, $black, $this->fontName, $text[1]);
 		*/
 		//print_r($text);exit;
@@ -204,10 +204,10 @@ class pic
 	
 
 	//==========================================
-	// º¯Êı: getInfo($file)
-	// ¹¦ÄÜ: ·µ»ØÍ¼ÏñĞÅÏ¢
-	// ²ÎÊı: $file ÎÄ¼şÃû³Æ
-	// ·µ»Ø: Í¼Æ¬ĞÅÏ¢Êı×é
+	// å‡½æ•°: getInfo($file)
+	// åŠŸèƒ½: è¿”å›å›¾åƒä¿¡æ¯
+	// å‚æ•°: $file æ–‡ä»¶åç§°
+	// è¿”å›: å›¾ç‰‡ä¿¡æ¯æ•°ç»„
 	//==========================================
 	
 	function getInfo($file) 
@@ -216,16 +216,16 @@ class pic
 		$imageInfo["width"]	= $data[0];
 		$imageInfo["height"]= $data[1];
 		$imageInfo["type"]	= $data[2];
-		$imageInfo["name"]	= basename($file); // ´«»Ø²»º¬Â·¾¶µÄµµ°¸×Ö´®
+		$imageInfo["name"]	= basename($file); // ä¼ å›ä¸å«è·¯å¾„çš„æ¡£æ¡ˆå­—ä¸²
 		$imageInfo["size"]  = filesize($file);
 		return $imageInfo;		
 	}
 
 	//==========================================
-	// º¯Êı: uploadImage($file)
-	// ¹¦ÄÜ: ´¦ÀíÉÏ´«Í¼Æ¬
-	// ²ÎÊı: $file ÉÏ´«±íµ¥fileµÄnameÖµ
-	// ·µ»Ø: $newName ÉÏ´«ºóµÄÍ¼Æ¬Ãû³Æ
+	// å‡½æ•°: uploadImage($file)
+	// åŠŸèƒ½: å¤„ç†ä¸Šä¼ å›¾ç‰‡
+	// å‚æ•°: $file ä¸Šä¼ è¡¨å•fileçš„nameå€¼
+	// è¿”å›: $newName ä¸Šä¼ åçš„å›¾ç‰‡åç§°
 	//==========================================
 	
 	function uploadPic($fileName,$i=0)
@@ -236,9 +236,9 @@ class pic
 		if ($this->useTimeAsFileName) 
 		{
 			$now	  = date("dHis");
-			$p		  = strrpos($img['name'], "."); //µÃµ½×îºóÒ»¸ö.µÄÎ»ÖÃ
-			$ext	  = substr($img['name'], $p+1); //µÃµ½Í¼Æ¬À©Õ¹Ãû
-			$newName  = $now . $i."." . $ext; //Òª±£´æÍ¼Æ¬µÄÈ«Ãû
+			$p		  = strrpos($img['name'], "."); //å¾—åˆ°æœ€åä¸€ä¸ª.çš„ä½ç½®
+			$ext	  = substr($img['name'], $p+1); //å¾—åˆ°å›¾ç‰‡æ‰©å±•å
+			$newName  = $now . $i."." . $ext; //è¦ä¿å­˜å›¾ç‰‡çš„å…¨å
 		}
 		else
 		{
@@ -253,9 +253,9 @@ class pic
 		}
 		$imgPath = $sDir."/".$newName;
 		//echo $imgPath."<br>";
-		if (move_uploaded_file($img['tmp_name'], $imgPath)) //ÉÏ´«³É¹¦
+		if (move_uploaded_file($img['tmp_name'], $imgPath)) //ä¸Šä¼ æˆåŠŸ
 		{
-			//echo "³É¹¦".date("Y-m")."/".$newName; exit;
+			//echo "æˆåŠŸ".date("Y-m")."/".$newName; exit;
 			return date("Y-m")."/".$newName;
 		}
 		else 

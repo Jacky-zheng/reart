@@ -1,26 +1,26 @@
-<?php
+ï»¿<?php
 if(!defined("IN_CN315")) {
 	echo "<script>location.href='http://www.cn315.cc';</script>";
 }
 /**
- * ×ÊÑ¶Àà
+ * èµ„è®¯ç±»
  *   2007-07-10
  */
 
 class news
 {
 	/**
-	 * ĞÂÎÅÁĞ±í
+	 * æ–°é—»åˆ—è¡¨
 	 *	
-	 * @param ´ÓµÚ¼¸Ìõ¼ÇÂ¼¿ªÊ¼ $iStartNo
-	 * @param ÌõÊı $iNum
-	 * @param ËùÊôÀà±ğ $iCID 
-	 * @param Ìõ¼ş $sWhere	 
-	 * @param ÅÅĞò $sOrder
-	 * @param ĞèÒªÏÔÊ¾µÄ×Ö¶Î $sNeedField 	 
-	 * @param ×ÊÑ¶±í $sTbl
-	 * @param ×´Ì¬ $status
-	 * @param ¼ò½é×ÖÊı $iLen
+	 * @param ä»ç¬¬å‡ æ¡è®°å½•å¼€å§‹ $iStartNo
+	 * @param æ¡æ•° $iNum
+	 * @param æ‰€å±ç±»åˆ« $iCID 
+	 * @param æ¡ä»¶ $sWhere	 
+	 * @param æ’åº $sOrder
+	 * @param éœ€è¦æ˜¾ç¤ºçš„å­—æ®µ $sNeedField 	 
+	 * @param èµ„è®¯è¡¨ $sTbl
+	 * @param çŠ¶æ€ $status
+	 * @param ç®€ä»‹å­—æ•° $iLen
 	 * @return array
 	 */
 	function getNewsList($iStartNo,$iNum,$cID=0,$sWhere="",$sOrder="",$sNeedField="",$sTbl="news",$iStatus='1',$iLen=0)
@@ -56,17 +56,17 @@ class news
 	}
 	
 	/**
-	 * ´úÀíÉÌĞÂÎÅÁĞ±í
+	 * ä»£ç†å•†æ–°é—»åˆ—è¡¨
 	 *	
-	 * @param ´ÓµÚ¼¸Ìõ¼ÇÂ¼¿ªÊ¼ $iStartNo
-	 * @param ÌõÊı $iNum
-	 * @param ËùÊôÀà±ğ $iCID 
-	 * @param Ìõ¼ş $sWhere	 
-	 * @param ÅÅĞò $sOrder
-	 * @param ĞèÒªÏÔÊ¾µÄ×Ö¶Î $sNeedField 	 
-	 * @param ×ÊÑ¶±í $sTbl
-	 * @param ×´Ì¬ $status
-	 * @param ¼ò½é×ÖÊı $iLen
+	 * @param ä»ç¬¬å‡ æ¡è®°å½•å¼€å§‹ $iStartNo
+	 * @param æ¡æ•° $iNum
+	 * @param æ‰€å±ç±»åˆ« $iCID 
+	 * @param æ¡ä»¶ $sWhere	 
+	 * @param æ’åº $sOrder
+	 * @param éœ€è¦æ˜¾ç¤ºçš„å­—æ®µ $sNeedField 	 
+	 * @param èµ„è®¯è¡¨ $sTbl
+	 * @param çŠ¶æ€ $status
+	 * @param ç®€ä»‹å­—æ•° $iLen
 	 * @return array
 	 */
 	

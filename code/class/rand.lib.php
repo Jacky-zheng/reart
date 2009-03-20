@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class rand{
 	var $MODE_NUMERIC = 0;

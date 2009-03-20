@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 /**
  * ????????
  *  2006.12
@@ -10,7 +10,7 @@ if(!defined("IN_CN315")) {
 class favorite
 {
 	/**
-	 * ÊÕ²Ø×÷Æ·
+	 * æ”¶è—ä½œå“
 	 *
 	 * @param array $params
 	 * start:

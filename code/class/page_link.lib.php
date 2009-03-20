@@ -1,15 +1,15 @@
-<?php
+ï»¿<?php
 /*
- *±¾³ÌĞòÎÄ¼ş¶Ô·ÖÒ³³ÌĞò½øĞĞÁË·â×°
+ *æœ¬ç¨‹åºæ–‡ä»¶å¯¹åˆ†é¡µç¨‹åºè¿›è¡Œäº†å°è£…
  *
 */
 
 class page_link
 {
-	var $page_max = 10; //Ò»×éÒ³ÂëµÄ×î´óÊı
+	var $page_max = 10; //ä¸€ç»„é¡µç çš„æœ€å¤§æ•°
 
-	var $page_num = 10; //×ÜÒ³Êı
-	var $length = 20; //Ò»Ò³µÄÊı¾İÌõÊı
+	var $page_num = 10; //æ€»é¡µæ•°
+	var $length = 20; //ä¸€é¡µçš„æ•°æ®æ¡æ•°
 
 	var $isNextPage = true;
 
@@ -21,54 +21,54 @@ class page_link
 
 	function Calculation_Min_Max( $act_page = 1 )
 	{
-		// ¶¨Òå×óÓÒÆ«ÒÆÁ¿
+		// å®šä¹‰å·¦å³åç§»é‡
 		$py_left = 0;
 		$py_right = 0;
-		// ¶¨Òå×óÓÒ±ß½ç
+		// å®šä¹‰å·¦å³è¾¹ç•Œ
 		$bj_left = 0;
 		$bj_right = 0;
-		// ¶¨Òå¹ö¶¯Çø¼ä±ß½ç
+		// å®šä¹‰æ»šåŠ¨åŒºé—´è¾¹ç•Œ
 		$gd_left = 0;
 		$gd_right = 0;
-		// ÅĞ¶ÏÊÇ·ñĞèÒª·Ö×é
+		// åˆ¤æ–­æ˜¯å¦éœ€è¦åˆ†ç»„
 		if ( ( $this->page_num - $this->page_max ) <= 0 )
 		{
-			// ²»ĞèÒª·Ö×é
+			// ä¸éœ€è¦åˆ†ç»„
 			$bj_left = 1;
 			$bj_right = $this->page_num;
 		}
 		else
 		{
-			// Òª½øĞĞ·Ö×é
-			// ÅĞ¶ÏÈİÁ¿µÄÆæÅ¼
+			// è¦è¿›è¡Œåˆ†ç»„
+			// åˆ¤æ–­å®¹é‡çš„å¥‡å¶
 			$tmp = $this->page_max % 2;
 			if ( $tmp === 1 )
 			{
-				// ÆæÊı
+				// å¥‡æ•°
 				$py_left = $py_right = ( $this->page_max - 1 ) / 2;
 			}
 			else
 			{
-				// Å¼Êı
+				// å¶æ•°
 				$py_left = $this->page_max / 2 - 1;
 				$py_right = $this->page_max / 2;
 			}
-			// ¼ÆËã¹ö¶¯Çø¼ä
+			// è®¡ç®—æ»šåŠ¨åŒºé—´
 			$gd_left = 1 + $py_left;
 			$gd_right = $this->page_num - $py_right;
-			// ÅĞ¶Ïµ±Ç°Ò³ÊÇ·ñÂäÈëÁË¹ö¶¯Çø¼ä
+			// åˆ¤æ–­å½“å‰é¡µæ˜¯å¦è½å…¥äº†æ»šåŠ¨åŒºé—´
 			if ( $act_page >= $gd_left && $act_page <= $gd_right )
 			{
-				// Çø¼äÄÚ
+				// åŒºé—´å†…
 				$bj_left = $act_page - $py_left;
 				$bj_right = $act_page + $py_right;
 			}
 			else
 			{
-				// Çø¼äÍâ
+				// åŒºé—´å¤–
 				if ( ( $act_page - $py_left ) <= 1 )
 				{
-					// ×ó²à¹Ì¶¨Çø¼ä
+					// å·¦ä¾§å›ºå®šåŒºé—´
 					$bj_left = 1;
 					$bj_right = $this->page_max;
 				}
@@ -86,7 +86,7 @@ class page_link
 
 		return $res;
 		/*
-		//¹ı°ëÊı¹ö¶¯
+		//è¿‡åŠæ•°æ»šåŠ¨
 		$s_min = ceil($this -> page_max / 2);
 		$s_max = $this -> page_num - $this -> page_max;
 		$s1_max = $this -> page_num - $s_min;
@@ -100,7 +100,7 @@ class page_link
 		{
 			if($act_page > $s_min && $act_page <= $s1_max)
 			{
-				//ÂäÔÚ¹öÔËÇø¼äÄÚ
+				//è½åœ¨æ»šè¿åŒºé—´å†…
 		$begin = 0 - $s_min + $act_page;
 		$end = $s_min - 1 + $act_page;
 		}
@@ -127,7 +127,7 @@ class page_link
 		return $res;
 		 */
 	}
-	// Ö÷·½·¨
+	// ä¸»æ–¹æ³•
 	function make_page( $total, $act_page, $url, $param )
 	{
 		$page_num = $this->Calculation_Page_Num( $total );
@@ -137,7 +137,7 @@ class page_link
 		{
 			$act_page = $page_num;
 		}
-		// ÓÃÕıÔò°Ñurl¸Ä³ÉÕı¹æµÄ
+		// ç”¨æ­£åˆ™æŠŠurlæ”¹æˆæ­£è§„çš„
 		$url = eregi_replace( $param . '=[0-9]+', $param . '=0', $url );
 
 		$res = array();
@@ -165,7 +165,7 @@ class page_link
 		}
 		return $res;
 	}
-	// ¸½¼ÓÉÏÒ»Ò³ºÍÏÂÒ»Ò³
+	// é™„åŠ ä¸Šä¸€é¡µå’Œä¸‹ä¸€é¡µ
 	function make_before_next_link( $arr, $act, $url, $param )
 	{
 		$tmp = array();

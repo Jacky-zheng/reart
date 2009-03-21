@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /*
  * FCKeditor - The text editor for internet

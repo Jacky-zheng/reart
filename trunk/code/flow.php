@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once("class/common.inc.php");
 loadLib("favorite");
 loadLib("work");

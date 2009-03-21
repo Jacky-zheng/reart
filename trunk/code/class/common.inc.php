@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 //error_reporting(0);
 //header("Content-type:text/html;charset=gb2312");
 header("Content-type:text/html;charset=UTF-8");
@@ -44,7 +44,7 @@ $db->connect();
 
 $tpl = new template(__DEFAULT_TEMPLATE);  // 模板设置
 
-$aWaterText = array('www.cn315.cc all rights reserved', 'all rights reserved'); //$定义加水印的文字
+$aWaterText = array('www.reart.com all rights reserved', 'all rights reserved'); //$定义加水印的文字
 
 $aPicSize = array('maxWidth' => 500, 'maxHeight' => 500);  //定义生成后的大小
 

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * member.php(会员模块)
  */

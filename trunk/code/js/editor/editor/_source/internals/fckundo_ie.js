@@ -1,4 +1,4 @@
-﻿var FCKUndo = new Object() ;
+var FCKUndo = new Object() ;
 
 FCKUndo.SavedData = new Array() ;
 FCKUndo.CurrentIndex = -1 ;

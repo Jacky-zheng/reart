@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 if(!defined("IN_CN315")) {
 	echo "<script>location.href='http://www.ts918.com';</script>";
 }

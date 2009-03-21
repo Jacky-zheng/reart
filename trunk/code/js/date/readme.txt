@@ -1,4 +1,4 @@
-﻿//加入以下代码
+//加入以下代码
 
 <IFRAME 
 frameBorder=0 id=popFrame name=popFrame scrolling=no 

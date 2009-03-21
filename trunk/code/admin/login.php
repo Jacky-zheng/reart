@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 //define("OPEN_DEBUG",true);
 require_once("../class/common.inc.php");
 $sAction = isset($_GET["act"]) ? $_GET["act"] : "login";

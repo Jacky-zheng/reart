@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 //define("OPEN_DEBUG",true);
 require_once("../class/common.inc.php");
 require_once("check_login.php"); //权限检查

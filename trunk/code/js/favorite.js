@@ -1,4 +1,4 @@
-﻿function favorite(workid, userid)
+function favorite(workid, userid)
 {
 	if(userid == "0")
 	{

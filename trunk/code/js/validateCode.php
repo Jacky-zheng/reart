@@ -1,4 +1,4 @@
-﻿<?
+<?
 session_start();
 
 define("IN_CN315",true);		//对文件的访问安全作个限制

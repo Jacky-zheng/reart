@@ -18,11 +18,11 @@ if($sAction == "edit" && isset($_GET['id'])) // 修改
 	$id = $_GET['id'];
 	if( 1 == $id)
 	{
-		$tmp_name = "公司简介";
+		$tmp_name = "关于睿艺";
 	}
 	elseif ( 2 == $id )
 	{
-		$tmp_name = "联系我们";
+		$tmp_name = "投资收藏咨询";
 	}
 	$tpl->assign("PAGE_FUNC_SMALL_NAME",$tmp_name);	
 	$sSQL = "SELECT * FROM $sTbl WHERE id=$id";

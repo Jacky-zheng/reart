@@ -50,7 +50,7 @@ $aPicSize = array('maxWidth' => 500, 'maxHeight' => 500);  //定义生成后的�
 
 $aThumbSize = array('width' => 200, 'height' => 200);  //定义缩略图的大小
 
-$aENUM = array(1=>"是",0=>"否");	
+$aENUM = array(1=>"首页推荐",2=>"普通推荐",0=>"否");	
 
 $aSex = array(0=>"男",1=>"女"); // 性别
 		   

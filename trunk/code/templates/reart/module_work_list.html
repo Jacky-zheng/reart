@@ -1,9 +1,9 @@
-
-
 {literal}
 <script type="text/javascript" src="/js/favorite.js"></script>
 <script type="text/javascript" src="/js/transport.js"></script>
 {/literal}
+<div class="photo">
+<ul class="wrapClear" id="worklist">
 {foreach from=$worklist item=work }
 <li>
 	<span><a href="/detail.php?id={$work.id}"><img src="{$img_url_m}{$work.picCode}.jpg" alt="" /></a></span>
@@ -17,7 +17,9 @@
 		<p><button onclick="favorite({$work.id},{$user_id})">收藏</button></p>
 	{/if}
 </li>
-{/foreach}			
+{/foreach}
+</ul>
+		</div>			
 
 
 

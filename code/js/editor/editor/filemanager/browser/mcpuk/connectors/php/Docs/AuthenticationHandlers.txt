@@ -1,4 +1,4 @@
-﻿Authentication via connector::
+Authentication via connector::
 
 In my PHP connector the one from the FBXP project, it is 
 possible to require authentication before a user can use

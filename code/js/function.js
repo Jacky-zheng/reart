@@ -1,4 +1,4 @@
-﻿/* 公用ajax函数 */
+/* 公用ajax函数 */
 
 /* start地区 */
 function searchProvince()

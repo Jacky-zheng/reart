@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * 检测用户名是否已经存在
  * @param string $aField

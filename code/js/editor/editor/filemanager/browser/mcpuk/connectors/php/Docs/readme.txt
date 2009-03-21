@@ -1,4 +1,4 @@
-﻿PHP Connector for the FCKeditor v2 File Manager
+PHP Connector for the FCKeditor v2 File Manager
 Written By Grant French, Sept 2004
 grant@mcpuk.net - http://www.mcpuk.net 
 

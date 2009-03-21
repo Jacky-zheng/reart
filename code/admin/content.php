@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * content.php(内容模块)
  */

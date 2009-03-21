@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @file            transport.js
  * @description     鐢ㄤ簬鏀寔AJAX镄勪紶杈撶被銆?
  * @author          ECShop R&D Team ( http://www.ecshop.com/ )

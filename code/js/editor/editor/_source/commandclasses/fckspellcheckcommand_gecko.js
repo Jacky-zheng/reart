@@ -1,4 +1,4 @@
-﻿var FCKSpellCheckCommand = function()
+var FCKSpellCheckCommand = function()
 {
 	this.Name = 'SpellCheck' ;
 	this.IsEnabled = ( FCKConfig.SpellChecker == 'SpellerPages' ) ;

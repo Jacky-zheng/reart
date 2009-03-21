@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
 /*
  * FCKeditor - The text editor for internet
  * Copyright (C) 2003-2005 Frederico Caldeira Knabben

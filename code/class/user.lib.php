@@ -86,7 +86,7 @@ function checkUserState($id)
 	if (!empty($id))
 	{
 		$data = getUserInfo($id);
-		$check_login = '您好, '.$data["userName"].", <a href='/user/login_out.php'>退出</a>";
+		$check_login = '您好, <a href="/user/login_index.php">'.$data["userName"]."</a>, <a href='/user/login_out.php'>退出</a>";
 	}
 	else 
 	{

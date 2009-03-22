@@ -17,6 +17,11 @@
 		<div class="photo-view-01">
 			<h2>您浏览过的作品</h2>
 			<dl class="wrapClear">
+            {if $listlink eq 1}
+            	<dd>
+					<p class="images"><a href="list.php"><img src="{$img_url_s}{$history_list.picCode}.jpg" /></a></p>
+				</dd>
+            {else}
             {foreach from=$history_list item=hl}
 				<dd>
 					<p class="images"><a href="detail.php?id={$hl.id}"><img src="{$img_url_s}{$hl.picCode}.jpg" /></a></p>
@@ -24,7 +29,8 @@
 					<p>{$hl.artist_name}</p>
 				</dd>
              {/foreach}   
-				<dt><a href="list.php">更多</a></dt>	
+             {/if}
+				<dt><a href="list.php?flag=history">更多</a></dt>	
 			</dl>
 		</div>
 	</div>

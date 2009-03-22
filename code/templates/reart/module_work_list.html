@@ -4,6 +4,7 @@
 {/literal}
 <div class="photo">
 <ul class="wrapClear" id="worklist">
+{if $worklist}
 {foreach from=$worklist item=work }
 <li>
 	<span><a href="/detail.php?id={$work.id}"><img src="{$img_url_m}{$work.picCode}.jpg" alt="" /></a></span>
@@ -18,6 +19,9 @@
 	{/if}
 </li>
 {/foreach}
+{else}
+<li>暂时没有商品</li>
+{/if}
 </ul>
 		</div>			
 

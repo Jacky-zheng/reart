@@ -26,12 +26,14 @@ if (!empty($_COOKIE['reart']['history']))
 
     array_unshift($history, $id);
     $history = array_unique($history);
-
+    //取前6个最新浏览
+    $show = array_slice($history, 0, 6);
+/*
     while (count($history) > 6)
     {
         array_pop($history);
     }
-
+*/
     setcookie('reart[history]', implode(',', $history), time() + 3600 * 24 * 30);
 }
 else
@@ -39,13 +41,20 @@ else
     setcookie('reart[history]', $id, time() + 3600 * 24 * 30);
 }
 
-$hisids = $_COOKIE['reart']['history'];
+$hisids = implode(',', $show);
 
 if(!empty($hisids))
 {
 	$history_list = $work->getWorkbyIDs($hisids);
-	$tpl->assign('history_list', $history_list);
 }
+else 
+{
+	$history_list['picCode'] = 'picno';
+	//$history_list['name'] = 'reart';
+	$tpl->assign('listlink', 1);
+}
+$tpl->assign('history_list', $history_list);
+$tpl->assign('title', '查看作品');
 
 if ($res)
 {

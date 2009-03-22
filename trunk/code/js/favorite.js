@@ -31,4 +31,5 @@ function delete_favorite(workid, userid)
 function delFavoriteResponse(result)
 {
 	document.getElementById('worklist').innerHTML = result;
+	alert("删除成功");
 }

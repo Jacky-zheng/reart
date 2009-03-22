@@ -13,7 +13,7 @@ function formSubmit()
 				<dd>类别<select name="cate">
                 	<option value='0'>全部</option>
 				{foreach from=$cate item=ct}
-					<option value='{$ct.id}'>{$ct.name}</option>
+					<option value='{$ct.id}' {if $ct.id eq $sarch_arr.cate} selected {/if}}>{$ct.name}</option>
 				{/foreach}
 				</select>
                 </dd>

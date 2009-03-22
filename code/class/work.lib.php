@@ -98,7 +98,7 @@ class work
 	function getWorkbyIDs($ids)
 	{
 		global $db;
-		$sql = "SELECT w.id, w.name, w.cID, w.price, w.age, w.artistCode, w.picCode, w.addDate, a.name as artist_name FROM work as w left join artist as a on a.artistCode=w.artistCode where w.id in ($ids) order by w.addDate desc";
+		$sql = "SELECT w.id, w.name, w.cID, w.price, w.age, w.artistCode, w.picCode, w.addDate, a.name as artist_name FROM work as w left join artist as a on a.artistCode=w.artistCode where w.id in ($ids)";
 		$res = $db->getRecordSet($sql);
 		return $res;
 		

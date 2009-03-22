@@ -31,13 +31,26 @@ elseif($sAction == "doLogin")
 				$_SESSION["xzx_uID"]		= $aInfo["id"];
 				$_SESSION["xzx_userName"]= $aInfo["userName"];
 				$_SESSION["xzx_trueName"]= $aInfo["trueName"];
-	
-				//更新最后登陆信息
-				$aField["lastIP"] = getIP();
-				$aField["lastTime"] = date("Y-m-d H:i:s"); 
-				$db->update("manager", $aField, " id=".$aInfo["id"]);
-				//跳转到main页面，开始执行功能
-				redirect("main.php", 1, "登录成功！",true);
+				
+				$check_time = time() - strtotime($aInfo["lastTime"]);
+				if ($aInfo["loginStatus"] == '1' )
+				{
+					redirect("login.php", 2, "该帐户已经登陆",true);
+				}
+				else 
+				{
+					//更新最后登陆信息
+					$test["loginDate"] = date("Y-m-d H:i:s");
+					$test["userID"] = $aInfo["id"];
+					$test["loginIP"] = getIP();
+					$db->insert("loginlog", $test);
+					$aField["lastIP"] = getIP();
+					$aField["lastTime"] = date("Y-m-d H:i:s");
+					$aField["loginStatus"] = '1'; 
+					$db->update("manager", $aField, " id=".$aInfo["id"]);
+					//跳转到main页面，开始执行功能
+					redirect("main.php", 1, "登录成功！",true);
+				}
 			} 
 			else
 			{
@@ -58,8 +71,13 @@ elseif($sAction == "doLogin")
 } 
 elseif ($sAction == "logout")
 {
-	$aField["logoutTime"] = date("Y-m-d H:i:s");
-	$db->update("log_login",$aField,"id=".$_GET["logID"]);
+	$aField["logoutDate"] = date("Y-m-d H:i:s");
+	$aField["userID"] = $_GET["id"];
+	$aField["loginIP"] = getIP();
+	$db->insert("loginlog", $aField);
+	//$db->update("log_login",$aField,"id=".$_GET["logID"]);
+	$test["loginStatus"] = '0'; 
+	$db->update("manager",$test,"id=".$_GET["id"]);
 	session_destroy();
 	//对数据库进行操作，记录退出时间
 	redirect("login.php", 1, "成功退出系统",true);

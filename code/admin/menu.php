@@ -14,7 +14,7 @@ $sAction = (isset($_GET["act"])) ? $_GET["act"] : "show";
 // 当前位置
 $tpl->assign("PAGE_FUNC_BIG_NAME", "界面管理");
 $tpl->assign("PAGE_FUNC_BIG_LINK", "menu.php?act=listAll");
-
+$tpl->assign("id",$_SESSION["xzx_uID"]);
 $sTbl = "menu";
 
 if($sAction == "show") // 菜单显示

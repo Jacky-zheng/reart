@@ -14,12 +14,14 @@ $page_link->length = $pagesize;
 $price = isset($_POST['price']) ? trim($_POST['price']) : "";
 $artist = isset($_POST['artist']) ? trim($_POST['artist']) : "";
 $age = isset($_POST['age']) ? trim($_POST['age']) : "";
+$cate = isset($_POST['cate']) ? trim($_POST['cate']) : "";
 
 $params = array(
 	'start' => ($page-1)*$pagesize,
 	'pagesize' => $pagesize,
 	'price'=>$price,
 	'artist'=>$artist,
+	'cate'=>$cate,
 	'age'=>$age,
 );
 $tpl->assign('sarch_arr', $params);

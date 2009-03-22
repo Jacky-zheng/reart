@@ -52,9 +52,13 @@ elseif($sAction=="addSave") // 添加保存
 	$aField['comment'] = $_POST['comment'];
 	$aField['description'] = $_POST['content'];
 	$aField['addDate'] = date("Y-m-d H:i:s");
-	
 	if($db->insert($sTbl,$aField))
 	{
+		/*作品首页推荐，则更新首页flash的xml文件*/
+		if ($aField['status'] == '1')
+		{
+			refreshIndex();
+		}
 		redirect("work.php?act=add&cID=".$_POST['cID'],2,"添加成功！");
 	}
 	else 
@@ -101,6 +105,8 @@ elseif ($sAction == "editSave" && isset($_POST['id'])) // 修改保存
 
 	if($db->update($sTbl,$aField,"id=$id"))
 	{
+		/*作品首页推荐，则更新首页flash的xml文件*/
+		refreshIndex();
 		redirect("work.php?act=listAll&cID=".$_POST['cID'],3,"修改成功！");	
 	}
 	else 
@@ -208,5 +214,38 @@ function getArtist($artistID)
 	$sql = " select name from artist where id = '$artistID' ";
 	$artist = $db->getRecordSet($sql,1);
 	return $artist['name'];
+}
+/**
+ * 重新生成首页推荐图片的xml文件
+ *
+ * @return unknown
+ */
+function refreshIndex()
+{
+	global $db;
+	$sql = " select id, picCode from work where status = '1' ";
+	$works = $db->getRecordSet($sql);
+	
+	$doc=new DOMDocument("1.0","UTF-8");
+	$doc->formatOutput=true;
+
+	$root=$doc->createElement("loadBitmap");
+	$root=$doc->appendChild($root);
+   
+	foreach ($works as $k=>$v)
+	{
+		$info=$doc->createElement("property");  #创建节点对象实体 
+	   	$info=$root->appendChild($info);    #把节点添加到root节点的子节点
+	
+		$name_value=$doc->createAttribute("image");  #创建节点属性对象实体  
+		$name_value=$info->appendChild($name_value);  #把属性添加到节点info中
+		$name_value->appendChild($doc->createTextNode("/img/260/".$v['picCode'].".jpg"));
+		
+		$name_value=$doc->createAttribute("link");  #创建节点属性对象实体  
+		$name_value=$info->appendChild($name_value);  #把属性添加到节点info中
+		$name_value->appendChild($doc->createTextNode("/detail.php?id=".$v['id']));
+	}  
+       
+	$doc->save("../fx_config.xml");	
 }
 ?>

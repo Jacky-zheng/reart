@@ -3,7 +3,7 @@ require_once("class/common.inc.php");
 loadLib("favorite");
 loadLib("work");
 
-$img_url_m = '/img/80/'; 
+$img_url_m = '/img/200/'; 
 if ($_GET['action'] == 'favorite')
 {
 	$ft = new favorite();

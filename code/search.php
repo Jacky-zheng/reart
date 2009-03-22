@@ -47,6 +47,7 @@ $totalpage = ceil( $all / $page_link->length );
 $page_res = $page_link->make_page( $all, $page, $url, 'page_no' );
 $tpl->assign("nowpage_num",$all);
 $tpl->assign("page_res",$page_res);
+$tpl->assign('title', '搜索结果');
 
 $tpl->display("reart/search.html");
 ?>

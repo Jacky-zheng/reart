@@ -6,35 +6,52 @@ loadLib("work");
 
 $page_link = new page_link();
 $page = $_GET['page'];
+$flag = $_GET['flag'];
 ( is_numeric( $page ) && $page > 0 ) || $page = 1;
 $page = intval( $page );
 $pagesize = PAGESIZE;
 $page_link->length = $pagesize;
-
-$params = array(
-	'start' => ($page-1)*$pagesize,
-	'pagesize' => $pagesize,
-);
-
 $work = new work();
-$res = $work->getWorkList($params);
+/*取浏览历史列表*/
+if ($flag == 'history')
+{
+	if (!empty($_COOKIE['reart']['history']))
+	{
+		$history = explode(',', $_COOKIE['reart']['history']);
+		$all = count($history);
+		$show = array_slice($history, ($page-1)*$pagesize, $pagesize);
+		$history_list = $work->getWorkbyIDs(implode(',', $show));
+		$tpl->assign('worklist', $history_list);
+		$url = "list.php?flag=history&";
+	}
+}
+else 
+{
+	$params = array(
+		'start' => ($page-1)*$pagesize,
+		'pagesize' => $pagesize,
+	);
+	
+	$res = $work->getWorkList($params);
+	$tpl->assign('worklist', $res['data']);
+	$all = $res['count'];
+	$url = "list.php?";
+}
+$totalpage = ceil( $all / $page_link->length );
+
 $check_login = checkUserState($_SESSION["reart_id"]);
 $tpl->assign("user_id",empty($_SESSION["reart_id"])?'0':$_SESSION["reart_id"]);
-
-$tpl->assign("check_login",$check_login);
-$tpl->assign('worklist', $res['data']);
-$tpl->assign('img_url_xl', IMG_URL_XL);
-$tpl->assign('img_url_l', IMG_URL_L);
-$tpl->assign('img_url_m', IMG_URL_M);
-$tpl->assign('img_url_s', IMG_URL_S);
-
-$all = $res['count'];
-$url = "list.php?";
-$totalpage = ceil( $all / $page_link->length );
 
 $page_res = $page_link->make_page( $all, $page, $url, 'page_no' );
 $tpl->assign("nowpage_num",$all);
 $tpl->assign("page_res",$page_res);
+
+$tpl->assign("check_login",$check_login);
+$tpl->assign('img_url_xl', IMG_URL_XL);
+$tpl->assign('img_url_l', IMG_URL_L);
+$tpl->assign('img_url_m', IMG_URL_M);
+$tpl->assign('img_url_s', IMG_URL_S);
+$tpl->assign('title', '作品列表');
 
 $tpl->display("reart/list.html");
 ?>

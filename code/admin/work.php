@@ -48,6 +48,9 @@ elseif($sAction=="addSave") // 添加保存
 	$aField['age'] = $_POST['age'];
 	$aField['picCode'] = $_POST['picCode'];
 	$aField['artistCode'] = $_POST['artistCode'];
+	$aField['size'] = $_POST['size'];
+	$aField['signal'] = $_POST['signal'];
+	$aField['literature'] = $_POST['literature'];
 	$aField['exhibition'] = $_POST['exhibition'];
 	$aField['exhibitionEName'] = $_POST['exhibitionEName'];
 	$aField['status'] = $_POST['status'];
@@ -100,6 +103,9 @@ elseif ($sAction == "editSave" && isset($_POST['id'])) // 修改保存
 	$aField['age'] = $_POST['age'];
 	$aField['picCode'] = $_POST['picCode'];	
 	$aField['artistCode'] = $_POST['artistCode'];
+	$aField['size'] = $_POST['size'];
+	$aField['signal'] = $_POST['signal'];
+	$aField['literature'] = $_POST['literature'];
 	$aField['exhibition'] = $_POST['exhibition'];
 	$aField['exhibitionEName'] = $_POST['exhibitionEName'];
 	$aField['status'] = $_POST['status'];

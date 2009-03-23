@@ -33,7 +33,7 @@ $tpl->assign('img_url_m', IMG_URL_M);
 $tpl->assign('img_url_s', IMG_URL_S);
 
 $all = $res['count'];
-$url = "list.php?";
+$url = "favorite.php?";
 $totalpage = ceil( $all / $page_link->length );
 
 $page_res = $page_link->make_page( $all, $page, $url, 'page_no' );

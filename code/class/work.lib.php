@@ -103,7 +103,7 @@ class work
 		return $res;
 		
 	}
-	/*获得五条推荐作品，status=3*/
+	/*获得五条推荐作品，status=2*/
 	function getReWork()
 	{
 		global $db;

@@ -52,6 +52,12 @@ $tpl->assign('img_url_l', IMG_URL_L);
 $tpl->assign('img_url_m', IMG_URL_M);
 $tpl->assign('img_url_s', IMG_URL_S);
 $tpl->assign('title', '作品列表');
-
-$tpl->display("reart/list.html");
+if ($flag == 'history')
+{
+	$tpl->display("reart/history.html");
+}
+else
+{
+	$tpl->display("reart/list.html");
+}
 ?>

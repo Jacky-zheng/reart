@@ -17,6 +17,10 @@ function addFavoriteResponse(result)
 	{
 		alert("添加收藏失败，请联系客服");	
 	}
+	else if (result == "exist")
+	{
+		alert("收藏已经存在");	
+	}
 	else
 	{
 		alert("添加收藏成功");	
@@ -30,6 +34,10 @@ function delete_favorite(workid, userid)
 }
 function delFavoriteResponse(result)
 {
+	/*
 	document.getElementById('worklist').innerHTML = result;
+	*/
 	alert("删除成功");
+	/*页面跳转*/
+	window.location = "/user/favorite.php";
 }

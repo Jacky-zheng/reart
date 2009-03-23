@@ -20,14 +20,22 @@ class favorite
 	function addFavorite($workid, $userid)
 	{
 		global $db;
-		
-		$arr = array(
-			'workID' =>  $workid,	
-			'addDate' =>  date("Y-m-d H:i:s"),	
-			'userID' =>  $userid,		
-		);
-		$id = $db->insert("workfavorite", $arr);
-		return $id;
+		$sql = "select count(*) as cnt from workfavorite where workID='$workid' and userID='$userid'";
+		$res = $db->getRecordSet($sql);
+		if ($res[0]['cnt'] > 0)
+		{
+			return "exist";
+		}
+		else
+		{
+			$arr = array(
+				'workID' =>  $workid,	
+				'addDate' =>  date("Y-m-d H:i:s"),	
+				'userID' =>  $userid,		
+			);
+			$id = $db->insert("workfavorite", $arr);
+			return $id;
+		}
 	}
 
 	function delFavorite($workid, $userid)

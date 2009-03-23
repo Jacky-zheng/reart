@@ -33,7 +33,8 @@ elseif($sAction == "doLogin")
 				$_SESSION["xzx_trueName"]= $aInfo["trueName"];
 				
 				$check_time = time() - strtotime($aInfo["lastTime"]);
-				if ($aInfo["loginStatus"] == '1' )
+				$time = 20 * 60;
+				if ($aInfo["loginStatus"] == '1' && $check_time < $time )
 				{
 					redirect("login.php", 2, "该帐户已经登陆",true);
 				}

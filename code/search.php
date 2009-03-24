@@ -34,6 +34,7 @@ $tpl->assign("user_id",empty($_SESSION["reart_id"])?'0':$_SESSION["reart_id"]);
 
 $tpl->assign('worklist', $res['data']);
 $tpl->assign("cate",$work->getCatelog());
+$tpl->assign("price",$work->getPrice());
 
 $tpl->assign('img_url_xl', IMG_URL_XL);
 $tpl->assign('img_url_l', IMG_URL_L);

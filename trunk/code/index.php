@@ -8,6 +8,7 @@ $work = new work();
 $check_login = checkUserState($_SESSION["reart_id"]);
 $tpl->assign("check_login",$check_login);
 $tpl->assign("cate",$work->getCatelog());
+$tpl->assign("price",$work->getPrice());
 	$tpl->display("reart/index.html");
 
 ?>

@@ -405,7 +405,7 @@ function initLightbox()
 	// create keyboard message
 	var objKeyboardMsg = document.createElement("div");
 	objKeyboardMsg.setAttribute('id','keyboardMsg');
-	objKeyboardMsg.innerHTML = ' <a href="#" onclick="hideLightbox(); return false;"><kbd><img src="/images/close.gif"></kbd></a>';
+	objKeyboardMsg.innerHTML = ' <a href="#" onclick="hideLightbox(); return false;"><kbd><img src="/images/close.jpg"></kbd></a>';
 	objLightboxDetails.appendChild(objKeyboardMsg);
 
 

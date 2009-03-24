@@ -24,7 +24,7 @@ function checkEmail( $aField )
 	else return false;
 }
 /**
- * 检测登陆
+ * 检测登录
  * @param $arr array
  * @return true or false
  *
@@ -40,7 +40,7 @@ function checkUserLogin($arr)
 		$aInfo = $db->getRecordSet($sSQL, 1);
 		//密码正确
 		$_SESSION["reart_id"]	 = $aInfo["id"];
-		//更新最后登陆信息
+		//更新最后登录信息
 		$arr = array(
 			'userID' =>  $aInfo["id"],	
 			'loginDate' =>  date("Y-m-d H:i:s"),	
@@ -90,7 +90,7 @@ function checkUserState($id)
 	}
 	else 
 	{
-		$check_login = '<a href="/user/login.php">会员登陆／注册</a>';
+		$check_login = '<a href="/user/login.php">会员登录／注册</a>';
 	}
 	return $check_login;
 }
@@ -103,7 +103,7 @@ function checkMessage($id)
 	}
 	else 
 	{
-		$check_login = '<form action="/user/contact_us.php" method="POST" name="login"><td width="71">匿名<input class="box" checked type="checkbox" name="no_reg" /></td><td width="524">用户名:&nbsp;&nbsp;<input class="width-03" type="text" name="login_name"/>&nbsp;&nbsp;密码:&nbsp;&nbsp;<input class="width-03" type="password" name="login_pwd" />&nbsp;&nbsp;<button type="submit">登陆</button></td></form>';
+		$check_login = '<form action="/user/contact_us.php" method="POST" name="login"><td width="71">匿名<input class="box" checked type="checkbox" name="no_reg" /></td><td width="524">用户名:&nbsp;&nbsp;<input class="width-03" type="text" name="login_name"/>&nbsp;&nbsp;密码:&nbsp;&nbsp;<input class="width-03" type="password" name="login_pwd" />&nbsp;&nbsp;<button type="submit">登录</button></td></form>';
 	}
 	return $check_login;
 }

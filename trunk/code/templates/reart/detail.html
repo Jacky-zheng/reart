@@ -5,15 +5,16 @@
 {/literal}
 	<div class="left-wrap">
 		<div class="text-description-01">
-			<p>{$workdetail.artist_name}&nbsp;&nbsp;&nbsp;&nbsp;{$workdetail.name}</p>
+			<p>{$workdetail.artist_name}</p>
+			<p>{$workdetail.name}</p>
 			<!--p>Sui Jianguo, Tilted Utopia</p--> 
 			<!--p>{$workdetail.comment}</p-->
 			{if $workdetail.age}<p>{$workdetail.age}</p>{/if}
+			{if $workdetail.cate_name}<p>{$workdetail.cate_name}</p>{/if}
 			{if $workdetail.size}<p>{$workdetail.size}</p>{/if}
-			{if $workdetail.signal}<p>{$workdetail.signal}</p>{/if}
-			{if $workdetail.literature}<p>{$workdetail.literature}</p>{/if}
+			{if $workdetail.signal}<p>签名<br />{$workdetail.signal}</p>{/if}
+			{if $workdetail.literature}<p>出版：<br />{$workdetail.literature}</p>{/if}
 			{if $workdetail.exhibition}<p>展览：</p>	<p>{$workdetail.exhibition}</p>{/if}
-			{if $workdetail.exhibitionEName}<p>EXHIBITED</p><p>{$workdetail.exhibitionEName}</p>{/if}
 		</div>
 		<div class="photo-view-01">
 			<h2>您浏览过的作品</h2>

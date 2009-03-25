@@ -9,6 +9,7 @@ $check_login = checkUserState($_SESSION["reart_id"]);
 $tpl->assign("check_login",$check_login);
 $tpl->assign("cate",$work->getCatelog());
 $tpl->assign("price",$work->getPrice());
-	$tpl->display("reart/index.html");
+$tpl->assign("title","首页");
+$tpl->display("reart/index.html");
 
 ?>

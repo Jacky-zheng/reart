@@ -17,12 +17,12 @@ function formSubmit()
 				{/foreach}
 				</select>
                 </dd>
-				<dd>价格<select name="price">
+				<!--dd>价格<select name="price">
                 	<option value='0'>全部</option>
 				{foreach from=$price item=prc}
 					<option value='{$prc.id}' {if $prc.id eq $sarch_arr.price} selected {/if}>{$prc.price_name}</option>
 				{/foreach}
-				</select></dd>
+				</select></dd-->
 				<dd>作者<input type="text" name="artist" value="{$sarch_arr.artist}" /></dd>
 				<dd>年代<input type="text" name="age" value="{$sarch_arr.age}" /></dd>
 				<dt class="l" onClick="formSubmit();"><button>搜索</button></dt>

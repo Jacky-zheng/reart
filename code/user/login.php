@@ -36,7 +36,7 @@ if(!empty($arr["userName"]) && $sCheckCode == $_SESSION["xzx_checkCode"])
 
 
 
-
+$tpl->assign("title","会员登录/注册");
 
 $tpl->display("reart/login.html");
 ?>

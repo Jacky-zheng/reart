@@ -39,6 +39,6 @@ $totalpage = ceil( $all / $page_link->length );
 $page_res = $page_link->make_page( $all, $page, $url, 'page_no' );
 $tpl->assign("nowpage_num",$all);
 $tpl->assign("page_res",$page_res);
-
+$tpl->assign("title","作品收藏");
 $tpl->display("reart/favorite.html");
 ?>

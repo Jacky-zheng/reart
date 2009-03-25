@@ -34,5 +34,6 @@ $check_login = checkUserState($_SESSION["reart_id"]);
 $tpl->assign("check_login",$check_login);
 
 $tpl->assign("data",$data);
+$tpl->assign("title","修改个人信息");
 $tpl->display("reart/mod_user_info.html");
 ?>

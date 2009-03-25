@@ -8,6 +8,6 @@ $tpl->assign("check_login",$check_login);
 $about_msg = getConsultation();
 
 $tpl->assign("about_msg",$about_msg);
-
+$tpl->assign("title","投资收藏咨询");
 $tpl->display("reart/consultation.html");
 ?>

@@ -7,6 +7,6 @@ $tpl->assign("check_login",$check_login);
 
 //$about_msg = getAboutUs();
 //$tpl->assign("about_msg",$about_msg);
-
+$tpl->assign("title","作品购买");
 $tpl->display("reart/buy.html");
 ?>

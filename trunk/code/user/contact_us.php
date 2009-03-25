@@ -58,6 +58,6 @@ else
 		}
 	}
 }
-
+$tpl->assign("title","联系我们");
 $tpl->display("reart/contact_us.html");
 ?>

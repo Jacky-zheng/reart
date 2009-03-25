@@ -11,5 +11,6 @@ $check_login = checkUserState($_SESSION["reart_id"]);
 $tpl->assign("check_login",$check_login);
 
 $tpl->assign("data",$data);
+$tpl->assign("title","睿艺用户中心");
 $tpl->display("reart/login_index.html");
 ?>

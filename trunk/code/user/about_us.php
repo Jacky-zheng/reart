@@ -8,6 +8,6 @@ $tpl->assign("check_login",$check_login);
 $about_msg = getAboutUs();
 
 $tpl->assign("about_msg",$about_msg);
-
+$tpl->assign("title","关于睿艺");
 $tpl->display("reart/about_us.html");
 ?>

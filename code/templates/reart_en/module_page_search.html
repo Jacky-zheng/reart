@@ -1,0 +1,17 @@
+{foreach from=$page_res item=val name=page_res}
+    {if $val.url}
+        <a href="{$val.url}page={$val.no}"  onclick="return gotopage(this);">{$val.name}</a>
+    {else}
+        <span>{$val.name}</span>
+    {/if}
+{/foreach}
+{literal}
+<script type="text/javascript">
+function gotopage(a)
+{
+	document.forms[0].action=a.href;
+	 document.forms[0].submit();
+	 return false;
+}
+</script>
+{/literal}

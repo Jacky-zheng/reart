@@ -1,5 +1,5 @@
 {include file=admin/header.tpl.htm}
-<form name="form1" method="post">
+<form name="form1" method="post"  onsubmit="return checkForm();">
 <!--<table width='100%' border='1' cellspacing='0' cellpadding='0' align='center' bordercolordark='#FFFFFF' bordercolorlight='#000000'  bgcolor='#efefef'> 
            <tr bgcolor="#FFFFFF"> 
             
@@ -14,15 +14,12 @@
 		<table class="tableborder" width="100%" cellpadding="0" cellspacing="0" align="center">	
 		<tr class="header">
 			<td>{$sActName}</td>	
-		</tr>		
-		
-        <tr bgcolor="#ffffff"><td>
-                   
+		</tr>				
+        <tr bgcolor="#ffffff"><td>                  
          {section name="list" loop=$aList}
-		<table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#666666" style="display:" id="s_{$smarty.section.list.index}" align="center">
-		
+		<table width="98%" border="0" cellpadding="3" cellspacing="1" bgcolor="#666666" style="display:" id="s_{$smarty.section.list.index}" align="center">	
 		                       <tr bgcolor="#FFFFFF">
-                              <td width="5%" rowspan="7" align="center"><input type='checkbox' name="id[]" value="{$aList[list].id}"></td> 
+                              <td width="5%" rowspan="7" align="center"><input type='checkbox' name="id[]" id="id[]" value="{$aList[list].id}"></td> 
 							  <td width="15%"><font color="red">姓名：</font></td>
 							  <td><font color="red">{$aList[list].userName}</font></td>
 							</tr>                                                               
@@ -42,7 +39,7 @@
                           <br>                         
           {/section}
            <center>
-<!--           		<input type='checkbox' onclick="CheckAll(this.form.elements['id[]'], this.checked)">全选/反选 -->
+          	<input type='checkbox' onclick="CheckAll(this.form.elements['id[]'], this.checked)">全选/反选 
            		<input type="button" name="del" value="删除" onclick="SubmitForm('del');">
            </center>
           </form>

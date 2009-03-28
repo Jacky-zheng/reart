@@ -17,6 +17,7 @@ if ("en" == $_GET["language"])
 			'content' =>  $_POST["content"],
 			'addDate' => date("Y-m-d H:i:s"),
 			'userID' => $id,
+			'type' => $_POST["type"],
 		);
 		if (empty($arr_msg["content"]))
 		{

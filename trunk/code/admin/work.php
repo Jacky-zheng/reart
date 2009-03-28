@@ -9,7 +9,9 @@ include "../js/editor/fckeditor.php";
 
 $sAction = (isset($_GET["act"])) ? $_GET["act"] : "listAll";
 loadLib("category");
-
+loadLib("price");
+$price = new price();
+$tpl->assign("price",$price->getPrice());
 $sTbl =  "work";
 $sClass = "category";
 $tpl->assign("PAGE_FUNC_BIG_LINK", "work.php");
@@ -110,7 +112,7 @@ elseif ($sAction == "editSave" && isset($_POST['id'])) // 修改保存
 	$aField['exhibitionEName'] = $_POST['exhibitionEName'];
 	$aField['status'] = $_POST['status'];
 	$aField['comment'] = $_POST['comment'];
-	$aField['description'] = $_POST['content'];
+	$aField['description'] = str_replace(array(" ","?"),array("&nbsp;","&nbsp;"),$_POST['content']);
 	$aField['addDate'] = date("Y-m-d H:i:s");
 
 	if($db->update($sTbl,$aField,"id=$id"))

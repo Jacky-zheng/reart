@@ -1,7 +1,5 @@
 <?php
 /**
- * ????????
- *  2006.12
  */
 if(!defined("IN_CN315")) {
 	echo "<script>location.href='http://www.cn315.cc';</script>";

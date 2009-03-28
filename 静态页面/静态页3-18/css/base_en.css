@@ -113,7 +113,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 .sign-form TABLE TD INPUT.width-02{border:1px solid #666464;background:#f7f8f8;width:52px;}
 .sign-form TABLE TD INPUT.width-03{border:1px solid #666464;background:#f7f8f8;width:100px;}
 .sign-form TABLE TD.btn{padding-left:100px;}
-.sign-form TABLE TD BUTTON{padding:5px;border:0;color:#424242;font-size:14px;font-weight:bold;background:url(../images/btn-02.gif) no-repeat 0 0;width:52px;height:26px;cursor:pointer;}
+.sign-form TABLE TD BUTTON{padding:5px;border:0;color:#424242;font-size:14px;font-weight:bold;background:url(../images/btn-02e.gif) no-repeat 0 0;width:65px;height:26px;cursor:pointer;}
 .sign-form TABLE TD .star{position:relative;top:-5px;margin-left:10px;font-size:12px; color:#9c9c9c;}
 /* =text-content
  * --------------------------------------------------------------*/

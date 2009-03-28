@@ -18,7 +18,12 @@
 		</tr>
 		<tr>
 			<td class="altbg1">作品价格：</td>
-			<td class="altbg2"><input name="price" type="text" id="price" value="" size="40">
+			<td class="altbg2"><select name="price" id="price">
+                	<option value='0'>全部</option>
+				{foreach from=$price item=prc}
+					<option value='{$prc.id}' {if $prc.id eq $sarch_arr.price} selected {/if}>{$prc.price_name}</option>
+				{/foreach}
+				</select>
 		    RMB</td>
 		</tr>
 		<tr>

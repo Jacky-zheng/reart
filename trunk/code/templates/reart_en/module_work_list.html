@@ -1,0 +1,29 @@
+{literal}
+<script type="text/javascript" src="/js/favorite.js"></script>
+<script type="text/javascript" src="/js/transport.js"></script>
+{/literal}
+<div class="photo">
+<ul class="wrapClear" id="worklist">
+{if $worklist}
+{foreach from=$worklist item=work }
+<li>
+	<span><a href="/detail.php?id={$work.id}"><img src="{$img_url_m}{$work.picCode}.jpg" alt="" /></a></span>
+	<p>作品名：{$work.name}</p>
+	<p>作者：{$work.artist_name}</p>
+	<p>日期：{$work.addDate}</p>
+	<!--p>价格：{$work.price}</p-->
+	{if $favo eq '1'}
+		<p><button onclick="delete_favorite({$work.id},{$user_id})">删除</button></p>
+	{else}
+		<p><button onclick="favorite({$work.id},{$user_id})">收藏</button></p>
+	{/if}
+</li>
+{/foreach}
+{else}
+<li>暂时没有商品</li>
+{/if}
+</ul>
+		</div>			
+
+
+

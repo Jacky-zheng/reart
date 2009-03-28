@@ -1,0 +1,85 @@
+{include file="reart/header.html"}
+{literal}
+<script type="text/javascript" src="/js/lightbox.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/lightbox.css" />
+{/literal}
+	<div class="left-wrap">
+		<div class="text-description-01">
+			<p>{$workdetail.artist_name}</p>
+			<p>{$workdetail.name}</p>
+			<!--p>Sui Jianguo, Tilted Utopia</p--> 
+			<!--p>{$workdetail.comment}</p-->
+			{if $workdetail.age}<p>{$workdetail.age}</p>{/if}
+			{if $workdetail.cate_name}<p>{$workdetail.cate_name}</p>{/if}
+			{if $workdetail.size}<p>{$workdetail.size}</p>{/if}
+			{if $workdetail.signal}<p>签名<br />{$workdetail.signal}</p>{/if}
+			{if $workdetail.literature}<p>出版：<br />{$workdetail.literature}</p>{/if}
+			{if $workdetail.exhibition}<p>展览：</p>	<p>{$workdetail.exhibition}</p>{/if}
+		</div>
+		<div class="photo-view-01">
+			<h2>您浏览过的作品</h2>
+			<dl class="wrapClear">
+            {if $listlink eq 1}
+            	<dd>
+					<p class="images"><a href="list.php"><img src="{$img_url_s}{$history_list.picCode}.jpg" /></a></p>
+				</dd>
+            {else}
+            {foreach from=$history_list item=hl}
+				<dd>
+					<p class="images"><a href="detail.php?id={$hl.id}"><img src="{$img_url_s}{$hl.picCode}.jpg" /></a></p>
+					<p>{$hl.name}</p>
+					<p>{$hl.artist_name}</p>
+				</dd>
+             {/foreach}   
+             {/if}
+				<dt class="clr"></dt>
+				<dt><a href="list.php?flag=history">更多</a></dt>	
+			</dl>
+		</div>
+	</div>
+	<div class="middle-wrap">
+		<div class="flash">
+		  <table width="100%" height="260px">
+		    <tr>
+		      <td><a href="detail.php?id={if $workdetail.less_id eq ''} {$workdetail.id} {else} {$workdetail.less_id} {/if}"><img src="images/left_arrow.gif"  /></a></td>
+		      <td><img src="{$img_url_l}{$workdetail.picCode}.jpg" /></td>
+		      <td><a  href="detail.php?id={if $workdetail.more_id eq ''} {$workdetail.id} {else} {$workdetail.more_id} {/if}"><img src="images/right_arrow.gif"/></a></td>
+	        </tr>
+	      </table>
+          <table width="100%" height="30">
+          <tr>
+          <th align="left"><a href="/user/buy.php"><img src="images/buy.gif" /></a></th><th align="right"><a rel="lightbox" href="{$img_url_xl}{$workdetail.picCode}.jpg"><img src="images/zoom.gif" /></a></th>
+          </tr>
+          </table>
+  </div>
+		<div class="text-description-02">
+			{$workdetail.description}
+		</div>
+		<div class="text-descri3-box">
+			<div class="text-description-03">
+				{$workdetail.resume}
+			</div>	
+		</div>	
+	</div>
+	<div class="right-wrap">
+		<div class="photo-view-02">
+			<h2>推荐作品：</h2>
+			<dl class="wrapClear">
+				{foreach from=$recommen_list item=rw}
+				<dd>
+					<p class="images"><a href="detail.php?id={$rw.id}"><img src="{$img_url_s}{$rw.picCode}.jpg" /></a></p>
+					<p>{$rw.name}</p>
+					<p>{$rw.artist_name}</p>
+				</dd>	
+                {/foreach}
+			</dl>
+		</div>	
+	</div>
+	<div class="clr"></div>
+	{include file="reart/footer.html"}
+</div>
+</body>
+</html>
+
+
+

@@ -34,7 +34,7 @@ class Database
 		//echo $this->__DBHost."<br>".$this->__DBUser."<br>".$this->__DBPwd."<br>".$this->__DBName;		
 		$this->__moDB = mysql_connect($this->__DBHost, $this->__DBUser, $this->__DBPwd);		
 		mysql_select_db($this->__DBName, $this->__moDB);
-		$this->query("set names utf8");
+		//$this->query("set names utf8");
 		return true;
 	}
 	
@@ -47,6 +47,7 @@ class Database
 	 * @return resource
 	 */
 	function query($sSQL) {
+	    mysql_query("set names utf8");
 		$this->__queryNum++;
 		if($this->__debug)
 			$this->showDebug($sSQL);
@@ -81,6 +82,7 @@ class Database
 	 * @param array $aField
 	 */
 	function insert($sTableName, $aField) {
+		 mysql_query("set names utf8");
 		$sSQL = "INSERT INTO `{$sTableName}` ";
 		$sField = "(";
 		$sValue = "(";
@@ -107,6 +109,7 @@ class Database
 	 * @param string $sWhere
 	 */
 	function update($sTableName, $aField, $sWhere) {
+		 mysql_query("set names utf8");
 		$sSQL = "UPDATE {$sTableName} SET ";
 		$sField = "";
 		foreach ($aField as $rk => $rv) {
@@ -127,6 +130,7 @@ class Database
 	 * @param string $sWhere
 	 */
 	function delete($sTableName, $sWhere) {
+		 mysql_query("set names utf8");
 		$sSQL = "DELETE FROM `{$sTableName}` WHERE {$sWhere}";
 		$this->__queryNum++;
 		if($this->__debug)

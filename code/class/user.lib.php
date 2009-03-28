@@ -81,29 +81,59 @@ function checkRegister($aField)
 		redirect_error("注册失败！");
 	}
 }
-function checkUserState($id)
+function checkUserState($id,$type)
 {
-	if (!empty($id))
+	if ("ch" == $type)
 	{
-		$data = getUserInfo($id);
-		$check_login = '您好, <a href="/user/login_index.php">'.$data["userName"]."</a>, <a href='/user/login_out.php'>退出</a>";
+		if (!empty($id))
+		{
+			$data = getUserInfo($id);
+			$check_login = '您好, <a href="/user/login_index.php">'.$data["userName"]."</a>, <a href='/user/login_out.php'>退出</a>";
+		}
+		else 
+		{
+			$check_login = '<a href="/user/login.php">会员登录／注册</a>';
+		}
 	}
 	else 
 	{
-		$check_login = '<a href="/user/login.php">会员登录／注册</a>';
+		if (!empty($id))
+		{
+			$data = getUserInfo($id);
+			$check_login = 'Welcome, <a href="/user/login_index.php?language=en">'.$data["userName"]."</a>, <a href='/user/login_out.php?language=en'>Logout</a>";
+		}
+		else 
+		{
+			$check_login = '<a href="/user/login.php?language=en">Login/Register</a>';
+		}
 	}
 	return $check_login;
 }
-function checkMessage($id)
+function checkMessage($id,$type)
 {
-	if (!empty($id))
+	if ('en' == $type)
 	{
-		$data = getUserInfo($id);
-		$check_login = '<td width="71">您好,</td><td width="524">'.$data["userName"].'</td>';
+		if (!empty($id))
+		{
+			$data = getUserInfo($id);
+			$check_login = '<td width="71">Welcome,</td><td width="524">'.$data["userName"].'</td>';
+		}
+		else 
+		{
+			$check_login = '<form action="/user/contact_us.php?language=en" method="POST" name="login"><td width="90">Anonymous<input class="box" checked type="checkbox" name="no_reg" /></td><td width="515">Username:&nbsp;&nbsp;<input class="width-03" type="text" name="login_name"/>&nbsp;&nbsp;password:&nbsp;&nbsp;<input class="width-03" type="password" name="login_pwd" />&nbsp;&nbsp;<button type="submit">Login</button></td></form>';
+		}
 	}
 	else 
 	{
-		$check_login = '<form action="/user/contact_us.php" method="POST" name="login"><td width="71">匿名<input class="box" checked type="checkbox" name="no_reg" /></td><td width="524">用户名:&nbsp;&nbsp;<input class="width-03" type="text" name="login_name"/>&nbsp;&nbsp;密码:&nbsp;&nbsp;<input class="width-03" type="password" name="login_pwd" />&nbsp;&nbsp;<button type="submit">登录</button></td></form>';
+		if (!empty($id))
+		{
+			$data = getUserInfo($id);
+			$check_login = '<td width="71">您好,</td><td width="524">'.$data["userName"].'</td>';
+		}
+		else 
+		{
+			$check_login = '<form action="/user/contact_us.php" method="POST" name="login"><td width="71">匿名<input class="box" checked type="checkbox" name="no_reg" /></td><td width="524">用户名:&nbsp;&nbsp;<input class="width-03" type="text" name="login_name"/>&nbsp;&nbsp;密码:&nbsp;&nbsp;<input class="width-03" type="password" name="login_pwd" />&nbsp;&nbsp;<button type="submit">登录</button></td></form>';
+		}
 	}
 	return $check_login;
 }
@@ -118,7 +148,7 @@ function insertMsg($arr)
 function getAboutUs()
 {
 	global $db;
-	$sSQL = "SELECT content,title FROM content WHERE id=1  ";
+	$sSQL = "SELECT content,title,etitle,econtent FROM content WHERE id=1  ";
 	$aField = $db->getRecordSet($sSQL,1);
 	return $aField;
 }

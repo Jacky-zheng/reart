@@ -6,16 +6,23 @@
 			<td colspan="2">{$PAGE_FUNC_SMALL_NAME}</td>
 		</tr>
 		<tr>
-			<td width="100" class="altbg1">标题：</td>
+			<td width="100" class="altbg1">中文标题：</td>
 			<td class="altbg2"><input type="text" id="title" name="title" size="60" value="{$aField.title}"> <span class="starHit">*</span></td>
 		</tr>			
-		
+		<tr>
+			<td width="100" class="altbg1">英文标题：</td>
+			<td class="altbg2"><input type="text" id="etitle" name="etitle" size="60" value="{$aField.etitle}"> <span class="starHit">*</span></td>
+		</tr>
 		{foreach from=$aNum key=key item=item}
 		{/foreach}	
 			
 		<tr>
-			<td class="altbg1">新闻内容：</td>
+			<td class="altbg1">中文内容：</td>
 			<td class="altbg2">{$sContent}</td>
+		</tr>
+		<tr>
+			<td class="altbg1">英文内容：</td>
+			<td class="altbg2">{$eContent}</td>
 		</tr>
 		<tr>
 			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="返回" class="button"></td>

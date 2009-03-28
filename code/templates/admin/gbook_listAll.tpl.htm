@@ -1,6 +1,6 @@
 {include file=admin/header.tpl.htm}
 <form name="form1" method="post">
-<table width='100%' border='1' cellspacing='0' cellpadding='0' align='center' bordercolordark='#FFFFFF' bordercolorlight='#000000'  bgcolor='#efefef'> 
+<!--<table width='100%' border='1' cellspacing='0' cellpadding='0' align='center' bordercolordark='#FFFFFF' bordercolorlight='#000000'  bgcolor='#efefef'> 
            <tr bgcolor="#FFFFFF"> 
             
            	<td align="center">内容关键字：<input type="text" name="q" value="{$q}">
@@ -8,7 +8,7 @@
         		<input type="submit" value="提交">
            	</td> 
           </tr>         
-</table>
+</table>-->
 {include file=admin/pager_bar.tpl.htm} {* 分页 *}
 			
 		<table class="tableborder" width="100%" cellpadding="0" cellspacing="0" align="center">	
@@ -23,7 +23,7 @@
 		
 		                       <tr bgcolor="#FFFFFF">
                               <td width="5%" rowspan="7" align="center"><input type='checkbox' name="id[]" value="{$aList[list].id}"></td> 
-							  <td width="8%"><font color="red">姓名：</font></td>
+							  <td width="15%"><font color="red">姓名：</font></td>
 							  <td><font color="red">{$aList[list].userName}</font></td>
 							</tr>                                                               
                            
@@ -33,13 +33,17 @@
 									<font color="#CC0000">留言时间：{$aList[list].addDate}</font><br>
                                 	<font color="#666666">{$aList[list].content}</font>								</td>
                             </tr>                           
-						
+							<tr bgcolor="#FFFFFF">
+                            	<td><font color="#666666">留言类型：</font></td>
+								<td>
+									<font color="#CC0000">{if $aList[list].type == 1}英文留言{else}中文留言{/if}</font><br>						</td>
+                            </tr>    
                           </table>
                           <br>                         
           {/section}
            <center>
-           		<input type='checkbox' onclick="CheckAll(this.form.elements['id[]'], this.checked)">全选/反选 
-           		<input type="button" name="check" value="删除" onclick="SubmitForm('del');">
+<!--           		<input type='checkbox' onclick="CheckAll(this.form.elements['id[]'], this.checked)">全选/反选 -->
+           		<input type="button" name="del" value="删除" onclick="SubmitForm('del');">
            </center>
           </form>
 		  </td></tr>

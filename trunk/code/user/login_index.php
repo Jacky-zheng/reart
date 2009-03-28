@@ -7,10 +7,20 @@ $user_id = $_SESSION["reart_id"];
 
 $data = getUserInfo($user_id);
 
-$check_login = checkUserState($_SESSION["reart_id"]);
-$tpl->assign("check_login",$check_login);
-
 $tpl->assign("data",$data);
-$tpl->assign("title","睿艺用户中心");
-$tpl->display("reart/login_index.html");
+if ("en" == $_GET["language"])
+{	
+	$check_login = checkUserState($_SESSION["reart_id"],"en");
+	$tpl->assign("check_login",$check_login);
+	$tpl->assign("title","Member center");
+	$tpl->display("reart_en/login_index.html");
+}
+else 
+{
+	$check_login = checkUserState($_SESSION["reart_id"],"ch");
+	$tpl->assign("check_login",$check_login);
+		
+	$tpl->assign("title","睿艺用户中心");
+	$tpl->display("reart/login_index.html");
+}
 ?>

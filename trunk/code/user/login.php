@@ -9,34 +9,59 @@ $arr = array(
 	'password' =>  $_POST['login_pwd'],
 );
 
-$check_login = checkUserState($_SESSION["reart_id"]);
-$tpl->assign("check_login",$check_login);
-
 $reurl = $_GET['reurl'];
 $tpl->assign("reurl",$reurl);
-if(!empty($arr["userName"]) && $sCheckCode == $_SESSION["xzx_checkCode"])
+
+if ("en" == $_GET["language"])
 {
-	$check = checkUserLogin($arr);
-	if ($check)
+	$check_login = checkUserState($_SESSION["reart_id"],"en");
+	$tpl->assign("check_login",$check_login);
+	if(!empty($arr["userName"]) && $sCheckCode == $_SESSION["xzx_checkCode"])
 	{
-		if (!empty($_POST["reurl_return"]))
+		$check = checkUserLogin($arr);
+		if ($check)
 		{
-			gotoPage($_POST["reurl_return"]);
+			if (!empty($_POST["reurl_return"]))
+			{
+				gotoPage($_POST["reurl_return"]);
+			}
+			else 
+			{
+				gotoPage("/user/login_index.php?language=en");
+			}
 		}
 		else 
 		{
-			gotoPage("/user/login_index.php");
+			redirect_error("User is not exist,please register！");
 		}
 	}
-	else 
-	{
-		redirect_error("该用户不存在！");
-	}
+	$tpl->assign("title","Login/Register");
+	$tpl->display("reart_en/login.html");
 }
-
-
-
-$tpl->assign("title","会员登录/注册");
-
-$tpl->display("reart/login.html");
+else 
+{
+	$check_login = checkUserState($_SESSION["reart_id"],"ch");
+	$tpl->assign("check_login",$check_login);
+	if(!empty($arr["userName"]) && $sCheckCode == $_SESSION["xzx_checkCode"])
+	{
+		$check = checkUserLogin($arr);
+		if ($check)
+		{
+			if (!empty($_POST["reurl_return"]))
+			{
+				gotoPage($_POST["reurl_return"]);
+			}
+			else 
+			{
+				gotoPage("/user/login_index.php");
+			}
+		}
+		else 
+		{
+			redirect_error("该用户不存在！");
+		}
+	}
+	$tpl->assign("title","会员登录/注册");
+	$tpl->display("reart/login.html");
+}
 ?>

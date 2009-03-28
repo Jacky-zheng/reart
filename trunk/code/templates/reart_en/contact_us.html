@@ -1,4 +1,4 @@
-{include file="reart/header.html"}
+{include file="reart_en/header.html"}
 {literal}
 <script type="text/javascript" >
 function refreshValidateCode(id)
@@ -10,17 +10,18 @@ function refreshValidateCode(id)
 	<div class="sign-form">
 	  <table width="939">
 	    <tr>
-	      <td class="link" width="328" rowspan="4" align="center"><a class="btn-01" href="#">联系我们</a></td>
+	      <td class="link" width="328" rowspan="4" align="center"><a class="btn-01" href="#">Contact Us</a></td>
 	      {$msg}
         </tr>
-        <form action="/user/contact_us.php?action=submit" method="POST">
+        <form action="/user/contact_us.php?action=submit&language=en" method="POST">
+        <input name="type" type="hidden" value="1">
 	    <tr>
-	      <td >建议/意见:</td>
-	      <td><textarea cols="46" rows="8" name="content"></textarea></td>
+	      <td >Recommendations/advice:</td>
+	      <td><textarea cols="48" rows="8" name="content"></textarea></td>
         </tr>
 	    <tr>
-	      <td>验证码:</td>
-	      <td><input class="width-02" type="text" name="validateCode2" /> <img style="" id="previewPic" src="/js/validateCode.php" onclick="refreshValidateCode('previewPic');" alt="刷新验证码">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit">提交</button></td>
+	      <td>Verification Code:</td>
+	      <td><input class="width-02" type="text" name="validateCode2" /> <img style="" id="previewPic" src="/js/validateCode.php" onclick="refreshValidateCode('previewPic');" alt="Refresh Code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit">submit</button></td>
         </tr>
         </form>
 	    <tr>
@@ -32,7 +33,7 @@ function refreshValidateCode(id)
         </tr>
       </table>
 </div>
-	{include file="reart/footer.html"}
+	{include file="reart_en/footer.html"}
 </div>
 </body>
 </html>

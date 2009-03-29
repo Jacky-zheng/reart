@@ -10,7 +10,7 @@
 	<span><a href="/detail.php?language=en&id={$work.id}"><img src="{$img_url_m}{$work.picCode}.jpg" alt="" /></a></span>
 	<p>Name：{$work.ename}</p>
 	<p>Author：{$work.artist_ename}</p>
-	<p>Date：{$work.addDate}</p>
+	<!--<p>Date：{$work.addDate}</p>-->
 	<!--p>价格：{$work.price}</p-->
 	{if $favo eq '1'}
 		<p><button onclick="delete_favorite({$work.id},{$user_id})">Delete</button></p>

@@ -38,19 +38,23 @@ class work
 		global $db;
 		if (!empty($params['price']))
 		{
-			$sql_tail = " and p.id=".$params['price'];
+			$sql_tail .= " and p.id=".$params['price'];
 		}
 		if (!empty($params['artist']))
 		{
-			$sql_tail = " and a.name like '".$params['artist']."'";
+			$sql_tail .= " and a.name like '%".$params['artist']."%'";
+		}
+		if (!empty($params['eartist']))
+		{
+			$sql_tail .= " and a.ename like '%".$params['eartist']."%'";
 		}
 		if (!empty($params['age']))
 		{
-			$sql_tail = " and w.age=".$params['age'];
+			$sql_tail .= " and w.age=".$params['age'];
 		}
 		if (!empty($params['cate']))
 		{
-			$sql_tail = " and w.cID=".$params['cate'];
+			$sql_tail .= " and w.cID=".$params['cate'];
 		}
 		
 		$sql = "SELECT w.id, w.name, w.ename, w.cID, w.age, p.price_name as price, p.price_ename as eprice, w.artistCode, w.picCode, w.addDate, a.name as artist_name, a.ename as artist_ename FROM work as w, artist as a, price as p where a.artistCode=w.artistCode and w.price=p.id ";

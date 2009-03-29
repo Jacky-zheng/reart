@@ -146,5 +146,14 @@ class work
 		$res = $db->getRecordSet($sSQL);
 		return $res;
 	}
+	
+	function updateRank($id, $rank)
+	{
+		global $db;
+		
+		$sSQL = "update work set rank=$rank where id=$id limit 1";
+		$res = $db->query($sSQL);
+		return $res;
+	}
 }
 ?>

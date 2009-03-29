@@ -1,5 +1,6 @@
 {include file=admin/header.tpl.htm}
-
+<script type="text/javascript" src="/js/favorite.js"></script>
+<script type="text/javascript" src="/js/transport.js"></script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
 <form name="form1" id="form1" method="post">
   <tr>
@@ -26,7 +27,7 @@
     <td width="17%">作品类别</td>
     <td width="14%">价格</td>
     <td width="14%">年代</td>
-    <td width="12%">作家</td>
+    <td width="12%">排序</td>
     <td width="17%">添加时间</td>
     <td width="5%">操作</td>
   </tr>
@@ -37,7 +38,7 @@
     <td>{$aList[list].catName}</td>
     <td>{$aList[list].price}</td>
     <td>{$aList[list].age}</td>
-    <td>{$aList[list].artist}</td>
+    <td><input name="works" id="{$aList[list].id}" value="{$aList[list].rank}" size="10" /></td>
     <td>{$aList[list].addDate}</td>
     <td><a href="?act=edit&id={$aList[list].id}">编辑</a> </td>
   </tr>
@@ -53,7 +54,8 @@
       <input type="button" name="recycle"  value="删 除" onclick="SubmitForm('recycle');" />
       {else}
       <input type="button" name="recycle"  value="删 除" onclick="SubmitForm('recycle');" />
-      {/if}</td>
+      {/if}
+      <input type="button" name="urank"  value="更新排序" onclick="return update_rank();" /></td>
   </tr>
    </form>
 </table>

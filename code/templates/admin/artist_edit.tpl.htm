@@ -16,12 +16,21 @@
 		   <span class="starHit">*</span></td>
 		</tr>
 		<tr>
+			<td width="100" class="altbg1">姓名(英文)：</td>
+			<td class="altbg2"><input type="text" id="ename" name="ename" size="40" value="{$aField.ename}">
+		   <span class="starHit">*</span></td>
+		</tr>
+		<tr>
 			<td class="altbg1">性别：</td>
 			<td class="altbg2">{html_radios name="sex" options="$aSex" checked=$aField.sex}<span class="starHit">*</span></td>
 		</tr>
 		<tr>
 			<td class="altbg1">职业：</td>
 			<td class="altbg2"><input type="text" id="profession" name="profession" size="40" value="{$aField.profession}"></td>
+		</tr>
+		<tr>
+			<td class="altbg1">职业(英文)：</td>
+			<td class="altbg2"><input type="text" id="eprofession" name="eprofession" size="40" value="{$aField.eprofession}"></td>
 		</tr>
 		<tr>
 			<td class="altbg1">作家编号：</td>
@@ -37,6 +46,10 @@
 		<tr>
 			<td class="altbg1">作家简介：</td>
 			<td class="altbg2">{$sContent}</td>
+		</tr>
+		<tr>
+			<td class="altbg1">作家简介(英文)：</td>
+			<td class="altbg2">{$eContent}</td>
 		</tr>
 		<tr>
 			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="返回" class="button"></td>

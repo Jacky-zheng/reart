@@ -17,6 +17,10 @@
 			<td class="altbg2"><input type="text" id="name" name="name" size="40" value="{$aField.name}"> <span class="starHit">*</span></td>
 		</tr>
 		<tr>
+			<td class="altbg1">作品名称(英文)：</td>
+			<td class="altbg2"><input type="text" id="ename" name="ename" size="40" value="{$aField.ename}"> <span class="starHit">*</span></td>
+		</tr>
+		<tr>
 			<td class="altbg1">作品价格：</td>
 			<td class="altbg2">
 			<select name="price" id="price">
@@ -42,21 +46,32 @@
 		<tr>
 			<td class="altbg1">尺寸：</td>
 			<td class="altbg2"><input type="text" id="size" name="size" size="40" value="{$aField.size}"></td>
-		</tr>  
+		</tr>      
+		<tr>
+			<td class="altbg1">尺寸(英文)：</td>
+			<td class="altbg2"><input type="text" id="esize" name="esize" size="40" value="{$aField.esize}"></td>
+		</tr>   
 		<tr>
 			<td class="altbg1">签名：</td>
 			<td class="altbg2"><input type="text" id="signal" name="signal" size="50" value="{$aField.signal}"></td>
+		</tr> 
+			<td class="altbg1">签名(英文)：</td>
+			<td class="altbg2"><input type="text" id="esignal" name="esignal" size="50" value="{$aField.esignal}"></td>
 		</tr>  
 		<tr>
 			<td class="altbg1">出版：</td>
 			<td class="altbg2"><input type="text" id="literature" name="literature" size="100" value="{$aField.literature}"></td>
-		</tr>         
+		</tr>  
+		<tr>
+			<td class="altbg1">出版(英文)：</td>
+			<td class="altbg2"><input type="text" id="eliterature" name="eliterature" size="100" value="{$aField.eliterature}"></td>
+		</tr>          
 		<tr>
 			<td class="altbg1">展览：</td>
 			<td class="altbg2"><input type="text" id="exhibition" name="exhibition" size="100" value="{$aField.exhibition}"></td>
 		</tr>         
 		<tr>
-			<td class="altbg1">Exhibition：</td>
+			<td class="altbg1">展览(英文)：</td>
 			<td class="altbg2"><input type="text" id="exhibitionEName" name="exhibitionEName" size="100" value="{$aField.exhibitionEName}"></td>
 		</tr> 
 		<tr>
@@ -67,10 +82,17 @@
 			<td class="altbg1">作品点评：</td>
 			<td class="altbg2"><textarea name="comment" cols="50" rows="5" id="comment">{$aField.comment}</textarea></td>
 		</tr>			
-		
+		<tr>
+			<td class="altbg1">作品点评(英文)：</td>
+			<td class="altbg2"><textarea name="ecomment" cols="50" rows="5" id="ecomment">{$aField.comment}</textarea></td>
+		</tr>
 		<tr>
 			<td class="altbg1">作品描述：</td>
 			<td class="altbg2">{$sContent}</td>
+		</tr>
+		<tr>
+			<td class="altbg1">作品描述(英文)：</td>
+			<td class="altbg2">{$eContent}</td>
 		</tr>
 		<tr>
 			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="返回" class="button"></td>

@@ -83,7 +83,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	margin-top: -5x;
 }
 .footer-option DL{position:relative;top:0;*top:-5px;_top:0;margin:0 auto;background:#FFF;width:623px;}
-.footer-option DL DT,.footer-option DL DD{float:left;margin:15px;}
+.footer-option DL DT,.footer-option DL DD{float:left;margin:12px;}
 .footer-option DL DT{font-size:13px;}
 .footer-option DL DT.f{padding-right:8px;border-right:1px solid #595757;}
 .footer-option DL DT.l{

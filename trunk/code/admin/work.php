@@ -30,6 +30,15 @@ if($sAction == "add") //添加
 	$sContent = $oFCKeditor->Create() ; 
 	$tpl->assign("sContent",$sContent);
 	
+	$eFCKeditor = new FCKeditor('FCKeditor1') ; 
+	$eFCKeditor->BasePath = "../js/editor/" ; 
+	$eFCKeditor->ToolbarSet = "Default" ; 
+	$eFCKeditor->InstanceName = "econtent" ; 
+	$eFCKeditor->Width = "90%" ; 
+	$eFCKeditor->Height = "400" ; 
+	$eContent = $eFCKeditor->Create() ; 
+	$tpl->assign("eContent",$eContent);
+	
 	// 栏目
 	$sOptions = category::getCatOptions($sClass,0);	 // -1表示无限级分类； 0表示一级分类； 1表示二级分类；以此类推
 	$tpl->assign("sOptions",$sOptions);
@@ -46,18 +55,24 @@ elseif($sAction=="addSave") // 添加保存
 	}
 	$aField['cID'] = $_POST['cID'];
 	$aField['name'] = $_POST['name'];
+	$aField['ename'] = $_POST['ename'];
 	$aField['price'] = $_POST['price'];
 	$aField['age'] = $_POST['age'];
 	$aField['picCode'] = $_POST['picCode'];
 	$aField['artistCode'] = $_POST['artistCode'];
 	$aField['size'] = $_POST['size'];
+	$aField['esize'] = $_POST['esize'];
 	$aField['signal'] = $_POST['signal'];
+	$aField['esignal'] = $_POST['esignal'];
 	$aField['literature'] = $_POST['literature'];
+	$aField['eliterature'] = $_POST['eliterature'];
 	$aField['exhibition'] = $_POST['exhibition'];
 	$aField['exhibitionEName'] = $_POST['exhibitionEName'];
 	$aField['status'] = $_POST['status'];
 	$aField['comment'] = $_POST['comment'];
+	$aField['ecomment'] = $_POST['ecomment'];
 	$aField['description'] = $_POST['content'];
+	$aField['edescription'] = $_POST['econtent'];
 	$aField['addDate'] = date("Y-m-d H:i:s");
 	if($db->insert($sTbl,$aField))
 	{
@@ -88,6 +103,16 @@ elseif($sAction == "edit" && isset($_GET['id'])) // 修改
 	$oFCKeditor->Value = $aField['description'];
 	$sContent = $oFCKeditor->Create() ; 
 	$tpl->assign("sContent",$sContent);	
+	
+	$eFCKeditor = new FCKeditor('FCKeditor1') ; 
+	$eFCKeditor->BasePath = "../js/editor/" ; 
+	$eFCKeditor->ToolbarSet = "Default" ; 
+	$eFCKeditor->InstanceName = "econtent" ; 
+	$eFCKeditor->Width = "90%" ; 
+	$eFCKeditor->Height = "400" ;  
+	$eFCKeditor->Value = $aField['edescription'];
+	$eContent = $eFCKeditor->Create() ; 
+	$tpl->assign("eContent",$eContent);
 
 	// 栏目
 	$sOptions = category::getCatOptions($sClass,0,$aField['cID']);	// -1表示无限级分类； 0表示一级分类； 1表示二级分类；以此类推
@@ -101,18 +126,24 @@ elseif ($sAction == "editSave" && isset($_POST['id'])) // 修改保存
 	$id = $_POST['id'];
 	$aField['cID'] = $_POST['cID'];
 	$aField['name'] = $_POST['name'];
+	$aField['ename'] = $_POST['ename'];
 	$aField['price'] = $_POST['price'];
 	$aField['age'] = $_POST['age'];
-	$aField['picCode'] = $_POST['picCode'];	
+	$aField['picCode'] = $_POST['picCode'];
 	$aField['artistCode'] = $_POST['artistCode'];
 	$aField['size'] = $_POST['size'];
+	$aField['esize'] = $_POST['esize'];
 	$aField['signal'] = $_POST['signal'];
+	$aField['esignal'] = $_POST['esignal'];
 	$aField['literature'] = $_POST['literature'];
+	$aField['eliterature'] = $_POST['eliterature'];
 	$aField['exhibition'] = $_POST['exhibition'];
 	$aField['exhibitionEName'] = $_POST['exhibitionEName'];
 	$aField['status'] = $_POST['status'];
 	$aField['comment'] = $_POST['comment'];
+	$aField['ecomment'] = $_POST['ecomment'];
 	$aField['description'] = str_replace(array(" ","?"),array("&nbsp;","&nbsp;"),$_POST['content']);
+	$aField['edescription'] = str_replace(array(" ","?"),array("&nbsp;","&nbsp;"),$_POST['econtent']);
 	$aField['addDate'] = date("Y-m-d H:i:s");
 
 	if($db->update($sTbl,$aField,"id=$id"))

@@ -23,7 +23,7 @@ if ($flag == 'history')
 		$show = array_slice($history, ($page-1)*$pagesize, $pagesize);
 		$history_list = $work->getWorkbyIDs(implode(',', $show));
 		$tpl->assign('worklist', $history_list);
-		$url = "list.php?flag=history&".($language=='en')?"language=en&":"";
+		$url = "list.php?flag=history&".(($language=='en')?"language=en&":"");
 	}
 }
 else 
@@ -36,7 +36,7 @@ else
 	$res = $work->getWorkList($params);
 	$tpl->assign('worklist', $res['data']);
 	$all = $res['count'];
-		$url = "list.php?".($language=='en')?"language=en&":"";
+	$url = "list.php?".(($language=='en')?"language=en&":"");
 }
 $totalpage = ceil( $all / $page_link->length );
 

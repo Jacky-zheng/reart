@@ -37,6 +37,18 @@ elseif ($_GET['action'] == 'delete')
 	}
 	echo $str;
 }
+elseif ('update_rank' == $_GET['action'])
+{
+	$arr = $_POST;
+	if (!empty($arr))
+	{
+		$work = new work();
+		foreach ($arr as $key=>$value)
+		{
+			$work->updateRank($key, $value);
+		}
+	}
+}
 else
 {
 	echo false;

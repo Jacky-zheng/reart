@@ -4,7 +4,8 @@ require_once("class/user.lib.php");
 loadLib("work");
 
 $id = $_GET['id'];
-( is_numeric( $id ) && $id > 0 ) || $id = 0;
+$language = $_GET['language'];
+( is_numeric( $id ) && $id > 0 ) || $id = 1;
 $id = intval( $id );
 
 $work = new work();
@@ -54,15 +55,18 @@ else
 	$tpl->assign('listlink', 1);
 }
 $tpl->assign('history_list', $history_list);
-$tpl->assign('title', '查看作品');
 
-if ($res)
+$tpl->assign('workdetail', $res);
+$file = (empty($res))?"detail_no.html":"detail.html";
+if ($language=='en')
 {
-	$tpl->assign('workdetail', $res);
-	$tpl->display("reart/detail.html");
+	$tpl->assign('title', 'work detail');	
+	$tpl->display("reart_en/".$file);
 }
 else 
 {
-	$tpl->display("reart/detail_no.html");
+	$tpl->assign('title', '查看作品');	
+	$tpl->display("reart_en/".$file);
 }
+
 ?>

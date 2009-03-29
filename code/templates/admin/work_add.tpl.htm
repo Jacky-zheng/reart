@@ -77,7 +77,11 @@
 		<tr>
 			<td class="altbg1">推荐作品：</td>
 			<td class="altbg2">{html_radios name="status" options="$aENUM" checked=0}<span class="starHit">*</span></td>
-		</tr>		
+		</tr>
+		<tr>
+			<td class="altbg1">排序：</td>
+			<td class="altbg2"><input type="text" id="rank" name="rank" size="10" value="1"></td>
+		</tr> 		
 		<tr>
 			<td class="altbg1">作品点评：</td>
 			<td class="altbg2"><textarea name="comment" cols="50" rows="5" id="comment"></textarea></td>
@@ -92,7 +96,8 @@
 		</tr>	
 		<tr>
 			<td class="altbg1">作品描述(英文)：</td>
-			<td class="altbg2">{$eContent}</td>
+			<!--td class="altbg2">{$eContent}</td-->			
+			<td class="altbg2"><textarea name="edescription" cols="150" rows="5" id="edescription"></textarea></td>
 		</tr>
 		<tr>
 			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="返回" class="button"></td>

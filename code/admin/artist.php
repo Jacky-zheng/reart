@@ -25,6 +25,15 @@ if($sAction == "add") //添加
 	$oFCKeditor->Height = "400" ; 
 	$sContent = $oFCKeditor->Create() ; 
 	$tpl->assign("sContent",$sContent);
+	
+	$eFCKeditor = new FCKeditor('FCKeditor1') ; 
+	$eFCKeditor->BasePath = "../js/editor/" ; 
+	$eFCKeditor->ToolbarSet = "Default" ; 
+	$eFCKeditor->InstanceName = "econtent" ; 
+	$eFCKeditor->Width = "90%" ; 
+	$eFCKeditor->Height = "400" ; 
+	$eContent = $eFCKeditor->Create() ; 
+	$tpl->assign("eContent",$eContent);
 
 	$tpl->assign("PAGE_FUNC_SMALL_NAME","添加作家");		
 	$tpl->display("admin/artist_add.tpl.htm");
@@ -37,11 +46,14 @@ elseif($sAction=="addSave") // 添加保存
 	}
 	
 	$aField['name'] = $_POST['name'];
+	$aField['ename'] = $_POST['ename'];
 	$aField['sex'] = $_POST['sex'];
 	$aField['artistCode'] = $_POST['artistCode'];
 	$aField['profession'] = $_POST['profession'];
+	$aField['eprofession'] = $_POST['eprofession'];
 	$aField['birthday'] = $_POST['birthday'];
 	$aField['description'] = $_POST['content'];
+	$aField['edescription'] = $_POST['econtent'];
 	$aField['addDate'] = date("Y-m-d H:i:s");
 
 	if($db->insert($sTbl,$aField))
@@ -68,6 +80,16 @@ elseif($sAction == "edit" && isset($_GET['id'])) // 修改
 	$oFCKeditor->Value = $aField['description'];
 	$sContent = $oFCKeditor->Create() ; 
 	$tpl->assign("sContent",$sContent);	
+	
+	$eFCKeditor = new FCKeditor('FCKeditor1') ; 
+	$eFCKeditor->BasePath = "../js/editor/" ; 
+	$eFCKeditor->ToolbarSet = "Default" ; 
+	$eFCKeditor->InstanceName = "econtent" ; 
+	$eFCKeditor->Width = "90%" ; 
+	$eFCKeditor->Height = "400" ;  
+	$eFCKeditor->Value = $aField['edescription'];
+	$eContent = $eFCKeditor->Create() ; 
+	$tpl->assign("eContent",$eContent);
 
 	$tpl->assign("aField",$aField);
 	$tpl->display("admin/artist_edit.tpl.htm");
@@ -81,11 +103,14 @@ elseif ($sAction == "editSave" && isset($_POST['id'])) // 修改保存
 		exit;
 	}
 	$aField['name'] = $_POST['name'];
+	$aField['ename'] = $_POST['ename'];
 	$aField['sex'] = $_POST['sex'];
 	$aField['profession'] = $_POST['profession'];
+	$aField['eprofession'] = $_POST['eprofession'];
 	$aField['birthday'] = $_POST['birthday'];
 	$aField['artistCode'] = $_POST['artistCode'];
 	$aField['description'] = $_POST['content'];
+	$aField['edescription'] = $_POST['econtent'];
 	$aField['addDate'] = date("Y-m-d H:i:s");	
 		
 	if($db->update($sTbl,$aField,"id=$id"))

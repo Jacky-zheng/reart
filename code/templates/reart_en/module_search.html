@@ -9,23 +9,23 @@ function formSubmit()
         <form name="work_search" id="work_search" method="post" action="search.php">
 		<div class="footer-option" style="margin-bottom:20px;">
 			<dl class="wrapClear">
-				<dt class="f">作品搜索</dt>
-				<dd>类别<select name="cate">
-                	<option value='0'>全部</option>
+				<dt class="f">Search</dt>
+				<dd>Category<select name="cate">
+                	<option value='0'>All</option>
 				{foreach from=$cate item=ct}
-					<option value='{$ct.id}' {if $ct.id eq $sarch_arr.cate} selected {/if}>{$ct.name}</option>
+					<option value='{$ct.id}' {if $ct.id eq $sarch_arr.cate} selected {/if}>{$ct.ename}</option>
 				{/foreach}
 				</select>
                 </dd>
-				<dd>价格<select name="price">
-                	<option value='0'>全部</option>
+				<dd>Price<select name="price">
+                	<option value='0'>All</option>
 				{foreach from=$price item=prc}
-					<option value='{$prc.id}' {if $prc.id eq $sarch_arr.price} selected {/if}>{$prc.price_name}</option>
+					<option value='{$prc.id}' {if $prc.id eq $sarch_arr.price} selected {/if}>{$prc.price_ename}</option>
 				{/foreach}
 				</select></dd>
-				<dd>作者<input type="text" name="artist" value="{$sarch_arr.artist}" /></dd>
-				<dd>年代<input type="text" name="age" value="{$sarch_arr.age}" /></dd>
-				<dt class="l" onClick="formSubmit();"><button>搜索</button></dt>
+				<dd>Author<input type="text" name="eartist" value="{$sarch_arr.eartist}" /></dd>
+				<dd>Period<input type="text" name="age" value="{$sarch_arr.age}" /></dd>
+				<dt class="l" onClick="formSubmit();"><button>Search</button></dt>
 			</dl>
 		</div>		
         </form>

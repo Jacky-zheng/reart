@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once("class/common.inc.php");
 require_once("class/user.lib.php");
 loadLib("work");
@@ -70,7 +70,7 @@ else
 	$check_login = checkUserState($_SESSION["reart_id"],"ch");
 	$tpl->assign("check_login",$check_login);
 	$tpl->assign('title', '查看作品');	
-	$tpl->display("reart_en/".$file);
+	$tpl->display("reart/".$file);
 }
 
 ?>

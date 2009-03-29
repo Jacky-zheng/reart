@@ -11,6 +11,7 @@ $tpl->assign("check_login",$check_login);
 
 $page_link = new page_link();
 $page = $_GET['page'];
+$language = $_GET['language'];
 ( is_numeric( $page ) && $page > 0 ) || $page = 1;
 $page = intval( $page );
 $pagesize = PAGESIZE;
@@ -33,12 +34,20 @@ $tpl->assign('img_url_m', IMG_URL_M);
 $tpl->assign('img_url_s', IMG_URL_S);
 
 $all = $res['count'];
-$url = "favorite.php?";
+$url = "favorite.php?".(($language=='en')?"language=en&":"");
 $totalpage = ceil( $all / $page_link->length );
 
 $page_res = $page_link->make_page( $all, $page, $url, 'page_no' );
 $tpl->assign("nowpage_num",$all);
 $tpl->assign("page_res",$page_res);
-$tpl->assign("title","作品收藏");
-$tpl->display("reart/favorite.html");
+if ($language=='en')
+{
+	$tpl->assign("title","Favorite");
+	$tpl->display("reart_en/favorite.html");
+}
+else 
+{	
+	$tpl->assign("title","作品收藏");
+	$tpl->display("reart/favorite.html");
+}
 ?>

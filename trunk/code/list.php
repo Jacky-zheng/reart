@@ -7,6 +7,7 @@ loadLib("work");
 $page_link = new page_link();
 $page = $_GET['page'];
 $flag = $_GET['flag'];
+$language = $_GET['language'];
 ( is_numeric( $page ) && $page > 0 ) || $page = 1;
 $page = intval( $page );
 $pagesize = PAGESIZE;
@@ -22,7 +23,7 @@ if ($flag == 'history')
 		$show = array_slice($history, ($page-1)*$pagesize, $pagesize);
 		$history_list = $work->getWorkbyIDs(implode(',', $show));
 		$tpl->assign('worklist', $history_list);
-		$url = "list.php?flag=history&";
+		$url = "list.php?flag=history&".($language=='en')?"language=en&":"";
 	}
 }
 else 
@@ -35,7 +36,7 @@ else
 	$res = $work->getWorkList($params);
 	$tpl->assign('worklist', $res['data']);
 	$all = $res['count'];
-	$url = "list.php?";
+		$url = "list.php?".($language=='en')?"language=en&":"";
 }
 $totalpage = ceil( $all / $page_link->length );
 
@@ -51,13 +52,16 @@ $tpl->assign('img_url_xl', IMG_URL_XL);
 $tpl->assign('img_url_l', IMG_URL_L);
 $tpl->assign('img_url_m', IMG_URL_M);
 $tpl->assign('img_url_s', IMG_URL_S);
-$tpl->assign('title', '作品列表');
-if ($flag == 'history')
+
+$file = ($flag == 'history')?"history.html":"list.html";
+if ($language=='en')
 {
-	$tpl->display("reart/history.html");
+	$tpl->assign('title', 'work list');	
+	$tpl->display("reart_en/".$file);
 }
-else
+else 
 {
-	$tpl->display("reart/list.html");
+	$tpl->assign('title', '作品列表');	
+	$tpl->display("reart_en/".$file);
 }
 ?>

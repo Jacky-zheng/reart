@@ -47,6 +47,11 @@ elseif ('update_rank' == $_GET['action'])
 		{
 			$work->updateRank($key, $value);
 		}
+		echo true;
+	}
+	else 
+	{
+		echo false;
 	}
 }
 else

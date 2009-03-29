@@ -40,14 +40,12 @@ else
 }
 $totalpage = ceil( $all / $page_link->length );
 
-$check_login = checkUserState($_SESSION["reart_id"]);
 $tpl->assign("user_id",empty($_SESSION["reart_id"])?'0':$_SESSION["reart_id"]);
 
 $page_res = $page_link->make_page( $all, $page, $url, 'page_no' );
 $tpl->assign("nowpage_num",$all);
 $tpl->assign("page_res",$page_res);
 
-$tpl->assign("check_login",$check_login);
 $tpl->assign('img_url_xl', IMG_URL_XL);
 $tpl->assign('img_url_l', IMG_URL_L);
 $tpl->assign('img_url_m', IMG_URL_M);
@@ -56,11 +54,15 @@ $tpl->assign('img_url_s', IMG_URL_S);
 $file = ($flag == 'history')?"history.html":"list.html";
 if ($language=='en')
 {
+	$check_login = checkUserState($_SESSION["reart_id"],"en");
+	$tpl->assign("check_login",$check_login);
 	$tpl->assign('title', 'work list');	
 	$tpl->display("reart_en/".$file);
 }
 else 
 {
+	$check_login = checkUserState($_SESSION["reart_id"],"ch");
+	$tpl->assign("check_login",$check_login);
 	$tpl->assign('title', '作品列表');	
 	$tpl->display("reart_en/".$file);
 }

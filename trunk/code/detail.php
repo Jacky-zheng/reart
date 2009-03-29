@@ -60,11 +60,15 @@ $tpl->assign('workdetail', $res);
 $file = (empty($res))?"detail_no.html":"detail.html";
 if ($language=='en')
 {
+	$check_login = checkUserState($_SESSION["reart_id"],"en");
+	$tpl->assign("check_login",$check_login);
 	$tpl->assign('title', 'work detail');	
 	$tpl->display("reart_en/".$file);
 }
 else 
 {
+	$check_login = checkUserState($_SESSION["reart_id"],"ch");
+	$tpl->assign("check_login",$check_login);
 	$tpl->assign('title', '查看作品');	
 	$tpl->display("reart_en/".$file);
 }

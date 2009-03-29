@@ -29,7 +29,7 @@ if($sAction == "add") //添加
 	$oFCKeditor->Height = "400" ; 
 	$sContent = $oFCKeditor->Create() ; 
 	$tpl->assign("sContent",$sContent);
-	
+	/*
 	$eFCKeditor = new FCKeditor('FCKeditor1') ; 
 	$eFCKeditor->BasePath = "../js/editor/" ; 
 	$eFCKeditor->ToolbarSet = "Default" ; 
@@ -38,7 +38,7 @@ if($sAction == "add") //添加
 	$eFCKeditor->Height = "400" ; 
 	$eContent = $eFCKeditor->Create() ; 
 	$tpl->assign("eContent",$eContent);
-	
+	*/
 	// 栏目
 	$sOptions = category::getCatOptions($sClass,0);	 // -1表示无限级分类； 0表示一级分类； 1表示二级分类；以此类推
 	$tpl->assign("sOptions",$sOptions);
@@ -69,17 +69,19 @@ elseif($sAction=="addSave") // 添加保存
 	$aField['exhibition'] = $_POST['exhibition'];
 	$aField['exhibitionEName'] = $_POST['exhibitionEName'];
 	$aField['status'] = $_POST['status'];
+	$aField['rank'] = $_POST['rank'];
 	$aField['comment'] = $_POST['comment'];
 	$aField['ecomment'] = $_POST['ecomment'];
 	$aField['description'] = $_POST['content'];
-	$aField['edescription'] = $_POST['econtent'];
+	$aField['edescription'] = $_POST['edescription'];
+	//$aField['edescription'] = $_POST['econtent'];
 	$aField['addDate'] = date("Y-m-d H:i:s");
 	if($db->insert($sTbl,$aField))
 	{
 		/*作品首页推荐，则更新首页flash的xml文件*/
 		if ($aField['status'] == '1')
 		{
-			refreshIndex();
+			//refreshIndex();
 		}
 		redirect("work.php?act=add&cID=".$_POST['cID'],2,"添加成功！");
 	}
@@ -103,7 +105,7 @@ elseif($sAction == "edit" && isset($_GET['id'])) // 修改
 	$oFCKeditor->Value = $aField['description'];
 	$sContent = $oFCKeditor->Create() ; 
 	$tpl->assign("sContent",$sContent);	
-	
+	/*
 	$eFCKeditor = new FCKeditor('FCKeditor1') ; 
 	$eFCKeditor->BasePath = "../js/editor/" ; 
 	$eFCKeditor->ToolbarSet = "Default" ; 
@@ -113,7 +115,7 @@ elseif($sAction == "edit" && isset($_GET['id'])) // 修改
 	$eFCKeditor->Value = $aField['edescription'];
 	$eContent = $eFCKeditor->Create() ; 
 	$tpl->assign("eContent",$eContent);
-
+	*/
 	// 栏目
 	$sOptions = category::getCatOptions($sClass,0,$aField['cID']);	// -1表示无限级分类； 0表示一级分类； 1表示二级分类；以此类推
 	$tpl->assign("sOptions",$sOptions);
@@ -140,17 +142,19 @@ elseif ($sAction == "editSave" && isset($_POST['id'])) // 修改保存
 	$aField['exhibition'] = $_POST['exhibition'];
 	$aField['exhibitionEName'] = $_POST['exhibitionEName'];
 	$aField['status'] = $_POST['status'];
+	$aField['rank'] = $_POST['rank'];
 	$aField['comment'] = $_POST['comment'];
 	$aField['ecomment'] = $_POST['ecomment'];
 	$aField['description'] = str_replace(array(" ","?"),array("&nbsp;","&nbsp;"),$_POST['content']);
-	$aField['edescription'] = str_replace(array(" ","?"),array("&nbsp;","&nbsp;"),$_POST['econtent']);
+	//$aField['edescription'] = str_replace(array(" ","?"),array("&nbsp;","&nbsp;"),$_POST['econtent']);
+	$aField['edescription'] = str_replace(array(" ","?"),array("&nbsp;","&nbsp;"),$_POST['edescription']);
 	$aField['addDate'] = date("Y-m-d H:i:s");
 
 	if($db->update($sTbl,$aField,"id=$id"))
 	{
 		/*作品首页推荐，则更新首页flash的xml文件*/
-		refreshIndex();
-		redirect("work.php?act=listAll&cID=".$_POST['cID'],3,"修改成功！");	
+		//refreshIndex();
+		redirect("work.php?act=listAll"/*&cID=".$_POST['cID']*/,3,"修改成功！");	
 	}
 	else 
 	{
@@ -196,7 +200,7 @@ elseif ($sAction == "listAll")  // 列表
 	dividePage("work.php", $iTotalNum, $iPerpage, $iNowPage, "act=listAll&cID=$cID&status=$iStatus&q=$q&perPage=$iPerpage");	
 		
 	//类别
-	$sOptions = category::getCatOptions($sClass,0,$cID);	// -1表示无限级分类； 0表示一级分类； 1表示二级分类；以此类推
+	$sOptions = category::getCatOptions($sClass,0,/*$cID*/0);	// -1表示无限级分类； 0表示一级分类； 1表示二级分类；以此类推
 	$tpl->assign("sOptions",$sOptions);
 	
 	$tpl->assign("aList",$aList);
@@ -270,11 +274,16 @@ function refreshIndex()
 	$works = $db->getRecordSet($sql);
 	
 	$doc=new DOMDocument("1.0","UTF-8");
+	$doc_en=new DOMDocument("1.0","UTF-8");
 	$doc->formatOutput=true;
+	$doc_en->formatOutput=true;
 
 	$root=$doc->createElement("loadBitmap");
-	$root=$doc->appendChild($root);
-   
+	$root=$doc->appendChild($root);   
+
+	$root_en=$doc_en->createElement("loadBitmap");
+	$root_en=$doc_en->appendChild($root);
+	
 	foreach ($works as $k=>$v)
 	{
 		$info=$doc->createElement("property");  #创建节点对象实体 
@@ -287,8 +296,20 @@ function refreshIndex()
 		$name_value=$doc->createAttribute("link");  #创建节点属性对象实体  
 		$name_value=$info->appendChild($name_value);  #把属性添加到节点info中
 		$name_value->appendChild($doc->createTextNode("/detail.php?id=".$v['id']));
+		//////////////////////////
+		$info_en=$doc_en->createElement("property");  #创建节点对象实体 
+	   	$info_en=$root_en->appendChild($info_en);    #把节点添加到root_en节点的子节点
+	
+		$name_value=$doc_en->createAttribute("image");  #创建节点属性对象实体  
+		$name_value=$info_en->appendChild($name_value);  #把属性添加到节点info_en中
+		$name_value->appendChild($doc_en->createTextNode("/img/260/".$v['picCode'].".jpg"));
+		
+		$name_value=$doc_en->createAttribute("link");  #创建节点属性对象实体  
+		$name_value=$info_en->appendChild($name_value);  #把属性添加到节点info_en中
+		$name_value->appendChild($doc_en->createTextNode("/detail.php?language=en&id=".$v['id']));
 	}  
        
 	$doc->save("../fx_config.xml");	
+	$doc_en->save("../fx_config_en.xml");	
 }
 ?>

@@ -64,6 +64,6 @@ else
 	$check_login = checkUserState($_SESSION["reart_id"],"ch");
 	$tpl->assign("check_login",$check_login);
 	$tpl->assign('title', '作品列表');	
-	$tpl->display("reart_en/".$file);
+	$tpl->display("reart/".$file);
 }
 ?>

@@ -186,8 +186,9 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	padding-right: 13px;
 	padding-bottom: 16px;
 	padding-left: 13px;
+	line-height:18px;
 }
-.text-description-02 P{line-height:14px;text-indent:2em;}
+.text-description-02 P{line-height:18px;text-indent:2em;}
 
 
 .text-descri3-box{

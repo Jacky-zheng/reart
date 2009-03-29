@@ -4,7 +4,7 @@
  *  2006.12
  */
 if(!defined("IN_CN315")) {
-	echo "<script>location.href='http://www.cn315.cc';</script>";
+	echo "<script>location.href='http://reart.com.cn/';</script>";
 }
 
 class work
@@ -22,7 +22,7 @@ class work
 		global $db;
 		$start = !empty($params['start'])?$params['start']:0;
 		$pagesize = !empty($params['pagesize'])?$params['pagesize']:8;
-		$sSQL = "SELECT w.id, w.name, w.cID, w.age, p.price_name as price, w.artistCode, w.picCode, w.addDate, a.name as artist_name FROM work as w left join artist as a on a.artistCode=w.artistCode left join price as p on w.price=p.id  limit ".$start.",".$pagesize;
+		$sSQL = "SELECT w.id, w.name, w.ename, w.cID, w.age, p.price_name as price, p.price_ename as eprice, w.artistCode, w.picCode, w.addDate, a.name as artist_name, a.ename as artist_ename FROM work as w left join artist as a on a.artistCode=w.artistCode left join price as p on w.price=p.id  limit ".$start.",".$pagesize;
 		$cSQL = "select count(*) as num from work";
 		//echo $sSQL;
 		$res['data'] = $db->getRecordSet($sSQL);
@@ -53,7 +53,7 @@ class work
 			$sql_tail = " and w.cID=".$params['cate'];
 		}
 		
-		$sql = "SELECT w.id, w.name, w.cID, p.price_name as price, w.age, w.artistCode, w.picCode, w.addDate, a.name as artist_name FROM work as w, artist as a, price as p where a.artistCode=w.artistCode and w.price=p.id ";
+		$sql = "SELECT w.id, w.name, w.ename, w.cID, w.age, p.price_name as price, p.price_ename as eprice, w.artistCode, w.picCode, w.addDate, a.name as artist_name, a.ename as artist_ename FROM work as w, artist as a, price as p where a.artistCode=w.artistCode and w.price=p.id ";
 		$sql_count = "SELECT count(*) as num FROM work as w, artist as a, price as p where a.artistCode=w.artistCode and w.price=p.id ";
 		
 		$start = !empty($params['start'])?$params['start']:0;
@@ -77,7 +77,7 @@ class work
 		{
 			return false;
 		}
-		$sql = "select w.id, w.name, w.cID, w.age, p.price_name as price, w.artistCode, w.picCode, w.addDate, w.comment, w.description, w.size, w.signal, w.literature, w.exhibition, w.exhibitionEName, c.name as cate_name, c.ename as cate_ename, a.name as artist_name, a.description as resume from work as w left join artist as a on a.artistCode=w.artistCode left join category as c on c.id=w.cID left join price as p on w.price=p.id where w.id=".$id;
+		$sql = "select w.id, w.name, w.ename, w.cID, w.age, p.price_name as price, p.price_ename as eprice, w.artistCode, w.picCode, w.addDate, w.comment, w.ecomment, w.description, w.edescription, w.size, w.esize, w.signal, w.esignal, w.literature, w.eliterature, w.exhibition, w.exhibitionEName, c.name as cate_name, c.ename as cate_ename, a.name as artist_name, a.ename as artist_ename, a.description as resume, a.edescription as eresume from work as w left join artist as a on a.artistCode=w.artistCode left join category as c on c.id=w.cID left join price as p on w.price=p.id where w.id=".$id;
 		$res = $db->getRecordSet($sql);
 		$sql_more = "select id from work where id>$id order by id asc limit 0,1";
 		$res_more = $db->getRecordSet($sql_more);
@@ -98,7 +98,7 @@ class work
 	function getWorkbyIDs($ids)
 	{
 		global $db;
-		$sql = "SELECT w.id, w.name, w.cID, w.age, p.price_name as price, w.artistCode, w.picCode, w.addDate, a.name as artist_name FROM work as w left join artist as a on a.artistCode=w.artistCode left join price as p on w.price=p.id where w.id in ($ids)";
+		$sql = "SELECT w.id, w.name, w.ename, w.cID, w.age, p.price_name as price, p.price_ename as eprice, w.artistCode, w.picCode, w.addDate, a.name as artist_name, a.ename as artist_ename FROM work as w left join artist as a on a.artistCode=w.artistCode left join price as p on w.price=p.id where w.id in ($ids)";
 		$res = $db->getRecordSet($sql);
 		return $res;
 		
@@ -108,7 +108,7 @@ class work
 	{
 		global $db;
 		
-		$sSQL = "SELECT w.id, w.name, w.cID, w.price, w.age, w.artistCode, w.picCode, w.addDate, a.name as artist_name FROM work as w left join artist as a on a.artistCode=w.artistCode where w.status='1' order by w.addDate desc limit 0, 5";
+		$sSQL = "SELECT w.id, w.name, w.ename, w.cID, w.price, w.age, w.artistCode, w.picCode, w.addDate, a.name as artist_name, a.ename as artist_ename FROM work as w left join artist as a on a.artistCode=w.artistCode where w.status='1' order by w.addDate desc limit 0, 5";
 		//echo $sSQL;
 		$res = $db->getRecordSet($sSQL);
 		return $res;
@@ -118,7 +118,7 @@ class work
 		global $db;
 		$start = !empty($params['start'])?$params['start']:0;
 		$pagesize = !empty($params['pagesize'])?$params['pagesize']:8;
-		$sSQL = "SELECT f.workID, f.addDate as faddDate, w.id, w.name, w.cID, w.age, p.price_name as price, w.artistCode, w.picCode, w.addDate, a.name as artist_name FROM workfavorite as f left join work as w on f.workID=w.id left join artist as a on a.artistCode=w.artistCode left join price as p on w.price=p.id where f.userID='".$params['userid']."' order by f.addDate desc limit ".$start.",".$pagesize;
+		$sSQL = "SELECT f.workID, f.addDate as faddDate, w.id, w.name, w.ename, w.cID, w.age, p.price_name as price, p.price_ename as eprice, w.artistCode, w.picCode, w.addDate, a.name as artist_name, a.ename as artist_ename FROM workfavorite as f left join work as w on f.workID=w.id left join artist as a on a.artistCode=w.artistCode left join price as p on w.price=p.id where f.userID='".$params['userid']."' order by f.addDate desc limit ".$start.",".$pagesize;
 		$cSQL = "select count(*) as num from workfavorite where userID='".$params['userid']."'";
 		//echo $sSQL;
 		$res['data'] = $db->getRecordSet($sSQL);

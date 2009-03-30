@@ -1,4 +1,4 @@
-﻿/* =base
+/* =base
  * --------------------------------------------------------------*/
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{
 	margin:0;
@@ -66,7 +66,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 /* =footer-option
  * --------------------------------------------------------------*/
 .footer-option{
-	margin-bottom:170px;
+	
 	background:url(../images/bg-line-01.gif) repeat-x 0 50%;
 	text-align:center;
 }
@@ -243,12 +243,11 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	*display:block;
 	background:url(../images/bg-02.gif) no-repeat 0 0;
 	width:219px;
-	height:200px;
-	padding-bottom:53px;
+	height:253px;
 	text-align:center;
 	vertical-align:middle; 
-	line-height:200px;
-	*font-size: 175px;/*约为高度的0.873，200*0.873 约为175*/        
+	line-height:220px;
+	*font-size: 220px;/*约为高度的0.873，200*0.873 约为175*/        
 	*font-family:Arial;
 }
 .photo-lists .photo LI SPAN img{vertical-align:middle;}

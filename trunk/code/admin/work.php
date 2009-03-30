@@ -145,9 +145,9 @@ elseif ($sAction == "editSave" && isset($_POST['id'])) // 修改保存
 	$aField['rank'] = $_POST['rank'];
 	$aField['comment'] = $_POST['comment'];
 	$aField['ecomment'] = $_POST['ecomment'];
-	$aField['description'] = str_replace(array(" ","?"),array("&nbsp;","&nbsp;"),$_POST['content']);
+	$aField['description'] = $_POST['content'];
 	//$aField['edescription'] = str_replace(array(" ","?"),array("&nbsp;","&nbsp;"),$_POST['econtent']);
-	$aField['edescription'] = str_replace(array(" ","?"),array("&nbsp;","&nbsp;"),$_POST['edescription']);
+	$aField['edescription'] = $_POST['edescription'];
 	$aField['addDate'] = date("Y-m-d H:i:s");
 
 	if($db->update($sTbl,$aField,"id=$id"))

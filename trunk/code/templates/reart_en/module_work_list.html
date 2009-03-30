@@ -7,7 +7,7 @@
 {if $worklist}
 {foreach from=$worklist item=work }
 <li>
-	<span><a href="/detail.php?language=en&id={$work.id}"><img src="{$img_url_m}{$work.picCode}.jpg" alt="" /></a></span>
+	<span><a href="/detail.php?language=en&id={$work.id}" target="_blank"><img src="{$img_url_m}{$work.picCode}.jpg" alt="" /></a></span>
 	<p>Name：{$work.ename}</p>
 	<p>Author：{$work.artist_ename}</p>
 	<!--<p>Date：{$work.addDate}</p>-->

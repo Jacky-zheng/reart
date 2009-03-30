@@ -295,6 +295,7 @@ function refreshIndex()
        
 	$doc->save("../fx_config.xml");
 	$str = file_get_contents("../fx_config.xml");
+	$str = str_replace("detail.php?id", "detail.php?language=en&id", $str);
 	file_put_contents("../fx_config_en.xml", $str);
 }
 ?>

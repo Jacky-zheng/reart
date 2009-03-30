@@ -22,7 +22,7 @@ class work
 		global $db;
 		$start = !empty($params['start'])?$params['start']:0;
 		$pagesize = !empty($params['pagesize'])?$params['pagesize']:8;
-		$sSQL = "SELECT w.id, w.name, w.ename, w.cID, w.age, p.price_name as price, p.price_ename as eprice, w.artistCode, w.picCode, w.addDate, a.name as artist_name, a.ename as artist_ename FROM work as w left join artist as a on a.artistCode=w.artistCode left join price as p on w.price=p.id  limit ".$start.",".$pagesize;
+		$sSQL = "SELECT w.id, w.name, w.ename, w.cID, w.age, p.price_name as price, p.price_ename as eprice, w.artistCode, w.picCode, w.addDate, a.name as artist_name, a.ename as artist_ename FROM work as w left join artist as a on a.artistCode=w.artistCode left join price as p on w.price=p.id order by rank asc limit ".$start.",".$pagesize;
 		$cSQL = "select count(*) as num from work";
 		//echo $sSQL;
 		$res['data'] = $db->getRecordSet($sSQL);
@@ -63,7 +63,7 @@ class work
 		$start = !empty($params['start'])?$params['start']:0;
 		$pagesize = !empty($params['pagesize'])?$params['pagesize']:8;
 		
-		$sql = $sql.$sql_tail." limit ".$start.",".$pagesize;
+		$sql = $sql.$sql_tail." order by rank asc limit ".$start.",".$pagesize;
 		$sql_count .= $sql_tail;
 		
 		$res['data'] = $db->getRecordSet($sql);

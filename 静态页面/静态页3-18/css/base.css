@@ -1,4 +1,4 @@
-﻿/* =base
+/* =base
  * --------------------------------------------------------------*/
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{
 	margin:0;
@@ -25,7 +25,7 @@ A:hover{color:#B3A08F;text-decoration:underline;}
 A:active{color:#B3A08F;}
 A:-moz-any-link:focus{outline:1px dotted invert;}
 .clr{clear:both;height:1px;overflow:hidden;margin-top:-1px;}
-.wrapClear{clear:both;overflow:hidden;zoom:1;}
+.wrapClear{clear:both;overflow:hidden;zoom:1;text-align:left;}
 /* =wrap
  * --------------------------------------------------------------*/
 #main-wrap{
@@ -66,7 +66,6 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 /* =footer-option
  * --------------------------------------------------------------*/
 .footer-option{
-	
 	background:url(../images/bg-line-01.gif) repeat-x 0 50%;
 	text-align:center;
 }
@@ -152,15 +151,15 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 /* =text-description
  * --------------------------------------------------------------*/
 .flash {
-	width:327px;
-	height:307px;
+	width:410px;
+	height:333px;
 	background-image:url(../images/bg-08.gif);
 	background-repeat: no-repeat;
 	padding-top: 26px;
 	padding-right: 41px;
 	padding-left: 42px;
 }
-.flash table td{vertical-align:middle; text-align:center}
+.flash table td{vertical-align:middle; text-align:center;}
 .flash table th{
 	vertical-align:bottom;
 }
@@ -173,7 +172,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	padding-bottom: 25px;
 	padding-left: 13px;
 }
-.text-description-01 P{line-height:24px;}
+.text-description-01 P{line-height:24px;text-align:left;width:243px;}
 
 .text-description-02{
 	margin-top:47px;
@@ -185,6 +184,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	padding-right: 13px;
 	padding-bottom: 16px;
 	padding-left: 13px;
+	text-align:left;
 }
 .text-description-02 P{line-height:14px;text-indent:2em;}
 
@@ -224,6 +224,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	padding-bottom: 16px;
 	padding-left: 13px;
 	float: left;
+	text-align:left;
 } 
 
 .text-description-03 P{line-height:14px;}
@@ -274,11 +275,11 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 .photo-view-01 dt{font-size:12px;text-align:right;}
 /* =photo-view-02
  * --------------------------------------------------------------*/
-.photo-view-02{padding:10px 0 35px;background:url(../images/bg-07.gif) no-repeat 0 100%;height:1%;}
+.photo-view-02{padding:10px 0 35px;background:url(../images/bg-07.gif) no-repeat 0 100%;height:1%;text-align:left;}
 .photo-view-02 H2{font-size:12px;text-align:center;}
 .photo-view-02 dd{text-align:center;display:inline;}
-.photo-view-02 dd P{margin:0 auto;font-size:12px;width:96px;text-align:left;}
-.photo-view-02 dd P.images{margin:10px auto;background:url(../images/bg-05.gif) no-repeat 0 0;width:96px;height:104px;text-align:center;*font-size: 90px;/*约为高度的0.873，200*0.873 约为175*/    *display:inline-block ;  *font-family:Arial;vertical-align:middle;}
+.photo-view-02 dd P{margin:10px 10px 10px 30px;font-size:12px;text-align:left;}
+.photo-view-02 dd P.images{margin:10px 10px 10px 30px;vertical-align:middle;background:url(../images/bg-05.gif) no-repeat 0 0;width:96px;height:104px;text-align:center;*font-size: 90px;/*约为高度的0.873，200*0.873 约为175*/    *display:inline-block ;  *font-family:Arial;}
 .photo-view-02 dd P.images img{vertical-align:middle;}
 /* =page-nav
  * --------------------------------------------------------------*/

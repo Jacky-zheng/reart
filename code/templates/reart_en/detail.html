@@ -50,7 +50,7 @@
              {/foreach}   
              {/if}
 				<dt class="clr"></dt>
-				<dt><a href="list.php?flag=history">more</a></dt>	
+				<dt><a href="list.php?flag=history&language=en">more</a></dt>	
 			</dl>
 		</div>
 	</div>
@@ -65,7 +65,7 @@
 	      </table>
           <table width="100%" height="30">
           <tr>
-          <th align="left"><a href="/user/buy.php"><img src="images/buy.gif" /></a></th><th align="right"><a rel="lightbox" href="{$img_url_xl}{$workdetail.picCode}.jpg"><img src="images/zoom.gif" /></a></th>
+          <th align="left"><a href="/user/buy.php?language=en"><img src="images/buy.gif" /></a></th><th align="right"><a rel="lightbox" href="{$img_url_xl}{$workdetail.picCode}.jpg"><img src="images/zoom.gif" /></a></th>
           </tr>
           </table>
   </div>
@@ -84,7 +84,7 @@
 			<dl class="wrapClear">
 				{foreach from=$recommen_list item=rw}
 				<dd>
-					<p class="images"><a href="detail.php?id={$rw.id}"><img src="{$img_url_s}{$rw.picCode}.jpg" /></a></p>
+					<p class="images"><a href="detail.php?language=en&id={$rw.id}"><img src="{$img_url_s}{$rw.picCode}.jpg" /></a></p>
 					<p>{$rw.ename}</p>
 					<p>{$rw.artist_ename}</p>
 				</dd>	

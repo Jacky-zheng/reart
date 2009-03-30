@@ -81,7 +81,7 @@ elseif($sAction=="addSave") // 添加保存
 		/*作品首页推荐，则更新首页flash的xml文件*/
 		if ($aField['status'] == '1')
 		{
-			//refreshIndex();
+			refreshIndex();
 		}
 		redirect("work.php?act=add&cID=".$_POST['cID'],2,"添加成功！");
 	}
@@ -153,7 +153,7 @@ elseif ($sAction == "editSave" && isset($_POST['id'])) // 修改保存
 	if($db->update($sTbl,$aField,"id=$id"))
 	{
 		/*作品首页推荐，则更新首页flash的xml文件*/
-		//refreshIndex();
+		refreshIndex();
 		redirect("work.php?act=listAll"/*&cID=".$_POST['cID']*/,3,"修改成功！");	
 	}
 	else 
@@ -274,16 +274,11 @@ function refreshIndex()
 	$works = $db->getRecordSet($sql);
 	
 	$doc=new DOMDocument("1.0","UTF-8");
-	$doc_en=new DOMDocument("1.0","UTF-8");
 	$doc->formatOutput=true;
-	$doc_en->formatOutput=true;
-
+	
 	$root=$doc->createElement("loadBitmap");
 	$root=$doc->appendChild($root);   
 
-	$root_en=$doc_en->createElement("loadBitmap");
-	$root_en=$doc_en->appendChild($root);
-	
 	foreach ($works as $k=>$v)
 	{
 		$info=$doc->createElement("property");  #创建节点对象实体 
@@ -295,21 +290,11 @@ function refreshIndex()
 		
 		$name_value=$doc->createAttribute("link");  #创建节点属性对象实体  
 		$name_value=$info->appendChild($name_value);  #把属性添加到节点info中
-		$name_value->appendChild($doc->createTextNode("/detail.php?id=".$v['id']));
-		//////////////////////////
-		$info_en=$doc_en->createElement("property");  #创建节点对象实体 
-	   	$info_en=$root_en->appendChild($info_en);    #把节点添加到root_en节点的子节点
-	
-		$name_value=$doc_en->createAttribute("image");  #创建节点属性对象实体  
-		$name_value=$info_en->appendChild($name_value);  #把属性添加到节点info_en中
-		$name_value->appendChild($doc_en->createTextNode("/img/260/".$v['picCode'].".jpg"));
-		
-		$name_value=$doc_en->createAttribute("link");  #创建节点属性对象实体  
-		$name_value=$info_en->appendChild($name_value);  #把属性添加到节点info_en中
-		$name_value->appendChild($doc_en->createTextNode("/detail.php?language=en&id=".$v['id']));
+		$name_value->appendChild($doc->createTextNode("/detail.php?id=".$v['id']));		
 	}  
        
-	$doc->save("../fx_config.xml");	
-	$doc_en->save("../fx_config_en.xml");	
+	$doc->save("../fx_config.xml");
+	$str = file_get_contents("../fx_config.xml");
+	file_put_contents("../fx_config_en.xml", $str);
 }
 ?>

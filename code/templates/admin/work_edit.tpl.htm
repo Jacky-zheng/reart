@@ -73,7 +73,15 @@
 		<tr>
 			<td class="altbg1">展览(英文)：</td>
 			<td class="altbg2"><input type="text" id="exhibitionEName" name="exhibitionEName" size="100" value="{$aField.exhibitionEName}"></td>
-		</tr> 
+		</tr>
+		<tr>
+			<td class="altbg1">作品质地：</td>
+			<td class="altbg2"><input type="text" id="texture" name="texture" size="100" value="{$aField.texture}"></td>
+		</tr>         
+		<tr>
+			<td class="altbg1">作品质地(英文)：</td>
+			<td class="altbg2"><input type="text" id="etexture" name="etexture" size="100" value="{$aField.etexture}"></td>
+		</tr>  
 		<tr>
 			<td class="altbg1">推荐作品：</td>
 			<td class="altbg2">{html_radios name="status" options="$aENUM" checked=$aField.status}<span class="starHit">*</span></td>
@@ -96,8 +104,8 @@
 		</tr>
 		<tr>
 			<td class="altbg1">作品描述(英文)：</td>
-			<!--td class="altbg2">{$eContent}</td-->			
-			<td class="altbg2"><textarea name="edescription" cols="150" rows="5" id="edescription">{$aField.edescription}</textarea></td>
+			<td class="altbg2">{$eContent}</td>			
+			<!--<td class="altbg2"><textarea name="edescription" cols="150" rows="5" id="edescription">{$aField.edescription}</textarea></td>-->
 		</tr>
 		<tr>
 			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="返回" class="button"></td>

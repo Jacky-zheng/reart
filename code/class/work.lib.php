@@ -81,7 +81,7 @@ class work
 		{
 			return false;
 		}
-		$sql = "select w.id, w.name, w.ename, w.cID, w.age, p.price_name as price, p.price_ename as eprice, w.artistCode, w.picCode, w.addDate, w.comment, w.ecomment, w.description, w.edescription, w.size, w.esize, w.signal, w.esignal, w.literature, w.eliterature, w.exhibition, w.exhibitionEName, c.name as cate_name, c.ename as cate_ename, a.name as artist_name, a.ename as artist_ename, a.description as resume, a.edescription as eresume from work as w left join artist as a on a.artistCode=w.artistCode left join category as c on c.id=w.cID left join price as p on w.price=p.id where w.id=".$id;
+		$sql = "select w.id, w.name, w.ename, w.cID, w.age, p.price_name as price, p.price_ename as eprice, w.artistCode, w.picCode, w.addDate, w.comment, w.ecomment, w.description, w.edescription, w.size, w.esize, w.signal, w.esignal,w.etexture,w.texture, w.literature, w.eliterature, w.exhibition, w.exhibitionEName, c.name as cate_name, c.ename as cate_ename, a.name as artist_name, a.ename as artist_ename, a.description as resume, a.edescription as eresume from work as w left join artist as a on a.artistCode=w.artistCode left join category as c on c.id=w.cID left join price as p on w.price=p.id where w.id=".$id;
 		$res = $db->getRecordSet($sql);
 		$sql_more = "select id from work where id>$id order by id asc limit 0,1";
 		$res_more = $db->getRecordSet($sql_more);

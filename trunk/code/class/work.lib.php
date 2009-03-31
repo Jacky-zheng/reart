@@ -57,8 +57,8 @@ class work
 			$sql_tail .= " and w.cID=".$params['cate'];
 		}
 		
-		$sql = "SELECT w.id, w.name, w.ename, w.cID, w.age, p.price_name as price, p.price_ename as eprice, w.artistCode, w.picCode, w.addDate, a.name as artist_name, a.ename as artist_ename FROM work as w, artist as a, price as p where a.artistCode=w.artistCode and w.price=p.id ";
-		$sql_count = "SELECT count(*) as num FROM work as w, artist as a, price as p where a.artistCode=w.artistCode and w.price=p.id ";
+		$sql = "SELECT w.id, w.name, w.ename, w.cID, w.age, p.price_name as price, p.price_ename as eprice, w.artistCode, w.picCode, w.addDate, a.name as artist_name, a.ename as artist_ename FROM work as w left join artist as a on a.artistCode=w.artistCode left join price as p on w.price=p.id where 1 ";
+		$sql_count = "SELECT count(*) as num FROM work as w left join artist as a on a.artistCode=w.artistCode left join price as p on w.price=p.id where 1 ";
 		
 		$start = !empty($params['start'])?$params['start']:0;
 		$pagesize = !empty($params['pagesize'])?$params['pagesize']:8;

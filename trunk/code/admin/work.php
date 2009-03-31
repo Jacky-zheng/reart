@@ -29,7 +29,7 @@ if($sAction == "add") //添加
 	$oFCKeditor->Height = "400" ; 
 	$sContent = $oFCKeditor->Create() ; 
 	$tpl->assign("sContent",$sContent);
-	/*
+
 	$eFCKeditor = new FCKeditor('FCKeditor1') ; 
 	$eFCKeditor->BasePath = "../js/editor/" ; 
 	$eFCKeditor->ToolbarSet = "Default" ; 
@@ -38,7 +38,7 @@ if($sAction == "add") //添加
 	$eFCKeditor->Height = "400" ; 
 	$eContent = $eFCKeditor->Create() ; 
 	$tpl->assign("eContent",$eContent);
-	*/
+
 	// 栏目
 	$sOptions = category::getCatOptions($sClass,0);	 // -1表示无限级分类； 0表示一级分类； 1表示二级分类；以此类推
 	$tpl->assign("sOptions",$sOptions);
@@ -73,8 +73,10 @@ elseif($sAction=="addSave") // 添加保存
 	$aField['comment'] = $_POST['comment'];
 	$aField['ecomment'] = $_POST['ecomment'];
 	$aField['description'] = $_POST['content'];
-	$aField['edescription'] = $_POST['edescription'];
-	//$aField['edescription'] = $_POST['econtent'];
+	//$aField['edescription'] = $_POST['edescription'];
+	$aField['edescription'] = $_POST['econtent'];
+	$aField['texture'] = $_POST['texture'];
+	$aField['etexture'] = $_POST['etexture'];
 	$aField['addDate'] = date("Y-m-d H:i:s");
 	if($db->insert($sTbl,$aField))
 	{
@@ -105,7 +107,7 @@ elseif($sAction == "edit" && isset($_GET['id'])) // 修改
 	$oFCKeditor->Value = $aField['description'];
 	$sContent = $oFCKeditor->Create() ; 
 	$tpl->assign("sContent",$sContent);	
-	/*
+
 	$eFCKeditor = new FCKeditor('FCKeditor1') ; 
 	$eFCKeditor->BasePath = "../js/editor/" ; 
 	$eFCKeditor->ToolbarSet = "Default" ; 
@@ -115,7 +117,7 @@ elseif($sAction == "edit" && isset($_GET['id'])) // 修改
 	$eFCKeditor->Value = $aField['edescription'];
 	$eContent = $eFCKeditor->Create() ; 
 	$tpl->assign("eContent",$eContent);
-	*/
+
 	// 栏目
 	$sOptions = category::getCatOptions($sClass,0,$aField['cID']);	// -1表示无限级分类； 0表示一级分类； 1表示二级分类；以此类推
 	$tpl->assign("sOptions",$sOptions);
@@ -147,7 +149,9 @@ elseif ($sAction == "editSave" && isset($_POST['id'])) // 修改保存
 	$aField['ecomment'] = $_POST['ecomment'];
 	$aField['description'] = $_POST['content'];
 	//$aField['edescription'] = str_replace(array(" ","?"),array("&nbsp;","&nbsp;"),$_POST['econtent']);
-	$aField['edescription'] = $_POST['edescription'];
+	$aField['texture'] = $_POST['texture'];
+	$aField['etexture'] = $_POST['etexture'];
+	$aField['edescription'] = $_POST['econtent'];
 	$aField['addDate'] = date("Y-m-d H:i:s");
 
 	if($db->update($sTbl,$aField,"id=$id"))

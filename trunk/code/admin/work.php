@@ -270,7 +270,7 @@ function getArtist($artistID)
 function refreshIndex()
 {
 	global $db;
-	$sql = " select id, picCode from work where status = '1' ";
+	$sql = " select id, picCode from work where status = '1' order by rank asc";
 	$works = $db->getRecordSet($sql);
 	
 	$doc=new DOMDocument("1.0","UTF-8");

@@ -56,16 +56,16 @@
 	</div>
 	<div class="middle-wrap">
 		<div class="flash">
-		  <table width="100%" height="260px">
+		   <table align="left" height="260px">
 		    <tr>
 		      <td><a href="detail.php?language=en&id={if $workdetail.less_id eq ''} {$workdetail.id} {else} {$workdetail.less_id} {/if}"><img src="images/left_arrow.gif"  /></a></td>
-		      <td><img src="{$img_url_l}{$workdetail.picCode}.jpg" /></td>
+		      <td width="260" valign="middle"><img src="{$img_url_l}{$workdetail.picCode}.jpg" /></td>
 		      <td><a  href="detail.php?language=en&id={if $workdetail.more_id eq ''} {$workdetail.id} {else} {$workdetail.more_id} {/if}"><img src="images/right_arrow.gif"/></a></td>
 	        </tr>
 	      </table>
-          <table width="100%" height="30">
+         <table width="327" align="left" height="30">
           <tr>
-          <th align="left"><a href="/user/buy.php?language=en"><img src="images/buy.gif" /></a></th><th align="right"><a rel="lightbox" href="{$img_url_xl}{$workdetail.picCode}.jpg"><img src="images/zoom.gif" /></a></th>
+          <th align="left"><a href="/user/buy.php?language=en"><img src="images/buy_en.gif" /></a></th><th align="right"><a rel="lightbox" href="{$img_url_xl}{$workdetail.picCode}.jpg"><img src="images/zoom_en.gif" /></a></th>
           </tr>
           </table>
   </div>

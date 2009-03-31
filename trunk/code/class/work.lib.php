@@ -46,7 +46,7 @@ class work
 		}
 		if (!empty($params['eartist']))
 		{
-			$sql_tail .= " and a.ename like '%".$params['eartist']."%'";
+			$sql_tail .= " and UPPER(replace(a.ename, ' ', '')) like '%".strtoupper(preg_replace('/(\s+)/', '', $params['eartist']))."%'";
 		}
 		if (!empty($params['age']))
 		{

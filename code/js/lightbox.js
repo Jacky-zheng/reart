@@ -178,6 +178,7 @@ function showLightbox(objLink)
 	// center loadingImage if it exists
 	if (objLoadingImage) {
 		objLoadingImage.style.top = (arrayPageScroll[1] + ((arrayPageSize[3] - 35 - objLoadingImage.height) / 2) + 'px');
+		//objLoadingImage.style.top = "0px";
 		objLoadingImage.style.left = (((arrayPageSize[0] - 20 - objLoadingImage.width) / 2) + 'px');
 		objLoadingImage.style.display = 'block';
 	}
@@ -197,7 +198,8 @@ function showLightbox(objLink)
 		var lightboxTop = arrayPageScroll[1] + ((arrayPageSize[3] - 35 - imgPreload.height) / 2);
 		var lightboxLeft = ((arrayPageSize[0] - 20 - imgPreload.width) / 2);
 		
-		objLightbox.style.top = (lightboxTop < 0) ? "0px" : lightboxTop + "px";
+		//objLightbox.style.top = (lightboxTop < 0) ? "0px" : lightboxTop + "px";
+		objLightbox.style.top = "0px";
 		objLightbox.style.left = (lightboxLeft < 0) ? "0px" : lightboxLeft + "px";
 
 

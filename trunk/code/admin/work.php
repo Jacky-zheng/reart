@@ -184,7 +184,7 @@ elseif ($sAction == "listAll")  // 列表
 	$iStatus = isset($_REQUEST['status']) ? $_REQUEST['status'] : -1; // -1 代表所有作品
 	$q = isset($_REQUEST['q']) ? $_REQUEST['q'] : "";		
 	
-	$sWhere .= ($iStatus >=0) ? " AND a.status = '".$iStatus."'" : "  AND a.status != '2' ";
+	$sWhere .= ($iStatus >=0) ? " AND a.status = '".$iStatus."'" : "  AND a.status != '3' ";
 	$sWhere .= $q ? " AND (a.name like '%$q%' ) " : ""; 
 	 
 	$iNowPage = empty($_REQUEST["pageNo"]) ? 1 : intval($_REQUEST["pageNo"]); 
@@ -219,7 +219,7 @@ elseif($sAction == "recycle") // 放入回收站
 	$cID = $_REQUEST['cID'];	
 	$iStatus = $_REQUEST['status'];	
 	$sID = array2Str($_POST['newsID']) ;	
-	if($db->query("UPDATE $sTbl SET status='2' WHERE id in $sID"))
+	if($db->query("UPDATE $sTbl SET status='3' WHERE id in $sID"))
 	{
 		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"成功放入回收站！");
 	}	

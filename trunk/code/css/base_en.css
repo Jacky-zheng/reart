@@ -295,6 +295,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 .footer{
 	text-align:center;
 	margin-bottom: 20px;
+	font-family:Arial, Helvetica, sans-serif;
 }
 .footer,.footer .links A{font-size:12px;}
 .footer .links A{padding:0 10px;}

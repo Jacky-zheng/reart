@@ -130,7 +130,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	background-image: url(../images/bg-01bg.gif);
 	background-repeat: repeat-y;
 	background-position: 0 0;
-	font-family: "宋体", Arial, Verdana, Helvetica, sans-serif;
+	font-family:  Arial, Verdana, Helvetica, sans-serif;
 }
 .text-content .title{text-align:center;font-size:14px;font-weight: bold;margin-bottom: 20px;}
 .text-content .text P{
@@ -141,12 +141,14 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	line-height: 20px;
 	margin-right: auto;
 	margin-left: auto;
+		font-family:  Arial, Verdana, Helvetica, sans-serif;
 }
 .text-content .text .info{
 	text-align:left;
 	width:260px;
 	margin-right: auto;
 	margin-left: auto;
+	font-family:  Arial, Verdana, Helvetica, sans-serif;
 }
 /* =text-description
  * --------------------------------------------------------------*/
@@ -292,6 +294,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 .footer{
 	text-align:center;
 	margin-bottom: 20px;
+	font-family:Arial, Helvetica, sans-serif;
 }
 .footer,.footer .links A{font-size:12px;}
 .footer .links A{padding:0 10px;}

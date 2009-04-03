@@ -198,8 +198,8 @@ elseif ($sAction == "listAll")  // 列表
 	for($i=0; $i<count($aList); $i++)
 	{
 		$aList[$i]['catName'] = category::getCatNameByID($sClass,$aList[$i]['cID']);
-		$aList[$i]['artist'] = getArtist($aList[$i]['artistID']);
-		
+		$aList[$i]['artist'] = getArtist($aList[$i]['artistCode']);
+		$aList[$i]['price'] = getPrice($aList[$i]['price']);
 	}
 	dividePage("work.php", $iTotalNum, $iPerpage, $iNowPage, "act=listAll&cID=$cID&status=$iStatus&q=$q&perPage=$iPerpage");	
 		
@@ -265,6 +265,17 @@ function getArtist($artistID)
 	$sql = " select name from artist where id = '$artistID' ";
 	$artist = $db->getRecordSet($sql,1);
 	return $artist['name'];
+}
+
+/**
+ * 获取价格区间
+ */
+function getPrice($priceID)
+{
+	global $db;
+	$sql = " select price_name from price where id = '$priceID' ";
+	$price = $db->getRecordSet($sql,1);
+	return $price['price_name'];
 }
 /**
  * 重新生成首页推荐图片的xml文件

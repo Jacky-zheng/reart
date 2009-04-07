@@ -14,11 +14,16 @@
 		</tr>
 		<tr>
 			<td class="altbg1">作品名称：</td>
-			<td class="altbg2"><input type="text" id="name" name="name" size="40" value="{$aField.name}"> <span class="starHit">*</span></td>
+		  <td class="altbg2"><input type="text" id="name" name="name" size="40" value="{$aField.name}"> 
+			<span class="starHit">* 英文：
+			<input type="text" id="ename" name="ename" size="40" value="{$aField.ename}" />
+			</span></td>
 		</tr>
 		<tr>
-			<td class="altbg1">作品名称(英文)：</td>
-			<td class="altbg2"><input type="text" id="ename" name="ename" size="40" value="{$aField.ename}"> <span class="starHit">*</span></td>
+			<td class="altbg1">作者：</td>
+		  <td class="altbg2"><select name="artistCode" id="artistCode">
+            {$aOptions}
+          </select></td>
 		</tr>
 		<tr>
 			<td class="altbg1">作品价格：</td>

@@ -10,6 +10,7 @@ include "../js/editor/fckeditor.php";
 $sAction = (isset($_GET["act"])) ? $_GET["act"] : "listAll";
 loadLib("category");
 loadLib("price");
+loadLib("artist");
 $price = new price();
 $tpl->assign("price",$price->getPrice());
 $sTbl =  "work";
@@ -17,6 +18,8 @@ $sClass = "category";
 $tpl->assign("PAGE_FUNC_BIG_LINK", "work.php");
 $tpl->assign("PAGE_FUNC_BIG_NAME", "作品管理");
 $tpl->assign("aENUM",$aENUM);
+
+$aOptions = artist::getArtistList();
 
 if($sAction == "add") //添加
 {	
@@ -32,7 +35,7 @@ if($sAction == "add") //添加
 
 	$eFCKeditor = new FCKeditor('FCKeditor1') ; 
 	$eFCKeditor->BasePath = "../js/editor/" ; 
-	$eFCKeditor->ToolbarSet = "Default" ; 
+	$eFCKeditor->ToolbarSet = "Basic" ; 
 	$eFCKeditor->InstanceName = "econtent" ; 
 	$eFCKeditor->Width = "90%" ; 
 	$eFCKeditor->Height = "400" ; 

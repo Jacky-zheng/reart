@@ -2,6 +2,7 @@
 require_once("class/common.inc.php");
 loadLib("favorite");
 loadLib("work");
+loadLib("artist");
 
 $img_url_m = '/img/200/'; 
 if ($_GET['action'] == 'favorite')
@@ -48,6 +49,53 @@ elseif ('update_rank' == $_GET['action'])
 			$work->updateRank($key, $value);
 		}
 		echo true;
+	}
+	else 
+	{
+		echo false;
+	}
+}
+elseif ('getartistname' == $_GET['action'])
+{
+	$at = artist::getArtistDetail($_POST['id']);
+	if (empty($at))
+	{
+		echo false;
+	}
+	else 
+	{
+		echo $at['artistCode'].','.$at['name'];
+	}
+}
+elseif ('addnewartist' == $_GET['action'])
+{
+	$aField['name'] = $_POST['name'];
+	$aField['artistCode'] = artist::getMaxCode()+1;
+	$aField['status'] = '0';
+	$aField['addDate'] = date("Y-m-d H:i:s");
+	if($db->insert('artist',$aField))
+	{
+		$at = artist::getArtistDetail($aField['artistCode']);
+		if (empty($at))
+		{
+			echo false;
+		}
+		else 
+		{
+			echo $at['artistCode'].','.$at['name'];
+		}
+	}
+	else 
+	{
+		echo false;
+	}
+}
+elseif ('checknameexist' == $_GET['action'])
+{
+	$ai = artist::getArtistByName($_POST['name']);
+	if (!empty( $ai['id']))
+	{
+		echo $ai['id'].','.$ai['artistCode'];
 	}
 	else 
 	{

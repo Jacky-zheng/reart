@@ -1,120 +1,98 @@
 {include file=admin/header.tpl.htm}
+<script type="text/javascript" src="/js/work.js"></script>
+<script type="text/javascript" src="/js/transport.js"></script>
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
 		<form name="add" method="POST" action="?act=editSave" enctype="multipart/form-data" onsubmit="return checkInput();">
 		<tr class="header">
-			<td colspan="2">{$PAGE_FUNC_SMALL_NAME}</td>
+			<td colspan="6">{$PAGE_FUNC_SMALL_NAME}</td>
 		</tr>
 		<tr>
-			<td width="100" class="altbg1">作品所属类别：</td>
-			<td class="altbg2">
+			<td width="141" class="altbg1">作品所属类别：</td>
+			<td colspan="5" class="altbg2">
 			<select name="cID" id="cID">
 				{$sOptions}
 			</select>&nbsp;&nbsp; <span class="starHit">*</span></td>
 		</tr>
 		<tr>
 			<td class="altbg1">作品名称：</td>
-		  <td class="altbg2"><input type="text" id="name" name="name" size="40" value="{$aField.name}"> 
-			<span class="starHit">* 英文：
-			<input type="text" id="ename" name="ename" size="40" value="{$aField.ename}" />
-			</span></td>
+		  <td colspan="3" class="altbg2"><input type="text" id="name" name="name" size="40" value="{$aField.name}"> 
+			<span class="starHit">* </span></td>
+		  <td class="altbg1">英文：</td>
+		  <td class="altbg2"><input type="text" id="ename" name="ename" size="40" value="{$aField.ename}" /></td>
 		</tr>
 		<tr>
 			<td class="altbg1">作者：</td>
-		  <td class="altbg2"><select name="artistCode" id="artistCode">
+		  <td colspan="5" class="altbg2"><input name="artistCode" id="artistCode" type="hidden" value="{$aField.artistCode}" />
+          <select name="ac" id="ac" onchange="checkArtist()">
             {$aOptions}
-          </select></td>
+          </select>&nbsp;<span id="newast" style="display:none"><input name="newartist" id="newartist" type="text" /></span>&nbsp;<input id="cfm" name="cfm" type="button" value=" 确定" onclick="chooseArtist();" /><span id="artlist">{$aField.artlist}</span></td>
 		</tr>
 		<tr>
-			<td class="altbg1">作品价格：</td>
-			<td class="altbg2">
+			<td class="altbg1">价格区间：</td>
+			<td colspan="3" class="altbg2">
 			<select name="price" id="price">
                 	<option value='0'>全部</option>
 				{foreach from=$price item=prc}
 					<option value='{$prc.id}' {if $prc.id eq $aField.price} selected {/if}>{$prc.price_name}</option>
 				{/foreach}
-				</select>
-		    RMB</td>
+			  </select>
+	      RMB</td>
+		    <td width="117" class="altbg1">作品价格：</td>
+        <td width="384" class="altbg2"><label>
+	        <input type="text" name="actualPrice" id="actualPrice" value="{$aField.actualPrice}" />
+	      RMB</label></td>
 		</tr>
 		<tr>
 			<td class="altbg1">作品年代：</td>
-			<td class="altbg2"><input type="text" id="age" name="age" size="40" value="{$aField.age}"></td>
-		</tr>
-		<tr>
-			<td class="altbg1">作品编码：</td>
-			<td class="altbg2"><input type="text" id="picCode" name="picCode" size="40" value="{$aField.picCode}"></td>
-		</tr>         
-		<tr>
-			<td class="altbg1">作者编码：</td>
-			<td class="altbg2"><input type="text" id="artistCode" name="artistCode" size="40" value="{$aField.artistCode}">请确保此作者已经存在</td>
-		</tr>      
-		<tr>
-			<td class="altbg1">尺寸：</td>
-			<td class="altbg2"><input type="text" id="size" name="size" size="40" value="{$aField.size}"></td>
-		</tr>      
-		<tr>
-			<td class="altbg1">尺寸(英文)：</td>
-			<td class="altbg2"><input type="text" id="esize" name="esize" size="40" value="{$aField.esize}"></td>
-		</tr>   
-		<tr>
-			<td class="altbg1">签名：</td>
-			<td class="altbg2"><input type="text" id="signal" name="signal" size="50" value="{$aField.signal}"></td>
-		</tr> 
-			<td class="altbg1">签名(英文)：</td>
-			<td class="altbg2"><input type="text" id="esignal" name="esignal" size="50" value="{$aField.esignal}"></td>
-		</tr>  
-		<tr>
-			<td class="altbg1">出版：</td>
-			<td class="altbg2"><input type="text" id="literature" name="literature" size="100" value="{$aField.literature}"></td>
-		</tr>  
-		<tr>
-			<td class="altbg1">出版(英文)：</td>
-			<td class="altbg2"><input type="text" id="eliterature" name="eliterature" size="100" value="{$aField.eliterature}"></td>
-		</tr>          
-		<tr>
-			<td class="altbg1">展览：</td>
-			<td class="altbg2"><input type="text" id="exhibition" name="exhibition" size="100" value="{$aField.exhibition}"></td>
-		</tr>         
-		<tr>
-			<td class="altbg1">展览(英文)：</td>
-			<td class="altbg2"><input type="text" id="exhibitionEName" name="exhibitionEName" size="100" value="{$aField.exhibitionEName}"></td>
+			<td colspan="5" class="altbg2"><input type="text" id="age" name="age" size="40" value="{$aField.age}"></td>
 		</tr>
 		<tr>
 			<td class="altbg1">作品质地：</td>
-			<td class="altbg2"><input type="text" id="texture" name="texture" size="100" value="{$aField.texture}"></td>
-		</tr>         
+			<td colspan="3" class="altbg2"><input type="text" id="texture" name="texture" size="50" value="{$aField.texture}"></td>
+		    <td class="altbg1">作品质地(英文)：</td>
+	      	<td class="altbg2"><input type="text" id="etexture" name="etexture" size="50" value="{$aField.etexture}"></td>
+		</tr>      
 		<tr>
-			<td class="altbg1">作品质地(英文)：</td>
-			<td class="altbg2"><input type="text" id="etexture" name="etexture" size="100" value="{$aField.etexture}"></td>
+			<td class="altbg1">尺寸：</td>
+			<td colspan="5" class="altbg2"><input type="text" id="size" name="size" size="40" value="{$aField.size}"></td>
+		</tr> 
+		<tr>
+			<td class="altbg1">作品编码：</td>
+		  <td width="322" class="altbg2"><input type="text" id="picCode" name="picCode" size="20" value="{$aField.picCode}"></td>
+		    <td width="120" class="altbg1">排序：</td>
+		    <td width="130" class="altbg2"><input type="text" id="rank" name="rank" size="10" value="{$aField.rank}" /></td>
+     	  <td class="altbg1">推荐作品：</td>
+	      	<td class="altbg2">{html_radios name="status" options="$aENUM" checked=$aField.status}<span class="starHit">*</span></td>
+		</tr>
+        <tr>
+			<td class="altbg1">作品信息（展览，出版，签名）：</td>
+			<td colspan="5" class="altbg2">{$sAttachment}</td>
+		</tr>			
+		<tr>
+			<td class="altbg1">作品信息（展览，出版，签名）(英文)：</td>
+			<td colspan="5" class="altbg2">{$eAttachment}</td>
 		</tr>  
 		<tr>
-			<td class="altbg1">推荐作品：</td>
-			<td class="altbg2">{html_radios name="status" options="$aENUM" checked=$aField.status}<span class="starHit">*</span></td>
-		</tr>	
-		<tr>
-			<td class="altbg1">排序：</td>
-			<td class="altbg2"><input type="text" id="rank" name="rank" size="10" value="{$aField.rank}"></td>
-		</tr> 	
-		<tr>
 			<td class="altbg1">作品点评：</td>
-			<td class="altbg2"><textarea name="comment" cols="50" rows="5" id="comment">{$aField.comment}</textarea></td>
+			<td colspan="5" class="altbg2">{$sComment}</td>
 		</tr>			
 		<tr>
 			<td class="altbg1">作品点评(英文)：</td>
-			<td class="altbg2"><textarea name="ecomment" cols="50" rows="5" id="ecomment">{$aField.comment}</textarea></td>
+			<td colspan="5" class="altbg2">{$eComment}</td>
 		</tr>
 		<tr>
 			<td class="altbg1">作品描述：</td>
-			<td class="altbg2">{$sContent}</td>
+			<td colspan="5" class="altbg2">{$sDescription}</td>
 		</tr>
 		<tr>
 			<td class="altbg1">作品描述(英文)：</td>
-			<td class="altbg2">{$eContent}</td>			
+			<td colspan="5" class="altbg2">{$eDescription}</td>			
 			<!--<td class="altbg2"><textarea name="edescription" cols="150" rows="5" id="edescription">{$aField.edescription}</textarea></td>-->
 		</tr>
 		<tr>
 			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="返回" class="button"></td>
-			<td align="right" class="altbg2">
+			<td colspan="5" align="right" class="altbg2">
 			<input type="hidden" name="id" value="{$aField.id}">
 			<input type="hidden" name="oldStatus" value="{$aField.status}">
 			<input type="submit" name="submit" value=" 提 交 " class="submit"></td>	

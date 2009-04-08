@@ -14,7 +14,7 @@ class artist
 		global $db;
 		$sSQL = "select * from artist order by artistCode desc";
 		$aRs = $db->getRecordSet($sSQL);			
-		$iCounts = count($aRs);	
+		$iCounts = count($aRs);
 		for($i=0; $i<$iCounts; $i++)
 		{
 			if($aidMe == $aRs[$i]['artistCode']) 
@@ -22,8 +22,40 @@ class artist
 	    	else 
 	      		$sOption .= "<option value=".$aRs[$i]['artistCode'].">".$str.$aRs[$i]['name']."(".$str.$aRs[$i]['artistCode'].")</option>";
 		}
-		echo $sOption;
+		$sOption .= "<option value='0'>其他</option>";	
 		return $sOption;  	
+	}
+	
+	function getArtistDetail($id)
+	{
+		global $db;
+		$sSQL = "select * from artist where artistCode='$id'";
+		$aRs = $db->getRecordSet($sSQL,1);
+		return $aRs;
+	}
+	
+	function getMaxCode()
+	{
+		global $db;
+		$sSQL = "SELECT max(artistCode) as mc FROM artist";
+		$aRs = $db->getRecordSet($sSQL, 1);
+		return $aRs['mc'];
+	}
+	
+	function getArtistByName($name)
+	{
+		global $db;
+		$sSQL = "select * from artist where name='".trim($name)."'";
+		$aRs = $db->getRecordSet($sSQL,1);
+		return $aRs;
+	}
+	
+	function getArtistById($id)
+	{
+		global $db;
+		$sSQL = "select * from artist where id='".trim($id)."'";
+		$aRs = $db->getRecordSet($sSQL,1);
+		return $aRs;
 	}
 }
 ?>

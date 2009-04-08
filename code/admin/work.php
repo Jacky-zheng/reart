@@ -154,7 +154,14 @@ elseif ($sAction == "editSave") // 修改保存
 	$aField['cID'] = $_POST['cID'];
 	$aField['name'] = $_POST['name'];
 	$aField['ename'] = $_POST['ename'];
-	$aField['artistCode'] = $_POST['artistCode'];
+	if (empty($_POST['artistCode']))
+	{
+		$aField['artistCode'] = $_POST['ac'];
+	}
+	else 
+	{
+		$aField['artistCode'] = $_POST['artistCode'];
+	}
 	$aField['price'] = $_POST['price'];
 	$aField['actualPrice'] = $_POST['actualPrice'];
 	$aField['age'] = $_POST['age'];

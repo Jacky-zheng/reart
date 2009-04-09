@@ -6,9 +6,6 @@ loadLib("page_link");
 loadLib("work");
 $user_id = $_SESSION["reart_id"]/*'177'*/;
 
-$check_login = checkUserState($_SESSION["reart_id"]);
-$tpl->assign("check_login",$check_login);
-
 $page_link = new page_link();
 $page = $_GET['page'];
 $language = $_GET['language'];
@@ -42,11 +39,15 @@ $tpl->assign("nowpage_num",$all);
 $tpl->assign("page_res",$page_res);
 if ($language=='en')
 {
+	$check_login = checkUserState($_SESSION["reart_id"],"en");
+	$tpl->assign("check_login",$check_login);
 	$tpl->assign("title","Favorite");
 	$tpl->display("reart_en/favorite.html");
 }
 else 
 {	
+	$check_login = checkUserState($_SESSION["reart_id"],"ch");
+	$tpl->assign("check_login",$check_login);
 	$tpl->assign("title","作品收藏");
 	$tpl->display("reart/favorite.html");
 }

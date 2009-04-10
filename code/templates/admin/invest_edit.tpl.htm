@@ -1,0 +1,58 @@
+{include file=admin/header.tpl.htm}
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+		<form name="add" method="POST" action="?act=editSave" enctype="multipart/form-data" onsubmit="return checkInput();">
+		<tr class="header">
+			<td colspan="2">{$PAGE_FUNC_SMALL_NAME}</td>
+		</tr>
+		<tr>
+			<td width="141" class="altbg1">标题：</td>
+		  <td class="altbg2"><input type="text" id="title" name="title" size="40" value="{$aField.title}"> 
+			<span class="starHit">* </span></td>
+		  </tr>
+		<tr>
+			<td class="altbg1">标题（英文）：</td>
+		  <td class="altbg2"><input type="text" id="etitle" name="etitle" size="40" value="{$aField.etitle}"></td>
+		</tr>
+		<tr>
+			<td class="altbg1">内容：</td>
+			<td class="altbg2">{$sContent}</td>
+		</tr>
+		<tr>
+			<td class="altbg1">内容（英文）：</td>
+			<td class="altbg2">{$eContent}</td>	
+		</tr>
+		<tr>
+			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="返回" class="button"></td>
+			<td align="right" class="altbg2">
+			<input type="hidden" name="id" value="{$aField.id}">
+			<input type="hidden" name="cateID" value="{$aField.cateID}">
+			<input type="submit" name="submit" value=" 提 交 " class="submit"></td>	
+		</tr>
+		</form>
+</table>
+{literal}
+<script language="javascript">
+//验证表单输入是否正确
+function checkInput()
+{
+	if($('title').value =="")
+	{
+		alert("请输入标题！");
+		$('title').focus();
+		return false;	
+	}
+	else if($('etitle').value =="" || $('etitle').value == null )
+	{
+		alert("请输入英文标题！");
+		$('etitle').focus();
+		return false;	
+	}
+	else
+	{
+		return true;
+	}	
+}
+</script>
+{/literal}
+
+ {include file=admin/footer.tpl.htm}

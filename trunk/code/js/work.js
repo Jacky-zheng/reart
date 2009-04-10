@@ -38,6 +38,8 @@ function getArtistNameResponse(result)
 			vl = vl+','+arr[0];
 		}
 		$("artistCode").value = vl;
+		//添加到option
+		 document.getElementById("ac").options.add(new Option(arr[1],arr[0])); 
 		//，并显示作者姓名
 		var str = "<table id='tbl_"+arr[0]+"' style='float:left'><tbody><tr><td>"+arr[1]+"</td><td><img src='/images/f2.gif' alt='删除' onclick='delArtist("+arr[0]+");'/>;</td></tr></tbody></table>";
 		//new Insertion.After('cfm', str);

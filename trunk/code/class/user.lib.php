@@ -132,7 +132,7 @@ function checkMessage($id,$type)
 		}
 		else 
 		{
-			$check_login = '<form action="/user/contact_us.php" method="POST" name="login"><td width="71">匿名<input class="box" checked type="checkbox" name="no_reg" /></td><td width="524">用户名:&nbsp;&nbsp;<input class="width-03" type="text" name="login_name"/>&nbsp;&nbsp;密码:&nbsp;&nbsp;<input class="width-03" type="password" name="login_pwd" />&nbsp;&nbsp;<button type="submit">登录</button></td></form>';
+			$check_login = '<form action="/user/contact_us.php" method="POST" name="login"><td width="94">匿名<input class="box" type="checkbox" checked name="no_reg"  /></td><td width="542">用户名:&nbsp;&nbsp;<input class="width-03" type="text" name="login_name"/>&nbsp;&nbsp;密码:&nbsp;&nbsp;<input class="width-03" type="text" type="password" name="login_pwd"/>&nbsp;&nbsp;<button type="submit">登录</button></td></form>';
 		}
 	}
 	return $check_login;

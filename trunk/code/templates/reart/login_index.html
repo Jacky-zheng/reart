@@ -1,24 +1,24 @@
-{include file="reart/header.html"}
-	<div class="text-content wrapClear">
-		<div class="option">
-			<p><a class="btn-01" href="/user/favorite.php">收藏夹</a></p>
-			<p><a class="btn-01" href="/user/mod_user_info.php">会员信息修改</a></p>
-		</div>
+{include file="reart/header.html"}	
+<div class="text-content wrapClear">
+    <div class="option">
+    <p><a  href="/user/favorite.php"><img src="/images/fav.jpg" /></a></p>
+	<p><a href="/user/mod_user_info.php"><img src="/images/modify.jpg" /></a></p>
+    </div>
 		<div class="text">
-		<div><img src="/images/bg-01t.gif" width="659" height="21" /></div>
-		<p>您好 {$data.userName}, 欢迎光临睿艺! 您上次登陆时间为: {$data.loginDate}</p>
-		<p></p>
+      <div><img src="/images/bg-01t.gif" width="659" height="21" /></div>
+			<p>您好 {$data.userName}, 欢迎光临睿艺! 您上次登陆时间为: {$data.loginDate}</p>
 			<div class="info">
-				<p>您的信息如下所示：</p>
+		    <p>您的信息如下所示：</p>
 				<p>用户名：{$data.userName}</p>
 				<p>真是姓名：{$data.trueName}</p>
 				<p>E-mail: {$data.email}</p>
 				<p>联系电话：{$data.phone}</p>
 				<p>联系地址：{$data.address}</p>
-			</div>
-			 <div><img src="/images/bg-01bt.gif" width="659" height="27" /></div>
+		  </div>
+            <div><img src="/images/bg-01bt.gif" width="659" height="27" /></div>
 		</div>		
-	</div>
+	</div>	
+	
 	{include file="reart/footer.html"}
 </div>
 </body>

@@ -10,7 +10,7 @@
 	<span><a href="/detail.php?id={$work.id}" target="_blank"><img src="{$img_url_m}{$work.picCode}.jpg" alt="" /></a></span>
 	<p>作品名：{$work.name}</p>
 	<p>作者：{$work.artist_name}</p>
-	<p>日期：{$work.addDate}<button>售出</button></p>
+	<p>日期：{$work.addDate|truncate:10:""}<button>售出</button></p>
 	<!--p>价格：{$work.price}</p-->
 	{if $favo eq '1'}
 		<p><button onclick="delete_favorite({$work.id},{$user_id})">删除</button></p>

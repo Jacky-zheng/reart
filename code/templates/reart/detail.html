@@ -1,34 +1,15 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>睿艺艺术品投资收藏顾问网-{$title}</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="/css/base.css" />
-</head>
-<body>
-<center>
-<div id="main-wrap">
-	<div class="header wrapClear">
-		<div class="logo"><a href="/index.php"><img src="/images/logo.gif" alt="" /></a></div>
-		<div class="text"></div>
-	</div>
-	<div class="main-nav wrapClear">
-		<div class="nav"><a href="/index.php">首页</a><b>|</b><a href="/user/about_us.php">关于睿艺</a><b>|</b><a href="/list.php">睿艺艺术品推荐目录</a><b>|</b><a href="#">投资收藏咨询</a><b>|</b><a href="/user/contact_us.php">联系我们</a><b>|</b>{$check_login}</div>
-		<div class="language"><a href="/index.php?language=en"><font style="font-family:Arial, Helvetica, sans-serif;">English</font></a></div>
-	</div>
+{include file="reart/header.html"}
 {literal}
 <script type="text/javascript" src="/js/lightbox.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/lightbox.css" />
 {/literal}
-
+<center>
+<div id="box-wrap">
 	<div class="left-wrap">
 		<div class="text-description-01">
 			<p>{$workdetail.artist_name}</p>
 			<p>{$workdetail.name}</p>
-			<!--p>Sui Jianguo, Tilted Utopia</p--> 
-			<!--p>{$workdetail.comment}</p-->
 			{if $workdetail.age}<p>{$workdetail.age}</p>{/if}
-			<!--{if $workdetail.cate_name}<p>{$workdetail.cate_name}</p>{/if}-->
 			{if $workdetail.texture}<p>{$workdetail.texture}</p>{/if}
 			{if $workdetail.size}<p>{$workdetail.size}</p>{/if}
 			{if $workdetail.signal}<p>签名<br />{$workdetail.signal}</p>{/if}
@@ -58,25 +39,33 @@
 	</div>
 	<div class="middle-wrap">
 		<div class="flash">
-		  <table align="left" height="260px">
-		    <tr>
-		      <td><a href="detail.php?id={if $workdetail.less_id eq ''} {$workdetail.id} {else} {$workdetail.less_id} {/if}"><img src="images/left_arrow.gif"  /></a></td>
+		<table align="left" height="260px">
+		<tr>
+		      <td width="34"></td>
 		      <td width="260" valign="middle"><img src="{$img_url_l}{$workdetail.picCode}.jpg" /></td>
-		      <td><a  href="detail.php?id={if $workdetail.more_id eq ''} {$workdetail.id} {else} {$workdetail.more_id} {/if}"><img src="images/right_arrow.gif"/></a></td>
+		      <td width="33"></td>
 	        </tr>
 	      </table>
-          <table width="327" align="left" height="30">
+          <table width="327" height="30" border="0" align="left" cellpadding="0" cellspacing="0">
           <tr>
-          <th align="left"><a href="/user/buy.php"><img src="images/buy.gif" /></a></th><th align="right"><a rel="lightbox" href="{$img_url_xl}{$workdetail.picCode}.jpg"><img src="images/zoom.gif" /></a></th>
+          <th width="51" align="left">&nbsp;</th>
+          <th width="41" ><a href="detail.php?id={if $workdetail.less_id eq ''} {$workdetail.id} {else} {$workdetail.less_id} {/if}"><img src="/images/al.jpg" /></a></th>
+          <th width="46"><a  href="detail.php?id={if $workdetail.more_id eq ''} {$workdetail.id} {else} {$workdetail.more_id} {/if}"><img src="/images/ar.jpg" /></a></th>
+          <th width="46"><a href="/user/buy.php"><img src="/images/buy.jpg" /></a></th>
+          <th width="46"><img src="/images/aa.jpg" /></th>
+          <th width="46" ><a rel="lightbox" href="{$img_url_xl}{$workdetail.picCode}.jpg"><img src="/images/serch2.jpg" /></a></th>
+          <th width="51">&nbsp;</th>
           </tr>
           </table>
   </div>
 		<div class="text-description-02">
-			{$workdetail.description}
+        	<h2><img src="/images/dp.jpg" width="88" height="32" /></h2>
+			<p>{$workdetail.description}</p>
 		</div>
 		<div class="text-descri3-box">
+        <h2><img src="/images/jj.jpg" /></h2>
 			<div class="text-description-03">
-				{$workdetail.resume}
+				<p>{$workdetail.resume}</p>
 			</div>	
 		</div>	
 	</div>
@@ -90,8 +79,8 @@
 					<p>{$rw.name}</p>
 					<p>{$rw.artist_name}</p>
 				</dd>	
-                {/foreach}
-			</dl>
+                {/foreach}					
+            </dl>
 		</div>	
 	</div>
 	<div class="clr"></div>

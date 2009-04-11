@@ -57,5 +57,13 @@ class artist
 		$aRs = $db->getRecordSet($sSQL,1);
 		return $aRs;
 	}
+	
+	function getAllArtist()
+	{
+		global $db;
+		$sSQL = "select * from artist order by artistCode desc";
+		$aRs = $db->getRecordSet($sSQL);	
+		return $aRs;
+	}
 }
 ?>

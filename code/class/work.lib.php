@@ -36,6 +36,14 @@ class work
 	function searchWorkList($params=array())
 	{
 		global $db;
+		if (!empty($params['vl']))
+		{
+			$sql_tail .= " and (p.price_name like '%".$params['vl'] ."%' or p.price_ename like '%".$params['vl']. "%' ";
+			$sql_tail .= " or a.name like '%".$params['vl']."%'";
+			$sql_tail .= " or UPPER(replace(a.ename, ' ', '')) like '%".strtoupper(preg_replace('/(\s+)/', '', $params['vl']))."%'";
+			$sql_tail .= " or w.age='".$params['vl']."'";
+			$sql_tail .= " or c.name  like '%".$params['vl'] ."%' or c.name  like '%".$params['vl'] ."%')";
+		}
 		if (!empty($params['price']))
 		{
 			$sql_tail .= " and p.id=".$params['price'];
@@ -57,8 +65,37 @@ class work
 			$sql_tail .= " and w.cID=".$params['cate'];
 		}
 		
-		$sql = "SELECT w.id, w.name, w.ename, w.cID, w.age, p.price_name as price, p.price_ename as eprice, w.artistCode, w.picCode, w.addDate, a.name as artist_name, a.ename as artist_ename FROM work as w left join artist as a on a.artistCode=w.artistCode left join price as p on w.price=p.id where w.status!='3' ";
-		$sql_count = "SELECT count(*) as num FROM work as w left join artist as a on a.artistCode=w.artistCode left join price as p on w.price=p.id where w.status!='3' ";
+		$sql = "SELECT w.id, w.name, w.ename, w.cID, w.age, p.price_name as price, p.price_ename as eprice, w.artistCode, w.picCode, w.addDate, a.name as artist_name, a.ename as artist_ename FROM work as w left join artist as a on a.artistCode=w.artistCode left join price as p on w.price=p.id left join category c on w.cID=c.id where w.status!='3' ";
+		$sql_count = "SELECT count(*) as num FROM work as w left join artist as a on a.artistCode=w.artistCode left join price as p on w.price=p.id left join category c on w.cID=c.id where w.status!='3' ";
+		
+		$start = !empty($params['start'])?$params['start']:0;
+		$pagesize = !empty($params['pagesize'])?$params['pagesize']:8;
+		
+		$sql = $sql.$sql_tail." order by w.rank asc limit ".$start.",".$pagesize;
+		$sql_count .= $sql_tail;
+		
+		$res['data'] = $db->getRecordSet($sql);
+		$rCnt = $db->getRecordSet($sql_count);
+		$res['start'] = $start;
+		$res['pagesize'] = $pagesize;
+		$res['count'] = $rCnt[0]['num'];
+		return $res;
+	}
+	
+	function searchWorkList2($params=array())
+	{
+		global $db;
+		if (!empty($params['vl']))
+		{
+			$sql_tail .= " and (p.price_name like '%".$params['vl'] ."%' or p.price_ename like '%".$params['vl']. "%' ";
+			$sql_tail .= " or a.name like '%".$params['vl']."%'";
+			$sql_tail .= " or UPPER(replace(a.ename, ' ', '')) like '%".strtoupper(preg_replace('/(\s+)/', '', $params['vl']))."%'";
+			$sql_tail .= " or w.age='".$params['vl']."'";
+			$sql_tail .= " or c.name  like '%".$params['vl'] ."%' or c.name  like '%".$params['vl'] ."%')";
+		}
+		
+		$sql = "SELECT w.id, w.name, w.ename, w.cID, w.age, p.price_name as price, p.price_ename as eprice, w.artistCode, w.picCode, w.addDate, a.name as artist_name, a.ename as artist_ename FROM work as w left join artist as a on a.artistCode=w.artistCode left join price as p on w.price=p.id left join category c on w.cID=c.id where w.status!='3' ";
+		$sql_count = "SELECT count(*) as num FROM work as w left join artist as a on a.artistCode=w.artistCode left join price as p on w.price=p.id left join category c on w.cID=c.id where w.status!='3' ";
 		
 		$start = !empty($params['start'])?$params['start']:0;
 		$pagesize = !empty($params['pagesize'])?$params['pagesize']:8;

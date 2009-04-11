@@ -1,0 +1,34 @@
+{include file="reart/header.html"}
+<div class="sflash"><img src="images/smallflash.jpg" alt="" /></div>
+    <div class="works"><a href="#"><img src="images/ps.jpg" /></a></div>
+    <div class="bj"><img src="images/pr_ca.jpg" /></div>
+    <div class="seachpr">
+    {foreach from=$cates item=cate }
+    	<a href="search.php?cate={$cate.id}">{$cate.name}</a><b></b>
+    {/foreach}
+    </div>
+     <div class="bj"><img src="images/pr_p.jpg" /></div>
+       <div class="seachpr">
+       	{foreach from=$prices item=price }
+    		<a href="search.php?price={$price.id}">{$price.price_name}</a><b></b>
+    	{/foreach}
+       </div>
+     <div class="bj"><img src="images/pr_au.jpg" /></div>
+       <div class="seachpr">
+       {foreach from=$artists item=artist }
+    	<a href="search.php?artist={$artist.name}">{$artist.name}</a><b></b>
+    	{/foreach}
+       </div>
+    <table width="500" align="center" height="100px">
+    <tr>
+    <td>
+    </td>
+    </tr>
+    </table>
+	{include file="reart_en/footer.html"}
+</div>
+</body>
+</html>
+
+
+

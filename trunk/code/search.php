@@ -12,24 +12,34 @@ $page = intval( $page );
 $pagesize = PAGESIZE;
 $page_link->length = $pagesize;
 
-$price = isset($_POST['price']) ? trim($_POST['price']) : "";
-$artist = isset($_POST['artist']) ? trim($_POST['artist']) : "";
-$eartist = isset($_POST['eartist']) ? trim($_POST['eartist']) : "";
-$age = isset($_POST['age']) ? trim($_POST['age']) : "";
-$cate = isset($_POST['cate']) ? trim($_POST['cate']) : "";
-
-$params = array(
-	'start' => ($page-1)*$pagesize,
-	'pagesize' => $pagesize,
-	'price'=>$price,
-	'artist'=>$artist,
-	'eartist'=>$eartist,
-	'cate'=>$cate,
-	'age'=>$age,
-);
+if (array_key_exists('vl', $_GET))
+{
+	$vl = isset($_GET['vl']) ? trim($_GET['vl']) : "";
+	$params = array(
+		'start' => ($page-1)*$pagesize,
+		'pagesize' => $pagesize,
+		'vl'=>$vl,
+	);
+}
+else 
+{
+	$price = isset($_POST['price']) ? trim($_POST['price']) : trim($_GET['price']);
+	$artist = isset($_POST['artist']) ? trim($_POST['artist']) : trim($_GET['artist']);
+	$eartist = isset($_POST['eartist']) ? trim($_POST['eartist']) : trim($_GET['eartist']);
+	$age = isset($_POST['age']) ? trim($_POST['age']) : trim($_GET['age']);
+	$cate = isset($_POST['cate']) ? trim($_POST['cate']) : trim($_GET['cate']);	
+	$params = array(
+		'start' => ($page-1)*$pagesize,
+		'pagesize' => $pagesize,
+		'price'=>$price,
+		'artist'=>$artist,
+		'eartist'=>$eartist,
+		'cate'=>$cate,
+		'age'=>$age,
+	);
+}
+$res = work::searchWorkList($params);
 $tpl->assign('sarch_arr', $params);
-$work = new work();
-$res = $work->searchWorkList($params);
 if ($language=='en')
 {
 	$check_login = checkUserState($_SESSION["reart_id"],"en");
@@ -43,8 +53,8 @@ else
 $tpl->assign("user_id",empty($_SESSION["reart_id"])?'0':$_SESSION["reart_id"]);
 
 $tpl->assign('worklist', $res['data']);
-$tpl->assign("cate",$work->getCatelog());
-$tpl->assign("price",$work->getPrice());
+$tpl->assign("cate",work::getCatelog());
+$tpl->assign("price",work::getPrice());
 
 $tpl->assign('img_url_xl', IMG_URL_XL);
 $tpl->assign('img_url_l', IMG_URL_L);

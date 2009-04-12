@@ -1,0 +1,10 @@
+<input type="text" id="sv" name="search" class="width-03" value="{$sarch_arr.vl}"/><img src="/images/seach1.jpg" onclick="searchheader();">
+{literal}
+<script type="text/javascript">
+function searchheader()
+{
+	var v = document.getElementById("sv").value;
+	window.location = "/search.php?vl="+v;
+}
+</script>
+{/literal}

@@ -1,0 +1,26 @@
+{include file="reart/header.html"}
+<div class="text-content wrapClear">
+    <div><img src="/images/Contact.jpg" width="76" height="15" /></div>
+      <div class="page-nav">
+			<p>{include file="reart_en/module_page_search.html"}</p>
+	  </div>
+	  <div class="option">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		<div class="text">
+        <div><img src="/images/bg-01t.gif" width="659" height="21" /></div>
+		  {foreach from=$investlist item=invest }
+          <p><a href="/invest_article.php?id={$invest.id}">{$invest.title}</a></p>
+          {/foreach}
+          <div><img src="/images/bg-01bt.gif" width="659" height="27" /></div>
+        </div>		
+	</div>
+    <div class="page-nav">
+			<p>{include file="reart_en/module_page_search.html"}</p>
+	  </div>
+	{include file="reart/footer.html"}
+</div>
+</body>
+</html>
+
+
+
+

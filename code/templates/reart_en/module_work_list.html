@@ -10,12 +10,11 @@
 	<span><a href="/detail.php?language=en&id={$work.id}" target="_blank"><img src="{$img_url_m}{$work.picCode}.jpg" alt="" /></a></span>
 	<p>Name：{$work.ename}</p>
 	<p>Author：{$work.artist_ename}</p>
-	<!--<p>Date：{$work.addDate}</p>-->
-	<!--p>价格：{$work.price}</p-->
+	<p>Date：{$work.addDate|truncate:10:""}</p>
 	{if $favo eq '1'}
 		<p><button onclick="delete_favorite_en({$work.id},{$user_id})">Delete</button></p>
 	{else}
-		<p><button onclick="favorite_en({$work.id},{$user_id})">Favorite</button></p>
+		<!--<p><button onclick="favorite_en({$work.id},{$user_id})">Favorite</button></p>-->
 	{/if}
 </li>
 {/foreach}

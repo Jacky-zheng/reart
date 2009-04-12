@@ -304,13 +304,24 @@ elseif($sAction == "uncheck") // 设为普通
 	else
 		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"设为普通失败！");
 }
-elseif($sAction == "recommend") // 设为推荐
+elseif($sAction == "indexrecommend") // 设为推荐
 {	
 	$cID = $_REQUEST['cID'];
 	$iStatus = $_REQUEST['status'];
 	$sID = array2str($_POST['newsID']);	
 
 	if($db->query("UPDATE $sTbl SET status='1' WHERE id in $sID"))
+		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"成功设为推荐！");
+	else
+		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"设为推荐失败！");
+}
+elseif($sAction == "recommend") // 设为推荐
+{	
+	$cID = $_REQUEST['cID'];
+	$iStatus = $_REQUEST['status'];
+	$sID = array2str($_POST['newsID']);	
+
+	if($db->query("UPDATE $sTbl SET status='2' WHERE id in $sID"))
 		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"成功设为推荐！");
 	else
 		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"设为推荐失败！");

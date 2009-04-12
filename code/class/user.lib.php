@@ -152,6 +152,14 @@ function getAboutUs()
 	$aField = $db->getRecordSet($sSQL,1);
 	return $aField;
 }
+//友情链接
+function getLinks()
+{
+	global $db;
+	$sSQL = "SELECT * FROM links ORDER BY id DESC";
+	$aField = $db->getRecordSet($sSQL);
+	return $aField;
+}
 //
 //投资收藏咨询
 function getConsultation()

@@ -1,0 +1,23 @@
+{include file="reart_en/header.html"}
+	<div class="text-content wrapClear">
+    <div>
+    <p><img src="/images/link_en.jpg" width="77" height="29" /></p>
+	</div>
+	  <div class="option">
+	  </div>
+		<div class="text">
+      <div><img src="/images/bg-01t.gif" width="659" height="21" /></div>
+			<p>{section name=list loop=$linklist}
+			<a href="{$linklist[list].url}"><img src="/upload/{$linklist[list].picname}"></a>
+			{/section}
+			</p>
+		  <div><img src="/images/bg-01bt.gif" width="659" height="27" /></div>
+		</div>		
+	</div>
+	{include file="reart_en/footer.html"}
+</div>
+</body>
+</html>
+
+
+

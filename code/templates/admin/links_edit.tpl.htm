@@ -1,0 +1,58 @@
+{include file=admin/header.tpl.htm}
+{literal}
+<script>
+	document.onclick=function() {document.getElementById("popFrame").style.visibility="hidden";}
+</script>
+{/literal}
+<IFRAME frameBorder=0 id=popFrame name=popFrame scrolling=no src="../js/date/images\popcjs.htm" style="BORDER-BOTTOM: 0px ridge; BORDER-LEFT: 0px ridge; BORDER-RIGHT: 0px ridge; BORDER-TOP: 0px ridge; POSITION: absolute; VISIBILITY: hidden; Z-INDEX: 65535"></IFRAME>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">
+		<form name="add" method="POST" action="?act=editSave" enctype="multipart/form-data" onsubmit="return checkInput();">
+		<input type="hidden" name="id" value="{$aField.id}">
+		<tr class="header">
+			<td colspan="2">{$PAGE_FUNC_SMALL_NAME}</td>
+		</tr>
+		<tr>
+			<td width="172" class="altbg1">名称：</td>
+			<td width="1059" class="altbg2"><input type="text" id="name" name="name" size="40" value="{$aField.name}"> *
+		   </td>
+		</tr>
+		<tr>
+			<td width="172" class="altbg1">友情链接URL ：</td>
+			<td width="1059" class="altbg2"><input type="text" id="url" name="url" size="40" value="{$aField.url}">
+		   </td>
+		</tr>
+        
+		<tr>
+			<td class="altbg1">友情链接图片：</td>
+			<td class="altbg2"><input type="text" id="pic" name="picname" size="40" value="{$aField.picname}">
+		    *</td>
+		</tr>
+		<tr>
+			<td align="left" class="altbg1"><input type="button" onclick="history.go(-1);" value="返回" class="button"></td>
+			<td align="right" class="altbg2"><input type="submit" name="submit" value=" 提 交 " class="submit"></td>	
+		</tr>
+		</form>
+</table>
+{literal}
+<script language="javascript">
+//验证表单输入是否正确
+function checkInput()
+{
+	if($('name').value =="")
+	{
+		alert("名称不能为空");
+		$('name').focus();
+		return false;	
+	}
+	if($('pic').value =="")
+	{
+		alert("请上传图片");
+		$('pic').focus();
+		return false;	
+	}
+	return true;
+}
+</script>
+{/literal}
+
+ {include file=admin/footer.tpl.htm}

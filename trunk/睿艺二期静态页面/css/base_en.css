@@ -36,6 +36,14 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	margin-left: auto;
 	font-family:Arial,Verdana,Helvetica,sans-serif;
 }
+#box-wrap{
+	width:939px;
+	margin-top: 0x;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	text-align:left;
+}
 .left-wrap{float:left;margin:29px 0 85px 12px;width:269px;display:inline; }
 .middle-wrap{float:left;margin:29px 0 85px 38px;width:410px;display:inline;}
 .right-wrap{float:right;margin:29px 0 85px;width:156px;display:inline;}
@@ -44,14 +52,12 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 .header .logo{float:left;width:176px;}
 .header .text{
 	float:right;
-	height:99px;
-	width:153px;
+	height:29px;
+	width:190px;
 	font-size:20px;
 	color:#595757;
 	font-family:Arial;
-	background-image: url(../images/art.jpg);
-	background-repeat: no-repeat;
-	background-position: bottom;
+	padding-top: 70px;	
 }
 /* =main-nav
  * --------------------------------------------------------------*/
@@ -109,16 +115,16 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 .sign-form .btn-01{background:url(../images/btn-011.gif) no-repeat 0 0;width:150px;height:21px;line-height:17px;text-align:center;}
 /*.sign-form TABLE TD INPUT{border:1px solid #666464;background:#f7f8f8;}
 .sign-form TABLE TD INPUT .box{background:#ffffff;border: 0  none #000; }*/
-.sign-form TABLE TD INPUT.width-01{border:1px solid #666464;background:#f7f8f8;width:151px;}
-.sign-form TABLE TD INPUT.width-02{border:1px solid #666464;background:#f7f8f8;width:52px;}
-.sign-form TABLE TD INPUT.width-03{border:1px solid #666464;background:#f7f8f8;width:100px;}
+.sign-form TABLE TD INPUT.width-01{border:0px solid #666464;background:#f7f8f8;width:151px;}
+.sign-form TABLE TD INPUT.width-02{border:0px solid #666464;background:#f7f8f8;width:52px;}
+.sign-form TABLE TD INPUT.width-03{border:0px solid #666464;background:#f7f8f8;width:100px;}
 .sign-form TABLE TD.btn{padding-left:100px;}
 .sign-form TABLE TD BUTTON{padding:5px;border:0;color:#424242;font-size:14px;font-weight:bold;background:url(../images/btn-02e.gif) no-repeat 0 0;width:70px;height:26px;cursor:pointer;}
 .sign-form TABLE TD .star{position:relative;top:-5px;margin-left:10px;font-size:12px; color:#9c9c9c;}
 /* =text-content
  * --------------------------------------------------------------*/
-.text-content{margin:52px 0;}
-.text-content .option{float:left;padding-left:20px;width:111px;}
+.text-content{margin:29px 30px 52px;}
+.text-content .option{float:left;width:111px;}
 .text-content .option A{display:block;font-size:12px;color:#000000b;}
 .text-content .option .btn-01{margin-bottom:15px;background:url(../images/btn-01.gif) no-repeat 0 0;width:92px;height:21px;line-height:17px;text-align:center;}
 .text-content .text{

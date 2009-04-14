@@ -25,7 +25,7 @@ A:hover{color:#B3A08F;text-decoration:underline;}
 A:active{color:#B3A08F;}
 A:-moz-any-link:focus{outline:1px dotted invert;}
 .clr{clear:both;height:1px;overflow:hidden;margin-top:-1px;}
-.wrapClear{clear:both;overflow:hidden;zoom:1;}
+.wrapClear{clear:both;overflow:hidden;zoom:1;text-align:left;}
 /* =wrap
  * --------------------------------------------------------------*/
 #main-wrap{
@@ -59,9 +59,14 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	font-family:Arial;
 	padding-top: 70px;	
 }
+.header .text INPUT.width-03{border:1px solid #666464;background:#ffffff;width:150px;}
 /* =main-nav
  * --------------------------------------------------------------*/
-.main-nav{margin-top:17px;padding-bottom:5px;border-bottom:1px solid #5A5858;}
+.main-nav{
+	margin-top:17px;
+	padding-bottom:5px;
+	border-bottom:1px solid #5A5858;
+}
 .main-nav .nav{float:left;}
 .main-nav .nav,.main-nav .nav A{
 	font-size:12px;
@@ -69,7 +74,44 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 }
 .main-nav .nav B{margin:0 10px;}
 .main-nav .language{float:right;}
-.main-nav .language A{margin-left:10px;font-size:12px;font-weight:bold;color:#d0d0d0;}
+.main-nav .language A{margin-left:10px;font-size:12px;font-weight:bold;}
+.works {
+	display:block;
+	font-size:12px;
+	color:#000000;
+	margin-top:29px;
+	width: 900px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: left;
+}
+.sflash {
+	display:block;
+	font-size:12px;
+	color:#000000;
+	margin-top:30px;
+	margin-bottom:10px;
+	text-align: center;
+}
+
+
+.seachpr  {
+	margin-top:17px;
+	padding-bottom:5px;
+	padding-left:70px;
+	padding-right:140px;
+	line-height: 25px;
+}
+.seachpr  a{
+	font-size:14px;
+	font-weight:bold;
+	}
+.seachpr B{margin:0 15px;}
+
+.bj {
+	padding-left:40px;
+	margin-top: 20px;
+}
 /* =footer-option
  * --------------------------------------------------------------*/
 .footer-option{
@@ -120,6 +162,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 .sign-form TABLE TD INPUT.width-03{border:0px solid #666464;background:#f7f8f8;width:100px;}
 .sign-form TABLE TD.btn{padding-left:100px;}
 .sign-form TABLE TD BUTTON{padding:5px;border:0;color:#424242;font-size:14px;font-weight:bold;background:url(../images/btn-02e.gif) no-repeat 0 0;width:70px;height:26px;cursor:pointer;}
+.sign-form TABLE TD textarea{border:0px solid #666464;background:#f7f8f8;}
 .sign-form TABLE TD .star{position:relative;top:-5px;margin-left:10px;font-size:12px; color:#9c9c9c;}
 /* =text-content
  * --------------------------------------------------------------*/
@@ -138,17 +181,19 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	background-image: url(../images/bg-01bg.gif);
 	background-repeat: repeat-y;
 	background-position: 0 0;
-	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-family:  Arial, Verdana, Helvetica, sans-serif;
 }
+
 .text-content .title{text-align:center;font-size:14px;font-weight: bold;margin-bottom: 20px;}
 .text-content .text P{
+	float:left;
 	margin-bottom:10px;
 	font-size:14px;
 	width:500px;
 	text-align:left;
 	line-height: 20px;
-	margin-right: auto;
-	margin-left: auto;
+	padding:5px 10px 10px 30px;
+	font-family:  Arial, Verdana, Helvetica, sans-serif;
 }
 .text-content .text .info{
 	text-align:left;
@@ -160,20 +205,21 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
  * --------------------------------------------------------------*/
 .flash {
 	width:410px;
-	height:333px;
-	background-image:url(../images/bg-08.gif);
+	height:290px;
+	/*background-image:url(../images/bg-08.gif);*/
 	background-repeat: no-repeat;
-	padding-top: 26px;
 	padding-right: 41px;
 	padding-left: 42px;
 }
 .flash table td{vertical-align:middle; text-align:center;}
 .flash table th{
 	vertical-align:bottom;
+	text-align:center;
 }
 .text-description-01{
 	font-size:12px;
-	background:url(../images/bg-03.gif) repeat-y 0 100%;
+	/*background:url(../images/bg-03.gif) repeat-y 0 100%;*/
+	background-color:#f2f2f2;
 	width:243px;
 	padding-top: 20px;
 	padding-right: 13px;
@@ -183,18 +229,17 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 .text-description-01 P{line-height:24px;text-align:left;width:243px;}
 
 .text-description-02{
-	margin-top:47px;
+	margin-top:20px;
 	font-size:12px;
-	background:url(../images/bg-06.gif) repeat-y 0 100%;
+	/*	background:url(../images/bg-06.gif) repeat-y 0 100%;*/
 	width:390px;
 	height:1%;
-	padding-top: 16px;
 	padding-right: 13px;
 	padding-bottom: 16px;
 	padding-left: 13px;
-	line-height:18px;
 	text-align:left;
 }
+.text-description-02 h2{text-align:left;height:40px;}
 .text-description-02 P{line-height:18px;text-indent:2em;width:390px;}
 
 
@@ -203,7 +248,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	width:410px;
 
 	height: 232px;
-	background-image: url(../images/bg1.jpg);
+	/*background-image: url(../images/bg1.jpg);*/
 	background-repeat: no-repeat;
 }
 /*.text-description-03{
@@ -235,7 +280,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	float: left;
 	text-align:left;
 } 
-
+.text-descri3-box h2{text-align:left;height:40px;}
 .text-description-03 P{line-height:14px;}
 .text-description-03 P.marginT20{
 	margin-top:18px;
@@ -245,13 +290,13 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
  * --------------------------------------------------------------*/
 .photo-lists{margin:29px 30px 52px;}
 .photo-lists .option A{display:block;font-size:12px;color:#000000;}
-.photo-lists .option .btn-01{margin-bottom:5px;background:url(../images/btn-01.gif) no-repeat 0 0;width:113px;height:21px;line-height:17px;text-align:center;}
+.photo-lists .option .btn-01{margin-bottom:5px;background:url(../images/btn-01.gif) no-repeat 0 0;width:92px;height:21px;line-height:17px;text-align:center;}
 .photo-lists .photo{margin-top:26px;}
 .photo-lists .photo LI{float:left;width:219px;height:400px;}
 .photo-lists .photo LI SPAN{
 	display: table-cell; 
 	*display:block;
-	background:url(../images/bg-02.gif) no-repeat 0 0;
+	/*background:url(../images/bg-02.gif) no-repeat 0 0;*/
 	width:219px;
 	height:253px;
 	text-align:center;
@@ -262,21 +307,36 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 }
 .photo-lists .photo LI SPAN img{vertical-align:middle;}
 .photo-lists .photo LI P{margin:10px 0 0 10px;font-size:12px;line-height:1;}
+
 .photo-lists .photo LI p  BUTTON{
 	border:0;
 	color:#424242;
 	font-size:12px;
 	font-weight:bold;
-	background:url(../images/btn-02.gif) no-repeat 0 0;
-	width:52px;
-	height:23px;
+	background-color:#ec9577;
+	/*background:url(../images/btn-02.gif) no-repeat 0 0;*/
+	width:50px;
+	height:15px;
 	cursor:pointer;
 	padding-top:3px;
 }
+
+.photo-lists .photo LI .sell{
+	float: right;
+	width:30px;
+	height:15px;
+	cursor:pointer;
+color:#424242;
+	font-size:12px;
+	font-weight:bold;
+	background-color:#ec9577;
+	display: inline;
+	
+}
 /* =photo-view-01
  * --------------------------------------------------------------*/
-.photo-view-01{margin-top:40px;}
-.photo-view-01 H2{font-size:12px;text-align:center;background:url(../images/bg-04.gif) no-repeat 0 0;height:23px;line-height:20px;}
+.photo-view-01{margin-top:7px;background-color:#f2f2f2;}
+.photo-view-01 H2{font-size:12px;text-align:center;/*background:url(../images/bg-04.gif) no-repeat 0 0;*/ height:23px;line-height:20px;}
 .photo-view-01 dd{float:left;margin:10px 18px 0;width:96px;display:inline;}
 .photo-view-01 dd P.images{background:url(../images/bg-05.gif) no-repeat 0 0;width:96px;height:104px;text-align:center;line-height:104px;*font-size: 90px;/*约为高度的0.873，200*0.873 约为175*/        *font-family:Arial;display: table-cell; *display:block;vertical-align:middle; }
 .photo-view-01 dd P.images img{vertical-align:middle;}
@@ -284,10 +344,10 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 .photo-view-01 dt{font-size:12px;text-align:right;}
 /* =photo-view-02
  * --------------------------------------------------------------*/
-.photo-view-02{padding:10px 0 35px;background:url(../images/bg-07.gif) no-repeat 0 100%;height:1%;text-align:left;}
+.photo-view-02{padding:10px 0 35px;/*background:url(../images/bg-07.gif) no-repeat 0 100%;*/height:1%;text-align:left; background-color:#f2f2f2; }
 .photo-view-02 H2{font-size:12px;text-align:center;}
 .photo-view-02 dd{text-align:center;display:inline;}
-.photo-view-02 dd P{margin:10px 10px 10px 30px;font-size:12px;width:96px;text-align:left;}
+.photo-view-02 dd P{margin:10px 10px 10px 30px;font-size:12px;text-align:left;}
 .photo-view-02 dd P.images{margin:10px 10px 10px 30px;vertical-align:middle;background:url(../images/bg-05.gif) no-repeat 0 0;width:96px;height:104px;text-align:center;*font-size: 90px;/*约为高度的0.873，200*0.873 约为175*/    *display:inline-block ;  *font-family:Arial;}
 .photo-view-02 dd P.images img{vertical-align:middle;}
 /* =page-nav

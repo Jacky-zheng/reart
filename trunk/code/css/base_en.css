@@ -53,7 +53,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 .header .text{
 	float:right;
 	height:29px;
-	width:190px;
+	width:180px;
 	font-size:20px;
 	color:#595757;
 	font-family:Arial;
@@ -64,7 +64,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
  * --------------------------------------------------------------*/
 .main-nav{
 	margin-top:17px;
-	padding-bottom:5px;
+	padding-bottom:1px;
 	border-bottom:1px solid #5A5858;
 }
 .main-nav .nav{float:left;}
@@ -152,6 +152,15 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	font-size:13px;
 	vertical-align:middle;
 }
+.sign-form TABLE th{
+	padding:10px 0;
+	color:#000;
+	font-size:13px;
+	vertical-align:top;
+	font-weight: normal;
+	text-align: left;
+}
+
 .sign-form TABLE TD.link{vertical-align:top;}
 .sign-form TABLE TD A{display:block;color:#000000;}
 .sign-form .btn-01{background:url(../images/btn-011.gif) no-repeat 0 0;width:150px;height:21px;line-height:17px;text-align:center;}
@@ -183,17 +192,30 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	background-position: 0 0;
 	font-family:  Arial, Verdana, Helvetica, sans-serif;
 }
-
 .text-content .title{text-align:center;font-size:14px;font-weight: bold;margin-bottom: 20px;}
+.text-content .text  .texttxt{
+	margin-top:50px;
+	width:500px;
+	margin-bottom:50px;
+	margin-right: auto;
+	margin-left: auto;
+	
+	}
 .text-content .text P{
-	float:left;
 	margin-bottom:10px;
 	font-size:14px;
 	width:500px;
 	text-align:left;
 	line-height: 20px;
-	padding:5px 10px 10px 30px;
+	margin-right: auto;
+	margin-left: auto;
 	font-family:  Arial, Verdana, Helvetica, sans-serif;
+}
+.text-content .text .texttxt  B{
+	margin-top: 0;
+	margin-right: 15px;
+	margin-bottom: 0;
+	margin-left:15px;
 }
 .text-content .text .info{
 	text-align:left;
@@ -240,7 +262,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	text-align:left;
 }
 .text-description-02 h2{text-align:left;height:40px;}
-.text-description-02 P{line-height:18px;text-indent:2em;width:390px;}
+.text-description-02 P{line-height:14px;text-indent:2em;width:390px;}
 
 
 .text-descri3-box{
@@ -280,7 +302,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	float: left;
 	text-align:left;
 } 
-.text-descri3-box h2{text-align:left;height:40px;}
+.text-descri3-box h2{text-align:left;height:40px;  padding-left: 13px;}
 .text-description-03 P{line-height:14px;}
 .text-description-03 P.marginT20{
 	margin-top:18px;
@@ -299,7 +321,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	/*background:url(../images/bg-02.gif) no-repeat 0 0;*/
 	width:219px;
 	height:253px;
-	text-align:center;
+	text-align:left;
 	vertical-align:middle; 
 	line-height:220px;
 	*font-size: 220px;/*约为高度的0.873，200*0.873 约为175*/        
@@ -333,6 +355,7 @@ color:#424242;
 	display: inline;
 	
 }
+
 /* =photo-view-01
  * --------------------------------------------------------------*/
 .photo-view-01{margin-top:7px;background-color:#f2f2f2;}

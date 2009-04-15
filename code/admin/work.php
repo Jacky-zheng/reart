@@ -311,7 +311,10 @@ elseif($sAction == "indexrecommend") // 设为推荐
 	$sID = array2str($_POST['newsID']);	
 
 	if($db->query("UPDATE $sTbl SET status='1' WHERE id in $sID"))
+	{
+		refreshIndex();
 		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"成功设为推荐！");
+	}
 	else
 		redirect("work.php?act=listAll&cID=$cID&status=$iStatus",2,"设为推荐失败！");
 }
@@ -386,8 +389,12 @@ function refreshIndex()
        
 	$doc->save("../fx_config.xml");
 	$str = file_get_contents("../fx_config.xml");
-	$str = str_replace("detail.php?id", "detail.php?language=en&id", $str);
-	file_put_contents("../fx_config_en.xml", $str);
+	$str_en = str_replace("detail.php?id", "detail.php?language=en&id", $str);
+	file_put_contents("../fx_config_en.xml", $str_en);
+	$str_small = str_replace("260", "80", $str);
+	file_put_contents("../fx_config_1.xml", $str_small);
+	$str_small_en = str_replace("260", "80", $str_en);
+	file_put_contents("../fx_config_en_1.xml", $str_small_en);
 }
 
 function createEditor($instance_name, $value)

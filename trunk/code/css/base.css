@@ -58,7 +58,12 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	font-family:Arial, Helvetica, sans-serif,宋体;
 	padding-top: 70px;	
 }
-.header .text INPUT.width-03{border:1px solid #666464;background:#ffffff;width:150px;}
+.header .text INPUT.width-03{
+	border:1px solid #666464;
+	background:#ffffff;
+	width:150px;
+	margin-bottom: 2px;
+}
 /* =main-nav
  * --------------------------------------------------------------*/
 .main-nav{
@@ -92,14 +97,13 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	margin-bottom:10px;
 	text-align: center;
 }
-
-
 .seachpr  {
 	margin-top:17px;
 	padding-bottom:5px;
 	padding-left:70px;
 	padding-right:140px;
 	line-height: 25px;
+	text-align:left;
 }
 .seachpr  a{
 	font-size:14px;
@@ -197,8 +201,23 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	margin-bottom:50px;
 	margin-right: auto;
 	margin-left: auto;
-	
 	}
+.text-content .text  .texttxt1{
+	margin-top:20px;
+	width:600px;
+	margin-bottom:50px;
+	margin-right: auto;
+	margin-left: auto;
+	}
+.text-content .text  .texttxt1 p{
+	margin-top:0px;
+	width:600px;
+	line-height: 40px;
+	margin-bottom:50px;
+	margin-right: auto;
+	margin-left: auto;
+	}
+
 .text-content .text   P{
 	margin-bottom:10px;
 	font-size:14px;
@@ -209,7 +228,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	margin-left: auto;
 	font-family:  Arial, Verdana, Helvetica, sans-serif;
 }
-.text-content .text .texttxt  B{
+.text-content .text .texttxt1  B{
 	margin-top: 0;
 	margin-right: 15px;
 	margin-bottom: 0;
@@ -261,7 +280,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	padding-left: 13px;
 	text-align:left;
 }
-.text-description-02 h2{text-align:left;height:40px;}
+.text-description-02 h2{text-align:left;height:45px;}
 .text-description-02 P{line-height:14px;text-indent:2em;width:390px;}
 
 
@@ -302,11 +321,11 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	float: left;
 	text-align:left;
 } 
-.text-descri3-box h2{text-align:left;height:40px;	padding-left: 13px;}
+.text-descri3-box h2{text-align:left;height:20px;	padding-left: 13px;}
 .text-description-03 P{line-height:14px;}
 .text-description-03 P.marginT20{
 	margin-top:18px;
-	margin-bottom: 16px;
+	margin-bottom: 10px;
 }
 /* =photo-lists
  * --------------------------------------------------------------*/
@@ -328,19 +347,24 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	*font-family:Arial;
 }
 .photo-lists .photo LI SPAN img{vertical-align:middle;}
-.photo-lists .photo LI P{margin:10px 0 0 10px;font-size:12px;line-height:1;}
+.photo-lists .photo LI P{
+	font-size:12px;
+	line-height:1;
+	margin-top: 10px;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 0px;
+}
 
 .photo-lists .photo LI p  BUTTON{
 	border:0;
 	color:#424242;
 	font-size:12px;
 	font-weight:bold;
-	background-color:#ec9577;
-	/*background:url(../images/btn-02.gif) no-repeat 0 0;*/
-	width:50px;
 	height:15px;
 	cursor:pointer;
 	padding-top:3px;
+	background-color: #FFF;
 }
 
 .photo-lists .photo LI .sell{

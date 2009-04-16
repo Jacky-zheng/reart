@@ -55,7 +55,7 @@ else
 	$tpl->assign('listlink', 1);
 }
 $tpl->assign('history_list', $history_list);
-
+$tpl->assign("user_id",empty($_SESSION["reart_id"])?'0':$_SESSION["reart_id"]);
 $tpl->assign('workdetail', $res);
 $file = (empty($res))?"detail_no.html":"detail.html";
 if ($language=='en')

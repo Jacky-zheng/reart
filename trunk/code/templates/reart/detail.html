@@ -2,6 +2,8 @@
 
 {literal}
 <script type="text/javascript" src="/js/lightbox.js"></script>
+<script type="text/javascript" src="/js/favorite.js"></script>
+<script type="text/javascript" src="/js/transport.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/lightbox.css" />
 {/literal}
 <center>
@@ -53,7 +55,7 @@
           <th width="41" ><a href="detail.php?id={if $workdetail.less_id eq ''} {$workdetail.id} {else} {$workdetail.less_id} {/if}"><img src="/images/al.jpg" /></a></th>
           <th width="46"><a  href="detail.php?id={if $workdetail.more_id eq ''} {$workdetail.id} {else} {$workdetail.more_id} {/if}"><img src="/images/ar.jpg" /></a></th>
           <th width="46"><a href="/user/buy.php"><img src="/images/buy.jpg" /></a></th>
-          <th width="46"><img src="/images/aa.jpg" /></th>
+          <th width="46"><img src="/images/aa.jpg" onclick="favorite({$workdetail.id}, {$user_id})" /></th>
           <th width="46" ><a rel="lightbox" href="{$img_url_xl}{$workdetail.picCode}.jpg"><img src="/images/serch2.jpg" /></a></th>
           <th width="51">&nbsp;</th>
           </tr>

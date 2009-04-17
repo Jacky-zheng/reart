@@ -34,6 +34,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	margin-right: auto;
 	margin-bottom: 0;
 	margin-left: auto;
+
 }
 #box-wrap{
 	width:939px;
@@ -62,7 +63,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	border:1px solid #666464;
 	background:#ffffff;
 	width:150px;
-	margin-bottom: 2px;
+	margin-bottom: 4px;
 }
 /* =main-nav
  * --------------------------------------------------------------*/

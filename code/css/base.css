@@ -34,7 +34,6 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	margin-right: auto;
 	margin-bottom: 0;
 	margin-left: auto;
-
 }
 #box-wrap{
 	width:939px;
@@ -219,7 +218,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	margin-left: auto;
 	}
 
-.text-content .text   P{
+.text-content .text P{
 	margin-bottom:10px;
 	font-size:14px;
 	width:500px;
@@ -229,7 +228,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	margin-left: auto;
 	font-family:  Arial, Verdana, Helvetica, sans-serif;
 }
-.text-content .text .texttxt1  B{
+.text-content .text .texttxt1 B{
 	margin-top: 0;
 	margin-right: 15px;
 	margin-bottom: 0;
@@ -384,7 +383,7 @@ color:#424242;
 /* =photo-view-01
  * --------------------------------------------------------------*/
 .photo-view-01{margin-top:7px; background-color:#f2f2f2;}
-.photo-view-01 H2{font-size:12px;text-align:center;/*background:url(../images/bg-04.gif) no-repeat 0 0;*/ height:23px;line-height:20px;padding-top:20px;}
+.photo-view-01 H2{font-size:12px;text-align:center;/*background:url(../images/bg-04.gif) no-repeat 0 0;*/ height:21px;line-height:21px;padding-top:20px;}
 .photo-view-01 dd{float:left;margin:10px 18px 0;width:96px;display:inline;}
 .photo-view-01 dd P.images{/*background:url(../images/bg-05.gif) no-repeat 0 0;*/width:96px;height:104px;text-align:left;line-height:104px;*font-size: 90px;/*约为高度的0.873，200*0.873 约为175*/        *font-family:Arial;display: table-cell; *display:block;vertical-align:middle; }
 .photo-view-01 dd P.images img{vertical-align:middle;}
@@ -392,11 +391,16 @@ color:#424242;
 .photo-view-01 dt{font-size:12px;text-align:right;}
 /* =photo-view-02
  * --------------------------------------------------------------*/
-.photo-view-02{padding:10px 0 35px;/*background:url(../images/bg-07.gif) no-repeat 0 100%;*/height:1%;text-align:left; background-color:#f2f2f2; }
+.photo-view-02{
+	padding:10px 0 35px;/*background:url(../images/bg-07.gif) no-repeat 0 100%;*/
+	height:1%;
+	text-align:left;
+	background-color:#f2f2f2;
+}
 .photo-view-02 H2{font-size:12px;text-align:center;padding-top:20px;}
 .photo-view-02 dd{text-align:center;display:inline;}
 .photo-view-02 dd P{margin:10px 10px 10px 30px;font-size:12px;text-align:left;}
-.photo-view-02 dd P.images{margin:10px 10px 10px 30px;vertical-align:middle;background:url(../images/bg-05.gif) no-repeat 0 0;width:96px;height:104px;text-align:center;*font-size: 90px;/*约为高度的0.873，200*0.873 约为175*/    *display:inline-block ;  *font-family:Arial;}
+.photo-view-02 dd P.images{margin:10px 10px 10px 30px;vertical-align:middle;/*background:url(../images/bg-05.gif) no-repeat 0 0;*/width:96px;height:104px;text-align:left;*font-size: 90px;/*约为高度的0.873，200*0.873 约为175*/    *display:inline-block ;  *font-family:Arial;}
 .photo-view-02 dd P.images img{vertical-align:middle;}
 /* =page-nav
  * --------------------------------------------------------------*/

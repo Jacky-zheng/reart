@@ -45,17 +45,15 @@
 		</tr>
 		<tr>
 			<td class="altbg1">作品年代：</td>
-			<td colspan="5" class="altbg2"><input type="text" id="age" name="age" size="40" value="{$aField.age}"></td>
+			<td colspan="3" class="altbg2"><input type="text" id="age" name="age" size="40" value="{$aField.age}"></td>
+		    <td class="altbg1"><span class="altbg1">尺寸：</span></td>
+		    <td class="altbg2"><input type="text" id="size" name="size" size="40" value="{$aField.size}" /></td>
 		</tr>
 		<tr>
 			<td class="altbg1">作品质地：</td>
 			<td colspan="3" class="altbg2"><input type="text" id="texture" name="texture" size="50" value="{$aField.texture}"></td>
 		    <td class="altbg1">作品质地(英文)：</td>
 	      	<td class="altbg2"><input type="text" id="etexture" name="etexture" size="50" value="{$aField.etexture}"></td>
-		</tr>      
-		<tr>
-			<td class="altbg1">尺寸：</td>
-			<td colspan="5" class="altbg2"><input type="text" id="size" name="size" size="40" value="{$aField.size}"></td>
 		</tr> 
 		<tr>
 			<td class="altbg1">作品编码：</td>
@@ -63,14 +61,14 @@
 		    <td width="120" class="altbg1">排序：</td>
 		    <td width="130" class="altbg2"><input type="text" id="rank" name="rank" size="10" value="{$aField.rank}" /></td>
      	  <td class="altbg1">推荐作品：</td>
-	      	<td class="altbg2">{html_radios name="status" options="$aENUM" checked=$aField.status}<span class="starHit">*</span></td>
+	      	<td class="altbg2">{if $aField.status eq ""}{html_radios name="status" options="$aENUM" checked="1"}{else}{html_radios name="status" options="$aENUM" checked=$aField.status}{/if}<span class="starHit">*</span></td>
 		</tr>
         <tr>
-			<td class="altbg1">作品信息（展览，出版，签名）：</td>
+			<td class="altbg1">作品详细（展览，出版，签名）：</td>
 			<td colspan="5" class="altbg2">{$sAttachment}</td>
 		</tr>			
 		<tr>
-			<td class="altbg1">作品信息（展览，出版，签名）(英文)：</td>
+			<td class="altbg1">作品详细（展览，出版，签名）(英文)：</td>
 			<td colspan="5" class="altbg2">{$eAttachment}</td>
 		</tr>  
 		<tr>

@@ -1,44 +1,24 @@
 {include file="reart_en/header_detail.html"}
-
 {literal}
 <script type="text/javascript" src="/js/lightbox.js"></script>
 <script type="text/javascript" src="/js/favorite.js"></script>
 <script type="text/javascript" src="/js/transport.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/lightbox.css" />
 {/literal}
-
 <center>
 <div id="box-wrap">
 	<div class="left-wrap">
-		<div class="text-description-01">			
+		<div class="text-description-01">
+		<div><img  src="/images/titile.jpg"></div>			
 			<p>{$workdetail.artist_ename}</p>
 			<p>{$workdetail.ename}</p>
 			{if $workdetail.age}<p>{$workdetail.age}</p>{/if}
 			{if $workdetail.etexture}<p>{$workdetail.etexture}</p>{/if}
 			{if $workdetail.esize}<p>{$workdetail.esize}</p>{/if}
-			{if $workdetail.esignal}<p>Signal<br />{$workdetail.esignal}</p>{/if}
-			{if $workdetail.eliterature}<p>Literature:<br />{$workdetail.eliterature}</p>{/if}
-			{if $workdetail.exhibitionEName}<p>Exhibition:<br />{$workdetail.exhibitionEName}</p>{/if}
-		</div>
-		<div class="photo-view-01">
-			<h2>History</h2>
-			<dl class="wrapClear">
-            {if $listlink eq 1}
-            	<dd>
-					<p class="images"><a href="list.php?language=en"><img src="{$img_url_s}{$history_list.picCode}.jpg" /></a></p>
-				</dd>
-            {else}
-            {foreach from=$history_list item=hl}
-				<dd>
-					<p class="images"><a href="detail.php?language=en&id={$hl.id}"><img src="{$img_url_s}{$hl.picCode}.jpg" /></a></p>
-					<p>{$hl.ename}</p>
-					<p>{$hl.artist_ename}</p>
-				</dd>
-             {/foreach}   
-             {/if}
-				<dt class="clr"></dt>
-				<dt><a href="list.php?flag=history&language=en">more</a></dt>	
-			</dl>
+			{if $workdetail.esignal}<span>Signal<br />{$workdetail.esignal}</span>{else}<span>&nbsp;</span>{/if}
+			<!--{if $workdetail.eliterature}<p>Literature:<br />{$workdetail.eliterature}</p>{/if}
+			{if $workdetail.exhibitionEName}<p>Exhibition:<br />{$workdetail.exhibitionEName}</p>{/if}-->
+			<div><img  src="/images/bt.jpg" width="252" height="12"></div>
 		</div>
 	</div>
 	<div class="middle-wrap">
@@ -55,9 +35,9 @@
           <th width="51" align="left">&nbsp;</th>
           <th width="41" ><a href="detail.php?language=en&id={if $workdetail.less_id eq ''}{$workdetail.id}{else}{$workdetail.less_id}{/if}"><img src="/images/al.jpg" /></a></th>
           <th width="46"><a  href="detail.php?language=en&id={if $workdetail.more_id eq ''}{$workdetail.id}{else}{$workdetail.more_id}{/if}"><img src="/images/ar.jpg" /></a></th>
-          <th width="46"><a href="/user/buy.php?language=en"><img src="/images/buy.jpg" /></a></th>
-          <th width="46"><img src="/images/aa.jpg" onclick="favorite({$workdetail.id}, {$user_id})" /></th>
-          <th width="46" ><a rel="lightbox" href="{$img_url_xl}{$workdetail.picCode}.jpg"><img src="/images/serch2.jpg" /></a></th>
+          <th width="46"><a href="/user/buy.php?language=en"><img src="/images/buy.jpg" alt="Buy" /></a></th>
+          <th width="46"><img src="/images/aa.jpg" alt="Favorites" onclick="favorite({$workdetail.id}, {$user_id})" /></th>
+          <th width="46" ><a rel="lightbox" href="{$img_url_xl}{$workdetail.picCode}.jpg"><img src="/images/serch2.jpg" alt="Zoom" /></a></th>
           <th width="51">&nbsp;</th>
           </tr>
           </table>
@@ -75,7 +55,7 @@
 	</div>
 	<div class="right-wrap">
 		<div class="photo-view-02">
-			<h2>Recommend：</h2>
+			<h2></h2>
 			<dl class="wrapClear">
 				{foreach from=$recommen_list item=rw}
 				<dd>
@@ -85,6 +65,7 @@
 				</dd>	
                 {/foreach}
 			</dl>
+			<h1>&nbsp;</h1>
 		</div>	
 	</div>
 	<div class="clr"></div>

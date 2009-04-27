@@ -4,14 +4,20 @@
       <div class="page-nav">
 			<p>{include file="reart_en/module_page_search.html"}</p>
 	  </div>
+	  <div class="text-content wrapClear">
 	  <div class="option">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
 		<div class="text">
-        <div><img src="/images/bg-01t.gif" width="659" height="21" /></div>
-        {foreach from=$investlist item=invest }
-          <p><a href="/invest_article.php?language=en&id={$invest.id}">{$invest.etitle}</a></p>
-          {/foreach}
-          <div><img src="/images/bg-01bt.gif" width="659" height="27" /></div>
+        <div><img src="/images/bg8.gif" /></div>
+		 <div class="texttxt">
+         <ul>
+         {foreach from=$investlist item=invest }
+         <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="/invest_article.php?language=en&id={$invest.id}">{$invest.etitle}</a></li>
+         {/foreach}
+         </ul>
+		 </div>
+		 <div><img src="/images/bg8.gif" /></div>
         </div>		
+	</div>		
 	</div>
     <div class="page-nav">
 			<p>{include file="reart_en/module_page_search.html"}</p>

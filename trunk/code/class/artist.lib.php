@@ -75,7 +75,8 @@ class artist
 			$key = chr($i);
 			$sql = "select name, ename from artist where UPPER(ename) like '".$key."%'";
 			$res = $db->getRecordSet($sql);
-			$arr[$key] = $res;
+			if (!empty($res))
+				$arr[$key] = $res;
 		}
 		return $arr;		
 	}

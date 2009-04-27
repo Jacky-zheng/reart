@@ -12,33 +12,34 @@
     <div class="works"><img src="/images/ps_en.jpg" /></div>
     <div class="bj"><img src="/images/pr_ca_en.jpg" /></div>
     <div class="seachpr">
-     <table width="700" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-       {foreach from=$cates item=cate }
-        <td><span>&nbsp;&nbsp;</span><a href="search.php?language=en&cate={$cate.id}">{$cate.ename}</a></td>
-        {/foreach}
-      </tr>
-    </table>
+    <div id="menu">
+		<ul>
+			{foreach from=$cates item=cate }
+	        <li><a href="search.php?language=en&cate={$cate.id}">{$cate.ename}</a></li>
+	        {/foreach}
+		</ul>
+	</div>  
   </div>
      <div class="bj"><img src="/images/pr_p_en.jpg" /></div>
        <div class="seachpr">
-       <table width="700" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-      {foreach from=$prices item=price }
-        <td width="141"><span>&nbsp;&nbsp;</span><a href="search.php?language=en&price={$price.id}">{$price.price_ename}</a></td>
-        {/foreach}
-      </tr>
-    </table>
-       
+       <div id="menu">
+		<ul>
+			{foreach from=$prices item=price }
+	        <li><a href="search.php?language=en&price={$price.id}">{$price.price_ename}</a></li>
+	        {/foreach}
+		</ul>
+	</div>                
        </div>
      <div class="bj"><img src="images/pr_au_en.jpg" /></div>
-       <div class="seachpr"><table width="700" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-      {foreach from=$artists item=artist }
-    	<td><span>&nbsp;&nbsp;</span><a href="search.php?language=en&eartist={$artist.ename}">{$artist.ename}</a></td>
-    	{/foreach}
-      </tr>
-    </table></div>
+       <div class="seachpr">
+       <div id="menu">
+		<ul>
+			 {foreach from=$artists item=artist }
+	        <li><a href="search.php?language=en&eartist={$artist.ename}">{$artist.ename}</a></li>
+	        {/foreach}
+		</ul>
+	</div>       
+      </div>
     <table width="500" align="center" height="100px">
     <tr>
     <td>

@@ -10,7 +10,7 @@ $tpl->assign("user_id",empty($_SESSION["reart_id"])?'0':$_SESSION["reart_id"]);
 
 $tpl->assign("cates",work::getCatelog());
 $tpl->assign("prices",work::getPrice());
-$tpl->assign("artists",artist::getAllArtist());
+$tpl->assign("arclist",artist::getArtistByAlpha());
 
 $tpl->assign('img_url_xl', IMG_URL_XL);
 $tpl->assign('img_url_l', IMG_URL_L);

@@ -8,6 +8,7 @@ $language = $_GET['language'];
 
 $file = "artist.html";
 $arclist = artist::getArtistByAlpha();
+$tpl->assign("arclist",$arclist);
 if ($language=='en')
 {
 	$check_login = checkUserState($_SESSION["reart_id"],"en");

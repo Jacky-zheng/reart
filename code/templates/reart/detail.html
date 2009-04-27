@@ -15,9 +15,10 @@
 			{if $workdetail.age}<p>{$workdetail.age}</p>{/if}
 			{if $workdetail.texture}<p>{$workdetail.texture}</p>{/if}
 			{if $workdetail.size}<p>{$workdetail.size}</p>{/if}
-			{if $workdetail.signal}<p>签名<br />{$workdetail.signal}</p>{/if}
-			{if $workdetail.literature}<p>出版：<br />{$workdetail.literature}</p>{/if}
-			{if $workdetail.exhibition}<p>展览：</p>	<p>{$workdetail.exhibition}</p>{/if}
+			{if $workdetail.signal}<span>签名<br />{$workdetail.signal}</span>{else}<span>&nbsp;</span>{/if}
+			<!--{if $workdetail.literature}<p>出版：<br />{$workdetail.literature}</p>{/if}
+			{if $workdetail.exhibition}<p>展览：</p>	<p>{$workdetail.exhibition}</p>{/if}-->
+			<div><img  src="/images/bt.jpg" width="252" height="12"></div>
 			</div>
 		</div>
   <div class="middle-wrap">
@@ -66,6 +67,7 @@
 				</dd>	
                 {/foreach}					
             </dl>
+            <h1>&nbsp;</h1>
 		</div>	
 	</div>
 	<div class="clr"></div>

@@ -105,10 +105,43 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	line-height: 25px;
 	text-align:left;
 }
-.seachpr span{
+
+#menu{WIDTH:650px;
+MARGIN-RIGHT: auto;
+MARGIN-LEFT: auto;
+		text-align:center;white-space:nowrap;}
+#menu ul{
+display:inline;
+}
+#menu li{
+	float:left;
+	width:110px;
+	height:27px;
+	white-space:nowrap;
+	text-align:left;
+	LIST-STYLE-TYPE:none;
+	display:block;
 	background-image: url(../images/arrow1.jpg);
 	background-repeat: no-repeat;
 	background-position: left center;
+	padding-left: 15px;
+}
+#menuau{WIDTH:700px;
+MARGIN-RIGHT: auto;
+MARGIN-LEFT: auto;
+		text-align:center;white-space:nowrap;}
+#menuau ul{
+display:inline;
+}
+#menuau li{
+	float:left;
+	width:170px;
+	height:27px;
+	white-space:nowrap;
+	text-align:left;
+	LIST-STYLE-TYPE:none;
+	display:block;
+
 }
 
 .seachpr  a{

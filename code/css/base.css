@@ -105,12 +105,35 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 	line-height: 25px;
 	text-align:left;
 }
+
+#menu{WIDTH:650px;
+MARGIN-RIGHT: auto;
+MARGIN-LEFT: auto;
+		text-align:center;white-space:nowrap;}
+#menu ul{
+display:inline;
+}
+#menu li{
+	float:left;
+	width:110px;
+	height:27px;
+	white-space:nowrap;
+	text-align:left;
+	LIST-STYLE-TYPE:none;
+	display:block;
+	background-image: url(../images/arrow1.jpg);
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 15px;
+}
+
 .seachpr span{
 	background-image: url(../images/arrow1.jpg);
 	background-repeat: no-repeat;
 	background-position: left center;
+	padding-left: 15px;
+	margin-right: 15px;
 }
-
 .seachpr  a{
 	font-size:14px;
 	font-weight:bold;

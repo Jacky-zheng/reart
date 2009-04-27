@@ -65,5 +65,19 @@ class artist
 		$aRs = $db->getRecordSet($sSQL);	
 		return $aRs;
 	}
+	
+	function getArtistByAlpha()
+	{
+		global $db;
+		$arr = array();
+		for ($i=65; $i<=90; $i++)
+		{
+			$key = chr($i);
+			$sql = "select name, ename from artist where UPPER(ename) like '".$key."%'";
+			$res = $db->getRecordSet($sql);
+			$arr[$key] = $res;
+		}
+		return $arr;		
+	}
 }
 ?>

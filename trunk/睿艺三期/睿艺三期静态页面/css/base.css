@@ -121,6 +121,7 @@ A:-moz-any-link:focus{outline:1px dotted invert;}
 border-bottom:solid 1px #999999; width:700px; margin-left:auto;margin-right:auto; }
 .bottomborder1{
 border-bottom:solid 1px #cccccc;margin-left:auto;margin-right:auto; margin-top:10px;width:381px; clear:both;}
+
 .bj {
 	padding-left:90px;
 	margin-top: 20px;
@@ -332,6 +333,10 @@ border-bottom:solid 1px #cccccc;margin-left:auto;margin-right:auto; margin-top:1
 	border-left-color: #CCCCCC;
 	padding-bottom: 3px;
 }
+.text-description-01  span{
+	line-height:24px;
+}
+
 
 .text-description-02{
 	margin-top:20px;
@@ -469,6 +474,14 @@ color:#424242;
 	font-size:12px;
 	text-align:center;
 	background-image: url(../images/pp.jpg);
+	height:32px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.photo-view-02 h1{
+	font-size:12px;
+	text-align:center;
+	background-image: url(../images/bt1.jpg);
 	height:32px;
 	background-position: center;
 	background-repeat: no-repeat;

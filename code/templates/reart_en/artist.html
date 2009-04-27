@@ -1,0 +1,24 @@
+{include file="reart_en/header.html"}
+	<div class="works"><a href="#"><img src="images/yj.jpg" width="856" height="41" /></a></div>
+	{foreach from=$arclist item=alpha key=key }
+	  <div class="bj"><img src="images/rectangle.jpg" width="9" height="9" /><span>{$key}</span></div>
+	  <div class="seachpr">
+	    <div id="menuau"><ul>
+	    	{foreach from=$alpha item=artist}
+	    		<li><a href="search.php?language=en&eartist={$artist.ename}" >{$artist.ename}</a></li>
+	    	{/foreach}
+			</ul>
+			</div>  
+	  </div>
+	  <div class="bottomborder"></div>
+  {/foreach}
+    <table width="500" align="center" height="100px">
+    <tr>
+    <td>
+    </td>
+    </tr>
+    </table>
+	{include file="reart_en/footer.html"}
+</div>
+</body>
+</html>

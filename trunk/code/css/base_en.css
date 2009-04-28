@@ -121,7 +121,7 @@ display:inline;
 #menu li{
 	float:left;
 	width:110px;
-	height:27px;
+	line-height:30px;
 	white-space:nowrap;
 	text-align:left;
 	LIST-STYLE-TYPE:none;
@@ -224,12 +224,33 @@ border-bottom:solid 1px #cccccc;margin-left:auto;margin-right:auto; margin-top:1
 .sign-form .btn-01{background:url(../images/btn-011.gif) no-repeat 0 0;width:150px;height:21px;line-height:17px;text-align:center;}
 /*.sign-form TABLE TD INPUT{border:1px solid #666464;background:#f7f8f8;}
 .sign-form TABLE TD INPUT .box{background:#ffffff;border: 0  none #000; }*/
-.sign-form TABLE TD INPUT.width-01{border:0px solid #666464;background:#f7f8f8;width:151px;}
+
+.sign-form TABLE TD INPUT.width-01{border:1px solid #dedfd9;background:#f8f8f8;width:151px;}
+.sign-form TABLE TD INPUT.width-02{border:1px solid #dedfd9;background:#f8f8f8;width:52px;}
+.sign-form TABLE TD INPUT.width-03{border:1px solid #dedfd9;background:#f8f8f8;width:100px;}
+.sign-form TABLE TD.btn{padding-left:100px;}
+.sign-form TABLE TD BUTTON{padding:5px;border:0;color:#424242;font-size:14px;font-weight:bold;background:url(../images/btn-02.gif) no-repeat 0 0;width:52px;height:26px;cursor:pointer;}
+.sign-form TABLE TD textarea{
+	border-top-width: 3px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #dedfd9;
+	border-right-color: #dedfd9;
+	border-bottom-color: #dedfd9;
+	border-left-color: #dedfd9;
+}
+
+/*.sign-form TABLE TD INPUT.width-01{border:0px solid #666464;background:#f7f8f8;width:151px;}
 .sign-form TABLE TD INPUT.width-02{border:0px solid #666464;background:#f7f8f8;width:52px;}
 .sign-form TABLE TD INPUT.width-03{border:0px solid #666464;background:#f7f8f8;width:100px;}
 .sign-form TABLE TD.btn{padding-left:100px;}
 .sign-form TABLE TD BUTTON{padding:5px;border:0;color:#424242;font-size:14px;font-weight:bold;background:url(../images/btn-02e.gif) no-repeat 0 0;width:52px;height:26px;cursor:pointer;}
-.sign-form TABLE TD textarea{border:0px solid #666464;background:#f7f8f8;}
+.sign-form TABLE TD textarea{border:0px solid #666464;background:#f7f8f8;}*/
 .sign-form TABLE TD .star{position:relative;top:-5px;margin-left:10px;font-size:12px; color:#9c9c9c;}
 /* =text-content
  * --------------------------------------------------------------*/

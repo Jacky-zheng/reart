@@ -444,7 +444,7 @@ clear:both;
 	font-size:12px;
 	width:385px;
 	overflow-y:auto;
-	height:195px;
+	/*height:195px;*/
 	background-repeat: repeat-y;
 	background-position: 0 100%;
 	padding-top: 16px;

@@ -436,7 +436,7 @@ border-bottom:solid 1px #cccccc;margin-left:auto;margin-right:auto; margin-top:1
 	font-size:12px;
 	width:385px;
 	overflow-y:auto;
-	height:195px;
+	/*height:195px;*/
 	background-repeat: repeat-y;
 	background-position: 0 100%;
 	padding-top: 16px;

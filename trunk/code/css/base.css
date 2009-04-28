@@ -151,20 +151,28 @@ display:inline;
 	}
 .seachpr B{margin:0 15px;}
 .bottomborder{
-border-bottom:solid 1px #999999; width:700px; margin-left:auto;margin-right:auto; }
+border-bottom:solid 1px #999999; width:700px; margin-left:auto;margin-right:auto; clear:both; }
 .bottomborder1{
 border-bottom:solid 1px #cccccc;margin-left:auto;margin-right:auto; margin-top:10px;width:381px; clear:both;}
 
 .bj {
 	padding-left:90px;
 	margin-top: 20px;
+	clear:both;
 }
 .bj span{
 	margin-left:10px;
 	font-weight: bold;
 	font-size:12px;
+	width:700px;
+	height:22px;
+	text-align:left;
 	font-family:  Arial, Verdana, Helvetica, sans-serif;
 }
+.wh{ 
+clear:both;
+	 width:700px;
+	}
 /* =footer-option
  * --------------------------------------------------------------*/
 .footer-option{

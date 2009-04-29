@@ -245,6 +245,7 @@ clear:both;
 	border-right-color: #dedfd9;
 	border-bottom-color: #dedfd9;
 	border-left-color: #dedfd9;
+	overflow-y:hidden;
 }
 
 
@@ -473,7 +474,7 @@ clear:both;
 	/*background:url(../images/bg-02.gif) no-repeat 0 0;*/
 	width:219px;
 	height:253px;
-	text-align:center;
+	text-align:left;
 	vertical-align:middle; 
 	line-height:220px;
 	*font-size: 220px;/*约为高度的0.873，200*0.873 约为175*/        

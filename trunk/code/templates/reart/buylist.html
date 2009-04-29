@@ -33,13 +33,11 @@
      <div class="bj"><img src="images/pr_au.jpg" /></div>
        <div class="seachpr">
        <div id="menu">
-       {foreach from=$arclist item=alpha }
 		<ul>
-			 {foreach from=$alpha item=artist }
+			{foreach from=$artists item=artist }
 	        <li><a href="search.php?artist={$artist.name}">{$artist.name}</a></li>
 	        {/foreach}
 		</ul>
-		{/foreach}
 	</div>         
       </div>
     <table width="500" align="center" height="100">
@@ -48,7 +46,7 @@
     </td>
     </tr>
     </table>
-	{include file="reart_en/footer.html"}
+	{include file="reart/footer.html"}
 </div>
 </body>
 </html>

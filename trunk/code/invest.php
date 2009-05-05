@@ -9,7 +9,7 @@ $page = $_GET['page'];
 $language = $_GET['language'];
 ( is_numeric( $page ) && $page > 0 ) || $page = 1;
 $page = intval( $page );
-$pagesize = /*PAGESIZE*/1;
+$pagesize = /*PAGESIZE*/10;
 $page_link->length = $pagesize;
 
 

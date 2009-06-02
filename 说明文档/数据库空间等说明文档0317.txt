@@ -1,12 +1,14 @@
 FTP:
-host:221.181.66.172 
+host:221.181.66.172(这个IP被封了) 
+host:210.51.37.117 
 username: chenlqin
 pwd:000111
 
 
 MYSQL
 URL:http://sql66172.172.1685157.com/phpmyadmin/index.php?lang=zh-gb2312&server=1
-IP:221.181.66.172
+IP:221.181.66.172(这个IP被封了) 
+IP:210.51.37.117 
 username: a0317111520
 pwd:081228
 DB:a0317111520

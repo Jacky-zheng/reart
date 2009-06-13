@@ -21,6 +21,8 @@ pwd:081228
 
 
 现在默认访问的URL
+www.chinese61.cn 
+
 http://chenlqin.172.1685157.com/test.php
 
 

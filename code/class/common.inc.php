@@ -37,11 +37,15 @@ loadLib("Database");
 loadLib("template");
 loadLib("manager");
 
+
 //连接数据库
 $db = new Database($__DBHost, $__DBName, $__DBUser, $__DBPwd,OPEN_DEBUG);
 $db->connect();
 
-
+if (!empty($_SESSION["xzx_uID"]))
+{
+	$user_info = $db->getRecordSet("select * from mf_sysuser where UserID=".$_SESSION["xzx_uID"],1);
+}
 $tpl = new template(__DEFAULT_TEMPLATE);  // 模板设置
 
 $aWaterText = array('www.reart.com all rights reserved', 'all rights reserved'); //$定义加水印的文字
